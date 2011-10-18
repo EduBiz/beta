@@ -4,8 +4,10 @@
  */
 package controller;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
+import java.util.Map;
 import model.User;
 
 /**
@@ -44,7 +46,8 @@ public class login  extends ActionSupport{
      
       if(user.getPassword().equals(password))
       {
-        
+        Map session =ActionContext.getContext().getSession();
+            session.put("User",user);
         return "success";
       
       }
