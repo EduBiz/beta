@@ -18,14 +18,13 @@ import model.User;
     
 public class forgotmail extends ActionSupport {
 
-    private static final String SMTP_HOST_NAME = "smtp.gmail.com";
-    private static final int SMTP_HOST_PORT = 465;
-    private static final String SMTP_AUTH_USER = "8aarkay@gmail.com";
-    private static final String SMTP_AUTH_PWD  = "51207205033";
+    
     private String forgetemail;
     private String password;
     private spDAO myDao;
-    private String msg;
+    private Emailfunction sendMail;
+     private String subject;
+     private String content;
     
      @Override
     public void validate() {
@@ -50,36 +49,10 @@ public class forgotmail extends ActionSupport {
             if(forgetemail.equals(user.getEmailId()))
             {
       
-             
-             msg="Your Email Account is :  " + user.getEmailId() + "password is" + user.getPassword();
+             subject="Your Adzappy Password";
+             content="Your Email Account is :  " + user.getEmailId() + "password is" + user.getPassword();
         
-        
-        Properties props = new Properties();
-
-        props.put("mail.transport.protocol", "smtps");
-        props.put("mail.smtps.host", SMTP_HOST_NAME);
-        props.put("mail.smtps.auth", "true");
-        // props.put("mail.smtps.quitwait", "false");
-
-        Session mailSession = Session.getDefaultInstance(props);
-        mailSession.setDebug(true);
-        Transport transport = mailSession.getTransport();
-
-        MimeMessage message = new MimeMessage(mailSession);
-        message.setSubject("Password Remember!!!");
-        message.setContent(msg,"text/plain");
-
-        message.addRecipient(Message.RecipientType.TO,
-             new InternetAddress(forgetemail));
-
-        transport.connect
-          (SMTP_HOST_NAME, SMTP_HOST_PORT, SMTP_AUTH_USER, SMTP_AUTH_PWD);
-
-        transport.sendMessage(message,
-            message.getRecipients(Message.RecipientType.TO));
-        transport.close();
-          
-                   
+            getSendMail().test(forgetemail, getSubject(), getContent());
            
             return "success";
             }
@@ -119,20 +92,7 @@ public class forgotmail extends ActionSupport {
      * @return the email
      */
    
-    /**
-     * @return the msg
-     */
-    public String getMsg() {
-        return msg;
-    }
-
-    /**
-     * @param msg the msg to set
-     */
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
+   
     /**
      * @return the forgetemail
      */
@@ -145,6 +105,48 @@ public class forgotmail extends ActionSupport {
      */
     public void setForgetemail(String forgetemail) {
         this.forgetemail = forgetemail;
+    }
+
+    /**
+     * @return the sendMail
+     */
+    public Emailfunction getSendMail() {
+        return sendMail;
+    }
+
+    /**
+     * @param sendMail the sendMail to set
+     */
+    public void setSendMail(Emailfunction sendMail) {
+        this.sendMail = sendMail;
+    }
+
+    /**
+     * @return the subject
+     */
+    public String getSubject() {
+        return subject;
+    }
+
+    /**
+     * @param subject the subject to set
+     */
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    /**
+     * @return the content
+     */
+    public String getContent() {
+        return content;
+    }
+
+    /**
+     * @param content the content to set
+     */
+    public void setContent(String content) {
+        this.content = content;
     }
 }
 

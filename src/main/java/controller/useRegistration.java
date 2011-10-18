@@ -49,9 +49,7 @@ public class useRegistration extends ActionSupport {
     public String execute() throws Exception {
     
             try{    
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy"); 
-                dob1 = formatter.parse(dob);
-                          
+                
            
             //UserDetails user = new UserDetails(fname,lname,email,pwd, dob1,addline1,ctry,storeg,city,postcode);
          //   myDao.getDbsession().save(user);

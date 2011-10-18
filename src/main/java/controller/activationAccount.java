@@ -31,11 +31,10 @@ public class activationAccount extends ActionSupport {
      private int confcode;
      private static userEnum ut; 
      User user;
-    private String msg;
-      private static final String SMTP_HOST_NAME = "smtp.gmail.com";
-    private static final int SMTP_HOST_PORT = 465;
-    private static final String SMTP_AUTH_USER = "8aarkay@gmail.com";
-    private static final String SMTP_AUTH_PWD  = "51207205033";
+    private Emailfunction sendMail;
+     private String subject;
+     private String content;
+     
      
     
      @Override
@@ -46,21 +45,8 @@ public class activationAccount extends ActionSupport {
         email=tuser.getEmailId1();  
         pwd=tuser.getPassword1();
         uname=tuser.getUserName1();
-                   
-//           Set<UserTransaction> userTransactions1 = new HashSet<UserTransaction>();
-//           Set<Publish> publishs1 = new HashSet<Publish>();
-//           Set<UserAccount> userAccounts1 = new HashSet<UserAccount>();
-//           Set<PaymentDetails> paymentDetailses1 = new HashSet<PaymentDetails>();
-//           Set<Campaign> campaigns1 = new HashSet<Campaign>();
-//           Set<UserDetails> userDetailses1 = new HashSet<UserDetails>();
-//               userTransactions1.add(new UserTransaction());
-//               publishs1.add(new Publish());
-//               userAccounts1.add(new UserAccount());
-//               paymentDetailses1.add(new PaymentDetails());
-//               campaigns1.add(new Campaign());
-//               userDetailses1.add(new UserDetails());
-      
-          // user = new User(email,pwd,userEnum.NewUser.getUserType(),uname,userTransactions1,publishs1,userAccounts1,paymentDetailses1,campaigns1,userDetailses1);
+        
+        
            user=new User(email,pwd,userEnum.NewUser.getUserType()) ;
            user.setUserName(uname);
            myDao.getDbsession().save(user);
@@ -69,49 +55,23 @@ public class activationAccount extends ActionSupport {
            Map session =ActionContext.getContext().getSession();
             session.put("User",user);
             
-            
-                  msg="Hi "     + ":"+uname+ 
-                          
-                          
-                          "Welcome to Adzappy :"
-              +"     "
-                          + "                                          "
-            +" Now Your Adzappy Account is Activated   & Verified "
-                        
-                          
-                          
-                          
-              +" Thanks & Regards     "
-              +" Adzappy Team";
+            subject="Activation Success";
+                  setContent("Hi "     + ":"+uname+ 
+                             
+                             
+                             "Welcome to Adzappy :"
+                 +"     "
+                             + "                                          "
+               +" Now Your Adzappy Account is Activated   & Verified "
+                           
+                             
+                             
+                             
+                 +" Thanks & Regards     "
+                 +" Adzappy Team");
        
-           
-             Properties props = new Properties();
-
-        props.put("mail.transport.protocol", "smtps");
-        props.put("mail.smtps.host", SMTP_HOST_NAME);
-        props.put("mail.smtps.auth", "true");
-        // props.put("mail.smtps.quitwait", "false");
-
-        Session mailSession = Session.getDefaultInstance(props);
-        mailSession.setDebug(true);
-        Transport transport = mailSession.getTransport();
-
-        MimeMessage message = new MimeMessage(mailSession);
-        message.setSubject("Welcome to Adzappy");
-        message.setContent(msg,"text/plain");
-
-        message.addRecipient(Message.RecipientType.TO,
-             new InternetAddress(email));
-
-        transport.connect
-          (SMTP_HOST_NAME, SMTP_HOST_PORT, SMTP_AUTH_USER, SMTP_AUTH_PWD);
-
-        transport.sendMessage(message,
-            message.getRecipients(Message.RecipientType.TO));
-        transport.close();
-
-            
-            
+        
+             sendMail.test(email, subject, content);
             
             
             return "success";
@@ -188,6 +148,48 @@ public class activationAccount extends ActionSupport {
      */
     public void setConfcode(int confcode) {
         this.confcode = confcode;
+    }
+
+    /**
+     * @return the sendMail
+     */
+    public Emailfunction getSendMail() {
+        return sendMail;
+    }
+
+    /**
+     * @param sendMail the sendMail to set
+     */
+    public void setSendMail(Emailfunction sendMail) {
+        this.sendMail = sendMail;
+    }
+
+    /**
+     * @return the subject
+     */
+    public String getSubject() {
+        return subject;
+    }
+
+    /**
+     * @param subject the subject to set
+     */
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    /**
+     * @return the content
+     */
+    public String getContent() {
+        return content;
+    }
+
+    /**
+     * @param content the content to set
+     */
+    public void setContent(String content) {
+        this.content = content;
     }
 
    
