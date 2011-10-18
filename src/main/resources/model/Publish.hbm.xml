@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 17, 2011 12:08:22 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Publish" table="publish" catalog="adzappy">
+        <id name="publishId" type="java.lang.Long">
+            <column name="publish_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="user" class="model.User" fetch="select">
+            <column name="user" length="100" not-null="true" />
+        </many-to-one>
+        <property name="siteName" type="string">
+            <column name="site_name" length="50" />
+        </property>
+        <property name="siteUrl" type="string">
+            <column name="site_url" length="50" not-null="true" />
+        </property>
+        <property name="category" type="string">
+            <column name="category" length="50" not-null="true" />
+        </property>
+        <property name="desc" type="string">
+            <column name="desc" length="500" />
+        </property>
+        <property name="bgColor" type="string">
+            <column name="bg_color" length="10" />
+        </property>
+        <property name="textColor" type="string">
+            <column name="text_color" length="10" />
+        </property>
+        <set name="reportPublishs" inverse="true">
+            <key>
+                <column name="publish" not-null="true" />
+            </key>
+            <one-to-many class="model.ReportPublish" />
+        </set>
+    </class>
+</hibernate-mapping>

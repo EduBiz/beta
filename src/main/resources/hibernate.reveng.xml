@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="adzappy"/>
+  <table-filter match-name="report_publish"/>
+  <table-filter match-name="payment_details"/>
+  <table-filter match-name="reportc_daily"/>
+  <table-filter match-name="reportr_daily"/>
+  <table-filter match-name="temp_user"/>
+  <table-filter match-name="user_details"/>
+  <table-filter match-name="campaign_location"/>
+  <table-filter match-name="campaign_demography"/>
+  <table-filter match-name="user_account"/>
+  <table-filter match-name="campaign_os"/>
+  <table-filter match-name="campaign_creative"/>
+  <table-filter match-name="user_transaction"/>
+  <table-filter match-name="campaign_device"/>
+  <table-filter match-name="campaign"/>
+  <table-filter match-name="user"/>
+  <table-filter match-name="publish"/>
+  <table-filter match-name="report_campaign"/>
+</hibernate-reverse-engineering>

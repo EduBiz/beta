@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration
+2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>	
+    <package name="default" extends="struts-default">
+       
+        <action name="login" class="controller.login" >
+            <result name="success" >/success.jsp</result>
+            <result name="input" >index.jsp</result>
+            <result name="error" >/index.jsp</result>
+        </action>
+    
+        <action name="signup" class="controller.signup">
+            <result name="success" >activationnotifier.jsp</result>
+            <result name="input" >signup.jsp</result>
+            <result name="error" >signup.jsp</result>
+        </action>
+        
+        
+        
+        <action name="forgotmail" class="controller.forgotmail">
+            <result name="success" >forgotmailsuccess.jsp</result>
+            <result name="input" >forgotpass.jsp</result>
+            <result name="error" >forgotpass.jsp</result>
+        </action> 
+        
+        <action name="activationAccount" class="controller.activationAccount">
+           <result name="success" >activationsuccess.jsp</result>
+           <result name="error" >activationfailed.jsp</result>
+        </action>
+        
+        <action name="campaignMain" class="controller.campaignMain">
+            <result name="success" >campaign_success.jsp</result>
+            <result name="input" >campaignCreation.jsp</result>
+            <result name="error" >campaignCreation.jsp</result>
+        </action> 
+        
+    </package>
+</struts>
+

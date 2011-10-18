@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 17, 2011 12:08:22 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Campaign" table="campaign" catalog="adzappy">
+        <id name="campaignId" type="java.lang.Long">
+            <column name="campaign_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="user" class="model.User" fetch="select">
+            <column name="user" length="100" not-null="true" />
+        </many-to-one>
+        <property name="campaignName" type="string">
+            <column name="campaign_name" length="50" not-null="true" />
+        </property>
+        <property name="startDate" type="date">
+            <column name="start_date" length="10" />
+        </property>
+        <property name="endDate" type="date">
+            <column name="end_date" length="10" />
+        </property>
+        <property name="dialyBudget" type="big_decimal">
+            <column name="dialy_budget" precision="10" />
+        </property>
+        <property name="deliveryMethod" type="java.lang.Integer">
+            <column name="delivery_method" />
+        </property>
+        <property name="note" type="string">
+            <column name="note" length="500" />
+        </property>
+        <property name="promoType" type="string">
+            <column name="promo_type" length="10" />
+        </property>
+        <set name="campaignLocations" inverse="true">
+            <key>
+                <column name="campaign" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="model.CampaignLocation" />
+        </set>
+        <set name="campaignDemographies" inverse="true">
+            <key>
+                <column name="campaign" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="model.CampaignDemography" />
+        </set>
+        <set name="reportCampaigns" inverse="true">
+            <key>
+                <column name="campaign" not-null="true" />
+            </key>
+            <one-to-many class="model.ReportCampaign" />
+        </set>
+        <set name="campaignCreatives" inverse="true">
+            <key>
+                <column name="campaign" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="model.CampaignCreative" />
+        </set>
+        <set name="campaignOses" inverse="true">
+            <key>
+                <column name="campaign" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="model.CampaignOs" />
+        </set>
+        <set name="campaignDevices" inverse="true">
+            <key>
+                <column name="campaign" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="model.CampaignDevice" />
+        </set>
+    </class>
+</hibernate-mapping>

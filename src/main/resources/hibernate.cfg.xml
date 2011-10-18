@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://ec2-174-129-9-255.compute-1.amazonaws.com:3306/adzappy</property>
+    <property name="hibernate.connection.username">dbadzappy</property>
+    <property name="hibernate.connection.password">12345</property>
+    <mapping resource="model/User.hbm.xml"/>
+    <mapping resource="model/ReportcDaily.hbm.xml"/>
+    <mapping resource="model/CampaignLocation.hbm.xml"/>
+    <mapping resource="model/UserDetails.hbm.xml"/>
+    <mapping resource="model/ReportPublish.hbm.xml"/>
+    <mapping resource="model/ReportCampaign.hbm.xml"/>
+    <mapping resource="model/Campaign.hbm.xml"/>
+    <mapping resource="model/UserAccount.hbm.xml"/>
+    <mapping resource="model/Publish.hbm.xml"/>
+    <mapping resource="model/UserTransaction.hbm.xml"/>
+    <mapping resource="model/CampaignCreative.hbm.xml"/>
+    <mapping resource="model/CampaignDemography.hbm.xml"/>
+    <mapping resource="model/PaymentDetails.hbm.xml"/>
+    <mapping resource="model/CampaignDevice.hbm.xml"/>
+    <mapping resource="model/ReportrDaily.hbm.xml"/>
+    <mapping resource="model/CampaignOs.hbm.xml"/>
+    <mapping resource="model/TempUser.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

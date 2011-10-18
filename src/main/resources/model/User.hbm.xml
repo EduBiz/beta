@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 17, 2011 12:08:22 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.User" table="user" catalog="adzappy">
+        <id name="emailId" type="string">
+            <column name="email_id" length="100" />
+            <generator class="assigned" />
+        </id>
+        <property name="password" type="string">
+            <column name="password" length="50" not-null="true" />
+        </property>
+        <property name="userType" type="string">
+            <column name="user_type" length="50" not-null="true" />
+        </property>
+        <property name="userName" type="string">
+            <column name="user_name" length="50" />
+        </property>
+        <set name="userTransactions" inverse="true">
+            <key>
+                <column name="user" length="100" not-null="true" />
+            </key>
+            <one-to-many class="model.UserTransaction" />
+        </set>
+        <set name="publishs" inverse="true">
+            <key>
+                <column name="user" length="100" not-null="true" />
+            </key>
+            <one-to-many class="model.Publish" />
+        </set>
+        <set name="userAccounts" inverse="true">
+            <key>
+                <column name="user" length="100" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="model.UserAccount" />
+        </set>
+        <set name="paymentDetailses" inverse="true">
+            <key>
+                <column name="user" length="100" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="model.PaymentDetails" />
+        </set>
+        <set name="campaigns" inverse="true">
+            <key>
+                <column name="user" length="100" not-null="true" />
+            </key>
+            <one-to-many class="model.Campaign" />
+        </set>
+        <set name="userDetailses" inverse="true">
+            <key>
+                <column name="user" length="100" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="model.UserDetails" />
+        </set>
+    </class>
+</hibernate-mapping>

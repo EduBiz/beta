@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 17, 2011 12:08:22 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.UserAccount" table="user_account" catalog="adzappy">
+        <id name="user" type="string">
+            <column name="user" length="100" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="user_1" class="model.User" update="false" insert="false" fetch="select">
+            <column name="user" length="100" not-null="true" unique="true" />
+        </many-to-one>
+        <property name="balanceAmount" type="big_decimal">
+            <column name="balance_amount" precision="10" not-null="true" />
+        </property>
+        <property name="prevBalance" type="big_decimal">
+            <column name="prev_balance" precision="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

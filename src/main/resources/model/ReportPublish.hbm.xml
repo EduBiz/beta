@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 17, 2011 12:08:22 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.ReportPublish" table="report_publish" catalog="adzappy">
+        <id name="reportrId" type="java.lang.Long">
+            <column name="reportr_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="publish" class="model.Publish" fetch="select">
+            <column name="publish" not-null="true" />
+        </many-to-one>
+        <property name="totalImpressions" type="int">
+            <column name="total_impressions" not-null="true" />
+        </property>
+        <property name="totalClicks" type="int">
+            <column name="total_clicks" not-null="true" />
+        </property>
+        <property name="totalCost" type="big_decimal">
+            <column name="total_cost" precision="10" not-null="true" />
+        </property>
+        <set name="reportrDailies" inverse="true">
+            <key>
+                <column name="reportr" not-null="true" />
+            </key>
+            <one-to-many class="model.ReportrDaily" />
+        </set>
+    </class>
+</hibernate-mapping>

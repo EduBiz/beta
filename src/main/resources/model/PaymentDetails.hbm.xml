@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 17, 2011 12:08:22 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.PaymentDetails" table="payment_details" catalog="adzappy">
+        <id name="user" type="string">
+            <column name="user" length="100" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="user_1" class="model.User" update="false" insert="false" fetch="select">
+            <column name="user" length="100" not-null="true" unique="true" />
+        </many-to-one>
+        <property name="beneficiaryName" type="string">
+            <column name="beneficiary_name" length="50" not-null="true" />
+        </property>
+        <property name="bankName" type="string">
+            <column name="bank_name" length="100" />
+        </property>
+        <property name="bankAddr" type="string">
+            <column name="bank_addr" length="100" />
+        </property>
+        <property name="recipientAccNo" type="string">
+            <column name="recipient_acc_no" length="50" />
+        </property>
+        <property name="bankSwiftNo" type="string">
+            <column name="bank_swift_no" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

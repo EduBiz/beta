@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 17, 2011 12:08:22 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.UserDetails" table="user_details" catalog="adzappy">
+        <id name="user" type="string">
+            <column name="user" length="100" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="user_1" class="model.User" update="false" insert="false" fetch="select">
+            <column name="user" length="100" not-null="true" unique="true" />
+        </many-to-one>
+        <property name="firstName" type="string">
+            <column name="first_name" length="50" not-null="true" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="50" />
+        </property>
+        <property name="dob" type="date">
+            <column name="dob" length="10" />
+        </property>
+        <property name="addressLine1" type="string">
+            <column name="address_line1" length="50" />
+        </property>
+        <property name="country" type="string">
+            <column name="country" length="50" />
+        </property>
+        <property name="stateRegion" type="string">
+            <column name="state_region" length="50" />
+        </property>
+        <property name="city" type="string">
+            <column name="city" length="50" />
+        </property>
+        <property name="postalCode" type="string">
+            <column name="postal_code" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>
