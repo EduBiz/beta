@@ -4,10 +4,13 @@
  */
 package controller;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.Map;
 import model.Campaign;
+import model.User;
 
 /**
  *
@@ -16,20 +19,31 @@ import model.Campaign;
 public class campaignMain extends ActionSupport{
     
    private String campaignname;
-   private String todaydate;
-   private String enddate;
-   private String dailybdgt;
-   private String deliverytype;
+   private Date todaydate;
+   private Date enddate;
+   private BigDecimal dailybdgt;
+   private int deliverytype;
    private String note;
- 
+  
     private spDAO myDao;
 	@Override
     public String execute() throws Exception {
     
         try{
+                Map session =ActionContext.getContext().getSession();
+            User user=(User) session.get("User");
+  
+            String auser=user.getUserName();
+            Campaign camp = new Campaign(user, getCampaignname());
+             getMyDao().getDbsession().save(camp);
+            camp.setStartDate(getTodaydate());
+            camp.setEndDate(getEnddate());
+            camp.setDialyBudget(getDailybdgt());
+            camp.setDeliveryMethod(getDeliverytype());
+            camp.setNote(getNote());
             
-            Campaign camp = new Campaign();
-           // getMyDao().getDbsession().save(camp);
+            
+           
             
             
         }
@@ -54,56 +68,56 @@ public class campaignMain extends ActionSupport{
     /**
      * @return the todaydate
      */
-    public String getTodaydate() {
+    public Date getTodaydate() {
         return todaydate;
     }
 
     /**
      * @param todaydate the todaydate to set
      */
-    public void setTodaydate(String todaydate) {
+    public void setTodaydate(Date todaydate) {
         this.todaydate = todaydate;
     }
 
     /**
      * @return the enddate
      */
-    public String getEnddate() {
+    public Date getEnddate() {
         return enddate;
     }
 
     /**
      * @param enddate the enddate to set
      */
-    public void setEnddate(String enddate) {
+    public void setEnddate(Date enddate) {
         this.enddate = enddate;
     }
 
     /**
      * @return the dailybdgt
      */
-    public String getDailybdgt() {
+    public BigDecimal getDailybdgt() {
         return dailybdgt;
     }
 
     /**
      * @param dailybdgt the dailybdgt to set
      */
-    public void setDailybdgt(String dailybdgt) {
+    public void setDailybdgt(BigDecimal dailybdgt) {
         this.dailybdgt = dailybdgt;
     }
 
     /**
      * @return the deliverytype
      */
-    public String getDeliverytype() {
+    public int getDeliverytype() {
         return deliverytype;
     }
 
     /**
      * @param deliverytype the deliverytype to set
      */
-    public void setDeliverytype(String deliverytype) {
+    public void setDeliverytype(int deliverytype) {
         this.deliverytype = deliverytype;
     }
 
@@ -134,6 +148,5 @@ public class campaignMain extends ActionSupport{
     public void setMyDao(spDAO myDao) {
         this.myDao = myDao;
     }
-   
-   
+
 }

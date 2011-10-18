@@ -13,6 +13,7 @@ pageEncoding="UTF-8"%>
      <%@taglib uri="/struts-tags" prefix="s"%>
      <%@ taglib uri="/struts-dojo-tags" prefix="sx"%> 
     <head>
+        <sx:head/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registration</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
@@ -36,12 +37,10 @@ pageEncoding="UTF-8"%>
     <s:actionerror/>   
     <s:form action="campaignMain">
         <s:textfield name="campaignname" label="Campaign Name" />
-        <s:textfield name="todaydate" label="Start Date" />
-        <s:textfield name="enddate" label="End Date" />
         <sx:datetimepicker name="todaydate" label="Start (yyyy-MM-dd)" displayFormat="yyyy-MM-dd"/>
         <sx:datetimepicker name="endDate" label="End (dd-MMM-yyyy)" displayFormat="dd-MMM-yyyy"/>
         <s:textfield name="dailybdgt" label="Daily Budget $" />
-        <s:radio label="Standard" name="deliverytype" list="{'Standard','Accelerated'}" />
+        <s:radio label="Standard" name="deliverytype" list="{'0','Standard','1','Accelerated'}" />
         <s:textarea label="Note:(optional)" name="note" rows="15"/>
         <s:submit value="Save and Continue"/>
     </s:form>

@@ -64,7 +64,7 @@ public class activationAccount extends ActionSupport {
             tuser.setUserType1(userEnum.Act_User.getUserType());
            myDao.getDbsession().update(tuser);
            Map session =ActionContext.getContext().getSession();
-            session.put("User",email);
+            session.put("User",user);
             
             
                   msg="Hi "     + ":"+uname+ 
