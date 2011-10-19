@@ -47,24 +47,27 @@ public class activationAccount extends ActionSupport {
         pwd=tuser.getPassword1();
         uname=tuser.getUserName1();
                    
-           Set<UserTransaction> userTransactions1 = new HashSet<UserTransaction>();
-           Set<Publish> publishs1 = new HashSet<Publish>();
-           Set<UserAccount> userAccounts1 = new HashSet<UserAccount>();
-           Set<PaymentDetails> paymentDetailses1 = new HashSet<PaymentDetails>();
-           Set<Campaign> campaigns1 = new HashSet<Campaign>();
-           Set<UserDetails> userDetailses1 = new HashSet<UserDetails>();
-               userTransactions1.add(new UserTransaction());
-               publishs1.add(new Publish());
-               userAccounts1.add(new UserAccount());
-               paymentDetailses1.add(new PaymentDetails());
-               campaigns1.add(new Campaign());
-               userDetailses1.add(new UserDetails());
-           user = new User(email,pwd,userEnum.NewUser.getUserType(),uname,userTransactions1,publishs1,userAccounts1,paymentDetailses1,campaigns1,userDetailses1);
+//           Set<UserTransaction> userTransactions1 = new HashSet<UserTransaction>();
+//           Set<Publish> publishs1 = new HashSet<Publish>();
+//           Set<UserAccount> userAccounts1 = new HashSet<UserAccount>();
+//           Set<PaymentDetails> paymentDetailses1 = new HashSet<PaymentDetails>();
+//           Set<Campaign> campaigns1 = new HashSet<Campaign>();
+//           Set<UserDetails> userDetailses1 = new HashSet<UserDetails>();
+//               userTransactions1.add(new UserTransaction());
+//               publishs1.add(new Publish());
+//               userAccounts1.add(new UserAccount());
+//               paymentDetailses1.add(new PaymentDetails());
+//               campaigns1.add(new Campaign());
+//               userDetailses1.add(new UserDetails());
+      
+          // user = new User(email,pwd,userEnum.NewUser.getUserType(),uname,userTransactions1,publishs1,userAccounts1,paymentDetailses1,campaigns1,userDetailses1);
+           user=new User(email,pwd,userEnum.NewUser.getUserType()) ;
+           user.setUserName(uname);
            myDao.getDbsession().save(user);
             tuser.setUserType1(userEnum.Act_User.getUserType());
            myDao.getDbsession().update(tuser);
            Map session =ActionContext.getContext().getSession();
-            session.put("User",email);
+            session.put("User",user);
             
             
                   msg="Hi "     + ":"+uname+ 
