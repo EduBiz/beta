@@ -10,7 +10,7 @@
         <action name="login" class="controller.login" >
             <result name="success" >/success.jsp</result>
             <result name="input" >index.jsp</result>
-            <result name="error" >/index.jsp</result>
+            <result name="error" >index.jsp</result>
         </action>
     
         <action name="signup" class="controller.signup">

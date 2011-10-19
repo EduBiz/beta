@@ -137,25 +137,30 @@
 							<a href="#" class="getstarted">Get Started</a>
 						</div>
                                                 <%-- <form action="#" method="post" id="loginform">   --%>
-                                     <s:actionerror/>    <s:form action="login" >
+                                                <s:actionerror/>  <s:form action="login" >
                         	<h3>LOG IN TO YOUR ACCOUNT</h3>
                             <div class="formdiv">
-								<label for="email">Email</label>
-								<input type="text" name="email"/>
+                                <%--	<label for="email">Email</label>
+								<input type="text" name="email"/>    --%>
+                                <s:textfield name="email" label="Email"/>
 							</div>
 							<div class="formdiv">
-								<label for="password">Password</label>
-								<input type="password" name="password"/>
+                                                            <%--	<label for="password">Password</label>
+                                                                        <input type="password" name="password"/>     --%>
+                                                            <s:password name="password" label="Password"/>
+                                                            <s:submit value="Submit"/>
 							</div>
-							<div class="formfooter">
-								<a href="forgotpass.jsp" class="forget">Forget Password?</a>
-								<input type="submit" value="Submit"/>
-								<div>
+                                                        </s:form>
+                                                        <div class="formfooter">
+                                                           <a href="forgotpass.jsp" class="forget">&nbsp;&nbsp;&nbsp;Forget Password?</a>
+                                                            <%--<input type="submit" value="Submit"/> --%>
+                                                            
+                                                            <div>
 									Not Registered? &nbsp;&nbsp;<a href="signup.jsp">Sign Up Now</a>
 								</div>
 							</div>
                             <%-- </form> --%>
-                            </s:form>
+                            
 							<div style="clear: both;"></div>
                     </div>
 				

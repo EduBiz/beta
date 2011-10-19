@@ -4,8 +4,10 @@
  */
 package controller;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
+import java.util.Map;
 import model.User;
 
 /**
@@ -27,7 +29,13 @@ public class login  extends ActionSupport{
         User user=(User) myDao.getDbsession().get(User.class, email); 
             if(user!=null)
             {
-            }
+                if(user.getPassword().equals(password)){
+                }
+                else
+                {
+                addFieldError("password","Please enter Correct password");
+                }
+            }  
             else{
             addFieldError("email","sorry Email id Not Available");
             }
@@ -45,9 +53,12 @@ public class login  extends ActionSupport{
       if(user.getPassword().equals(password))
       {
         
-        return "success";
+        Map session =ActionContext.getContext().getSession();
+            session.put("user",user);
+      return "success";
       
       }
+      
       else
       {
    return "error";

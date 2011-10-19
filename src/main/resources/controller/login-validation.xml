@@ -2,9 +2,7 @@
 
 <validators>
   
-  
-      
-  <field name="email">
+   <field name="email">
       <field-validator type="email">
              <message>Email address is not valid</message>
         </field-validator>
