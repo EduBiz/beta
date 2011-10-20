@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.Map;
 import model.Campaign;
 import model.User;
+import org.hibernate.HibernateException;
 
 /**
  *
@@ -19,7 +20,7 @@ import model.User;
 public class campaignMain extends ActionSupport{
     
    private String campaignname;
-   private Date todaydate;
+   private Date startdate;
    private Date enddate;
    private BigDecimal dailybdgt;
    private int deliverytype;
@@ -32,21 +33,20 @@ public class campaignMain extends ActionSupport{
         try{
                 Map session =ActionContext.getContext().getSession();
             User user=(User) session.get("User");
- 
+       
             Campaign camp = new Campaign(user,campaignname);
-             
-            camp.setStartDate(todaydate);
-            camp.setEndDate(enddate);
+            getMyDao().getDbsession().save(camp);
+            camp.setStartDate(getStartdate());
+            camp.setEndDate(getEnddate());
             camp.setDialyBudget(dailybdgt);
             camp.setDeliveryMethod(deliverytype);
             camp.setNote(note);
-            getMyDao().getDbsession().save(camp);
-            
-           
-            
+                
             
         }
-        catch(Exception e){}
+        catch(HibernateException e){
+        e.printStackTrace();
+        }
         return"success";
         }
 
@@ -62,34 +62,6 @@ public class campaignMain extends ActionSupport{
      */
     public void setCampaignname(String campaignname) {
         this.campaignname = campaignname;
-    }
-
-    /**
-     * @return the todaydate
-     */
-    public Date getTodaydate() {
-        return todaydate;
-    }
-
-    /**
-     * @param todaydate the todaydate to set
-     */
-    public void setTodaydate(Date todaydate) {
-        this.todaydate = todaydate;
-    }
-
-    /**
-     * @return the enddate
-     */
-    public Date getEnddate() {
-        return enddate;
-    }
-
-    /**
-     * @param enddate the enddate to set
-     */
-    public void setEnddate(Date enddate) {
-        this.enddate = enddate;
     }
 
     /**
@@ -148,4 +120,34 @@ public class campaignMain extends ActionSupport{
         this.myDao = myDao;
     }
 
+    /**
+     * @return the startdate
+     */
+    public Date getStartdate() {
+        return startdate;
+    }
+
+    /**
+     * @param startdate the startdate to set
+     */
+    public void setStartdate(Date startdate) {
+        this.startdate = startdate;
+    }
+
+    /**
+     * @return the enddate
+     */
+    public Date getEnddate() {
+        return enddate;
+    }
+
+    /**
+     * @param enddate the enddate to set
+     */
+    public void setEnddate(Date enddate) {
+        this.enddate = enddate;
+    }
+
+   
+  
 }

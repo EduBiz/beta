@@ -1,5 +1,5 @@
 package model;
-// Generated Oct 17, 2011 12:07:51 PM by Hibernate Tools 3.2.1.GA
+// Generated Oct 20, 2011 3:20:05 PM by Hibernate Tools 3.2.1.GA
 
 
 
@@ -9,32 +9,31 @@ package model;
 public class CampaignLocation  implements java.io.Serializable {
 
 
-     private long campaign;
-     private Campaign campaign_1;
+     private Long locationId;
+     private Campaign campaign;
      private String zone;
 
     public CampaignLocation() {
     }
 
-    public CampaignLocation(long campaign, Campaign campaign_1, String zone) {
+    public CampaignLocation(Campaign campaign, String zone) {
        this.campaign = campaign;
-       this.campaign_1 = campaign_1;
        this.zone = zone;
     }
    
-    public long getCampaign() {
+    public Long getLocationId() {
+        return this.locationId;
+    }
+    
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
+    }
+    public Campaign getCampaign() {
         return this.campaign;
     }
     
-    public void setCampaign(long campaign) {
+    public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
-    }
-    public Campaign getCampaign_1() {
-        return this.campaign_1;
-    }
-    
-    public void setCampaign_1(Campaign campaign_1) {
-        this.campaign_1 = campaign_1;
     }
     public String getZone() {
         return this.zone;

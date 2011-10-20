@@ -1,5 +1,5 @@
 package model;
-// Generated Oct 17, 2011 12:07:51 PM by Hibernate Tools 3.2.1.GA
+// Generated Oct 20, 2011 3:20:05 PM by Hibernate Tools 3.2.1.GA
 
 
 
@@ -10,20 +10,20 @@ public class TempUser  implements java.io.Serializable {
 
 
      private int confirmCode;
-     private String emailId1;
-     private String password1;
-     private String userType1;
-     private String userName1;
+     private String emailId;
+     private String password;
+     private String userType;
+     private String userName;
 
     public TempUser() {
     }
 
-    public TempUser(int confirmCode, String emailId1, String password1, String userType1, String userName1) {
+    public TempUser(int confirmCode, String emailId, String password, String userType, String userName) {
        this.confirmCode = confirmCode;
-       this.emailId1 = emailId1;
-       this.password1 = password1;
-       this.userType1 = userType1;
-       this.userName1 = userName1;
+       this.emailId = emailId;
+       this.password = password;
+       this.userType = userType;
+       this.userName = userName;
     }
    
     public int getConfirmCode() {
@@ -33,33 +33,33 @@ public class TempUser  implements java.io.Serializable {
     public void setConfirmCode(int confirmCode) {
         this.confirmCode = confirmCode;
     }
-    public String getEmailId1() {
-        return this.emailId1;
+    public String getEmailId() {
+        return this.emailId;
     }
     
-    public void setEmailId1(String emailId1) {
-        this.emailId1 = emailId1;
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
-    public String getPassword1() {
-        return this.password1;
-    }
-    
-    public void setPassword1(String password1) {
-        this.password1 = password1;
-    }
-    public String getUserType1() {
-        return this.userType1;
+    public String getPassword() {
+        return this.password;
     }
     
-    public void setUserType1(String userType1) {
-        this.userType1 = userType1;
+    public void setPassword(String password) {
+        this.password = password;
     }
-    public String getUserName1() {
-        return this.userName1;
+    public String getUserType() {
+        return this.userType;
     }
     
-    public void setUserName1(String userName1) {
-        this.userName1 = userName1;
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+    public String getUserName() {
+        return this.userName;
+    }
+    
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
 

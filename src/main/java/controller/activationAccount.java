@@ -42,15 +42,15 @@ public class activationAccount extends ActionSupport {
     
          TempUser tuser=(TempUser)myDao.getDbsession().get(TempUser.class,confcode);
                  
-        email=tuser.getEmailId1();  
-        pwd=tuser.getPassword1();
-        uname=tuser.getUserName1();
+        email=tuser.getEmailId();  
+        pwd=tuser.getPassword();
+        uname=tuser.getUserName();
         
         
            user=new User(email,pwd,userEnum.NewUser.getUserType()) ;
            user.setUserName(uname);
            myDao.getDbsession().save(user);
-            tuser.setUserType1(userEnum.Act_User.getUserType());
+            tuser.setUserType(userEnum.Act_User.getUserType());
            myDao.getDbsession().update(tuser);
            Map session =ActionContext.getContext().getSession();
             session.put("User",user);

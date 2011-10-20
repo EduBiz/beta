@@ -1,5 +1,5 @@
 package model;
-// Generated Oct 17, 2011 12:07:51 PM by Hibernate Tools 3.2.1.GA
+// Generated Oct 20, 2011 3:20:05 PM by Hibernate Tools 3.2.1.GA
 
 
 
@@ -9,34 +9,33 @@ package model;
 public class CampaignDemography  implements java.io.Serializable {
 
 
-     private long campaign;
-     private Campaign campaign_1;
+     private Long demographyId;
+     private Campaign campaign;
      private int age;
      private String sex;
 
     public CampaignDemography() {
     }
 
-    public CampaignDemography(long campaign, Campaign campaign_1, int age, String sex) {
+    public CampaignDemography(Campaign campaign, int age, String sex) {
        this.campaign = campaign;
-       this.campaign_1 = campaign_1;
        this.age = age;
        this.sex = sex;
     }
    
-    public long getCampaign() {
+    public Long getDemographyId() {
+        return this.demographyId;
+    }
+    
+    public void setDemographyId(Long demographyId) {
+        this.demographyId = demographyId;
+    }
+    public Campaign getCampaign() {
         return this.campaign;
     }
     
-    public void setCampaign(long campaign) {
+    public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
-    }
-    public Campaign getCampaign_1() {
-        return this.campaign_1;
-    }
-    
-    public void setCampaign_1(Campaign campaign_1) {
-        this.campaign_1 = campaign_1;
     }
     public int getAge() {
         return this.age;

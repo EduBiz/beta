@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Oct 17, 2011 12:08:22 PM by Hibernate Tools 3.2.1.GA -->
+<!-- Generated Oct 20, 2011 3:20:20 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="model.Campaign" table="campaign" catalog="adzappy">
         <id name="campaignId" type="java.lang.Long">
@@ -34,13 +34,13 @@
         </property>
         <set name="campaignLocations" inverse="true">
             <key>
-                <column name="campaign" not-null="true" unique="true" />
+                <column name="campaign" not-null="true" />
             </key>
             <one-to-many class="model.CampaignLocation" />
         </set>
         <set name="campaignDemographies" inverse="true">
             <key>
-                <column name="campaign" not-null="true" unique="true" />
+                <column name="campaign" not-null="true" />
             </key>
             <one-to-many class="model.CampaignDemography" />
         </set>
@@ -58,13 +58,13 @@
         </set>
         <set name="campaignOses" inverse="true">
             <key>
-                <column name="campaign" not-null="true" unique="true" />
+                <column name="campaign" not-null="true" />
             </key>
             <one-to-many class="model.CampaignOs" />
         </set>
         <set name="campaignDevices" inverse="true">
             <key>
-                <column name="campaign" not-null="true" unique="true" />
+                <column name="campaign" not-null="true" />
             </key>
             <one-to-many class="model.CampaignDevice" />
         </set>

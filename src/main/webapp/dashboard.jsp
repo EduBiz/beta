@@ -25,7 +25,7 @@
       <tr>
         <td height="24" valign="bottom">
             Welcome&nbsp;<s:property value="email" />&nbsp;<a href="/logoutaction">LogOut</a>
-            <s:include value="navigation.jsp" />
+            <s:include value="navigationdashboard.jsp" />
         </td>
       </tr>
     </table></td>
