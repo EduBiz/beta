@@ -1,0 +1,39 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+   <field name="campaignname">
+      
+        <field-validator type="requiredstring">
+            <message>Please enter Campaign Name </message>
+        </field-validator>  
+  </field>
+  <field name="todaydate">
+      <field-validator type="date">
+             <message>Date format incorrect</message>
+        </field-validator>
+        <field-validator type="requiredstring">
+            <message>Please select Start Date.</message>
+        </field-validator>
+  </field>
+  
+  <field name="enddate">
+        <field-validator type="requiredstring">
+            <message>Please select Start Date.</message>
+        </field-validator>
+        <field-validator type="date">
+             <message>Date format incorrect</message>
+        </field-validator>
+  </field>
+  <field name="dailybdgt">
+        <field-validator type="double">
+            <message>Incorrect Dailybudget Data</message>
+        </field-validator> 
+         <field-validator type="requiredstring">
+            <message>Please enter Daily Budget</message>
+        </field-validator>
+  </field>
+ 
+  
+             
+</validators>
+
