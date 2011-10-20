@@ -8,7 +8,7 @@
     <package name="default" extends="struts-default">
        
         <action name="login" class="controller.login" >
-            <result name="success" >/success.jsp</result>
+            <result name="success" >dashboard.jsp</result>
             <result name="input" >index.jsp</result>
             <result name="error" >index.jsp</result>
         </action>
@@ -19,7 +19,16 @@
             <result name="error" >signup.jsp</result>
         </action>
         
-        
+        <action name="logoutaction" class="controller.logoutaction">
+           <result name="success" >index.jsp</result>
+           <result name="input" >index.jsp</result>
+           <result name="error" >index.jsp</result>
+        </action>
+        <action name="sessionError" class="controller.sessionError">
+           <result name="success" >index.jsp</result>
+           <result name="input" >index.jsp</result>
+           <result name="error" >index.jsp</result>
+        </action>
         
         <action name="forgotmail" class="controller.forgotmail">
             <result name="success" >forgotmailsuccess.jsp</result>

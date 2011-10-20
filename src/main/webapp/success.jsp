@@ -23,8 +23,10 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
+            Welcome&nbsp;<s:property value="email" />&nbsp;<a href="/logout">LogOut</a>
             <s:include value="navigation.jsp" />
-            <p>Hi <s:property value="email" />  Welcome</p>
+             
+      
         </td>
       </tr>
     </table></td>

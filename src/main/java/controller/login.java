@@ -54,7 +54,7 @@ public class login  extends ActionSupport{
       {
         
         Map session =ActionContext.getContext().getSession();
-            session.put("user",user);
+            session.put("User",user);
       return "success";
       
       }

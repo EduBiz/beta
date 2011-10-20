@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
      <%@taglib uri="/struts-tags" prefix="s"%>
+     <%@page import="model.User"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>.::AdZappy::.</title>
@@ -8,6 +9,13 @@
 </head>
 
 <body>
+    <%
+    Object obj = session.getAttribute("User");
+    if(obj==null)
+        {
+        response.sendRedirect(request.getContextPath()+"/sessionError.action");
+    }
+    %>
 <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="99" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -16,7 +24,7 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
-            Welcome&nbsp;Guest&nbsp;
+            Welcome&nbsp;<s:property value="email" />&nbsp;<a href="/logoutaction">LogOut</a>
             <s:include value="navigation.jsp" />
         </td>
       </tr>
@@ -27,7 +35,7 @@
       <tr>
         <td height="17"><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td colspan="3" height="17"> <p><font size="small" color="#C80A64" ><s:actionerror/> <s:actionmessage /> </font> </p></td>
+            <td colspan="3" height="17"></td>
             </tr>
           <tr>
             <td colspan="3">
@@ -138,26 +146,24 @@
 							<a href="#" class="getstarted">Get Started</a>
 						</div>
                                                 <%-- <form action="#" method="post" id="loginform">   --%>
-                                                <s:actionerror/>  <s:form action="login" >
-                        	<h3>LOG IN TO YOUR ACCOUNT</h3>
+                                                
+                        	<h3>YOUR CAMPAIGNS</h3>
                             <div class="formdiv">
                                 <%--	<label for="email">Email</label>
 								<input type="text" name="email"/>    --%>
-                                <s:textfield name="email" label="Email"/>
+                                
 							</div>
 							<div class="formdiv">
                                                             <%--	<label for="password">Password</label>
                                                                         <input type="password" name="password"/>     --%>
-                                                            <s:password name="password" label="Password"/>
-                                                            <s:submit value="Submit"/>
+                                                                 Add New Campaigns
 							</div>
-                                                        </s:form>
+                                                       
                                                         <div class="formfooter">
-                                                           <a href="forgotpass.jsp" class="forget">&nbsp;&nbsp;&nbsp;Forget Password?</a>
+                                                           <a href="signup.jsp">click</a>&nbsp;here
                                                             <%--<input type="submit" value="Submit"/> --%>
                                                             
                                                             <div>
-									Not Registered? &nbsp;&nbsp;<a href="signup.jsp">Sign Up Now</a>
 								</div>
 							</div>
                             <%-- </form> --%>
