@@ -34,13 +34,13 @@ public class campaignMain extends ActionSupport{
             User user=(User) session.get("User");
  
             Campaign camp = new Campaign(user,campaignname);
-             getMyDao().getDbsession().save(camp);
+             
             camp.setStartDate(todaydate);
             camp.setEndDate(enddate);
             camp.setDialyBudget(dailybdgt);
             camp.setDeliveryMethod(deliverytype);
             camp.setNote(note);
-            
+            getMyDao().getDbsession().save(camp);
             
            
             
