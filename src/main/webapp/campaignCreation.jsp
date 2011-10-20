@@ -7,16 +7,26 @@
 
 pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
-
+<%@page import="model.User"%>
 <!DOCTYPE html>
 <html>
      <%@taglib uri="/struts-tags" prefix="s"%>
+     <%@ taglib uri="/struts-dojo-tags" prefix="sx"%> 
     <head>
+        <sx:head/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registration</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
+        
     </head>
     <body>
+         <%
+    Object obj = session.getAttribute("User");
+    if(obj==null)
+        {
+        response.sendRedirect(request.getContextPath()+"/sessionError.action");
+    }
+    %>
        <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="99" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -34,14 +44,12 @@ pageEncoding="UTF-8"%>
     <s:actionerror/>   
     <s:form action="campaignMain">
         <s:textfield name="campaignname" label="Campaign Name" />
-        <s:date name="todayDate" format="yyyy-MM-dd" />
-        <s:date name="todayDate" format="yyyy-MM-dd" />
+        <sx:datetimepicker name="todaydate" label="Start (yyyy-MM-dd)" displayFormat="yyyy-MM-dd"/>
+        <sx:datetimepicker name="enddate" label="End (dd-MMM-yyyy)" displayFormat="dd-MMM-yyyy"/>
         <s:textfield name="dailybdgt" label="Daily Budget $" />
-        <s:radio label="Delivery Method" name="delivermtd" list="delivery"/>
-        
-        <s:textfield name="city" label="City" />
-        <s:textfield name="postcode" label="Postal/Zip Code" />
-        <s:submit value="Register"/>
+        <s:radio label="Standard" name="deliverytype" list="{'0','Standard','1','Accelerated'}" />
+        <s:textarea label="Note:(optional)" name="note" rows="15"/>
+        <s:submit value="Save and Continue"/>
     </s:form>
         </tr>
          </table>   

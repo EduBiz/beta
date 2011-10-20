@@ -140,14 +140,16 @@
                 <td align="left" valign="top"><img src="images/top_corner2.jpg" width="240" height="9" /></td>
               </tr>
               <tr>
-                <td width="240" height="242" align="center" valign="top" class="box_bg2">
+                <td width="240" height="242" align="center" valign="top" class="box_bg2"><br><br> <br><br>
 					<div class="boxwrap">
 						<div class="getstartedwrap">
 							<a href="#" class="getstarted">Get Started</a>
 						</div>
+                                               <div class="getstartedwrap">
+							<a href="campaignCreation.jsp" class="getstarted">Add Campaign</a>
                                                 <%-- <form action="#" method="post" id="loginform">   --%>
-                                                
-                        	<h3>YOUR CAMPAIGNS</h3>
+                                               </div> 
+                        	
                             <div class="formdiv">
                                 <%--	<label for="email">Email</label>
 								<input type="text" name="email"/>    --%>
@@ -156,11 +158,11 @@
 							<div class="formdiv">
                                                             <%--	<label for="password">Password</label>
                                                                         <input type="password" name="password"/>     --%>
-                                                                 Add New Campaigns
+                                                                 
 							</div>
                                                        
                                                         <div class="formfooter">
-                                                           <a href="signup.jsp">click</a>&nbsp;here
+                                                           
                                                             <%--<input type="submit" value="Submit"/> --%>
                                                             
                                                             <div>
