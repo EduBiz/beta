@@ -43,9 +43,9 @@ public class activationAccount extends ActionSupport {
     
          TempUser tuser=(TempUser)myDao.getDbsession().get(TempUser.class,confcode);
                  
-        email=tuser.getEmailId1();  
-        pwd=tuser.getPassword1();
-        uname=tuser.getUserName1();
+        email=tuser.getEmailId();  
+        pwd=tuser.getPassword();
+        uname=tuser.getUserName();
                    
            Set<UserTransaction> userTransactions1 = new HashSet<UserTransaction>();
            Set<Publish> publishs1 = new HashSet<Publish>();
@@ -61,7 +61,7 @@ public class activationAccount extends ActionSupport {
                userDetailses1.add(new UserDetails());
            user = new User(email,pwd,userEnum.NewUser.getUserType(),uname,userTransactions1,publishs1,userAccounts1,paymentDetailses1,campaigns1,userDetailses1);
            myDao.getDbsession().save(user);
-            tuser.setUserType1(userEnum.Act_User.getUserType());
+            tuser.setUserType(userEnum.Act_User.getUserType());
            myDao.getDbsession().update(tuser);
            Map session =ActionContext.getContext().getSession();
             session.put("User",user);

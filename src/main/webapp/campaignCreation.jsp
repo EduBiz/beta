@@ -11,15 +11,17 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
      <%@taglib uri="/struts-tags" prefix="s"%>
-     <%@ taglib uri="/struts-dojo-tags" prefix="sx"%> 
+     <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
     <head>
-        <sx:head/>
+        <s:head/>
+        <sj:head/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registration</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
         
     </head>
     <body>
+       
        <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="99" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -34,16 +36,23 @@ pageEncoding="UTF-8"%>
     </table></td>
   </tr>
   <tr>
-    <s:actionerror/>   
+    <s:actionerror/>  
     <s:form action="campaignMain">
         <s:textfield name="campaignname" label="Campaign Name" />
-        <sx:datetimepicker name="todaydate" label="Start (yyyy-MM-dd)" displayFormat="yyyy-MM-dd"/>
-        <sx:datetimepicker name="endDate" label="End (dd-MMM-yyyy)" displayFormat="dd-MMM-yyyy"/>
+        <sj:datepicker name="startdate" displayFormat="mm/dd/yy" label="Start Date" />
+        <sj:datepicker name="enddate" displayFormat="mm/dd/yy" label="End Date" />
         <s:textfield name="dailybdgt" label="Daily Budget $" />
-        <s:radio label="Standard" name="deliverytype" list="{'0','Standard','1','Accelerated'}" />
+        <s:radio label="Delivery Type" name="deliverytype" list="{'Standard','Accelerated'}" />
+        <s:select name="promotype"  label="Promotype" headerKey="Please select" headerValue="Please select"
+                  list="{'Website','BlackBerry Application Ad','Andriod Application Ad','Iphone Application Ad','iTunes Media Ad','Streaming Video Ad','Books Ad','Click to Call Ad','Click to Map Ad'}" />
+     
+ 
+           
         <s:textarea label="Note:(optional)" name="note" rows="15"/>
+			
         <s:submit value="Save and Continue"/>
     </s:form>
+    
         </tr>
          </table>   
     <s:include value="/footer.jsp" />

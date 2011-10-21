@@ -1,5 +1,5 @@
 package model;
-// Generated Oct 17, 2011 12:07:51 PM by Hibernate Tools 3.2.1.GA
+// Generated 20-Oct-2011 12:30:24 by Hibernate Tools 3.2.1.GA
 
 
 
@@ -9,32 +9,31 @@ package model;
 public class CampaignDevice  implements java.io.Serializable {
 
 
-     private long campaign;
-     private Campaign campaign_1;
+     private Long deviceId;
+     private Campaign campaign;
      private String deviceName;
 
     public CampaignDevice() {
     }
 
-    public CampaignDevice(long campaign, Campaign campaign_1, String deviceName) {
+    public CampaignDevice(Campaign campaign, String deviceName) {
        this.campaign = campaign;
-       this.campaign_1 = campaign_1;
        this.deviceName = deviceName;
     }
    
-    public long getCampaign() {
+    public Long getDeviceId() {
+        return this.deviceId;
+    }
+    
+    public void setDeviceId(Long deviceId) {
+        this.deviceId = deviceId;
+    }
+    public Campaign getCampaign() {
         return this.campaign;
     }
     
-    public void setCampaign(long campaign) {
+    public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
-    }
-    public Campaign getCampaign_1() {
-        return this.campaign_1;
-    }
-    
-    public void setCampaign_1(Campaign campaign_1) {
-        this.campaign_1 = campaign_1;
     }
     public String getDeviceName() {
         return this.deviceName;

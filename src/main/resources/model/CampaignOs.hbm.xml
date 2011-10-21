@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Oct 17, 2011 12:08:22 PM by Hibernate Tools 3.2.1.GA -->
+<!-- Generated 20-Oct-2011 12:30:29 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="model.CampaignOs" table="campaign_os" catalog="adzappy">
-        <id name="campaign" type="long">
-            <column name="campaign" />
-            <generator class="assigned" />
+        <id name="osId" type="java.lang.Long">
+            <column name="os_id" />
+            <generator class="identity" />
         </id>
-        <many-to-one name="campaign_1" class="model.Campaign" update="false" insert="false" fetch="select">
-            <column name="campaign" not-null="true" unique="true" />
+        <many-to-one name="campaign" class="model.Campaign" fetch="select">
+            <column name="campaign" not-null="true" />
         </many-to-one>
         <property name="osName" type="string">
             <column name="os_name" length="50" not-null="true" />

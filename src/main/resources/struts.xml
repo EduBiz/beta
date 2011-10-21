@@ -8,7 +8,7 @@
     <package name="default" extends="struts-default">
        
         <action name="login" class="controller.login" >
-            <result name="success" >/success.jsp</result>
+            <result name="success" >/dashboard.jsp</result>
             <result name="input" >index.jsp</result>
             <result name="error" >/index.jsp</result>
         </action>
@@ -37,6 +37,51 @@
             <result name="input" >campaignCreation.jsp</result>
             <result name="error" >campaignCreation.jsp</result>
         </action> 
+          <action name="websiteAction" class="controller.login" >
+            <result name="success" >/createad.jsp</result>
+            <result name="input" >website.jsp</result>
+            <result name="error" >/website.jsp</result>
+        </action>
+          <action name="iphoneAction" class="controller.login" >
+            <result name="success" >/createad.jsp</result>
+            <result name="input" >iphone.jsp</result>
+            <result name="error" >/iphone.jsp</result>
+        </action>
+          <action name="androidAction" class="controller.login" >
+            <result name="success" >/createad.jsp</result>
+            <result name="input" >android.jsp</result>
+            <result name="error" >/android.jsp</result>
+        </action>
+          <action name="blackberryAction" class="controller.login" >
+            <result name="success" >/createad.jsp</result>
+            <result name="input" >blackberry.jsp</result>
+            <result name="error" >/blackberry.jsp</result>
+        </action>
+         <action name="itunesAction" class="controller.login" >
+            <result name="success" >/createad.jsp</result>
+            <result name="input" >itunes.jsp</result>
+            <result name="error" >/itunes.jsp</result>
+        </action>
+         <action name="streamingvideoAction" class="controller.login" >
+            <result name="success" >/createad.jsp</result>
+            <result name="input" >streamingviddeo.jsp</result>
+            <result name="error" >/streamingviddeo.jsp</result>
+        </action>
+         <action name="bookadAction" class="controller.login" >
+            <result name="success" >/createad.jsp</result>
+            <result name="input" >bookad.jsp</result>
+            <result name="error" >/bookad.jsp</result>
+        </action>
+         <action name="clicktocallAction" class="controller.login" >
+            <result name="success" >/createad.jsp</result>
+            <result name="input" >clicktocall.jsp</result>
+            <result name="error" >/clicktocall.jsp</result>
+        </action>
+        <action name="clicktomapAction" class="controller.login" >
+            <result name="success" >/createad.jsp</result>
+            <result name="input" >clicktomap.jsp</result>
+            <result name="error" >/clicktomap.jsp</result>
+        </action>
         
     </package>
 </struts>

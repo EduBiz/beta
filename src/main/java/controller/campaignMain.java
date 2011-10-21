@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.Map;
 import model.Campaign;
 import model.User;
+import org.hibernate.HibernateException;
 
 /**
  *
@@ -18,36 +19,81 @@ import model.User;
  */
 public class campaignMain extends ActionSupport{
     
-   private String campaignname;
-   private Date todaydate;
-   private Date enddate;
-   private BigDecimal dailybdgt;
-   private int deliverytype;
-   private String note;
-  
-    private spDAO myDao;
-	@Override
-    public String execute() throws Exception {
-    
+       private String campaignname;
+       private Date startdate;
+       private Date enddate;
+       private BigDecimal dailybdgt;
+       private String deliverytype;
+       private String promotype;
+       private String note;
+
+   private spDAO myDao;
+	
+       @Override 
+        public String execute() throws Exception {
+   
+        
         try{
+             
+            
+            
+         /**   if(promotype="Website")
+            {
+             response.sendRedirect(response.getContextPath()+"/website.jsp");
+         
+                else if(promotype= "BlackBerry Application Ad")
+                    {
+                     response.sendRedirect(request.getContextPath()+"/blackberry.jsp");
+                    }
+                else if(promotype= Andriod Application Ad)
+                    {
+                    response.sendRedirect(request.getContextPath()+"/andriod.jsp");
+                    }
+                else if(promotype= Iphone Application Ad)
+                    {
+                    response.sendRedirect(request.getContextPath()+"/iphone.jsp");    
+                    }
+                else if(promotype= iTunes Media Ad)
+                    {
+                     response.sendRedirect(request.getContextPath()+"/itunes.jsp");
+                    }
+                else if(promotype= Streaming Video Ad)
+                    {
+                     response.sendRedirect(request.getContextPath()+"/streamingvideo.jsp");
+                    }
+                else if(promotype= Books Ad)
+                    {
+                    response.sendRedirect(request.getContextPath()+"/bookad.jsp");
+                    }
+                else if(promotype= Click to Call Ad)
+                    {
+                     response.sendRedirect(response.getContextPath()+"/clicktocall.jsp");
+                    }}
+            else
+                {
+                  response.sendRedirect(response.getContextPath()+"/clicktomap.jsp");
+                }
+       **/
+        
                 Map session =ActionContext.getContext().getSession();
             User user=(User) session.get("User");
-  
-            String auser=user.getUserName();
-            Campaign camp = new Campaign(user, getCampaignname());
-             getMyDao().getDbsession().save(camp);
-            camp.setStartDate(getTodaydate());
+       
+            Campaign camp = new Campaign(user,campaignname);
+            getMyDao().getDbsession().save(camp);
+            camp.setStartDate(getStartdate());
             camp.setEndDate(getEnddate());
-            camp.setDialyBudget(getDailybdgt());
-            camp.setDeliveryMethod(getDeliverytype());
-            camp.setNote(getNote());
-            
-            
+            camp.setDialyBudget(dailybdgt);
+            camp.setDeliveryMethod(deliverytype);
+            camp.setPromoType(promotype);
+            camp.setNote(note);   
            
-            
-            
+      
+           
+       }
+       
+        catch(HibernateException e){
+        e.printStackTrace();
         }
-        catch(Exception e){}
         return"success";
         }
 
@@ -66,34 +112,6 @@ public class campaignMain extends ActionSupport{
     }
 
     /**
-     * @return the todaydate
-     */
-    public Date getTodaydate() {
-        return todaydate;
-    }
-
-    /**
-     * @param todaydate the todaydate to set
-     */
-    public void setTodaydate(Date todaydate) {
-        this.todaydate = todaydate;
-    }
-
-    /**
-     * @return the enddate
-     */
-    public Date getEnddate() {
-        return enddate;
-    }
-
-    /**
-     * @param enddate the enddate to set
-     */
-    public void setEnddate(Date enddate) {
-        this.enddate = enddate;
-    }
-
-    /**
      * @return the dailybdgt
      */
     public BigDecimal getDailybdgt() {
@@ -105,20 +123,6 @@ public class campaignMain extends ActionSupport{
      */
     public void setDailybdgt(BigDecimal dailybdgt) {
         this.dailybdgt = dailybdgt;
-    }
-
-    /**
-     * @return the deliverytype
-     */
-    public int getDeliverytype() {
-        return deliverytype;
-    }
-
-    /**
-     * @param deliverytype the deliverytype to set
-     */
-    public void setDeliverytype(int deliverytype) {
-        this.deliverytype = deliverytype;
     }
 
     /**
@@ -149,4 +153,61 @@ public class campaignMain extends ActionSupport{
         this.myDao = myDao;
     }
 
+    /**
+     * @return the startdate
+     */
+    public Date getStartdate() {
+        return startdate;
+    }
+
+    /**
+     * @param startdate the startdate to set
+     */
+    public void setStartdate(Date startdate) {
+        this.startdate = startdate;
+    }
+
+    /**
+     * @return the enddate
+     */
+    public Date getEnddate() {
+        return enddate;
+    }
+
+    /**
+     * @param enddate the enddate to set
+     */
+    public void setEnddate(Date enddate) {
+        this.enddate = enddate;
+    }
+
+    /**
+     * @return the promotype
+     */
+    public String getPromotype() {
+        return promotype;
+    }
+
+    /**
+     * @param promotype the promotype to set
+     */
+    public void setPromotype(String promotype) {
+        this.promotype = promotype;
+    }
+
+    /**
+     * @return the deliverytype
+     */
+    public String getDeliverytype() {
+        return deliverytype;
+    }
+
+    /**
+     * @param deliverytype the deliverytype to set
+     */
+    public void setDeliverytype(String deliverytype) {
+        this.deliverytype = deliverytype;
+    }
+
+  
 }
