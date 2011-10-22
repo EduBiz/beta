@@ -15,11 +15,14 @@ pageEncoding="UTF-8"%>
     <head>
         <s:head/>
         <sj:head/>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registration</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
           
-      
+      <script type="text/javascript">
+          $('#startdate,#enddate').datepicker();
+      </script>
               
   
     </head>
@@ -44,9 +47,9 @@ pageEncoding="UTF-8"%>
         <sj:datepicker name="startdate" displayFormat="mm/dd/yy" label="Start Date" />
         <sj:datepicker name="enddate" displayFormat="mm/dd/yy" label="End Date" />
         <s:textfield name="dailybdgt" label="Daily Budget $" />
-        <s:radio label="Standard" name="deliverytype" list="{'0','Standard','1','Accelerated'}" />
+        <s:radio label="Standard" name="deliverytype" list="{'Standard','Accelerated'}" />
         <s:textarea label="Note:(optional)" name="note" rows="15"/>
-        <s:submit value="Save and Continue"/>
+        <s:submit value="Save and Continue" />
     </s:form>
         </tr>
          </table>   

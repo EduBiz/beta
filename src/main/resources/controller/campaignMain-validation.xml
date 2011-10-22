@@ -11,15 +11,11 @@
       <field-validator type="date">
              <message>Date format incorrect</message>
         </field-validator>
-        <field-validator type="requiredstring">
-            <message>Please select Start Date.</message>
-        </field-validator>
+       
   </field>
   
   <field name="enddate">
-        <field-validator type="requiredstring">
-            <message>Please select End Date.</message>
-        </field-validator>
+     
         <field-validator type="date">
              <message>Date format incorrect</message>
         </field-validator>
@@ -33,6 +29,6 @@
         </field-validator>
   </field>
  
-             
+        $('#startdate,#enddate').datepicker();      
 </validators>
 
