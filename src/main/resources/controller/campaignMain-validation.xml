@@ -7,7 +7,7 @@
             <message>Please enter Campaign Name </message>
         </field-validator>  
   </field>
-  <field name="todaydate">
+  <field name="startdate">
       <field-validator type="date">
              <message>Date format incorrect</message>
         </field-validator>
@@ -18,7 +18,7 @@
   
   <field name="enddate">
         <field-validator type="requiredstring">
-            <message>Please select Start Date.</message>
+            <message>Please select End Date.</message>
         </field-validator>
         <field-validator type="date">
              <message>Date format incorrect</message>
@@ -33,7 +33,6 @@
         </field-validator>
   </field>
  
-  
              
 </validators>
 

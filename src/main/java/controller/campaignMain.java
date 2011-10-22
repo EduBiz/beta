@@ -23,7 +23,7 @@ public class campaignMain extends ActionSupport{
    private Date startdate;
    private Date enddate;
    private BigDecimal dailybdgt;
-   private int deliverytype;
+   private String deliverytype;
    private String note;
   
     private spDAO myDao;
@@ -39,7 +39,7 @@ public class campaignMain extends ActionSupport{
             camp.setStartDate(getStartdate());
             camp.setEndDate(getEnddate());
             camp.setDialyBudget(dailybdgt);
-            camp.setDeliveryMethod(deliverytype);
+            camp.setDeliveryMethod(getDeliverytype());
             camp.setNote(note);
                 
             
@@ -78,19 +78,7 @@ public class campaignMain extends ActionSupport{
         this.dailybdgt = dailybdgt;
     }
 
-    /**
-     * @return the deliverytype
-     */
-    public int getDeliverytype() {
-        return deliverytype;
-    }
-
-    /**
-     * @param deliverytype the deliverytype to set
-     */
-    public void setDeliverytype(int deliverytype) {
-        this.deliverytype = deliverytype;
-    }
+   
 
     /**
      * @return the note
@@ -146,6 +134,20 @@ public class campaignMain extends ActionSupport{
      */
     public void setEnddate(Date enddate) {
         this.enddate = enddate;
+    }
+
+    /**
+     * @return the deliverytype
+     */
+    public String getDeliverytype() {
+        return deliverytype;
+    }
+
+    /**
+     * @param deliverytype the deliverytype to set
+     */
+    public void setDeliverytype(String deliverytype) {
+        this.deliverytype = deliverytype;
     }
 
    

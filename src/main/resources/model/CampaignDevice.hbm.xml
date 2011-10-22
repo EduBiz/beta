@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Oct 20, 2011 3:20:20 PM by Hibernate Tools 3.2.1.GA -->
+<!-- Generated Oct 21, 2011 9:03:57 AM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="model.CampaignDevice" table="campaign_device" catalog="adzappy">
         <id name="deviceId" type="java.lang.Long">
