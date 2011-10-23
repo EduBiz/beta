@@ -46,7 +46,94 @@
             <result name="input" >campaignCreation.jsp</result>
             <result name="error" >campaignCreation.jsp</result>
         </action> 
+        <action name="campaignMain" class="controller.campaignMain">
+            <result name="success" >campaign_success.jsp</result>
+            <result name="input" >campaignCreation.jsp</result>
+            <result name="error" >campaignCreation.jsp</result>
+        </action> 
+        </package>
+       <package name="chartexample"  extends="json-default">
+       <action name="charts" class="chartexample.Charts" >
+            <result name="success" >charts.jsp</result>
+        </action> 
+     <action name="jsonchartdata" class="chartexample.JsonChartData" >
+            <result name="success" >charts.jsp</result>
+        </action> 
+        <action name="jsonchartdata" class="chartexample.JsonChartData" >
+           <result type="json"/>
+        </action> 
+        </package>
+    
+    <action name="campaignMain" class="campaign.campaignMain">
+            <result name="website" >website.jsp</result>
+            <result name="BlackBerry" >blackberry.jsp</result>
+            <result name="Andriod" >android.jsp</result>
+            <result name="Iphone" >iphone.jsp</result>
+            <result name="iTunes" >itunes.jsp</result>
+            <result name="Streaming" >streamingvideo.jsp</result>
+            <result name="Books" >bookad.jsp</result>
+            <result name="clickcall" >clicktocall.jsp</result>
+            <result name="clickmap" >clicktomap.jsp</result>
+            <result name="input" >campaignCreation.jsp</result>
+            <result name="error" >campaignCreation.jsp</result>
+        </action> 
+          <action name="websiteAction" class="campaign.website" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >website.jsp</result>
+            <result name="error" >/website.jsp</result>
+        </action>
+          <action name="iphoneAction" class="campaign.iphone" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >iphone.jsp</result>
+            <result name="error" >/iphone.jsp</result>
+         </action>
+          <action name="androidAction" class="campaign.android" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >android.jsp</result>
+            <result name="error" >/android.jsp</result>
+          </action>
+          <action name="blackberryAction" class="campaign.blackberry" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >blackberry.jsp</result>
+            <result name="error" >/blackberry.jsp</result>
+         </action>
+         <action name="itunesAction" class="campaign.itunes" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >itunes.jsp</result>
+            <result name="error" >/itunes.jsp</result>
+        </action>
+         <action name="streamingvideoAction" class="campaign.streamingvideo" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >streamingviddeo.jsp</result>
+            <result name="error" >/streamingviddeo.jsp</result>
+        </action>
+         <action name="bookadAction" class="campaign.bookad" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >bookad.jsp</result>
+            <result name="error" >/bookad.jsp</result>
+        </action>
+         <action name="clicktocallAction" class="campaign.clicktocall" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >clicktocall.jsp</result>
+            <result name="error" >/clicktocall.jsp</result>
+        </action>
+        <action name="clicktomapAction" class="campaign.clicktomap" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >clicktomap.jsp</result>
+            <result name="error" >/clicktomap.jsp</result>
+        </action>
+         <action name="demographicAction" class="campaign.demograhics" >
+            <result name="success" >/createad.jsp</result>
+            <result name="input" >demograhics.jsp</result>
+            <result name="error" >/demograhics.jsp</result>
+        </action>
+        <action name="createAction" class="campaign.createad" >
+            <result name="success" >/campaign_success.jsp</result>
+            <result name="input" >createad.jsp</result>
+            <result name="error" >/createad.jsp</result>
+        </action>
         
-    </package>
+
+    
 </struts>
 
