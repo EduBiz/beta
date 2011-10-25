@@ -49,6 +49,8 @@ pageEncoding="UTF-8"%>
         <tr>
             <td><a href="charts.action">View Reports</a>
             </td>
+            <td><a href="chart.action">View Reports with Json</a>
+            </td>
        </tr>
          </table>   
     <s:include value="/footer.jsp" />

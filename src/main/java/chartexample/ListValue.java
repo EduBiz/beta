@@ -11,7 +11,7 @@ package chartexample;
  public class ListValue  {
 
     ListValue(String string, String string0) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        
     }
     
 }

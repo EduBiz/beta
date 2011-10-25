@@ -33,7 +33,7 @@
         
        
     </head>
-    <body>
+    <body onload="chart">
        
         <h3>Chart with values from a List or a Map</h3>
         
@@ -100,7 +100,7 @@
     <br/>
 
 	<h3>Chart with AJAX Data</h3>
-	<s:url id="chartDataUrl" action="jsonchartdata"/>
+	<s:url id="chartDataUrl" action="chart"/>
     <sjc:chart
     	id="chartAjax"
     	legendLabelBoxBorderColor="#990033"

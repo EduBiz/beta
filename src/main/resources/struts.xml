@@ -117,10 +117,14 @@
             <result name="input" >createad.jsp</result>
             <result name="error" >/createad.jsp</result>
         </action>
-        <action name="charts" class="chartexample.Charts" >
-            <result type="json" name="success">charts.jsp</result>
+       </package>
+       <package name="demo" extends="struts-default">
+       <action name="charts" class="chartexample.Charts" >
+            <result name="success">charts.jsp</result>
         </action> 
- 
-    
+       <action name="chart" class="chartexample.JsonChartData" >
+            <result name="success">charts.jsp</result>
+        </action> 
+    </package>
 </struts>
 
