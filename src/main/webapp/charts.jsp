@@ -4,10 +4,9 @@
     Author     : Administrator
 --%>
 <%@taglib uri="/struts-tags" prefix="s"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <%@ taglib prefix="sjc" uri="/struts-jquery-chart-tags"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,16 +15,7 @@
         
         <s:head/>
         <sj:head/>
-        <script type="text/javascript" src="/struts2-jquery-showcase/struts/utils.js"></script>
-	<script type="text/javascript" src="/struts2-jquery-showcase/struts/xhtml/validation.js"></script>
-
-	<script type="text/javascript" src="/struts2-jquery-showcase/struts/js/base/jquery-1.5.2.js"></script>
-	<script type="text/javascript" src="/struts2-jquery-showcase/struts/js/base/jquery.ui.core.js"></script>
-  <script type="text/javascript" src="/struts2-jquery-showcase/struts/js/plugins/jquery.subscribe.js"></script>
-        	<link id="jquery_theme_link" rel="stylesheet" href="jquery-ui.css" type="text/css"/>
-
-
-  <script type="text/javascript" src="/struts2-jquery-showcase/struts/js/struts2/jquery.struts2-3.1.0.js"></script>
+       
 
         <script type="text/javascript">
             	$.subscribe('chartHover', function(event, data) {
@@ -46,6 +36,7 @@
     <body>
        
         <h3>Chart with values from a List or a Map</h3>
+        
     <sjc:chart id="chartPoints" cssStyle="width: 600px; height: 400px;">
     	<sjc:chartData
     		label="List -Points-"
@@ -68,6 +59,7 @@
 	<h3>Chart with values from a List with Objects</h3>
 	<div id="topicsHover"></div>
 	<div id="topicsClick"></div>
+       
     <sjc:chart id="chartObjects" cssStyle="width: 600px; height: 400px;" onClickTopics="chartClick" onHoverTopics="chartHover">
     	<sjc:chartData
     		label="List with Objects"
@@ -108,7 +100,7 @@
     <br/>
 
 	<h3>Chart with AJAX Data</h3>
-	<s:url id="/JsonChartData" action="json-chart-data"/>
+	<s:url id="chartDataUrl" action="jsonchartdata"/>
     <sjc:chart
     	id="chartAjax"
     	legendLabelBoxBorderColor="#990033"
@@ -118,14 +110,14 @@
     >
     	<sjc:chartData
     		label="Map -Double, Double-"
-    		href="%{/Charts}"
+    		href="%{chartDataUrl }"
     		list="doubleMap"
     		deferredLoading="true"
     		reloadTopics="reloadMap"
     	/>
     	<sjc:chartData
     		label="List -ListValue-"
-    		href="%{/Charts}"
+    		href="%{chartDataUrl}"
     		list="objList"
     		listKey="myKey"
     		listValue="myValue"

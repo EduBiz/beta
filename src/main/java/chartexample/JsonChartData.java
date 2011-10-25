@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
 import model.HibernateUtil;
-import model.Listvalue;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -23,16 +23,16 @@ import model.Listvalue;
 public class JsonChartData extends ActionSupport {
 
   private static final long   serialVersionUID = 6659512910595305843L;
-  private List<Listvalue>     objList;
+  private List<ListValue>     objList;
   private Map<Double, Double> doubleMap;
 
 // @Actions({@Action(value = "/json-chart-data", results = {@Result(name = "success", type = "json")})})
 
   @Override
-  public String execute()
+  public String execute() 
   {
 
-    objList = new ArrayList<Listvalue>();
+    objList = new ArrayList<ListValue>();
     doubleMap = new TreeMap<Double, Double>();
 
     Random generator = new Random();
@@ -43,7 +43,7 @@ public class JsonChartData extends ActionSupport {
 
     for (int i = 1; i <= 24; i++)
     {
-      objList.add(new Listvalue("" + i, "" + generator.nextInt(30)));
+      objList.add(new ListValue("" + i, "" + generator.nextInt(30)));
     }
 
     return SUCCESS;
@@ -54,12 +54,12 @@ public class JsonChartData extends ActionSupport {
     return execute();
   }
 
-  public List<Listvalue> getObjList()
+  public List<ListValue> getObjList()
   {
     return objList;
   }
 
-  public void setObjList(List<Listvalue> objList)
+  public void setObjList(List<ListValue> objList)
   {
     this.objList = objList;
   }

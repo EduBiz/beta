@@ -4,7 +4,6 @@
  */
 package chartexample;
 
-import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
-import model.Listvalue;
+
 
 
 
@@ -26,7 +25,7 @@ public class Charts extends ActionSupport {
 
   private List<Point>           points;
   private List<Point>           pointsWithNull;
-  private List<Listvalue>       objList;
+  private List<ListValue>       objList;
   private Map<Integer, Integer> pointsFromMap;
   private Map<Date, Integer>    dateFromMap;
   private Map<String, Integer>  pieDataMap;
@@ -84,13 +83,13 @@ public class Charts extends ActionSupport {
     maxTime = "" + calendar.getTime().getTime();
     System.out.println("maxTime : " + maxTime);
 
-    objList = new ArrayList<Listvalue>();
+    objList = new ArrayList<ListValue>();
     for (int i = 1; i <= 24; i++)
     {
-      objList.add(new Listvalue("" + i, "" + generator.nextInt(30)));
+      objList.add(new ListValue("" + i, "" + generator.nextInt(30)));
     }
 
-    return SUCCESS;
+    return "success";
   }
 
   public List<Point> getPoints()
@@ -123,7 +122,7 @@ public class Charts extends ActionSupport {
     return maxTime;
   }
 
-  public List<Listvalue> getObjList()
+  public List<ListValue> getObjList()
   {
     return objList;
   }

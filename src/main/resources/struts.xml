@@ -46,23 +46,8 @@
             <result name="input" >campaignCreation.jsp</result>
             <result name="error" >campaignCreation.jsp</result>
         </action> 
-        <action name="campaignMain" class="controller.campaignMain">
-            <result name="success" >campaign_success.jsp</result>
-            <result name="input" >campaignCreation.jsp</result>
-            <result name="error" >campaignCreation.jsp</result>
-        </action> 
-        </package>
-       <package name="chartexample"  extends="json-default">
-       <action name="charts" class="chartexample.Charts" >
-            <result name="success" >charts.jsp</result>
-        </action> 
-     <action name="jsonchartdata" class="chartexample.JsonChartData" >
-            <result name="success" >charts.jsp</result>
-        </action> 
-        <action name="jsonchartdata" class="chartexample.JsonChartData" >
-           <result type="json"/>
-        </action> 
-        </package>
+        
+       
     
     <action name="campaignMain" class="campaign.campaignMain">
             <result name="website" >website.jsp</result>
@@ -132,8 +117,10 @@
             <result name="input" >createad.jsp</result>
             <result name="error" >/createad.jsp</result>
         </action>
-        
-
+        <action name="charts" class="chartexample.Charts" >
+            <result type="json" name="success">charts.jsp</result>
+        </action> 
+ 
     
 </struts>
 

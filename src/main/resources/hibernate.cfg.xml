@@ -24,8 +24,6 @@
     <mapping resource="model/ReportrDaily.hbm.xml"/>
     <mapping resource="model/CampaignOs.hbm.xml"/>
     <mapping resource="model/TempUser.hbm.xml"/>
-    <mapping/>
-    <mapping/>
     <mapping resource="model/Listvalue.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
