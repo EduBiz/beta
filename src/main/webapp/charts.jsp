@@ -33,7 +33,7 @@
         
        
     </head>
-    <body onload="chart">
+    <body>
        
         <h3>Chart with values from a List or a Map</h3>
         

@@ -142,14 +142,13 @@
               <tr>
                 <td width="240" height="242" align="center" valign="top" class="box_bg2"><br><br> <br><br>
 					<div class="boxwrap">
-						<div class="getstartedwrap">
-							<a href="#" class="getstarted">Get Started</a>
-						</div>
-                                               <div class="getstartedwrap">
+		                               <div class="getstartedwrap">
 							<a href="campaignCreation.jsp" class="getstarted">Add Campaign</a>
                                                 <%-- <form action="#" method="post" id="loginform">   --%>
                                                </div> 
-                        	
+                        	                <div class="getstartedwrap">
+							<a href="rcharts.action" class="getstarted">View Reports</a>
+						</div>
                             <div class="formdiv">
                                 <%--	<label for="email">Email</label>
 								<input type="text" name="email"/>    --%>
@@ -172,8 +171,7 @@
                             
 							<div style="clear: both;"></div>
                     </div>
-				
-				</td>
+		</td>
               </tr>
               <tr>
                 <td align="left" valign="top"><img src="images/bottm_corner2.jpg" width="240" height="9" /></td>

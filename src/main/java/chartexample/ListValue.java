@@ -10,7 +10,7 @@ package chartexample;
  */
  public class ListValue  {
 
-    ListValue(String string, String string0) {
+ public ListValue(String string, String string0) {
         
     }
     
