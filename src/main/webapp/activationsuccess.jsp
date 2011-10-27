@@ -28,7 +28,7 @@
   </tr>
   <tr>    
       <td>   
-          <p>  Hi    <s:property value="email" /> Now your account Successfully Activated.Please click <a href="index.jsp">home</a> for more options..</p>
+          <p>  Hi    <s:property value="email" /> Now your account Successfully Activated.Please click  home and login into your account</p>
       </td>
   </tr>  
   </table>

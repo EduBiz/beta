@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Oct 22, 2011 6:35:50 PM by Hibernate Tools 3.2.1.GA -->
+<!-- Generated Oct 27, 2011 8:45:33 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="model.ReportcDaily" table="reportc_daily" catalog="adzappy">
         <id name="reportcKey" type="java.lang.Long">
@@ -11,6 +11,9 @@
         <many-to-one name="reportCampaign" class="model.ReportCampaign" fetch="select">
             <column name="reportc" not-null="true" />
         </many-to-one>
+        <property name="rdate" type="date">
+            <column name="rdate" length="10" />
+        </property>
         <property name="impressions" type="java.lang.Integer">
             <column name="impressions" />
         </property>

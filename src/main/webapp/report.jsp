@@ -15,9 +15,31 @@
         <s:head/>
         <sj:head/>
   <link href="style.css" rel="stylesheet" type="text/css" />
+    
+        <script type="text/javascript">
+            	$.subscribe('chartHover', function(event, data) {
+    $("#topicsHover").text(event.originalEvent.pos.x.toFixed(2)+','+event.originalEvent.pos.y.toFixed(2));
+	});
+	$.subscribe('chartClick', function(event, data) {
+		var item = event.originalEvent.item;
+    if (item) {
+      $("#topicsClick").text("You clicked point " + item.dataIndex + " ("+item.datapoint[0]+","+item.datapoint[1]+") in " + item.series.label + ".");
+      event.originalEvent.plot.highlight(item.series, item.datapoint);
+    }
+	});
+	  
+        </script>
     </head>
     
      <body>
+         <%
+    Object obj = session.getAttribute("User");
+    if(obj==null)
+        {
+        response.sendRedirect(request.getContextPath()+"/sessionError.action");
+    }
+    %> 
+         
        <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="99" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -26,6 +48,7 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
+            Welcome&nbsp;<s:property value="email" />&nbsp;
             <s:include value="navigationdashboard.jsp" />
         </td>
       </tr>
@@ -37,20 +60,17 @@
         </tr>
         <tr>
             <td>
-    <sjc:chart id="chartPoints" cssStyle="width: 600px; height: 400px;">
+     <sjc:chart id="chartPoints" cssStyle="width: 600px; height: 400px;">
     	<sjc:chartData
-    		label="List -Points-"
+    		label="Clicks"
     		list="points"
     		points="{ show: true }"
     		lines="{ show: true }"
     	/>
+    	
     	<sjc:chartData
-    		label="List -Points with Null Value-"
-    		list="pointsWithNull"
-    	/>
-    	<sjc:chartData
-    		label="Map -Integer, Integer-"
-    		list="pointsFromMap"
+    		label="Impressions"
+    		list="strmap"
     	/>
     </sjc:chart>
             </td>

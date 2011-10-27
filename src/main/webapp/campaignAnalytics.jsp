@@ -8,6 +8,13 @@
 </head>
 
 <body>
+    <%
+    Object obj = session.getAttribute("User");
+    if(obj==null)
+        {
+        response.sendRedirect(request.getContextPath()+"/sessionError.action");
+    }
+    %>
 <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="99" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -16,7 +23,7 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
-            <s:include value="navigation.jsp" />
+            <s:include value="navigationdashboard.jsp" />
         </td>
       </tr>
     </table></td>
@@ -32,31 +39,26 @@
             <td colspan="3">
 			<table width="740" height="306" border="0" align="left" cellpadding="0" cellspacing="0" style="float:left; margin-top: -3px; text-shadow: 1px 1px 0px #fff;">
              <td width="740" height="240" align="center" valign="top" background="images/marketplace_header.jpg" style="background-repeat:repeat-x"><table width="680" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                      <td height="30" align="left"></td>
-                    </tr>
-                    <tr>
-                      <td height="30" align="left" class="h12">AdZappy for Advertisers</td>
-                    </tr>
+                    
+                    
                     <tr>
                       <td><table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size: 16px; color: #444; line-height: 24px;">
                           <tr>
-                            <td width="50%" height="120" align="left" valign="top"><p>
-                           AdZappy provides innovative solutions for brand and performance advertisers to engage your mobile target audience.
-                            </p></td>
-                            <td width="50%" align="right" valign="top">&nbsp;</td>
+
+                           
                           </tr>                          
                       </table></td>
                     </tr>
                     <tr></tr>
-                </table></td>
+                </table>
+                </td>
               </tr>             
             </table>
 			<table width="240" border="0" align="left" cellpadding="0" cellspacing="0" style="float:left;margin-left:6px;"> <tr>
                 <td align="left" valign="top">
                     <div class="getstartedouter">
                         <div class="getstartedwrap">
-                            <a href="campaignCreation.jsp" class="getstarted">Add Campaign</a>
+                            <a href="#" class="getstarted">Get Started</a>
                         </div>
                     </div>
                 </td>

@@ -8,6 +8,13 @@
 </head>
 
 <body>
+     <%
+    Object obj = session.getAttribute("User");
+    if(obj==null)
+        {
+        response.sendRedirect(request.getContextPath()+"/sessionError.action");
+    }
+    %>
 <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="99" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -16,7 +23,8 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
-            <s:include value="navigation.jsp" />
+            Welcome&nbsp;<s:property value="email" />&nbsp;
+            <s:include value="navigationdashboard.jsp" />
         </td>
       </tr>
     </table></td>

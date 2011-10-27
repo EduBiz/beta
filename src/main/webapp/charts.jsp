@@ -34,7 +34,13 @@
        
     </head>
     <body>
-       
+        <%
+    Object obj = session.getAttribute("User");
+    if(obj==null)
+        {
+        response.sendRedirect(request.getContextPath()+"/sessionError.action");
+    }
+    %>
         <h3>Chart with values from a List or a Map</h3>
         
     <sjc:chart id="chartPoints" cssStyle="width: 600px; height: 400px;">

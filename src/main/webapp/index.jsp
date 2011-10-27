@@ -16,7 +16,7 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
-            Welcome&nbsp;Guest&nbsp;
+           
             <s:include value="navigation.jsp" />
         </td>
       </tr>
@@ -135,35 +135,31 @@
                 <td width="240" height="242" align="center" valign="top" class="box_bg2">
 					<div class="boxwrap">
 						<div class="getstartedwrap">
-							<a href="#" class="getstarted">Get Started</a>
-						</div>
+							<a href="signup.jsp" class="getstarted">Get Started</a>
+                                                </div>
                                                 <%-- <form action="#" method="post" id="loginform">   --%>
                                                 <s:actionerror/>  <s:form action="login" >
                         	<h3>LOG IN TO YOUR ACCOUNT</h3>
-                            <div class="formdiv">
-                                <%--	<label for="email">Email</label>
-								<input type="text" name="email"/>    --%>
-                                <s:textfield name="email" label="Email"/>
+                                    <div class="formdiv">
+                                
+                                             <s:textfield name="email" label="Email"/>
 							</div>
 							<div class="formdiv">
                                                             <%--	<label for="password">Password</label>
                                                                         <input type="password" name="password"/>     --%>
                                                             <s:password name="password" label="Password"/>
                                                             <s:submit value="Submit"/>
+                                                             </s:form>
 							</div>
-                                                        </s:form>
+                                                        
                                                         <div class="formfooter">
                                                            <a href="forgotpass.jsp" class="forget">&nbsp;&nbsp;&nbsp;Forget Password?</a>
-                                                            <%--<input type="submit" value="Submit"/> --%>
                                                             
-                                                            <div>
-									Not Registered? &nbsp;&nbsp;<a href="signup.jsp">Sign Up Now</a>
-								</div>
 							</div>
-                            <%-- </form> --%>
-                            
+                                                           
+                             
 							<div style="clear: both;"></div>
-                    </div>
+                                      </div>
 				
 				</td>
               </tr>

@@ -6,7 +6,6 @@ package report;
 
 import com.opensymphony.xwork2.ActionSupport;
 import java.awt.Point;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,6 +15,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
 import chartexample.ListValue;
+import controller.spDAO;
+import model.Listvalue;
 
 
 
@@ -25,48 +26,36 @@ public class Charts extends ActionSupport {
 
   private List<Point>           points;
   private List<Point>           pointsWithNull;
-  private List<ListValue>       objList;
+  private List<ListValue>        objList;
   private Map<Integer, Integer> pointsFromMap;
   private Map<Date, Integer>    dateFromMap;
   private Map<String, Integer>  pieDataMap;
   private String                minTime;
   private String                maxTime;
-
-// @Actions({@Action(value = "/charts", results = {@Result(location = "charts.jsp", name = "success")}), @Action(value = "/jsonchartdata", results = {@Result(location = "charts.jsp", name = "success")})})
+   spDAO          myDao;
+  private Map<String,String>    strmap;
+  
  @Override
   public String execute() throws Exception
   {
     points = new LinkedList<Point>();
 
-    points.add(new Point(0, 3));
-    points.add(new Point(4, 8));
-    points.add(new Point(8, 5));
-    points.add(new Point(9, 13));
-
-    pointsWithNull = new LinkedList<Point>();
-
-    pointsWithNull.add(new Point(0, 12));
-    pointsWithNull.add(new Point(7, 12));
-    pointsWithNull.add(null);
-    pointsWithNull.add(new Point(7, 2));
-    pointsWithNull.add(new Point(12, 2));
-
-    pointsFromMap = new HashMap<Integer, Integer>();
-    pointsFromMap.put(2, 5);
-    pointsFromMap.put(3, 6);
-    pointsFromMap.put(4, 7);
-    pointsFromMap.put(5, 8);
-    pointsFromMap.put(6, 7);
-    pointsFromMap.put(7, 6);
-
-    pieDataMap = new TreeMap<String, Integer>();
-    pieDataMap.put("Java", 18);
-    pieDataMap.put("C", 17);
-    pieDataMap.put("C++", 10);
-    pieDataMap.put("PHP", 8);
-    pieDataMap.put("(Visual) Basic", 6);
-    pieDataMap.put("C#", 5);
-
+    points.add(new Point(60, 73));
+    points.add(new Point(74, 78));
+    points.add(new Point(78, 85));
+    points.add(new Point(89, 93));
+    points.add(new Point(95, 100));
+    
+   List dblist=myDao.getDbsession().createQuery("from Listvalue").list();
+   
+   
+    strmap = new HashMap<String,String>();
+    for (int i = 1; i <dblist.size(); i++)
+    {
+    strmap.put(((Listvalue)dblist.get(i)).getColumn1(),((Listvalue)dblist.get(i)).getColumn2());
+    
+    }
+ 
     dateFromMap = new TreeMap<Date, Integer>();
     Calendar calendar = Calendar.getInstance();
     calendar.add(Calendar.YEAR, -2);
@@ -83,11 +72,7 @@ public class Charts extends ActionSupport {
     maxTime = "" + calendar.getTime().getTime();
     System.out.println("maxTime : " + maxTime);
 
-    objList = new ArrayList<ListValue>();
-    for (int i = 1; i <= 24; i++)
-    {
-      objList.add(new ListValue("" + i, "" + generator.nextInt(30)));
-    }
+    
 
     return "success";
   }
@@ -131,4 +116,24 @@ public class Charts extends ActionSupport {
   {
     return pieDataMap;
   }
+
+    /**
+     * @return the myDao
+     */
+    public spDAO getMyDao() {
+        return myDao;
+    }
+
+
+    /**
+     * @return the strmap
+     */
+    public Map<String,String> getStrmap() {
+        return strmap;
+    }
+
+    
+   
+
+    
 }

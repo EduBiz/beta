@@ -37,7 +37,7 @@ pageEncoding="UTF-8"%>
       </tr>
       <tr>
         <td height="24" valign="bottom">
-            <s:include value="navigation.jsp" />
+           <s:include value="navigationdashboard.jsp" />
             
         </td>
       </tr>
