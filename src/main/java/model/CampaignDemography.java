@@ -1,5 +1,5 @@
 package model;
-// Generated 20-Oct-2011 12:30:24 by Hibernate Tools 3.2.1.GA
+// Generated 22-Oct-2011 14:04:31 by Hibernate Tools 3.2.1.GA
 
 
 
@@ -11,13 +11,13 @@ public class CampaignDemography  implements java.io.Serializable {
 
      private Long demographyId;
      private Campaign campaign;
-     private int age;
+     private String age;
      private String sex;
 
     public CampaignDemography() {
     }
 
-    public CampaignDemography(Campaign campaign, int age, String sex) {
+    public CampaignDemography(Campaign campaign, String age, String sex) {
        this.campaign = campaign;
        this.age = age;
        this.sex = sex;
@@ -37,11 +37,11 @@ public class CampaignDemography  implements java.io.Serializable {
     public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
     }
-    public int getAge() {
+    public String getAge() {
         return this.age;
     }
     
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
     public String getSex() {

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 20-Oct-2011 12:30:29 by Hibernate Tools 3.2.1.GA -->
+<!-- Generated 22-Oct-2011 14:04:36 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="model.CampaignDemography" table="campaign_demography" catalog="adzappy">
         <id name="demographyId" type="java.lang.Long">
@@ -11,8 +11,8 @@
         <many-to-one name="campaign" class="model.Campaign" fetch="select">
             <column name="campaign" not-null="true" />
         </many-to-one>
-        <property name="age" type="int">
-            <column name="age" not-null="true" />
+        <property name="age" type="string">
+            <column name="age" length="20" not-null="true" />
         </property>
         <property name="sex" type="string">
             <column name="sex" length="50" not-null="true" />

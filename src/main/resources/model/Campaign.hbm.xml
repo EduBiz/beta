@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 20-Oct-2011 12:30:29 by Hibernate Tools 3.2.1.GA -->
+<!-- Generated 22-Oct-2011 14:04:36 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="model.Campaign" table="campaign" catalog="adzappy">
         <id name="campaignId" type="java.lang.Long">
@@ -24,13 +24,13 @@
             <column name="dialy_budget" precision="10" />
         </property>
         <property name="deliveryMethod" type="string">
-            <column name="delivery_method" length="30" />
+            <column name="delivery_method" length="20" />
         </property>
         <property name="note" type="string">
             <column name="note" length="500" />
         </property>
         <property name="promoType" type="string">
-            <column name="promo_type" length="30" />
+            <column name="promo_type" length="50" />
         </property>
         <set name="campaignLocations" inverse="true">
             <key>

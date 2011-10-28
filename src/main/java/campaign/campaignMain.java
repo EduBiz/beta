@@ -2,16 +2,20 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package campaign;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import controller.spDAO;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Map;
 import model.Campaign;
 import model.User;
 import org.hibernate.HibernateException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -36,60 +40,51 @@ public class campaignMain extends ActionSupport{
         try{
              
             
-            
-         /**   if(promotype="Website")
-            {
-             response.sendRedirect(response.getContextPath()+"/website.jsp");
-         
-                else if(promotype= "BlackBerry Application Ad")
-                    {
-                     response.sendRedirect(request.getContextPath()+"/blackberry.jsp");
-                    }
-                else if(promotype= Andriod Application Ad)
-                    {
-                    response.sendRedirect(request.getContextPath()+"/andriod.jsp");
-                    }
-                else if(promotype= Iphone Application Ad)
-                    {
-                    response.sendRedirect(request.getContextPath()+"/iphone.jsp");    
-                    }
-                else if(promotype= iTunes Media Ad)
-                    {
-                     response.sendRedirect(request.getContextPath()+"/itunes.jsp");
-                    }
-                else if(promotype= Streaming Video Ad)
-                    {
-                     response.sendRedirect(request.getContextPath()+"/streamingvideo.jsp");
-                    }
-                else if(promotype= Books Ad)
-                    {
-                    response.sendRedirect(request.getContextPath()+"/bookad.jsp");
-                    }
-                else if(promotype= Click to Call Ad)
-                    {
-                     response.sendRedirect(response.getContextPath()+"/clicktocall.jsp");
-                    }}
-            else
-                {
-                  response.sendRedirect(response.getContextPath()+"/clicktomap.jsp");
-                }
-       **/
-        
                 Map session =ActionContext.getContext().getSession();
             User user=(User) session.get("User");
        
             Campaign camp = new Campaign(user,campaignname);
+ 
             getMyDao().getDbsession().save(camp);
+           
             camp.setStartDate(getStartdate());
             camp.setEndDate(getEnddate());
             camp.setDialyBudget(dailybdgt);
             camp.setDeliveryMethod(deliverytype);
             camp.setPromoType(promotype);
             camp.setNote(note);   
-           
-      
-           
-       }
+            camp= (Campaign) session.put("campa",camp);
+            
+            if(promotype.equals("Website"))
+                {
+                    return "website";  }
+            if(promotype.equals("BlackBerry Application Ad"))
+                {
+                     return"BlackBerry";  }
+            if(promotype.equals("Andriod Application Ad"))
+                {
+                    return"Andriod";    }
+            if(promotype.equals("Iphone Application Ad"))
+                {
+                    return"Iphone";    }
+            if(promotype.equals("iTunes Media Ad"))
+                {
+                     return"iTunes"; }
+            if(promotype.equals("Streaming Video Ad"))
+                {
+                     return"Streaming";   }
+            if(promotype.equals("Books Ad"))
+                {
+                    return"Books";  }
+            if(promotype.equals("Click to Call Ad"))
+                {
+                     return"clickcall";  }
+             if(promotype.equals("Click to Map Ad"))
+                {
+                  return"clickmap";
+                }
+        
+        }
        
         catch(HibernateException e){
         e.printStackTrace();

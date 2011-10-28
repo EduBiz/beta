@@ -7,11 +7,12 @@
 
 pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
-
+<%@page import="model.User"%>
 <!DOCTYPE html>
 <html>
      <%@taglib uri="/struts-tags" prefix="s"%>
      <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
+     
     <head>
         <s:head/>
         <sj:head/>
@@ -22,6 +23,16 @@ pageEncoding="UTF-8"%>
     </head>
     <body>
        
+
+
+
+<%
+    Object obj = session.getAttribute("User");
+    if(obj==null)
+        {
+        response.sendRedirect(request.getContextPath()+"/sessionError.action");
+    }
+    %>
        <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="99" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
