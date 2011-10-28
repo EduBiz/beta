@@ -17,7 +17,7 @@ import java.util.TreeMap;
 import chartexample.ListValue;
 import controller.spDAO;
 import model.Listvalue;
-
+import model.Dateex;
 
 
 public class Charts extends ActionSupport {
@@ -32,9 +32,11 @@ public class Charts extends ActionSupport {
   private Map<String, Integer>  pieDataMap;
   private String                minTime;
   private String                maxTime;
-   spDAO          myDao;
+   private spDAO  myDao;
   private Map<String,String>    strmap;
-  
+  private Map<Date,Integer> dtmap;
+  private Map<Date,Integer> climap;;
+ 
  @Override
   public String execute() throws Exception
   {
@@ -55,8 +57,15 @@ public class Charts extends ActionSupport {
     strmap.put(((Listvalue)dblist.get(i)).getColumn1(),((Listvalue)dblist.get(i)).getColumn2());
     
     }
- 
-    dateFromMap = new TreeMap<Date, Integer>();
+ List dtlist=myDao.getDbsession().createQuery("from Dateex").list();
+    dtmap=new HashMap<Date,Integer>();
+    for(int i=1;i<dtlist.size();i++)
+    {
+            getDtmap().put(((Dateex)dtlist.get(i)).getColumn2(),((Dateex)dtlist.get(i)).getColumn1());
+    }
+    
+    
+    dateFromMap = new HashMap<Date, Integer>();
     Calendar calendar = Calendar.getInstance();
     calendar.add(Calendar.YEAR, -2);
 
@@ -123,13 +132,33 @@ public class Charts extends ActionSupport {
     public spDAO getMyDao() {
         return myDao;
     }
-
+   /**
+     * @param myDao the myDao to set
+     */
+    public void setMyDao(spDAO myDao) {
+        this.myDao = myDao;
+    }
+    
 
     /**
      * @return the strmap
      */
     public Map<String,String> getStrmap() {
         return strmap;
+    }
+
+    /**
+     * @return the dtmap
+     */
+    public Map<Date,Integer> getDtmap() {
+        return dtmap;
+    }
+
+    /**
+     * @return the climap
+     */
+    public Map<Date,Integer> getClimap() {
+        return climap;
     }
 
     

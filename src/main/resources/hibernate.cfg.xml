@@ -25,23 +25,6 @@
     <mapping resource="model/CampaignOs.hbm.xml"/>
     <mapping resource="model/TempUser.hbm.xml"/>
     <mapping resource="model/Listvalue.hbm.xml"/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
     <mapping resource="model/Dateex.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

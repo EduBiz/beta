@@ -60,21 +60,32 @@
         </tr>
         <tr>
             <td>
-     <sjc:chart id="chartPoints" cssStyle="width: 600px; height: 400px;">
-    	<sjc:chartData
-    		label="Clicks"
-    		list="points"
-    		points="{ show: true }"
-    		lines="{ show: true }"
-    	/>
+     <sjc:chart id="chartPoints" 
+        xaxisMode="time"
+    	xaxisTimeformat="%0d.%0m.%y"
     	
+    	xaxisMax="%{maxTime}"
+    	xaxisColor="#666"
+    
+    	xaxisTickColor="#aaa"
+    	
+    	yaxisTickSize="10"
+    	cssStyle="width: 600px; height: 400px;" >
+    	    	
     	<sjc:chartData
     		label="Impressions"
-    		list="strmap"
-    	/>
+    		list="dtmap"
+    	         points="{ show: true }"
+    		lines="{ show: true }"
+                
+                />
+        
     </sjc:chart>
             </td>
        </tr>
+      
+       
+       
        <tr>
            <td>
        <form method="post" action="rcharts.action">

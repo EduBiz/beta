@@ -66,7 +66,7 @@ public class signup extends ActionSupport {
                            +"                         "
                            + "   Please click th following link to activate your account  "
                            +"                                       "
-                           + "http://beta.mathi.cloudbees.net/activationAccount.action?email="+email+"&confcode="+getConfcode()
+                           + "http://localhost:8080/beta/activationAccount.action?email="+email+"&confcode="+getConfcode()
                            +"                                                    "
                            +" Thanks & Regards     "
                            +" Adzappy Team");
