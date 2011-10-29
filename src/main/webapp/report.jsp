@@ -7,6 +7,7 @@
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <%@ taglib prefix="sjc" uri="/struts-jquery-chart-tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.User"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -64,7 +65,7 @@
         xaxisMode="time"
     	xaxisTimeformat="%0d.%0m.%y"
     	
-    	xaxisMax="%{maxTime}"
+    	
     	xaxisColor="#666"
     
     	xaxisTickColor="#aaa"
@@ -75,6 +76,13 @@
     	<sjc:chartData
     		label="Impressions"
     		list="dtmap"
+    	         points="{ show: true }"
+    		lines="{ show: true }"
+                
+                />
+    	<sjc:chartData
+    		label="Clicks"
+    		list="climap"
     	         points="{ show: true }"
     		lines="{ show: true }"
                 
@@ -90,10 +98,11 @@
            <td>
        <form method="post" action="rcharts.action">
            <select name="search">
-               <option value="act">Last 7 Days</option>
-               <option value="com">Last 30 Days</option>
-               <option value="rom">Today</option>
-               <option value="com">Yesterday</option>
+               <option value="1">Today</option>
+               <option value="2">Yesterday</option>
+               <option value="3">Last 7 Days</option>
+               <option value="4">Last 30 Days</option>
+               <option value="5">All</option>
           </select>
         <input type="submit" value="View"/>
         

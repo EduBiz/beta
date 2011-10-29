@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Oct 27, 2011 8:45:33 PM by Hibernate Tools 3.2.1.GA -->
+<!-- Generated Oct 28, 2011 6:38:34 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="model.Dateex" table="dateex" catalog="adzappy">
         <id name="column1" type="int">
-            <column name="`Column 1`" />
+            <column name="Column1" />
             <generator class="assigned" />
         </id>
         <property name="column2" type="date">
-            <column name="`Column 2`" length="10" />
+            <column name="Column2" length="10" />
         </property>
     </class>
 </hibernate-mapping>
