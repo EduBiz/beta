@@ -56,39 +56,9 @@ public class Charts extends ActionSupport {
     points.add(new Point(95, 100));
     
     Calendar currentDate = Calendar.getInstance();
-  //currentDate.add(Calendar.DAY_OF_YEAR, -1);
-  //SimpleDateFormat formatter= new SimpleDateFormat("yyyy/MM/dd");
-  //String dateNow = formatter.format(currentDate.getTime());
-    //String sql="select * from dateex where column2="+dateNow;
-    
-//  List  dtlist = myDao.getDbsession().createQuery("from Dateex").list();
-// Criteria crit = myDao.getDbsession().createCriteria(Dateex.class);
-//    crit.add(Restrictions.like("column2", currentDate.getTime()));
-//         dtlist=(List)crit.list();
-// dtmap=new HashMap<Date,Integer>();
-//    for(int i=1;i<dtlist.size();i++)
-//    {
-//            getDtmap().put(((Dateex)dtlist.get(i)).getColumn2(),((Dateex)dtlist.get(i)).getColumn1());
-//    }
-//    
-// List camlist=myDao.getDbsession().createQuery("from Campaign").list();   
-//Criteria critcm = myDao.getDbsession().createCriteria(Campaign.class);
-//critcm.add(Restrictions.like("startDate", currentDate.getTime()));
-//         camlist=(List)critcm.list();    
-//     climap=new HashMap<Date,Integer>();
-//    for(int i=1;i<camlist.size();i++)
-//        {
-//        climap.put(((Campaign)camlist.get(i)).getStartDate(),i);
-//        }
+
  
-    try{
-      int rtype=Integer.parseInt(search);
-    
-    switch(rtype)
-    {
-        case 1:
-        
-            List  dtlist = myDao.getDbsession().createQuery("from Dateex").list();
+     List  dtlist = myDao.getDbsession().createQuery("from Dateex").list();
  Criteria crit = myDao.getDbsession().createCriteria(Dateex.class);
     crit.add(Restrictions.like("column2", currentDate.getTime()));     
     dtlist=(List)crit.list();
@@ -106,6 +76,36 @@ critcm.add(Restrictions.like("startDate", currentDate.getTime()));
     for(int i=1;i<camlist.size();i++)
         {
         climap.put(((Campaign)camlist.get(i)).getStartDate(),i);
+        }
+    
+    
+    
+   
+    try{
+      int rtype=Integer.parseInt(search);
+    
+    switch(rtype)
+    {
+        case 1:
+        
+            List  dt = myDao.getDbsession().createQuery("from Dateex").list();
+ Criteria crita = myDao.getDbsession().createCriteria(Dateex.class);
+    crita.add(Restrictions.like("column2", currentDate.getTime()));     
+    dt=(List)crita.list();
+ dtmap=new HashMap<Date,Integer>();
+    for(int i=1;i<dt.size();i++)
+    {
+            getDtmap().put(((Dateex)dt.get(i)).getColumn2(),((Dateex)dt.get(i)).getColumn1());
+    }
+    
+ List camlists=myDao.getDbsession().createQuery("from Campaign").list();   
+Criteria critcms = myDao.getDbsession().createCriteria(Campaign.class);
+critcms.add(Restrictions.like("startDate", currentDate.getTime()));
+         camlists=(List)critcms.list();    
+     climap=new HashMap<Date,Integer>();
+    for(int i=1;i<camlists.size();i++)
+        {
+        climap.put(((Campaign)camlists.get(i)).getStartDate(),i);
         }
             
             break;
@@ -133,13 +133,55 @@ cri.add(Restrictions.like("startDate", currentDate.getTime()));
             
             
             
-     System.out.println(rtype);
+     
            break;
         case 3:
-            System.out.println(rtype);
+              
+             Query q = myDao.getDbsession().createSQLQuery(
+"SELECT  * FROM dateex  WHERE   column2 BETWEEN SYSDATE() - INTERVAL 7 DAY AND SYSDATE()")
+.addEntity(Dateex.class);
+List<Dateex> re = q.list();
+    dtmap=new HashMap<Date,Integer>();
+    for(int i=1;i<re.size();i++)
+    {
+    dtmap.put(((Dateex)re.get(i)).getColumn2(),((Dateex)re.get(i)).getColumn1());
+    }
+    
+   Query qr=myDao.getDbsession().createSQLQuery("SELECT  * FROM campaign  WHERE   start_date BETWEEN SYSDATE() - INTERVAL 7 DAY AND SYSDATE()")
+.addEntity(Campaign.class);
+List<Campaign> rs=qr.list(); 
+climap=new HashMap<Date,Integer>();
+  for(int i=1;i<rs.size();i++)  
+  {
+  climap.put(((Campaign)rs.get(i)).getStartDate(), i);
+  }
+            
+            
+            
+            
             break;
         case 4:
-            System.out.println(rtype);
+            
+             Query query = myDao.getDbsession().createSQLQuery(
+"SELECT  * FROM dateex  WHERE   column2 BETWEEN SYSDATE() - INTERVAL 30 DAY AND SYSDATE()")
+.addEntity(Dateex.class);
+List<Dateex> result = query.list();
+    dtmap=new HashMap<Date,Integer>();
+    for(int i=1;i<result.size();i++)
+    {
+    dtmap.put(((Dateex)result.get(i)).getColumn2(),((Dateex)result.get(i)).getColumn1());
+    }
+    
+   Query qry=myDao.getDbsession().createSQLQuery("SELECT  * FROM campaign  WHERE   start_date BETWEEN SYSDATE() - INTERVAL 30 DAY AND SYSDATE()")
+.addEntity(Campaign.class);
+List<Campaign> r=qry.list(); 
+climap=new HashMap<Date,Integer>();
+  for(int i=1;i<r.size();i++)  
+  {
+  climap.put(((Campaign)r.get(i)).getStartDate(), i);
+  }
+            
+
             break;
         case 5:
                 List tlist=myDao.getDbsession().createQuery("from Dateex").list();
@@ -160,7 +202,7 @@ cri.add(Restrictions.like("startDate", currentDate.getTime()));
             
             
             
-            System.out.println(rtype);
+            
             break;
         default:
             System.out.println(rtype);
