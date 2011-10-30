@@ -6,12 +6,16 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
      <%@taglib uri="/struts-tags" prefix="s"%>
+     <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registration</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
+        <s:head/>
+        <sj:head/>
     </head>
     <body>
         <%
@@ -34,7 +38,7 @@
       </tr>
     </table></td>
   </tr>
-  <tr>
+  <tr><td>
     <s:actionerror/>   
     <s:form action="useRegistration">
         <s:textfield name="fname" label="First Name" />
@@ -42,14 +46,15 @@
         <s:textfield name="email" label="Email id" />
         <s:password name="pwd" label="Password" />
         <s:password name="pwd1" label=" Confirm Password" />
-        <s:textfield name="dob" label="Date of Birth (DD-MM-YY)" />
+        <sj:datepicker name="dob" displayFormat="yy/mm/dd" label="Date of Birth"/>
         <s:textfield name="addline1" label="Address Line1" />
         <s:textfield name="ctry" label="Country" />
         <s:textfield name="storeg" label="State/Region" />
         <s:textfield name="city" label="City" />
         <s:textfield name="postcode" label="Postal/Zip Code" />
-        <s:submit value="Register"/>
+        <s:submit value="Save"/>
     </s:form>
+    </td>
         </tr>
          </table>   
     <s:include value="/footer.jsp" />

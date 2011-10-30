@@ -20,10 +20,9 @@ public class useRegistration extends ActionSupport {
     private String fname;
     private String lname;
     private String email;
-    private String pwd;
-    private String pwd1;
-    private Date dob1;
-    private String dob;
+    
+    private Date dob;
+   
     private String addline1;
     private String ctry;
     private String storeg;
@@ -34,28 +33,30 @@ public class useRegistration extends ActionSupport {
     
   
 
-    
-    @Override
-    public void validate() {
-      
-       
-        UserDetails user=(UserDetails)myDao.getDbsession().get(UserDetails.class,1);
-        if(user != null)
-            addFieldError("email","sorry Email id Already Taken");
-        
-    }
-    
+
      @Override
     public String execute() throws Exception {
     
             try{    
                 
            
-            //UserDetails user = new UserDetails(fname,lname,email,pwd, dob1,addline1,ctry,storeg,city,postcode);
-         //   myDao.getDbsession().save(user);
+          
             Map session =ActionContext.getContext().getSession();
-            session.put("Dvd",email);
+            User user=(User) session.get("User");
+              UserDetails use = new UserDetails(NONE,user,fname);
+              
             
+              use.setLastName(lname);
+              use.setDob(dob);
+              use.setAddressLine1(addline1);
+              use.setCountry(ctry);
+              use.setStateRegion(storeg);
+              use.setCity(city);
+              use.setPostalCode(postcode);
+              
+              
+              
+           myDao.getDbsession().save(use);
         return "success";
             
      
@@ -66,7 +67,7 @@ public class useRegistration extends ActionSupport {
             email = "";
             return "error";
         }
-     
+      
     
      
      }
@@ -116,42 +117,8 @@ public class useRegistration extends ActionSupport {
         this.email = email;
     }
 
-    /**
-     * @return the pwd
-     */
-    public String getPwd() {
-        return pwd;
-    }
-
-    /**
-     * @param pwd the pwd to set
-     */
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-
-    /**
-     * @return the pwd1
-     */
-    public String getPwd1() {
-        return pwd1;
-    }
-
-    /**
-     * @param pwd1 the pwd1 to set
-     */
-    public void setPwd1(String pwd1) {
-        this.pwd1 = pwd1;
-    }
-
-    /**
-     * @return the dob
-     */
    
-
-    /**
-     * @return the addline1
-     */
+    
     public String getAddline1() {
         return addline1;
     }
@@ -233,34 +200,7 @@ public class useRegistration extends ActionSupport {
         this.myDao = myDao;
     }
 
-    /**
-     * @return the dob
-     */
-    public Date getDob1() {
-        return dob1;
-    }
-
-    /**
-     * @param dob the dob to set
-     */
-    public void setDob1(Date dob1) {
-        this.dob1 = dob1;
-    }
-
-    /**
-     * @return the dob
-     */
-    public String getDob() {
-        return dob;
-    }
-
-    /**
-     * @param dob the dob to set
-     */
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
-    
+  
     
     
 }
