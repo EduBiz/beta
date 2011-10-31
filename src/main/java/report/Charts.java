@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import chartexample.ListValue;
+
 import controller.spDAO;
 import model.Campaign;
 import model.Dateex;
@@ -27,7 +27,7 @@ public class Charts extends ActionSupport {
 
   private List<Point>           points;
   private List<Point>           pointsWithNull;
-  private List<ListValue>        objList;
+  
   private Map<Integer, Integer> pointsFromMap;
   private Map<Date, Integer>    dateFromMap;
   private Map<String, Integer>  pieDataMap;
@@ -241,11 +241,6 @@ climap=new HashMap<Date,Integer>();
   public String getMaxTime()
   {
     return maxTime;
-  }
-
-  public List<ListValue> getObjList()
-  {
-    return objList;
   }
 
   public Map<String, Integer> getPieDataMap()

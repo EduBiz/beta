@@ -44,8 +44,6 @@
         <s:textfield name="fname" label="First Name" />
         <s:textfield name="lname" label="Last Name" />
         <s:textfield name="email" label="Email id" />
-        <s:password name="pwd" label="Password" />
-        <s:password name="pwd1" label=" Confirm Password" />
         <sj:datepicker name="dob" displayFormat="yy/mm/dd" label="Date of Birth"/>
         <s:textfield name="addline1" label="Address Line1" />
         <s:textfield name="ctry" label="Country" />

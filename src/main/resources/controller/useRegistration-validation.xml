@@ -15,11 +15,7 @@
     
   
  
-  <field name="dob">
-        <field-validator type="requiredstring">
-            <message>Date of Birth is required.</message>
-        </field-validator>  
-  </field>
+ 
   <field name="addline1">
         <field-validator type="requiredstring">
             <message>Address Line 1 is required.</message>

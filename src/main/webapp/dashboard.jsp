@@ -147,7 +147,15 @@
                                                 <%-- <form action="#" method="post" id="loginform">   --%>
                                                </div> 
                         	                <div class="getstartedwrap">
-							<a href="rcharts.action" class="getstarted">View Reports</a>
+							
+                                                        
+                                                      <s:url action="edituserdetails.action" var="edituserdetails">
+                     <s:param name="email" value="%{email}" />
+                   
+                     </s:url>
+                 <s:a href="%{edituserdetails}" class="getstarted">Account Information</s:a>    
+                                                        
+                                                        
 						</div>
                             <div class="formdiv">
                                 <%--	<label for="email">Email</label>

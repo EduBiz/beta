@@ -13,7 +13,6 @@
   <table-filter match-name="user_account"/>
   <table-filter match-name="publish"/>
   <table-filter match-name="campaign"/>
-  <table-filter match-name="user_details"/>
   <table-filter match-name="reportc_daily"/>
   <table-filter match-name="campaign_device"/>
   <table-filter match-name="payment_details"/>

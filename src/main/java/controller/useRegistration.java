@@ -6,7 +6,6 @@ package controller;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 import model.User;
@@ -43,28 +42,31 @@ public class useRegistration extends ActionSupport {
           
             Map session =ActionContext.getContext().getSession();
             User user=(User) session.get("User");
-              UserDetails use = new UserDetails(NONE,user,fname);
+             email=user.getEmailId();  
+            UserDetails used = new UserDetails(email,user,fname);
               
-            
-              use.setLastName(lname);
-              use.setDob(dob);
-              use.setAddressLine1(addline1);
-              use.setCountry(ctry);
-              use.setStateRegion(storeg);
-              use.setCity(city);
-              use.setPostalCode(postcode);
+              used.setLastName(lname);
+              used.setDob(dob);
+              used.setAddressLine1(addline1);
+              used.setCountry(ctry);
+              used.setStateRegion(storeg);
+              used.setCity(city);
+              used.setPostalCode(postcode);
               
               
               
-           myDao.getDbsession().save(use);
-        return "success";
+           myDao.getDbsession().saveOrUpdate(used);
+       
+           
+           
+           return "success";
             
      
             }
      catch(Exception e){
             System.out.println(e.getMessage());
             addActionError("error"+e.getMessage());
-            email = "";
+         
             return "error";
         }
       

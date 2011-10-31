@@ -48,12 +48,19 @@
         </action> 
         
        <action name="useRegistration" class="controller.useRegistration">
-       <result name="success" >accsuceespage.jsp</result>
+       <result name="success" >dashboard.jsp</result>
             <result name="input" >registration.jsp</result>
             <result name="error" >registration.jsp</result>
        
        </action>
            
+         <action name="edituserdetails" class="controller.edituseregister" >
+            <result name="success" >registration.jsp</result>
+            <result name="input" >dashboard.jsp</result>
+            <result name="error" >/dashboard.jsp</result>
+        </action>
+   
+    
     
     <action name="campaignMain" class="campaign.campaignMain">
             <result name="website" >website.jsp</result>

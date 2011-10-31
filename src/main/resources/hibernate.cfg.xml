@@ -10,7 +10,6 @@
     <mapping resource="model/User.hbm.xml"/>
     <mapping resource="model/ReportcDaily.hbm.xml"/>
     <mapping resource="model/CampaignLocation.hbm.xml"/>
-    <mapping resource="model/UserDetails.hbm.xml"/>
     <mapping resource="model/ReportPublish.hbm.xml"/>
     <mapping resource="model/ReportCampaign.hbm.xml"/>
     <mapping resource="model/Campaign.hbm.xml"/>
