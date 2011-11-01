@@ -8,7 +8,11 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import java.util.Map;
+import model.Campaign;
+import model.Publish;
 import model.User;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -20,8 +24,9 @@ public class login  extends ActionSupport{
     private String password;
     private List<User> userlist;
     private spDAO myDao;
-
-    
+    private List<Publish> sitelist;
+    private List<Campaign> camplist;
+ 
      @Override
     public void validate() {
       
@@ -55,7 +60,27 @@ public class login  extends ActionSupport{
         
         Map session =ActionContext.getContext().getSession();
             session.put("User",user);
-      return "success";
+        User user1=(User)myDao.getDbsession().get(User.class,email);
+
+            
+            camplist=(List<Campaign>) myDao.getDbsession().createQuery("from Campaign").list();
+            Criteria crit = myDao.getDbsession().createCriteria(Campaign.class);
+            crit.add(Restrictions.like("user",user1));
+            crit.setMaxResults(20);
+            camplist=(List<Campaign>) crit.list();
+         
+            sitelist=(List<Publish>) myDao.getDbsession().createQuery("from Publish").list();
+                Criteria crit1 = myDao.getDbsession().createCriteria(Publish.class);
+                crit1.add(Restrictions.like("user",user));
+                crit1.setMaxResults(20);
+           
+                sitelist=(List<Publish>) crit1.list();
+            
+            
+            
+            
+            
+            return "success";
       
       }
       
@@ -118,6 +143,34 @@ public class login  extends ActionSupport{
      */
     public void setMyDao(spDAO myDao) {
         this.myDao = myDao;
+    }
+
+    /**
+     * @return the sitelist
+     */
+    public List<Publish> getSitelist() {
+        return sitelist;
+    }
+
+    /**
+     * @param sitelist the sitelist to set
+     */
+    public void setSitelist(List<Publish> sitelist) {
+        this.sitelist = sitelist;
+    }
+
+    /**
+     * @return the camplist
+     */
+    public List<Campaign> getCamplist() {
+        return camplist;
+    }
+
+    /**
+     * @param camplist the camplist to set
+     */
+    public void setCamplist(List<Campaign> camplist) {
+        this.camplist = camplist;
     }
     
     

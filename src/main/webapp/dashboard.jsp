@@ -69,9 +69,7 @@
         </table>
             </s:form>
             </div>
-        <div class="getstartedwrap">
-	   <a href="campaignCreation.jsp" class="getstarted">Add Campaign</a>
-        </div> 
+       
 		                               
        <div class="getstartedwrap">
 							
@@ -91,7 +89,7 @@
                                                         
        </div>
         <div class="getstartedwrap">
-                <a href="addsite.jsp" class="getstarted">Add Sites</a>
+                <a href="addsites.jsp" class="getstarted">Add Sites</a>
         <%-- <form action="#" method="post" id="loginform">   --%>
         </div>                                 
                                                     
