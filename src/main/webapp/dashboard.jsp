@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
      <%@taglib uri="/struts-tags" prefix="s"%>
-     <%@page import="model.User"%>
+     <%@page import="model.*"%>
+     
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>.::AdZappy::.</title>
@@ -31,365 +32,120 @@
     </table></td>
   </tr>
   <tr>
-    <td height="325" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td height="17"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td colspan="3" height="17"></td>
-            </tr>
-          <tr>
-            <td colspan="3">
-			<table width="240" border="0" align="left" cellpadding="0" cellspacing="0" style="float:left">
-              <tr>
-                <td align="left" valign="top"><img src="images/adv_top_corner.jpg" width="240" height="5" /></td>
-              </tr>
-              <tr>
-                <td width="240" height="240" align="center" valign="top" background="images/adv_bg.jpg" style="background-repeat:repeat-x"><table width="90%" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                      <td height="39" align="left" class="h11">Advertisers</td>
-                    </tr>
-                    <tr>
-                      <td height="30" align="left" class="h2">Reach Your Target Audience</td>
-                    </tr>
-                    <tr>
-                      <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                          <tr>
-                            <td width="73%" height="120" align="left" valign="top"><ul>
-                                <li><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry.                              </li>                            
-                              </ul></td>
-                            <td width="27%" align="right" valign="top"><img src="images/adv_pic.jpg" width="70" /></td>
-                          </tr>
-                           <tr>
-                            <td height="24" colspan="2" align="right" valign="bottom"><a href="#"><img src="images/btn_more.jpg" width="60" height="24" border="0" /></a></td>
-                            </tr>
-                      </table></td>
-                    </tr>
-                    <tr></tr>
-                </table></td>
-              </tr>
-              <tr>
-                <td align="left" valign="top"><img src="images/adv_bottom_corner.jpg" width="240" height="5" /></td>
-              </tr>
-            </table>
-			<table width="240" border="0" align="left" cellpadding="0" cellspacing="0" style="float:left;margin-left:10px">
-              <tr>
-                <td align="left" valign="top"><img src="images/adv_top_corner.jpg" width="240" height="5" /></td>
-              </tr>
-              <tr>
-                <td width="240" height="240" align="center" valign="top" background="images/adv_bg.jpg" style="background-repeat:repeat-x"><table width="90%" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                      <td height="39" align="left" class="h11">App Developers</td>
-                    </tr>
-                    <tr>
-                      <td height="30" align="left" class="h2">Reach Your Target Audience</td>
-                    </tr>
-                    <tr>
-                      <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                          <tr>
-                            <td width="73%" height="120" align="left" valign="top">
-							
-							</td>
-                            <td width="27%" align="right" valign="top"></td>
-                          </tr>
-                           <tr>
-                            <td height="24" colspan="2" align="right" valign="bottom"><a href="#"><img src="images/btn_more.jpg" width="60" height="24" border="0" /></a></td>
-                            </tr>
-                      </table></td>
-                    </tr>
-                    <tr></tr>
-                </table></td>
-              </tr>
-              <tr>
-                <td align="left" valign="top"><img src="images/adv_bottom_corner.jpg" width="240" height="5" /></td>
-              </tr>
-            </table>			
-			<table width="240" border="0" align="left" cellpadding="0" cellspacing="0" style="float:left;margin-left:10px">
-              <tr>
-                <td align="left" valign="top"><img src="images/adv_top_corner.jpg" width="240" height="5" /></td>
-              </tr>
-              <tr>
-                <td width="240" height="240" align="center" valign="top" background="images/adv_bg.jpg" style="background-repeat:repeat-x"><table width="90%" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                      <td height="39" align="left" class="h11">Publishers</td>
-                    </tr>
-                    <tr>
-                      <td height="30" align="left" class="h2">Reach Your Target Audience</td>
-                    </tr>
-                    <tr>
-                      <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                          <tr>
-                            <td width="73%" height="120" align="left" valign="top">
-								
-							</td>
-                            <td width="27%" align="right" valign="top"></td>
-                          </tr>
-                          <tr>
-                            <td height="24" colspan="2" align="right" valign="bottom"><a href="#"><img src="images/btn_more.jpg" width="60" height="24" border="0" /></a></td>
-                            </tr>
-                      </table></td>
-                    </tr>
-                    <tr></tr>
-                </table></td>
-              </tr>
-              <tr>
-                <td align="left" valign="top"><img src="images/adv_bottom_corner.jpg" width="240" height="5" /></td>
-              </tr>
-            </table>
-			<table width="240" border="0" align="left" cellpadding="0" cellspacing="0" style="float:left;margin-left:6px;margin-top:-5px">
-              <tr>
-                <td align="left" valign="top"><img src="images/top_corner2.jpg" width="240" height="9" /></td>
-              </tr>
-              <tr>
-                <td width="240" height="242" align="center" valign="top" class="box_bg2"><br><br> <br><br>
-					<div class="boxwrap">
-		                               <div class="getstartedwrap">
-							<a href="campaignCreation.jsp" class="getstarted">Add Campaign</a>
-                                                <%-- <form action="#" method="post" id="loginform">   --%>
-                                               </div> 
-                        	                <div class="getstartedwrap">
-							
-                                                        
-                                                      <s:url action="edituserdetails.action" var="edituserdetails">
-                     <s:param name="email" value="%{email}" />
-                   
+    <td height="325" valign="top">	
+        
+            
+            <div class="getstartedwrap">
+               <a href="campaignCreation.jsp" class="getstarted">Add Campaign</a>
+		
+            <s:form action="showlist">
+                <table cellspacing="15" cellpadding="8" >
+                    <th>Campaign Name</th>
+                    <th>Created</th>
+                    <th>Budget</th>
+                     <th>Delete</th>
+        <s:iterator value="camplist" >
+            <tr>
+                <s:url action="editcampaign.action" var="editcampaign">
+                     <s:param name="campaid" value="%{campaignId}" />
+                     <s:param name="campaignname" value="%{campaignName}" />
+                     <s:param name="sdate" value="%{startDate}" />
+                     <s:param name="edate" value="%{endDate}" />
+                     <s:param name="dailybdgt" value="%{dialyBudget}" />
+                     <s:param name="deliverytype" value="%{deliveryMethod}" />
+                     <s:param name="note" value="%{note}" />
+                     <s:param name="promotype" value="%{promoType}" />
                      </s:url>
-                 <s:a href="%{edituserdetails}" class="getstarted">Account Information</s:a>    
-                                                        
-                                                        
-						</div>
-                            <div class="formdiv">
-                                <%--	<label for="email">Email</label>
-								<input type="text" name="email"/>    --%>
-                                
-							</div>
-							<div class="formdiv">
-                                                            <%--	<label for="password">Password</label>
-                                                                        <input type="password" name="password"/>     --%>
-                                                                 
-							</div>
-                                                       
-                                                        <div class="formfooter">
-                                                           
-                                                            <%--<input type="submit" value="Submit"/> --%>
-                                                            
-                                                            <div>
-								</div>
-							</div>
-                            <%-- </form> --%>
-                            
-							<div style="clear: both;"></div>
-                    </div>
-		</td>
-              </tr>
-              <tr>
-                <td align="left" valign="top"><img src="images/bottm_corner2.jpg" width="240" height="9" /></td>
-              </tr>
-            </table>			
-			<!--end of td-->			
-			</td>
-          </tr>
-          <tr>
-            <td height="76" colspan="3" align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td height="17"></td>
-              </tr>
-              <tr>
-                <td><table width="990" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                      <td width="317" height="321" valign="top"><table width="317" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                          <td align="center" valign="top"><table width="317" border="0" align="center" cellpadding="0" cellspacing="0">
-                            <tr>
-                              <td width="100%" align="center" valign="top"><img src="images/top_corner.jpg" width="317" height="7" /></td>
-                            </tr>
-                            <tr>
-                              <td width="100%" align="left" valign="top" class="box_bg" ><table width="300" border="0" align="center" cellpadding="0" cellspacing="0"  >
-                                <tr>
-                                  <td width="100%" height="28" align="left" valign="middle"><img src="images/features.jpg" width="76" height="15" hspace="5" /></td>
-                                </tr>
-                                <tr>
-                                  <td width="317" align="center" valign="top"><table width="300" border="0" cellspacing="0" cellpadding="0">
-                                      <tr>
-                                        <td width="32%" align="left"><img src="images/pic1.jpg" width="88" height="89" hspace="5" /></td>
-                                        <td width="68%" valign="top"><table width="95%" border="0" cellspacing="0" cellpadding="0">
-                                            <tr>
-                                              <td align="left" valign="top">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</td>
-                                            </tr>
-                                            <tr>
-                                              <td class="read_more"><a href="#" class="read_more">read more...</a></td>
-                                            </tr>
-                                        </table></td>
-                                      </tr>
-                                      <tr>
-                                        <td height="6" colspan="2" class="line"></td>
-                                      </tr>
-                                  </table></td>
-                                </tr>
-                                <tr>
-                                  <td height="5"></td>
-                                </tr>
-                                <tr>
-                                  <td align="center" valign="top"><table width="305" border="0" cellspacing="0" cellpadding="0">
-                                      <tr>
-                                        <td width="32%" align="left"><img src="images/pic2.jpg" width="88" height="89" hspace="5" /></td>
-                                        <td width="68%" valign="top"><table width="95%" border="0" cellspacing="0" cellpadding="0">
-                                            <tr>
-                                              <td align="left" valign="top">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</td>
-                                            </tr>
-                                            <tr>
-                                              <td class="read_more"><a href="#" class="read_more">read more...</a></td>
-                                            </tr>
-                                        </table></td>
-                                      </tr>
-                                      <tr>
-                                        <td height="6" colspan="2" class="line"></td>
-                                      </tr>
-                                  </table></td>
-                                </tr>
-                                <tr>
-                                  <td height="5"></td>
-                                </tr>
-                                <tr>
-                                  <td align="center" valign="top"><table width="305" border="0" cellspacing="0" cellpadding="0">
-                                      <tr>
-                                        <td width="32%" align="left"><img src="images/pic3.jpg" width="88" height="89" hspace="5" /></td>
-                                        <td width="68%" valign="top"><table width="95%" border="0" cellspacing="0" cellpadding="0">
-                                            <tr>
-                                              <td align="left" valign="top">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</td>
-                                            </tr>
-                                            <tr>
-                                              <td class="read_more"><a href="#" class="read_more">read more...</a></td>
-                                            </tr>
-                                        </table></td>
-                                      </tr>
-                                      <tr>
-                                        <td height="7" colspan="2"></td>
-                                      </tr>
-                                  </table></td>
-                                </tr>
-                              </table></td>
-                            </tr>
-                            <tr>
-                              <td width="100%" align="center" valign="top"><img src="images/bottm_corner.jpg" width="317" height="7" /></td>
-                            </tr>
-                          </table></td>
-                        </tr>
-                      </table></td>
-                      <td width="17"></td>
-                      <td width="317" valign="top"><table width="310" border="0" align="center" cellpadding="0" cellspacing="0">
-                        <tr>
-                          <td width="317" align="center" valign="top"><img src="images/top_corner.jpg" width="317" height="7" /></td>
-                        </tr>
-                        <tr>
-                          <td width="317" align="left" valign="middle" class="box_bg" ><table width="300"  align="center" cellpadding="0" cellspacing="0">
-                            <tr>
-                              <td height="10"></td>
-                            </tr>
-                            <tr>
-                              <td height="170" align="center" valign="middle" ><img src="images/mobile.jpg" width="290" /></td>
-                            </tr>
-                            <tr>
-                              <td height="49" align="left" valign="middle"><img src="images/welcome_99.jpg" width="215" height="22" /></td>
-                            </tr>
-                            <tr>
-                              <td height="66" align="left" valign="top">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</td>
-                            </tr>
-                            <tr>
-                              <td height="28" align="right" valign="bottom"><a href="#"><img src="images/read_more.jpg" width="65" height="25" border="0" /></a></td>
-                            </tr>
-                          </table></td>
-                        </tr>
-                        <tr>
-                          <td width="317" align="center" valign="top"><img src="images/bottm_corner.jpg" width="317" height="7" /></td>
-                        </tr>
-                      </table></td>
-                      <td width="15"></td>
-                      <td width="324" align="left" valign="top"><table width="317" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                          <td align="center" valign="top"><img src="images/top_corner.jpg" alt="" width="317" height="7" /></td>
-                        </tr>
-                        <tr>
-                          <td align="center" class="box_bg"><table width="290" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                              <td width="311" align="center"><table width="290" height="323" border="0" align="center" cellpadding="0" cellspacing="0" >
-                                  <tr>
-                                    <td height="28" align="left" valign="middle"><img src="images/latest_news.jpg" width="108" height="15" hspace="0" /></td>
-                                  </tr>
-                                  <tr>
-                                    <td height="71" align="left" valign="top">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type..</td>
-                                  </tr>
-                                  <tr>
-                                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                          <td align="left" valign="bottom" class="date">03.2.2010</td>
-                                          <td align="right" valign="bottom"><a href="#" class="read_more">read more...</a></td>
-                                        </tr>
-                                    </table></td>
-                                  </tr>
-                                  <tr>
-                                    <td height="8" class="line"></td>
-                                  </tr>
-                                  <tr>
-                                    <td height="5"></td>
-                                  </tr>
-                                  <tr>
-                                    <td height="57" align="left" valign="top">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</td>
-                                  </tr>
-                                  <tr>
-                                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                          <td align="left" valign="bottom" class="date">03.2.2010</td>
-                                          <td align="right" valign="bottom"><a href="#" class="read_more">read more...</a></td>
-                                        </tr>
-                                    </table></td>
-                                  </tr>
-                                  <tr>
-                                    <td height="8" class="line"></td>
-                                  </tr>
-                                  <tr>
-                                    <td height="5"></td>
-                                  </tr>
-                                  <tr> </tr>
-                                  <tr>
-                                    <td height="51" align="left" valign="top">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</td>
-                                  </tr>
-                                  <tr>
-                                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                          <td align="left" valign="bottom" class="date">03.2.2010</td>
-                                          <td align="right" valign="bottom"><a href="#" class="read_more">read more...</a></td>
-                                        </tr>
-                                    </table></td>
-                                  </tr>
-                                  <tr> </tr>
-                                  <tr>
-                                    <td height="17"></td>
-                                  </tr>
-                                  <tr>
-                                    <td height="28" align="right" valign="bottom"><a href="#"><img src="images/view_more.jpg" width="65" height="25" border="0" /></a></td>
-                                  </tr>
-                              </table></td>
-                            </tr>
-                          </table></td>
-                        </tr>
-                        <tr>
-                          <td><img src="images/bottm_corner.jpg" width="317" height="7" /></td>
-                        </tr>
-                      </table></td>
-                    </tr>
-                </table></td>
-              </tr>
-              <tr>
-                <td height="10"></td>
-              </tr>
-<tr></tr>
-            </table></td>
+                <td> <s:a href="%{editcampaign}"><s:property value="campaignName" /></s:a> </td>
+                <td><s:property value="startDate" /> </td>
+                <td><s:property value="dialyBudget" /> </td>
+                
+                <s:url action="deletecampaign.action" var="editcampaign1">
+                     <s:param name="campaid" value="%{campaignId}" />
+                     </s:url>
+                <td> <s:a href="%{editcampaign1}">Delete</s:a> </td>
             </tr>
-        </table></td>
-        </tr>
+        </s:iterator>
+        </table>
+            </s:form>
+            </div>
+        <div class="getstartedwrap">
+	   <a href="campaignCreation.jsp" class="getstarted">Add Campaign</a>
+        </div> 
+		                               
+       <div class="getstartedwrap">
+							
+           <s:url action="edituserdetails.action" var="edituserdetails"   >
+                     <s:param name="email" value="%{email}" />
+                     <s:param name="fname" value="%{firstName}" />
+                     <s:param name="lname" value="%{lastName}" />
+                     <s:param name="dob" value="%{dob}" />
+                     <s:param name="addline1" value="%{addressLine1}" />
+                     <s:param name="ctry" value="%{country}" />
+                     <s:param name="storeg" value="%{stateRegion}" />
+                     <s:param name="city" value="%{city}" />
+                     <s:param name="postcode" value="%{postalCode}" />
+                     
+                     </s:url>
+                 <s:a href="%{edituserdetails}"  cssClass="getstarted">Account Information</s:a>    
+                                                        
+       </div>
+        <div class="getstartedwrap">
+                <a href="addsite.jsp" class="getstarted">Add Sites</a>
+        <%-- <form action="#" method="post" id="loginform">   --%>
+        </div>                                 
+                                                    
+      <div class="getstartedwrap">
+                     
+           <s:form>
+                <table cellspacing="15" cellpadding="8" >
+               <tr> <th>Site Name</th>
+                    <th>Category</th>
+                    <th>Site Url</th>
+                    <th>Delete</th></tr>
+        <s:iterator value="sitelist" >
+            <tr> 
+                                                                                             
+                     <s:url action="editsite.action" var="editsite">
+                     <s:param name="publishid" value="%{publishId}" />
+                     <s:param name="sitename" value="%{siteName}" />
+                     <s:param name="siteurl" value="%{siteUrl}" />
+                     <s:param name="desc" value="%{desc}" />
+                     <s:param name="txtcolor" value="%{textColor}" />
+                     <s:param name="bgcolor" value="%{bgColor}" />
+                     <s:param name="catgry" value="%{category}" />
+                 
+                     </s:url>
+                      <td><s:a href="%{editsite}"><s:property value="siteName" /></s:a> </td>   
+  
+                      <td><s:property value="category" /> </td>
+                      <td><s:property value="siteUrl" /> </td>
+                      
+                      
+                      <s:url action="deletesite.action" var="deletesite">
+                     <s:param name="campaid" value="%{campaignId}" />
+                     </s:url>
+                <td> <s:a href="%{deletesite}">Delete</s:a> </td>
+                      
+                      
+                     </tr>
+        </s:iterator>
+        </table>
+            </s:form>     
+                      
+                      
+                      
+                      
+     </div>
+	
+      
+      
+      
+      
+       
+ </td>
+ </tr>
 
-    </table></td>
-  </tr>
   </table>
     <s:include value="/footer.jsp" />
 </body>

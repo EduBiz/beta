@@ -9,10 +9,13 @@ import com.opensymphony.xwork2.ActionSupport;
 import controller.spDAO;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import model.Campaign;
 import model.User;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.criterion.Restrictions;
 
 
 /**
@@ -20,7 +23,8 @@ import org.hibernate.HibernateException;
  * @author Administrator
  */
 public class campaignMain extends ActionSupport{
-    
+       
+       private String campaid;
        private String campaignname;
        private Date startdate;
        private Date enddate;
@@ -28,65 +32,75 @@ public class campaignMain extends ActionSupport{
        private String deliverytype;
        private String promotype;
        private String note;
-
+       private List<Campaign> camplist;
+       private Long lc;
    private spDAO myDao;
 	
        @Override 
         public String execute() throws Exception {
    
-        
-        try{
-             
+             try{
             
                 Map session =ActionContext.getContext().getSession();
             User user=(User) session.get("User");
-       
-            Campaign camp = new Campaign(user,campaignname);
- 
-            getMyDao().getDbsession().save(camp);
-           
-            camp.setStartDate(getStartdate());
-            camp.setEndDate(getEnddate());
-            camp.setDialyBudget(dailybdgt);
-            camp.setDeliveryMethod(deliverytype);
-            camp.setPromoType(promotype);
-            camp.setNote(note);   
-              camp= (Campaign) session.put("campa",camp);
-            
-            if(promotype.equals("Website"))
+             
+            Campaign camp;
+          //  System.out.println("campaign id is" +campaid);
+            if(campaid.isEmpty())
                 {
-                    return "website";  }
-            if(promotype.equals("BlackBerry Application Ad"))
-                {
-                     return"BlackBerry";  }
-            if(promotype.equals("Andriod Application Ad"))
-                {
-                    return"Andriod";    }
-            if(promotype.equals("Iphone Application Ad"))
-                {
-                    return"Iphone";    }
-            if(promotype.equals("iTunes Media Ad"))
-                {
-                     return"iTunes"; }
-            if(promotype.equals("Streaming Video Ad"))
-                {
-                     return"Streaming";   }
-            if(promotype.equals("Books Ad"))
-                {
-                    return"Books";  }
-            if(promotype.equals("Click to Call Ad"))
-                {
-                     return"clickcall";  }
-             if(promotype.equals("Click to Map Ad"))
-                {
-                  return"clickmap";
+
+                  camp=new Campaign(user,campaignname);
+                  camp=(Campaign) session.put("campa", camp);
+
+                        camp.setStartDate(startdate);
+                        camp.setEndDate(enddate);
+                        camp.setDialyBudget(dailybdgt);
+                        camp.setDeliveryMethod(deliverytype);
+                        camp.setPromoType(promotype);
+                        camp.setNote(note);  
+                         getMyDao().getDbsession().saveOrUpdate(camp);
+                  if(promotype.equals("Website"))  return "website";  
+                  if(promotype.equals("BlackBerry Application Ad"))  return"BlackBerry";  
+                  if(promotype.equals("Andriod Application Ad"))     return"Andriod";    
+                  if(promotype.equals("Iphone Application Ad"))      return"Iphone";    
+                  if(promotype.equals("iTunes Media Ad"))            return"iTunes"; 
+                  if(promotype.equals("Streaming Video Ad"))      return"Streaming";   
+                  if(promotype.equals("Books Ad"))               return"Books";  
+                  if(promotype.equals("Click to Call Ad"))      return"clickcall";  
+                  if(promotype.equals("Click to Map Ad"))       return"clickmap"; 
                 }
-        
-        }
-       
-        catch(HibernateException e){
-        e.printStackTrace();
-        }
+            else
+                {
+                  //  camp=(Campaign) session.get("campa");
+                  //   Long camp1id=camp.getCampaignId();
+                       lc=(Long) Long.parseLong(campaid);
+                       System.out.println("campaignlong id is" +getLc());
+                       camp=new Campaign(user,campaignname);
+
+                        camp.setCampaignId(Long.parseLong(campaid));
+                        camp.setStartDate(startdate);
+                        camp.setEndDate(enddate);
+                        camp.setDialyBudget(dailybdgt);
+                        camp.setDeliveryMethod(deliverytype);
+                        camp.setPromoType(promotype);
+                        camp.setNote(note);  
+                        getMyDao().getDbsession().update(camp);
+
+                setCamplist((List<Campaign>) myDao.getDbsession().createQuery("from Campaign").list());
+                Criteria crit = myDao.getDbsession().createCriteria(Campaign.class);
+                crit.add(Restrictions.like("user",user));
+                crit.setMaxResults(20);
+                    setCamplist((List<Campaign>) crit.list());
+
+                    return"editsuccess";
+                }     
+         }
+             
+          catch(HibernateException e)
+             {
+             e.printStackTrace();
+             }
+      
         return"success";
         }
 
@@ -200,6 +214,48 @@ public class campaignMain extends ActionSupport{
      */
     public void setDeliverytype(String deliverytype) {
         this.deliverytype = deliverytype;
+    }
+
+    /**
+     * @return the campaignid
+     */
+    public String getCampaid() {
+        return campaid;
+    }
+
+    /**
+     * @param campaignid the campaignid to set
+     */
+    public void setCampaid(String campaid) {
+        this.campaid = campaid;
+    }
+
+    /**
+     * @return the camplist
+     */
+    public List<Campaign> getCamplist() {
+        return camplist;
+    }
+
+    /**
+     * @param camplist the camplist to set
+     */
+    public void setCamplist(List<Campaign> camplist) {
+        this.camplist = camplist;
+    }
+
+    /**
+     * @return the lc
+     */
+    public Long getLc() {
+        return lc;
+    }
+
+    /**
+     * @param lc the lc to set
+     */
+    public void setLc(Long lc) {
+        this.lc = lc;
     }
 
   

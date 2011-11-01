@@ -41,28 +41,52 @@
            <result name="error" >activationfailed.jsp</result>
         </action>
         
-        <action name="campaignMain" class="controller.campaignMain">
-            <result name="success" >campaign_success.jsp</result>
-            <result name="input" >campaignCreation.jsp</result>
-            <result name="error" >campaignCreation.jsp</result>
-        </action> 
+         
         
        <action name="useRegistration" class="controller.useRegistration">
-       <result name="success" >dashboard.jsp</result>
+            <result name="success" >dashboard.jsp</result>
             <result name="input" >registration.jsp</result>
             <result name="error" >registration.jsp</result>
-       
        </action>
            
-         <action name="edituserdetails" class="controller.edituseregister" >
+        <action name="edituserdetails" class="controller.edituseregister" >
             <result name="success" >registration.jsp</result>
             <result name="input" >dashboard.jsp</result>
             <result name="error" >/dashboard.jsp</result>
         </action>
    
-    
-    
+       <action name="addsite" class="controller.addsite" >
+         <result name="success" >sitemanage.jsp</result>
+         <result name="input" >addsite.jsp</result>
+         <result name="error" >addsite.jsp</result> 
+       </action>
+       
+       <action name="editsite" class="controller.editsite" >
+            <result name="success" >addsite.jsp</result>
+            <result name="input" >dashboard.jsp</result>
+            <result name="error" >/dashboard.jsp</result>
+       </action>
+        
+        <action name="deletesite" method="deletesite" class="controller.editsite" >
+            <result name="success" >dashboard.jsp</result>
+            <result name="input" >dashboard.jsp</result>
+            <result name="error" >/dashboard.jsp</result>
+        </action>
+        
+        <action name="editcampaign" class="campaign.editcampaign" >
+            <result name="success" >campaignCreation.jsp</result>
+            <result name="input" >dashboard.jsp</result>
+            <result name="error" >/dashboard.jsp</result>
+        </action>
+        
+         <action name="deletecampaign" method="deletecamp" class="campaign.editcampaign" >
+            <result name="success" >dashboard.jsp</result>
+            <result name="input" >dashboard.jsp</result>
+            <result name="error" >/dashboard.jsp</result>
+        </action>
+
     <action name="campaignMain" class="campaign.campaignMain">
+            <result name="editsuccess" >dashboard.jsp</result>
             <result name="website" >website.jsp</result>
             <result name="BlackBerry" >blackberry.jsp</result>
             <result name="Andriod" >android.jsp</result>
@@ -84,17 +108,17 @@
             <result name="success" >/demograhics.jsp</result>
             <result name="input" >iphone.jsp</result>
             <result name="error" >/iphone.jsp</result>
-         </action>
+        </action>
           <action name="androidAction" class="campaign.android" >
             <result name="success" >/demograhics.jsp</result>
             <result name="input" >android.jsp</result>
             <result name="error" >/android.jsp</result>
-          </action>
+        </action>
           <action name="blackberryAction" class="campaign.blackberry" >
             <result name="success" >/demograhics.jsp</result>
             <result name="input" >blackberry.jsp</result>
             <result name="error" >/blackberry.jsp</result>
-         </action>
+        </action>
          <action name="itunesAction" class="campaign.itunes" >
             <result name="success" >/demograhics.jsp</result>
             <result name="input" >itunes.jsp</result>
@@ -126,10 +150,11 @@
             <result name="error" >/demograhics.jsp</result>
         </action>
         <action name="createAction" class="campaign.createad" >
-            <result name="success" >/campaign_success.jsp</result>
+            <result name="success" >/dashboard.jsp</result>
             <result name="input" >createad.jsp</result>
             <result name="error" >/createad.jsp</result>
         </action>
+
        </package>
        <package name="demo" extends="struts-default">
        <action name="charts" class="chartexample.Charts" >

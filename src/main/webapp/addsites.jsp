@@ -12,7 +12,7 @@
      <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registration</title>
+        <title>Add Sites</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
         <s:head/>
         <sj:head/>
@@ -40,19 +40,19 @@
   </tr>
   <tr><td>
     <s:actionerror/>   
-    <s:form action="useRegistration">
-        <s:textfield name="email" label="Email id" readonly="true"  value="%{email}"  />
-        <s:textfield name="fname" label="First Name" value="%{fname}" />
-        <s:textfield name="lname" label="Last Name" />
-        <sj:datepicker name="dob" displayFormat="mm/dd/yy" label="Date of Birth" />
-        <s:textfield name="addline1" label="Address Line1"  />
-        <s:textfield name="ctry" label="Country"  />
-        <s:textfield name="storeg" label="State/Region"  />
-        <s:textfield name="city" label="City"  />
-        <s:textfield name="postcode" label="Postal/Zip Code"  />
-        <s:submit value="Save"/>
-    </s:form>
-    </td>
+    <s:form action="addsite">
+        <s:hidden name="publishid" value="publishid" />
+        <s:textfield name="sitename" label="Site Name" />
+        <s:textfield name="siteurl" label="Site Url " />
+        <s:textarea label="Description" name="desc" rows="3" cols="16.7"/>
+        <s:textfield name="txtcolor" label="Background Color" />
+        <s:textfield name="bgcolor" label="Background Text"  />
+        <s:select label="Category" name="catgry" headerKey="Please select" headerValue="Please select" list="{'Business','Education','Entertainment','Comics','Finance','Games','Healthcare and Fitness','Lifestyle','Music','Navigation ','News','Photography','Productivity','Reference','Search Tools ','Social Networking','Sports','Travel','Utilities','Weather'}" />     
+        <s:submit value="Add Sites"/>
+         
+    </s:form>    
+      
+      </td>
         </tr>
          </table>   
     <s:include value="/footer.jsp" />
@@ -60,3 +60,4 @@
         
     </body>
 </html>
+ 

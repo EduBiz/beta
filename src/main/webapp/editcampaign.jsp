@@ -3,7 +3,6 @@
     Created on : Oct 12, 2011, 6:58:24 PM
     Author     : Administrator
 --%>
-<%@page import="java.text.DateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 
 pageEncoding="UTF-8"%>
@@ -48,19 +47,12 @@ pageEncoding="UTF-8"%>
     </table></td>
   </tr>
   <tr>
-      <%-- <%
-      String str_date="11-June-07";
-           DateFormat formatter ; 
-          Date date ; 
-            formatter = new SimpleDateFormat("dd-MMM-yy");
-         startdate = (Date)formatter.parse(str_date);
-%>--%>
-      <s:actionerror/>  
-    <s:form action="campaignMain">
+    <s:actionerror/>  
+    <s:form action="editcamp">
         <s:hidden name="campaignid" value="campaignid" />
         <s:textfield name="campaignname" label="Campaign Name" /><%--mm/dd/yy   --%>
-        <sj:datepicker name="startdate" value="%{sdate}" displayFormat="mm/dd/yy" label="Start Date" />
-        <sj:datepicker name="enddate" value="%{edate}" displayFormat="mm/dd/yy" label="End Date" />
+        <sj:datepicker name="startdate" value="%{sdate}" displayFormat="yy-mm-dd" label="Start Date" />
+        <sj:datepicker name="enddate" value="%{edate}" displayFormat="yy-mm-dd" label="End Date" />
         <s:textfield name="dailybdgt" label="Daily Budget $" />
         <s:radio label="Delivery Type" name="deliverytype" list="{'Standard','Accelerated'}" />
         <s:select name="promotype"  label="Promotype" headerKey="Please select" headerValue="Please select"
@@ -80,3 +72,4 @@ pageEncoding="UTF-8"%>
         
     </body>
 </html>
+

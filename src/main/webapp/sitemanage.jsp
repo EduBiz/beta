@@ -12,7 +12,7 @@
      <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registration</title>
+        <title>Manage Sites</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
         <s:head/>
         <sj:head/>
@@ -38,21 +38,11 @@
       </tr>
     </table></td>
   </tr>
-  <tr><td>
-    <s:actionerror/>   
-    <s:form action="useRegistration">
-        <s:textfield name="email" label="Email id" readonly="true"  value="%{email}"  />
-        <s:textfield name="fname" label="First Name" value="%{fname}" />
-        <s:textfield name="lname" label="Last Name" />
-        <sj:datepicker name="dob" displayFormat="mm/dd/yy" label="Date of Birth" />
-        <s:textfield name="addline1" label="Address Line1"  />
-        <s:textfield name="ctry" label="Country"  />
-        <s:textfield name="storeg" label="State/Region"  />
-        <s:textfield name="city" label="City"  />
-        <s:textfield name="postcode" label="Postal/Zip Code"  />
-        <s:submit value="Save"/>
-    </s:form>
-    </td>
+  <tr>
+      <td>
+    
+          <h1>Hi  <s:property value="sitename"/> site successfully created</h1>
+      </td>
         </tr>
          </table>   
     <s:include value="/footer.jsp" />
@@ -60,3 +50,4 @@
         
     </body>
 </html>
+ 

@@ -4,19 +4,17 @@
  */
 package controller;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Date;
-import java.util.Map;
-import model.User;
-import model.UserDetails;
-
 /**
  *
  * @author Administrator
  */
-public class useRegistration extends ActionSupport {
-    private String fname;
+public class edituseregister extends ActionSupport {
+    
+    
+    
+   private String fname;
     private String lname;
     private String email;
     
@@ -35,48 +33,13 @@ public class useRegistration extends ActionSupport {
 
      @Override
     public String execute() throws Exception {
-    
-            try{    
-                
-           
-          
-            Map session =ActionContext.getContext().getSession();
-            User user=(User) session.get("User");
-             email=user.getEmailId();  
-            UserDetails used = new UserDetails(email,user,fname);
-              
-              used.setLastName(lname);
-              used.setDob(getDob());
-              used.setAddressLine1(addline1);
-              used.setCountry(ctry);
-              used.setStateRegion(storeg);
-              used.setCity(city);
-              used.setPostalCode(postcode);
-              
-              
-              
-           myDao.getDbsession().saveOrUpdate(used);
-       
-           
-           
-           return "success";
-            
-     
-            }
-     catch(Exception e){
-            System.out.println(e.getMessage());
-            addActionError("error"+e.getMessage());
          
-            return "error";
-        }
-      
-    
-     
+         
+         
+         
+     return "success";
      }
-    
-    
-    
-    
+
     /**
      * @return the fname
      */
@@ -119,8 +82,23 @@ public class useRegistration extends ActionSupport {
         this.email = email;
     }
 
-   
-    
+    /**
+     * @return the dob
+     */
+    public Date getDob() {
+        return dob;
+    }
+
+    /**
+     * @param dob the dob to set
+     */
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    /**
+     * @return the addline1
+     */
     public String getAddline1() {
         return addline1;
     }
@@ -201,22 +179,8 @@ public class useRegistration extends ActionSupport {
     public void setMyDao(spDAO myDao) {
         this.myDao = myDao;
     }
-
-    /**
-     * @return the dob
-     */
-    public Date getDob() {
-        return dob;
-    }
-
-    /**
-     * @param dob the dob to set
-     */
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
-
-  
+    
+    
     
     
 }
