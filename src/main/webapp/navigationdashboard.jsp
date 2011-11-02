@@ -10,7 +10,7 @@
 <table border="0" align="right" cellpadding="0" cellspacing="0">
     
           <tr>
-            <td width="53" height="24"><a href="dashboard.jsp"><img src="images/btn_home_11.jpg" width="53" height="24" border="0" /></a></td>
+            <td width="53" height="24"><a href="loadlist.action"><img src="images/btn_home_11.jpg" width="53" height="24" border="0" /></a></td>
             <td width="4"></td>
             <td width="89"><a href="usermarketplace.jsp"><img src="images/btn_marketplace.jpg" width="89" height="24" border="0" /></a></td>
            <td width="4"></td>

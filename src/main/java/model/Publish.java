@@ -1,5 +1,5 @@
 package model;
-// Generated Oct 30, 2011 6:58:50 PM by Hibernate Tools 3.2.1.GA
+// Generated Nov 1, 2011 7:38:31 PM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.HashSet;
@@ -16,7 +16,7 @@ public class Publish  implements java.io.Serializable {
      private String siteName;
      private String siteUrl;
      private String category;
-     private String desc;
+     private String description;
      private String bgColor;
      private String textColor;
      private Set<ReportPublish> reportPublishs = new HashSet<ReportPublish>(0);
@@ -30,12 +30,12 @@ public class Publish  implements java.io.Serializable {
         this.siteUrl = siteUrl;
         this.category = category;
     }
-    public Publish(User user, String siteName, String siteUrl, String category, String desc, String bgColor, String textColor, Set<ReportPublish> reportPublishs) {
+    public Publish(User user, String siteName, String siteUrl, String category, String description, String bgColor, String textColor, Set<ReportPublish> reportPublishs) {
        this.user = user;
        this.siteName = siteName;
        this.siteUrl = siteUrl;
        this.category = category;
-       this.desc = desc;
+       this.description = description;
        this.bgColor = bgColor;
        this.textColor = textColor;
        this.reportPublishs = reportPublishs;
@@ -76,12 +76,12 @@ public class Publish  implements java.io.Serializable {
     public void setCategory(String category) {
         this.category = category;
     }
-    public String getDesc() {
-        return this.desc;
+    public String getDescription() {
+        return this.description;
     }
     
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
     public String getBgColor() {
         return this.bgColor;

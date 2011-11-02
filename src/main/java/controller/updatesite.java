@@ -4,6 +4,7 @@
  */
 package controller;
 
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
@@ -11,15 +12,16 @@ import java.util.Map;
 import model.Publish;
 import model.User;
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
 
 /**
  *
  * @author Administrator
  */
-public class addsite extends ActionSupport{
- 
+public class updatesite extends ActionSupport{
+    
+    
+   
     private String sitename;
     private String siteurl;
     private String desc;
@@ -27,45 +29,55 @@ public class addsite extends ActionSupport{
     private String bgcolor;
     private String catgry;
     private spDAO myDao;
-   
+    private String publishid;
+    private Long pid;
     private List<Publish> sitelist;
-    @Override
+
+     @Override
     public String execute() throws Exception
        {
-              try{ 
+         try{ 
        Map session =ActionContext.getContext().getSession();
             User user=(User) session.get("User");
-        
-             
-             
-            Publish  sitepublish=new Publish(user,siteurl,catgry);
-             
+            
+         pid=(Long) Long.parseLong(publishid);
+     Publish sitepublish;
+       
+   
+         
+             sitepublish=new Publish(user,siteurl,catgry);
+             sitepublish.setPublishId(pid);
              sitepublish.setBgColor(bgcolor);
              sitepublish.setTextColor(txtcolor);
              sitepublish.setDescription(desc);
              sitepublish.setSiteName(sitename);
-             myDao.getDbsession().saveOrUpdate(sitepublish);
-           
-               
+             myDao.getDbsession().update(sitepublish);
+                 
+                 
                  sitelist=(List<Publish>) myDao.getDbsession().createQuery("from Publish").list();
                 Criteria crit1 = myDao.getDbsession().createCriteria(Publish.class);
                 crit1.add(Restrictions.like("user",user));
                 crit1.setMaxResults(20);
            
                 sitelist=(List<Publish>) crit1.list();
-       
+            
+                return "success";
+    
+    
            }
-          catch(HibernateException e)
+       
+        catch(Exception e)
           {
-           e.printStackTrace();
+              e.printStackTrace();
+            System.out.println(e.getMessage());
             addActionError("error"+e.getMessage());
             return "error" ; 
           }
        
-       return "success";
+       
+       
        }
     
-   
     public String getSitename() {
         return sitename;
     }
@@ -161,6 +173,37 @@ public class addsite extends ActionSupport{
         this.myDao = myDao;
     }
 
+    /**
+     * @return the publishid
+     */
+    public String getPublishid() {
+        return publishid;
+    }
+
+    /**
+     * @param publishid the publishid to set
+     */
+    public void setPublishid(String publishid) {
+        this.publishid = publishid;
+    }
+
+    /**
+     * @return the pid
+     */
+    public Long getPid() {
+        return pid;
+    }
+
+    /**
+     * @param pid the pid to set
+     */
+    public void setPid(Long pid) {
+        this.pid = pid;
+    }
+
+    /**
+     * @return the sitelist
+     */
     public List<Publish> getSitelist() {
         return sitelist;
     }
@@ -171,7 +214,6 @@ public class addsite extends ActionSupport{
     public void setSitelist(List<Publish> sitelist) {
         this.sitelist = sitelist;
     }
-
     
     
 }

@@ -18,7 +18,7 @@ public class edituseregister extends ActionSupport {
     private String lname;
     private String email;
     
-    private Date dob;
+    private String  dob;
    
     private String addline1;
     private String ctry;
@@ -35,14 +35,20 @@ public class edituseregister extends ActionSupport {
     public String execute() throws Exception {
          
          
-         
+        try{ 
          
      return "success";
+        }
+ catch(Exception e)
+         
+         {
+           e.printStackTrace();
+            addActionError("error"+e.getMessage());
+            return "error" ; 
+          }
      }
-
-    /**
-     * @return the fname
-     */
+    
+     
     public String getFname() {
         return fname;
     }
@@ -82,20 +88,7 @@ public class edituseregister extends ActionSupport {
         this.email = email;
     }
 
-    /**
-     * @return the dob
-     */
-    public Date getDob() {
-        return dob;
-    }
-
-    /**
-     * @param dob the dob to set
-     */
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
-
+   
     /**
      * @return the addline1
      */
@@ -178,6 +171,20 @@ public class edituseregister extends ActionSupport {
      */
     public void setMyDao(spDAO myDao) {
         this.myDao = myDao;
+    }
+
+    /**
+     * @return the dob
+     */
+    public String getDob() {
+        return dob;
+    }
+
+    /**
+     * @param dob the dob to set
+     */
+    public void setDob(String dob) {
+        this.dob = dob;
     }
     
     

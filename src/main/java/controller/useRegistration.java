@@ -7,9 +7,12 @@ package controller;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import model.User;
 import model.UserDetails;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -29,7 +32,7 @@ public class useRegistration extends ActionSupport {
     private String postcode;
 
     private spDAO myDao;
-    
+    private List<UserDetails> uselist;
   
 
 
@@ -57,7 +60,10 @@ public class useRegistration extends ActionSupport {
               
            myDao.getDbsession().saveOrUpdate(used);
        
-           
+            setUselist((List<UserDetails>) myDao.getDbsession().createQuery("from UserDetails").list());
+            Criteria ucri=myDao.getDbsession().createCriteria(UserDetails.class);
+            ucri.add(Restrictions.like("user", user));
+            ucri.setMaxResults(1);
            
            return "success";
             
@@ -66,7 +72,7 @@ public class useRegistration extends ActionSupport {
      catch(Exception e){
             System.out.println(e.getMessage());
             addActionError("error"+e.getMessage());
-         
+         e.printStackTrace();
             return "error";
         }
       
@@ -214,6 +220,20 @@ public class useRegistration extends ActionSupport {
      */
     public void setDob(Date dob) {
         this.dob = dob;
+    }
+
+    /**
+     * @return the uselist
+     */
+    public List<UserDetails> getUselist() {
+        return uselist;
+    }
+
+    /**
+     * @param uselist the uselist to set
+     */
+    public void setUselist(List<UserDetails> uselist) {
+        this.uselist = uselist;
     }
 
   

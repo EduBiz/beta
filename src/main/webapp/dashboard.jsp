@@ -72,7 +72,12 @@
        
 		                               
        <div class="getstartedwrap">
-							
+           
+           <s:form name="userdetails">
+               <table>
+               <tr>  <td>    
+           <s:iterator value="uselist">	
+             
            <s:url action="edituserdetails.action" var="edituserdetails"   >
                      <s:param name="email" value="%{email}" />
                      <s:param name="fname" value="%{firstName}" />
@@ -85,17 +90,21 @@
                      <s:param name="postcode" value="%{postalCode}" />
                      
                      </s:url>
-                 <s:a href="%{edituserdetails}"  cssClass="getstarted">Account Information</s:a>    
-                                                        
+               <td><s:a href="%{edituserdetails}" cssClass="getstarted" >Account information</s:a></td> 
+                
+        
+        </s:iterator>
+                   </td>  </tr></table>
+            </s:form>
        </div>
         <div class="getstartedwrap">
                 <a href="addsites.jsp" class="getstarted">Add Sites</a>
-        <%-- <form action="#" method="post" id="loginform">   --%>
+        
         </div>                                 
                                                     
       <div class="getstartedwrap">
                      
-           <s:form>
+           <s:form name="sitelist">
                 <table cellspacing="15" cellpadding="8" >
                <tr> <th>Site Name</th>
                     <th>Category</th>
@@ -108,7 +117,7 @@
                      <s:param name="publishid" value="%{publishId}" />
                      <s:param name="sitename" value="%{siteName}" />
                      <s:param name="siteurl" value="%{siteUrl}" />
-                     <s:param name="desc" value="%{desc}" />
+                     <s:param name="desc" value="%{description}" />
                      <s:param name="txtcolor" value="%{textColor}" />
                      <s:param name="bgcolor" value="%{bgColor}" />
                      <s:param name="catgry" value="%{category}" />
@@ -121,7 +130,7 @@
                       
                       
                       <s:url action="deletesite.action" var="deletesite">
-                     <s:param name="campaid" value="%{campaignId}" />
+                     <s:param name="publishid" value="%{publishId}" />
                      </s:url>
                 <td> <s:a href="%{deletesite}">Delete</s:a> </td>
                       

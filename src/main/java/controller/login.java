@@ -11,6 +11,7 @@ import java.util.Map;
 import model.Campaign;
 import model.Publish;
 import model.User;
+import model.UserDetails;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
@@ -26,7 +27,7 @@ public class login  extends ActionSupport{
     private spDAO myDao;
     private List<Publish> sitelist;
     private List<Campaign> camplist;
- 
+    private List<UserDetails> uselist;
      @Override
     public void validate() {
       
@@ -76,10 +77,10 @@ public class login  extends ActionSupport{
            
                 sitelist=(List<Publish>) crit1.list();
             
-            
-            
-            
-            
+            uselist=(List<UserDetails>) myDao.getDbsession().createQuery("from UserDetails").list();
+            Criteria ucri=myDao.getDbsession().createCriteria(UserDetails.class);
+            ucri.add(Restrictions.like("user", user));
+            ucri.setMaxResults(1);
             return "success";
       
       }
@@ -89,6 +90,9 @@ public class login  extends ActionSupport{
    return "error";
     }
     }
+    
+   
+    
     /**
      * @return the email
      */
@@ -171,6 +175,20 @@ public class login  extends ActionSupport{
      */
     public void setCamplist(List<Campaign> camplist) {
         this.camplist = camplist;
+    }
+
+    /**
+     * @return the uselist
+     */
+    public List<UserDetails> getUselist() {
+        return uselist;
+    }
+
+    /**
+     * @param uselist the uselist to set
+     */
+    public void setUselist(List<UserDetails> uselist) {
+        this.uselist = uselist;
     }
     
     
