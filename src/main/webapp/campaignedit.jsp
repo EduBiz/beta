@@ -18,7 +18,7 @@ pageEncoding="UTF-8"%>
      
     <head>
        <%-- <sd:head/>   --%>
-       <s:head  theme="jquery"/>
+        <s:head/>
          <sj:head/>    
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registration</title>
@@ -51,18 +51,23 @@ pageEncoding="UTF-8"%>
     </table></td>
   </tr>
   <tr>
-      <s:actionerror theme="jquery"/>
-      <s:form action="campaignMain">
-          <s:textfield name="campaignname" label="Campaign Name" required="true" />
-          <sj:datepicker name="startdate" displayFormat="mm/dd/yy" label="Start Date" />
-          <sj:datepicker name="enddate" displayFormat="mm/dd/yy" label="End Date" />
+      
+      <s:actionerror/>  
+    <s:form action="updatecampaign">
+        <s:hidden name="campaid" value="%{campaid}" />
+        <s:textfield name="campaignname" label="Campaign Name" required="true" />
+          <sj:datepicker name="startdate" value="%{sdate}" displayFormat="mm/dd/yy" label="Start Date" />
+          <sj:datepicker name="enddate" value="%{edate}" displayFormat="mm/dd/yy" label="End Date" />
         <s:textfield name="dailybdgt" label="Daily Budget $" required="true" />
         <s:radio label="Delivery Type" name="deliverytype" list="{'Standard','Accelerated'}" required="true" />
         <s:select name="promotype"  label="Promotype" headerKey="Please select" headerValue="Please select" required="true"
-    list="{'Website','BlackBerry Application Ad','Andriod Application Ad','Iphone Application Ad','iTunes Media Ad','Streaming Video Ad','Books Ad','Click to Call Ad','Click to Map Ad'}" />
+                  list="{'Website','BlackBerry Application Ad','Andriod Application Ad','Iphone Application Ad','iTunes Media Ad','Streaming Video Ad','Books Ad','Click to Call Ad','Click to Map Ad'}" />
+    
         <s:textarea label="Note:(optional)" name="note" rows="15"/>
 
-        <s:submit value="Save and Continue"/>
+      
+    <s:submit value="Save Changes" validate="true" />
+   
     </s:form>
     
         </tr>

@@ -13,14 +13,15 @@ import java.util.List;
 import java.util.Map;
 import model.Campaign;
 import model.User;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
-
-
+import org.hibernate.criterion.Restrictions;
 /**
  *
- * @author Administrator
- */	
-public class campaignMain extends ActionSupport{
+ * @author radan
+ */
+public class updatecampaign extends ActionSupport{
+    
        
        private String campaid;
        private String campaignname;
@@ -33,7 +34,7 @@ public class campaignMain extends ActionSupport{
        private List<Campaign> camplist;
        private Long lc;
    private spDAO myDao;
-    @Override
+  @Override
     public void validate() {
       
       
@@ -55,7 +56,6 @@ public class campaignMain extends ActionSupport{
         }
         
     } 
-    
        @Override 
         public String execute() throws Exception {
    
@@ -65,28 +65,30 @@ public class campaignMain extends ActionSupport{
             User user=(User) session.get("User");
              
             Campaign camp;
-          //  System.out.println("campaign id is" +campaid);
-           
-                  camp=new Campaign(user,campaignname);
-                  camp=(Campaign) session.put("campa", camp);
+                   
+                  //  camp=(Campaign) session.get("campa");
+                  //   Long camp1id=camp.getCampaignId();
+                       lc=(Long) Long.parseLong(campaid);
+                       System.out.println("campaignlong id is" +getLc());
+                       camp=new Campaign(user,campaignname);
 
+                        camp.setCampaignId(Long.parseLong(campaid));
                         camp.setStartDate(startdate);
                         camp.setEndDate(enddate);
                         camp.setDialyBudget(dailybdgt);
                         camp.setDeliveryMethod(deliverytype);
                         camp.setPromoType(promotype);
                         camp.setNote(note);  
-                         getMyDao().getDbsession().saveOrUpdate(camp);
-                  if(promotype.equals("Website"))  return "website";  
-                  if(promotype.equals("BlackBerry Application Ad"))  return"BlackBerry";  
-                  if(promotype.equals("Andriod Application Ad"))     return"Andriod";    
-                  if(promotype.equals("Iphone Application Ad"))      return"Iphone";    
-                  if(promotype.equals("iTunes Media Ad"))            return"iTunes"; 
-                  if(promotype.equals("Streaming Video Ad"))      return"Streaming";   
-                  if(promotype.equals("Books Ad"))               return"Books";  
-                  if(promotype.equals("Click to Call Ad"))      return"clickcall";  
-                  if(promotype.equals("Click to Map Ad"))       return"clickmap"; 
-                
+                        getMyDao().getDbsession().update(camp);
+
+                setCamplist((List<Campaign>) myDao.getDbsession().createQuery("from Campaign").list());
+                Criteria crit = myDao.getDbsession().createCriteria(Campaign.class);
+                crit.add(Restrictions.like("user",user));
+                crit.setMaxResults(20);
+                    setCamplist((List<Campaign>) crit.list());
+
+                    return"success";
+                 
          }
              
           catch(HibernateException e)

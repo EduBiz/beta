@@ -21,4 +21,13 @@ public class sessionError extends ActionSupport {
        addActionMessage("Please Login to access the content requested");
         return "success";
     }
+
+  public String campaignerror() throws Exception {
+        
+       addActionMessage("Enter from Values from the Main Page");
+        return "success";
+    }
+
+
+
 }

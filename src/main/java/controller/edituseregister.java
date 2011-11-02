@@ -27,7 +27,7 @@ public class edituseregister extends ActionSupport {
     private String postcode;
 
     private spDAO myDao;
-    
+    private String[] temp;
   
 
 
@@ -36,14 +36,20 @@ public class edituseregister extends ActionSupport {
          
          
         try{ 
-         
+                /* delimiter */
+         String delimiter = "-";   /* given string will be split by the argument delimiter provided. */
+          temp = dob.split(delimiter);
+         for(int i =0; i < 1; i++)        /* print substrings */
+            dob=temp[i+1]+'/'+temp[i+2]+'/'+temp[i] ; 
+            
+            
      return "success";
         }
  catch(Exception e)
          
          {
            e.printStackTrace();
-            addActionError("error"+e.getMessage());
+            //addActionError("error"+e.getMessage());
             return "error" ; 
           }
      }

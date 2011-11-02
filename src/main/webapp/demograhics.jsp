@@ -21,15 +21,16 @@ pageEncoding="UTF-8"%>
         
     </head>
     <body>
-         
-
-
-
-<%
+ <%
     Object obj = session.getAttribute("User");
+    Object obj1 = session.getAttribute("campa");
     if(obj==null)
         {
         response.sendRedirect(request.getContextPath()+"/sessionError.action");
+    }
+    else if(obj1==null)
+        {
+        response.sendRedirect(request.getContextPath()+"/sessioncampaignError.action");
     }
     %>
           <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -40,28 +41,25 @@ pageEncoding="UTF-8"%>
       </tr>
       <tr>
         <td height="24" valign="bottom">
-            <s:include value="navigationdashboard.jsp" />
-            <h3>Demographics</h3>
+            <s:include value="navigation.jsp" />
+            
         </td>
       </tr>
     </table></td>
   </tr>
-  <tr><td>
+  <tr><td><h1>Demographics</h1>
     <s:actionerror/>  
     <s:form action="demographicAction">
-        
+      <tr><td>
          <h3>Gender</h3>
-         <s:radio name="gender" label="Select Gender" list="{'All User','Male','Female'}" />
-
+         <s:radio name="gender" label="Select" list="{'All User','Male','Female'}" />
+      </td></tr><tr><td>
       <h3>Age</h3>
-
-      <s:radio name="age" label="Select Age" list="{'All','9-15','16-28','29-35','Above 35'}" />         
-                    
-            	
+      </td></tr><tr><td>
+        <s:radio name="age" label="Select" list="{'All','9-15','16-28','29-35','Above 35'}" />         
+      </td></tr>         
         <s:submit value="Save and Continue"/>
     </s:form>
-      </td>
-        </tr>
          </table>   
     <s:include value="/footer.jsp" />
          

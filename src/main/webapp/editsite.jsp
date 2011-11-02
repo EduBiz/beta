@@ -45,8 +45,8 @@
         <s:textfield name="sitename" label="Site Name" value="%{sitename}" />
         <s:textfield name="siteurl" label="Site Url "  value="%{siteurl}"/>
         <s:textarea label="Description" name="desc" rows="3" cols="16.7" value="%{desc}" />
-        <s:textfield name="txtcolor" label="Background Color" value="%{txtcolor}" />
-        <s:textfield name="bgcolor" label="Background Text"  value="%{bgcolor}" />
+        <s:textfield name="txtcolor" label="Background Color#" value="%{txtcolor}" tooltip="eg:#9999"/>
+        <s:textfield name="bgcolor" label="Background Text#"  value="%{bgcolor}"  tooltip="eg:#9999"/>
         <s:select label="Category" name="catgry" headerKey="Please select" headerValue="Please select" list="{'Business','Education','Entertainment','Comics','Finance','Games','Healthcare and Fitness','Lifestyle','Music','Navigation ','News','Photography','Productivity','Reference','Search Tools ','Social Networking','Sports','Travel','Utilities','Weather'}" value="%{catgry}" />     
         <s:submit value="Update Sites"/>
          

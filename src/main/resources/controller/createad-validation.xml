@@ -1,0 +1,37 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+      
+  <field name="adname">
+        <field-validator type="requiredstring">
+            <message>Ad Name is required.</message>
+        </field-validator>  
+  </field>
+  <field name="url">
+        <field-validator type="requiredstring">
+            <message>Enter URL.</message>
+        </field-validator>  
+  </field>
+   <field name="displayurl">
+        <field-validator type="requiredstring">
+            <message>Enter DisplayURL.</message>
+        </field-validator>  
+  </field>
+   <field name="adtext">
+        <field-validator type="requiredstring">
+            <message>Enter AdText.</message>
+        </field-validator>  
+  </field>
+   <field name="addimage">
+        <field-validator type="requiredstring">
+            <message>Enter AdImage.</message>
+        </field-validator>  
+  </field>
+   <field name="tileimage">
+        <field-validator type="requiredstring">
+            <message>Enter Tile Image.</message>
+        </field-validator>  
+  </field>
+             
+</validators>
+

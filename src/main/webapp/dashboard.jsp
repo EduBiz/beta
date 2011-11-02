@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
      <%@taglib uri="/struts-tags" prefix="s"%>
      <%@page import="model.*"%>
-     
+     <%@ page import="java.util.*" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>.::AdZappy::.</title>
@@ -76,8 +76,9 @@
            <s:form name="userdetails">
                <table>
                <tr>  <td>    
-           <s:iterator value="uselist">	
+           
              
+               <s:iterator value="uselist">	
            <s:url action="edituserdetails.action" var="edituserdetails"   >
                      <s:param name="email" value="%{email}" />
                      <s:param name="fname" value="%{firstName}" />
@@ -90,13 +91,23 @@
                      <s:param name="postcode" value="%{postalCode}" />
                      
                      </s:url>
-               <td><s:a href="%{edituserdetails}" cssClass="getstarted" >Account information</s:a></td> 
+               <td><s:a href="%{edituserdetails}" cssClass="getstarted" >Edit User information</s:a></td> 
                 
         
         </s:iterator>
-                   </td>  </tr></table>
+                   </td>  
+                 
+
+
+</tr>
+
+               </table>
             </s:form>
        </div>
+        <div class="getstartedwrap">
+            <a href="userinformation.jsp" class="getstarted">ADD User Details</a>
+        
+        </div>                                 
         <div class="getstartedwrap">
                 <a href="addsites.jsp" class="getstarted">Add Sites</a>
         

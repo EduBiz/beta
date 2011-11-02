@@ -22,6 +22,24 @@ public class android extends ActionSupport{
      private String location;
      private String android;
     
+      @Override
+    public void validate() {
+      
+      
+        if(platform==null)
+        {
+         addFieldError("platform","Please Select Platorm");
+        }
+        if(location==null)
+        {
+         addFieldError("location","Please Select Location");
+        }
+         if(android.equals("Please select"))
+        {
+         addFieldError("android","Please Select Os");
+        }
+    } 
+    
      @Override 
      public String execute() throws Exception {
    

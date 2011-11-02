@@ -42,7 +42,7 @@
                <a href="campaignCreation.jsp" class="getstarted">Add Campaign</a>
 		
             <s:form action="showlist">
-                <table cellspacing="15" cellpadding="8" >
+                <table cellspacing="20" align="center" cellpadding="12" >
                     <th>Campaign Name</th>
                     <th>Created</th>
                     <th>Budget</th>
@@ -71,9 +71,7 @@
         </s:iterator>
         </table>
             </s:form>
-            </div>
-    
-    </td></tr>
+            </div></td></tr>
         
         
             </table>

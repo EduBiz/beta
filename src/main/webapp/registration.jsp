@@ -12,7 +12,7 @@
      <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registration</title>
+        <title>Update information</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
         <s:head/>
         <sj:head/>
@@ -41,7 +41,7 @@
   <tr><td>
     <s:actionerror/>   
     <s:form action="useRegistration">
-        <s:textfield name="email" label="Email id" readonly="true"  value="%{email}"  />
+        <s:textfield name="email" label="Email id"  value="%{email}" disabled="true" />
         <s:textfield name="fname" label="First Name" value="%{fname}" />
         <s:textfield name="lname" label="Last Name" value="%{lname}"/>
         <sj:datepicker name="dob" displayFormat="mm/dd/yy" label="Date of Birth" value="%{dob}"/>
@@ -50,7 +50,7 @@
         <s:textfield name="storeg" label="State/Region" value="%{storeg}" />
         <s:textfield name="city" label="City"  value="%{city}" />
         <s:textfield name="postcode" label="Postal/Zip Code" value="%{postcode}" />
-        <s:submit value="Update"/>
+        <s:submit value="Update Information"/>
     </s:form>
     </td>
         </tr>

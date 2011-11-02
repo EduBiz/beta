@@ -22,11 +22,16 @@ pageEncoding="UTF-8"%>
         
     </head>
     <body>
-        <%
+<%
     Object obj = session.getAttribute("User");
+    Object obj1 = session.getAttribute("campa");
     if(obj==null)
         {
         response.sendRedirect(request.getContextPath()+"/sessionError.action");
+    }
+    else if(obj1==null)
+        {
+        response.sendRedirect(request.getContextPath()+"/sessioncampaignError.action");
     }
     %>
           <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -37,7 +42,7 @@ pageEncoding="UTF-8"%>
       </tr>
       <tr>
         <td height="24" valign="bottom">
-           <s:include value="navigationdashboard.jsp" />
+            <s:include value="navigation.jsp" />
             
         </td>
       </tr>
@@ -47,21 +52,18 @@ pageEncoding="UTF-8"%>
       <td> <h1>BlackBerry</h1>
     <s:actionerror/>  
     <s:form action="blackberryAction">
-        
-        
-        <s:radio name="platform" label="Select Device" list="{'Target all devices','Target devices by platform','Target devices by manufacturer'}" />
-  
-        <s:radio name="location" label="Select Operator" list="{'Target all Geographic location','Target specific geographic location'}" />
-
-        <h3>BlackBerry</h3>
-        <s:select name="blackberry" headerKey="Please select" headerValue="Please select"
+      <tr><td>
+        <s:radio name="platform"  required="true" label="Select Device" list="{'Target all devices','Target devices by platform','Target devices by manufacturer'}" />
+      </td></tr>
+      <tr><td>
+        <s:radio name="location" required="true" label="Select Operator" list="{'Target all Geographic location','Target specific geographic location'}" />
+      </td></tr>
+      <tr><td>   
+        <s:select name="blackberry" required="true" headerKey="Please select" headerValue="Please select" label="Select OS"
                   list="{'Blackberry 5000 series','Blackberry 6000 series','Blackberry 7000 series','Blackberry 8000 series','Blackberry 9000 series'}" />
-     
-        <br><br>
+          </td></tr>
         <s:submit value="Save and Continue"/>
     </s:form>
-      </td>
-        </tr>
          </table>   
     <s:include value="/footer.jsp" />
          

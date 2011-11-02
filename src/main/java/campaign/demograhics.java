@@ -21,7 +21,20 @@ public class demograhics extends ActionSupport {
      private String gender;
      private String age;
     
-    
+     @Override
+    public void validate() {
+      
+      
+        if(gender==null)
+        {
+         addFieldError("gender","Please Select Gender");
+        }
+        if(age==null)
+        {
+         addFieldError("age","Please Select Age");
+        }
+         
+    } 
      
      @Override 
      public String execute() throws Exception {
@@ -42,7 +55,7 @@ public class demograhics extends ActionSupport {
           e.printStackTrace();
           }
           
-          return"Success";
+          return"success";
      }
 
     /**

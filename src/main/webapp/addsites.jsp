@@ -45,8 +45,8 @@
         <s:textfield name="sitename" label="Site Name" />
         <s:textfield name="siteurl" label="Site Url "  value="http://"/>
         <s:textarea label="Description" name="desc" rows="3" cols="16.7"/>
-        <s:textfield name="txtcolor" label="Background Color #" />
-        <s:textfield name="bgcolor" label="Background Text #"  />
+        <s:textfield name="txtcolor" label="Background Color #" tooltip="eg:#9999" />
+        <s:textfield name="bgcolor" label="Background Text #"  tooltip="eg:#9999"  />
         <s:select label="Category" name="catgry" headerKey="Please select" headerValue="Please select" list="{'Business','Education','Entertainment','Comics','Finance','Games','Healthcare and Fitness','Lifestyle','Music','Navigation ','News','Photography','Productivity','Reference','Search Tools ','Social Networking','Sports','Travel','Utilities','Weather'}" />     
         <s:submit value="Add Sites"/>
          

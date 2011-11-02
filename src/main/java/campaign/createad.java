@@ -7,9 +7,12 @@ package campaign;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import controller.spDAO;
+import java.util.List;
 import java.util.Map;
 import model.*;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -25,8 +28,18 @@ public class createad extends ActionSupport{
      private String adtext;
      private String addimage;
      private String tileimage;
+     private List<Campaign> camplist;
      
       
+      @Override
+    public void validate() {
+      
+        if(adtype==null)
+        {
+         addFieldError("adtype","Please Select Type");
+        }
+       
+    } 
      @Override 
      public String execute() throws Exception {
    
@@ -34,9 +47,12 @@ public class createad extends ActionSupport{
               
                Map session =ActionContext.getContext().getSession();
                Campaign camp=(Campaign) session.get("campa");
-    
+               Long campid=camp.getCampaignId();
+               // System.out.println("Camp is" + camp.toString());
+             //  Long campl=Long.parseLong(camp.toString());
+              
                CampaignCreative campcre=new CampaignCreative();
-               campcre.setCampaign_1(camp);
+               campcre.setCampaign(campid);
                campcre.setStyleType(adtype);
                campcre.setAddName(adname);
                campcre.setAddUrl(url);
@@ -46,6 +62,13 @@ public class createad extends ActionSupport{
                campcre.setTileImage(tileimage);
                 getMyDao().getDbsession().save(campcre);
           
+                 User user=(User) session.get("User");
+                 
+                setCamplist((List<Campaign>) myDao.getDbsession().createQuery("from Campaign").list());
+                Criteria crit = myDao.getDbsession().createCriteria(Campaign.class);
+                crit.add(Restrictions.like("user",user));
+                crit.setMaxResults(20);
+                    setCamplist((List<Campaign>) crit.list());
           }
     
            catch(HibernateException e)
@@ -166,5 +189,19 @@ public class createad extends ActionSupport{
      */
     public void setTileimage(String tileimage) {
         this.tileimage = tileimage;
+    }
+
+    /**
+     * @return the camplist
+     */
+    public List<Campaign> getCamplist() {
+        return camplist;
+    }
+
+    /**
+     * @param camplist the camplist to set
+     */
+    public void setCamplist(List<Campaign> camplist) {
+        this.camplist = camplist;
     }
 }

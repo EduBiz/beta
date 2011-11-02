@@ -21,7 +21,26 @@ public class blackberry extends ActionSupport{
      private String platform;
      private String location;
      private String blackberry;
-    
+   
+     
+      @Override
+    public void validate() {
+      
+      
+        if(platform==null)
+        {
+         addFieldError("platform","Please Select Platorm");
+        }
+        if(location==null)
+        {
+         addFieldError("location","Please Select Location");
+        }
+         if(blackberry.equals("Please select"))
+        {
+         addFieldError("blackberry","Please Select Os");
+        }
+    } 
+      
      @Override 
      public String execute() throws Exception {
    

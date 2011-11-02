@@ -28,9 +28,14 @@ pageEncoding="UTF-8"%>
 
 <%
     Object obj = session.getAttribute("User");
+    Object obj1 = session.getAttribute("campa");
     if(obj==null)
         {
         response.sendRedirect(request.getContextPath()+"/sessionError.action");
+    }
+    else if(obj1==null)
+        {
+        response.sendRedirect(request.getContextPath()+"/sessioncampaignError.action");
     }
     %>
        <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -41,7 +46,7 @@ pageEncoding="UTF-8"%>
       </tr>
       <tr>
         <td height="24" valign="bottom">
-           <s:include value="navigationdashboard.jsp" />
+            <s:include value="navigation.jsp" />
         </td>
       </tr>
     </table></td>
@@ -49,25 +54,27 @@ pageEncoding="UTF-8"%>
   <tr><td>
     <s:actionerror/>  
     <s:form action="createAction">
-           
-         <s:radio name="adtype" label="Choose Ad Type" list="{'Text + Tile','Mobile Images Ads','Tablets'}" />
-      <br>
-        <s:label>Ad Information</s:label>
+      <tr><td>
+         <h3>Choose Ad Type:</h3>
+      </td></tr><tr><td>
+         <s:radio name="adtype" label="Select" list="{'Text + Tile','Mobile Images Ads','Tablets'}" />
+      </td></tr><tr><td>
+        <h3>Ad Information:</h3>
+      </td></tr><tr><td>
           <s:textfield name="adname" label="Ad Name" />
           <s:textfield name="url" label="URL:" />
           <s:textfield name="displayurl" label="Display URL:" />
-    
-        <s:label>Creative</s:label>
-          <s:textfield name="adtext" label="Ad Text" />
-           <s:textfield name="addimage" label="Ad Text" />
-            <s:textfield name="tileimage" label="Ad Text" />
-    
-        <br><br>
-        <s:submit value="Create Ad Finish"/>
+      </td></tr><tr><td>
+        <h3>Creative:</h3>
+      </td></tr><tr><td>
+           <s:textfield name="adtext" label="Ad Text" />
+           <s:textfield name="addimage" label="Ad Image" />
+           <s:textfield name="tileimage" label="Tile Image" />
+          </td></tr><tr><td>
+              <s:submit value="Create And Finish" align="center" />
+          
     </s:form>
-      </td>
-      <td><input type="button" onClick="campaignCreation.jsp" value="Create Another Ad"/></td>
-        </tr>
+              <a href="campaignCreation.jsp">Create Another Ad</a>
          </table>   
     <s:include value="/footer.jsp" />
          

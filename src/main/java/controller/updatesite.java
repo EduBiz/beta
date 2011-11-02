@@ -34,6 +34,17 @@ public class updatesite extends ActionSupport{
     private List<Publish> sitelist;
 
      @Override
+    public void validate()
+    {
+    if(catgry==null)
+    {
+    addFieldError("catgry","Please Select a Category");
+    
+    }
+    
+    }
+    
+    @Override
     public String execute() throws Exception
        {
          try{ 

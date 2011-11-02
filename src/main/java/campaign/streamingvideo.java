@@ -20,6 +20,20 @@ public class streamingvideo  extends ActionSupport{
      private String platform;
      private String location;
     
+      @Override
+    public void validate() {
+      
+      
+        if(platform==null)
+        {
+         addFieldError("platform","Please Select Platorm");
+        }
+        if(location==null)
+        {
+         addFieldError("location","Please Select Location");
+        }
+    } 
+      
      @Override 
      public String execute() throws Exception {
    

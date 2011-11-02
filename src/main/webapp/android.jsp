@@ -23,14 +23,16 @@ pageEncoding="UTF-8"%>
         
     </head>
     <body>
-        
-
-
 <%
     Object obj = session.getAttribute("User");
+    Object obj1 = session.getAttribute("campa");
     if(obj==null)
         {
         response.sendRedirect(request.getContextPath()+"/sessionError.action");
+    }
+    else if(obj1==null)
+        {
+        response.sendRedirect(request.getContextPath()+"/sessioncampaignError.action");
     }
     %>
           <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -41,33 +43,29 @@ pageEncoding="UTF-8"%>
       </tr>
       <tr>
         <td height="24" valign="bottom">
-            <s:include value="navigationdashboard.jsp" />
+            <s:include value="navigation.jsp" />
             
         </td>
       </tr>
     </table></td>
   </tr>
-  <tr>
-      <td> <h1>Android</h1>
+  <tr><td>
+      <h1>Android</h1>
     <s:actionerror/>  
     <s:form action="androidAction">
- 
-        
-        <s:radio name="platform" label="platform Devices" list="{'Target all devices','Target devices by platform','Target devices by manufacturer'}" />
-  
- 
-                    <s:radio name="location" label="Geography/Operator" list="{'Target all Geographic location','Target specific geographic location'}" />
-
-         <br>
-        <h3>Android</h3>
-        <s:select name="android" headerKey="Please select" headerValue="Please select"
+      <tr><td>
+        <s:radio name="platform" required="true" label="platform Devices" list="{'Target all devices','Target devices by platform','Target devices by manufacturer'}" />
+      </td></tr>
+      <tr><td>
+        <s:radio name="location" required="true" label="Geography/Operator" list="{'Target all Geographic location','Target specific geographic location'}" />
+      </td></tr>
+      <tr><td>
+              <s:select name="android" required="true" headerKey="Please select" headerValue="Please select" label="Select OS"
        list="{'Acer','Android','Archos','Coby','Dell','Fujitsu','Google','HTC','Huawei','KT Tech','Kyocera','Lenovo','LG','Motorola','NEC','Nextbook','Pantech','Samsung','Sharp','SonyEricsson','T-Mobile','Toshiba','Verizon','ZTE'}" />
-     
-        <br><br>
+          </td></tr>
         <s:submit value="Save and Continue"/>
     </s:form>
-      </td>
-        </tr>
+         
          </table>   
     <s:include value="/footer.jsp" />
          

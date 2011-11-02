@@ -56,7 +56,7 @@
         <action name="edituserdetails" class="controller.edituseregister" >
             <result name="success" >registration.jsp</result>
             <result name="input" >dashboard.jsp</result>
-            <result name="error" >dashboard.jsp</result>
+            <result name="error" >registration.jsp</result>
         </action>
    
        <action name="addsite" class="controller.addsite" >
@@ -83,20 +83,32 @@
             <result name="error" >dashboard.jsp</result>
         </action>
         
-        <action name="editcampaign" class="campaign.editcampaign" >
-            <result name="success" >campaignCreation.jsp</result>
+        
+         <action name="editcampaign" class="campaign.editcampaign" >
+            <result name="success" >campaignedit.jsp</result>
             <result name="input" >dashboard.jsp</result>
             <result name="error" >/dashboard.jsp</result>
         </action>
         
+        <action name="updatecampaign" class="campaign.updatecampaign" >
+            <result name="success" >dashboard.jsp</result>
+            <result name="input" >campaignedit.jsp</result>
+            <result name="error" >/campaignedit.jsp</result>
+        </action>
+        
          <action name="deletecampaign" method="deletecamp" class="campaign.editcampaign" >
-            <result name="success" type="chain">loadlist</result>
+            <result name="success" >dashboard.jsp</result>
             <result name="input" >dashboard.jsp</result>
             <result name="error" >/dashboard.jsp</result>
         </action>
-           
-    <action name="campaignMain" class="campaign.campaignMain">
-            <result name="editsuccess" type="chain">loadlist</result>
+        
+         <action name="sessioncampaignError" class="controller.sessionError" method="campaignerror">
+           <result name="success" >campaignCreation.jsp</result>
+           <result name="input" >campaignCreation.jsp</result>
+           <result name="error" >campaignCreation.jsp</result>
+        </action> 
+  
+        <action name="campaignMain" class="campaign.campaignMain">
             <result name="website" >website.jsp</result>
             <result name="BlackBerry" >blackberry.jsp</result>
             <result name="Andriod" >android.jsp</result>
@@ -160,10 +172,14 @@
             <result name="error" >/demograhics.jsp</result>
         </action>
         <action name="createAction" class="campaign.createad" >
-            <result name="success" type="chain">loadlist</result>
+            <result name="success" >/dashboard.jsp</result>
             <result name="input" >createad.jsp</result>
             <result name="error" >/createad.jsp</result>
         </action>
+
+
+
+
 
        </package>
        <package name="demo" extends="struts-default">

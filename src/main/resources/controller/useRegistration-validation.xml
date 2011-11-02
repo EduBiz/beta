@@ -4,42 +4,8 @@
   
   <field name="fname">
         <field-validator type="requiredstring">
-            <message>First Name is required.</message>
+            <message>Please enter First Name</message>
         </field-validator>
-  </field>
-  <field name="lname">
-        <field-validator type="requiredstring">
-            <message>Last Name is required.</message>
-        </field-validator>
-  </field>
-    
-  
- 
- 
-  <field name="addline1">
-        <field-validator type="requiredstring">
-            <message>Address Line 1 is required.</message>
-        </field-validator>  
-  </field>
-  <field name="ctry">
-        <field-validator type="requiredstring">
-            <message>Country is required.</message>
-        </field-validator>  
-  </field>
-  <field name="storeg">
-        <field-validator type="requiredstring">
-            <message>State/Region is required.</message>
-        </field-validator>  
-  </field>
-  <field name="city">
-        <field-validator type="requiredstring">
-            <message>City is required.</message>
-        </field-validator>  
-  </field>
-  <field name="postcode">
-        <field-validator type="requiredstring">
-            <message>Postal/Zip code is required.</message>
-        </field-validator>  
   </field>
   
     

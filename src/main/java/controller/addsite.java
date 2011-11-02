@@ -29,6 +29,21 @@ public class addsite extends ActionSupport{
     private spDAO myDao;
    
     private List<Publish> sitelist;
+    
+    @Override
+    public void validate()
+    {
+    if(catgry==null)
+    {
+    addFieldError("catgry","Please Select a Category");
+    
+    }
+    
+    
+    
+    }
+
+
     @Override
     public String execute() throws Exception
        {

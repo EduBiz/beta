@@ -3,37 +3,29 @@
     Created on : Oct 12, 2011, 6:58:24 PM
     Author     : Administrator
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-
-pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
-<%@page import="model.User"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
      <%@taglib uri="/struts-tags" prefix="s"%>
      <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
     <head>
-        <s:head/>
-        <sj:head/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registration</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
-        
+        <s:head/>
+        <sj:head/>
     </head>
     <body>
- <%
+        <%
     Object obj = session.getAttribute("User");
-    Object obj1 = session.getAttribute("campa");
     if(obj==null)
         {
         response.sendRedirect(request.getContextPath()+"/sessionError.action");
     }
-    else if(obj1==null)
-        {
-        response.sendRedirect(request.getContextPath()+"/sessioncampaignError.action");
-    }
-    %>
-          <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
+    %> 
+       <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="99" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
@@ -41,24 +33,26 @@ pageEncoding="UTF-8"%>
       </tr>
       <tr>
         <td height="24" valign="bottom">
-            <s:include value="navigation.jsp" />
-            
+           <s:include value="navigationdashboard.jsp" />
         </td>
       </tr>
     </table></td>
   </tr>
-  <tr>
-      <td> <h1>iTunes Ad Group</h1>
-    <s:actionerror/>  
-    <s:form action="streamingvideoAction">
-      <tr><td>
-        <s:radio name="platform" label="Platform Devices" list="{'Target all devices','Target devices by platform','Target devices by manufacturer'}" />
-      </td></tr><tr><td>
-        <s:radio name="location" label="Geography/Operator" list="{'Target all Geographic location','Target specific geographic location'}" />
-      </td></tr><tr><td>
-        <s:submit value="Save and Continue"/>
+  <tr><td>
+    <s:actionerror/>   
+    <s:form action="useRegistration">
+        <s:hidden name="email" label="Email id"   value="%{email}"  />
+        <s:textfield name="fname" label="First Name" value="%{fname}" />
+        <s:textfield name="lname" label="Last Name" value="%{lname}"/>
+        <sj:datepicker name="dob" displayFormat="mm/dd/yy" label="Date of Birth" value="%{dob}"/>
+        <s:textfield name="addline1" label="Address Line1" value="%{addline1}" />
+        <s:textfield name="ctry" label="Country" value="%{ctry}"  />
+        <s:textfield name="storeg" label="State/Region" value="%{storeg}" />
+        <s:textfield name="city" label="City"  value="%{city}" />
+        <s:textfield name="postcode" label="Postal/Zip Code" value="%{postcode}" />
+        <s:submit value="Save Changes"/>
     </s:form>
-      </td>
+    </td>
         </tr>
          </table>   
     <s:include value="/footer.jsp" />

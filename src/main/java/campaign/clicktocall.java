@@ -21,7 +21,24 @@ public class clicktocall  extends ActionSupport{
      private String platform;
      private String location;
      private String iphone;
-    
+  
+       @Override
+    public void validate() {
+      
+      
+        if(platform==null)
+        {
+         addFieldError("platform","Please Select Platorm");
+        }
+        if(location==null)
+        {
+         addFieldError("location","Please Select Location");
+        }
+         if(iphone.equals("Please select"))
+        {
+         addFieldError("iphone","Please Select Os");
+        }
+    } 
      @Override 
      public String execute() throws Exception {
    

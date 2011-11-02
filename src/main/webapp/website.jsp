@@ -21,15 +21,16 @@ pageEncoding="UTF-8"%>
         
     </head>
     <body>
-        
-
-
-
-<%
+ <%
     Object obj = session.getAttribute("User");
+    Object obj1 = session.getAttribute("campa");
     if(obj==null)
         {
         response.sendRedirect(request.getContextPath()+"/sessionError.action");
+    }
+    else if(obj1==null)
+        {
+        response.sendRedirect(request.getContextPath()+"/sessioncampaignError.action");
     }
     %>
           <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -40,7 +41,7 @@ pageEncoding="UTF-8"%>
       </tr>
       <tr>
         <td height="24" valign="bottom">
-            <s:include value="navigationdashboard.jsp" />
+            <s:include value="navigation.jsp" />
             
         </td>
       </tr>
@@ -50,16 +51,13 @@ pageEncoding="UTF-8"%>
       <td> <h1>Websites</h1>
     <s:actionerror/>  
     <s:form action="websiteAction" method="post">
- 
+      <tr><td>
         <s:radio name="platform" label="Platform Devices" list="{'Target all devices','Target devices by platform','Target devices by manufacturer'}" />
-  
+      </td></tr><tr><td>
         <s:radio name="location" label="Geography/Operator" list="{'Target all Geographic location','Target specific geographic location'}" />
-
-      <br>
+      </td></tr>
       <s:submit value="Save and Continue"/>
     </s:form>
-      </td>
-        </tr>
          </table>   
     <s:include value="/footer.jsp" />
          
