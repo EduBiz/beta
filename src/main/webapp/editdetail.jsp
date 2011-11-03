@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
      <%@taglib uri="/struts-tags" prefix="s"%>
      <%@page import="model.*"%>
-     <%@ page import="java.util.*" %>
      <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -29,7 +28,6 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
-          
             
         </td>
       </tr>
@@ -40,40 +38,46 @@
         <br></br>
         
         <s:include value="menu.jsp" />
-        <br></br>
-        <br></br>
-        <br></br>
-        <div><a href="addcampnav.action"><input type="button" value="+Add Campaign" name="+Add Campaign"/></a></div>   
-        <div>
-            <s:form action="showlist">
-                <table id="user" cellspacing="15" cellpadding="8" >
-                    <th>Campaign Name</th>
-                    <th>Created</th>
-                    <th>Budget</th>  
-                              
-        <s:iterator end="1" value="camplist" status="rowstatus">
-           <s:if test="#rowstatus.odd == true">
-               <tr>
-                <td><s:property value="campaignName" /></td>
-                <td><s:property value="startDate" /> </td>
-                <td><s:property value="dialyBudget" /> </td>
-            </tr>
-        </s:if>
-        <s:else>
-            <tr class="alt">
-                <td><s:property value="campaignName" /></td>
-                <td><s:property value="startDate" /> </td>
-                <td><s:property value="dialyBudget" /> </td>
-            </tr>
-               </s:else>
-        </s:iterator>
-        </table>
-                <div id="menu"></div>       
-            </s:form>
-            </div>
-         
-
+        
+        
+        
+       
 		                               
+       <div class="getstartedwrap">
+           
+           <s:form name="userdetails">
+               <table>
+               <tr>  <td>    
+           
+             
+               <s:iterator value="uselist">	
+           <s:url action="edituserdetails.action" var="edituserdetails"   >
+                     <s:param name="email" value="%{email}" />
+                     <s:param name="fname" value="%{firstName}" />
+                     <s:param name="lname" value="%{lastName}" />
+                     <s:param name="dob" value="%{dob}" />
+                     <s:param name="addline1" value="%{addressLine1}" />
+                     <s:param name="ctry" value="%{country}" />
+                     <s:param name="storeg" value="%{stateRegion}" />
+                     <s:param name="city" value="%{city}" />
+                     <s:param name="postcode" value="%{postalCode}" />
+                     
+                     </s:url>
+                   <td><s:a href="%{edituserdetails}" cssClass="getstarted" >click to continue</s:a></td> 
+                
+        
+        </s:iterator>
+                   </td>  
+                 
+
+
+</tr>
+
+               </table>
+            </s:form>
+       </div>
+        
+      
       
        
  </td>

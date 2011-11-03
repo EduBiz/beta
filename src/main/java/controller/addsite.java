@@ -33,14 +33,12 @@ public class addsite extends ActionSupport{
     @Override
     public void validate()
     {
-    if(catgry==null)
+    if(catgry.equals("Please select"))
     {
     addFieldError("catgry","Please Select a Category");
     
     }
-    
-    
-    
+            
     }
 
 

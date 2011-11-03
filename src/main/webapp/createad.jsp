@@ -46,12 +46,22 @@ pageEncoding="UTF-8"%>
       </tr>
       <tr>
         <td height="24" valign="bottom">
-            <s:include value="navigation.jsp" />
+           
         </td>
       </tr>
     </table></td>
   </tr>
   <tr><td>
+         <br></br>
+        
+        <s:include value="menu.jsp" />
+        <br></br>
+        <br></br>
+        <br></br>  
+          
+          
+          
+      </td></tr>
     <s:actionerror/>  
     <s:form action="createAction">
       <tr><td>
@@ -74,7 +84,7 @@ pageEncoding="UTF-8"%>
               <s:submit value="Create And Finish" align="center" />
           
     </s:form>
-              <a href="campaignCreation.jsp">Create Another Ad</a>
+              <a href="campaignCreation.jsp">Create Another Ad</a></td></tr>
          </table>   
     <s:include value="/footer.jsp" />
          

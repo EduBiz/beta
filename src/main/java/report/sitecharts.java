@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 package report;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.awt.Point;
@@ -22,8 +21,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 
-
-public class Charts extends ActionSupport {
+public class sitecharts extends ActionSupport {
 
  private static final long     serialVersionUID = 4851863957798371834L;
 
@@ -45,7 +43,8 @@ public class Charts extends ActionSupport {
  @Override
   public String execute() throws Exception
   {
-   
+      
+    
  
     points = new LinkedList<Point>();
 

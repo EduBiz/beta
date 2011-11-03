@@ -6,15 +6,8 @@ package controller;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import model.*;
-import javax.mail.*;
-import javax.mail.internet.*;
-import java.util.Properties;
-import model.UserTransaction;
-import org.hibernate.HibernateException;
 
 /**
  *

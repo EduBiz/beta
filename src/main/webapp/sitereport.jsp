@@ -15,10 +15,10 @@
         <title>Reports</title>
         <s:head/>
         <sj:head/>
+        <script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="menu.js"></script>
   <link href="style.css" rel="stylesheet" type="text/css" />
     
-  <script type="text/javascript" src="jquery.js"></script>
-	<script type="text/javascript" src="menu.js"></script>
         <script type="text/javascript">
             	$.subscribe('chartHover', function(event, data) {
     $("#topicsHover").text(event.originalEvent.pos.x.toFixed(2)+','+event.originalEvent.pos.y.toFixed(2));
@@ -51,13 +51,14 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
-           
+            
         </td>
       </tr>
     </table></td>
   </tr>
   
-     <tr><td height="325" valign="top">	
+        <tr>
+          <td height="325" valign="top">	
         <br></br>
         
         <s:include value="menu.jsp" />
@@ -66,7 +67,9 @@
         <br></br>
                 
                 
-                <h3>Sample Campaign Report</h3></td>
+                
+                
+                <h3>Sample Sites Reports</h3></td>
         </tr>
         <tr>
             <td>
@@ -105,7 +108,7 @@
        
        <tr>
            <td>
-       <form method="post" action="rcharts.action">
+       <form method="post" action="sitecharts.action">
            <select name="search">
                <option value="1">Today</option>
                <option value="2">Yesterday</option>

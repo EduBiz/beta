@@ -28,6 +28,19 @@ public class editsite extends ActionSupport {
    private spDAO myDao;
     private List<Publish> sitelist;
     private Long publishid;
+    
+     @Override
+    public void validate()
+    {
+    if(catgry.equals("Please select"))
+    {
+    addFieldError("catgry","Please Select a Category");
+    
+    }
+           
+    }
+    
+    
     @Override
 public String execute() throws Exception
        {

@@ -16,6 +16,8 @@
         <link href="style.css" rel="stylesheet" type="text/css" />
         <s:head/>
         <sj:head/>
+        <script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="menu.js"></script>
     </head>
     <body>
         <%
@@ -33,12 +35,21 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
-           <s:include value="navigationdashboard.jsp" />
+          
         </td>
       </tr>
     </table></td>
   </tr>
   <tr><td>
+          
+          <td height="325" valign="top">	
+        <br></br>
+        
+        <s:include value="menu.jsp" />
+        <br></br>
+        <br></br>
+        <br></br>
+          
     <s:actionerror/>   
     <s:form action="updatesite">
         <s:hidden name="publishid" value="%{publishid}" />

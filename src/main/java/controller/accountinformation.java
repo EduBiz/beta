@@ -1,0 +1,219 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package controller;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import model.User;
+import model.UserDetails;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
+/**
+ *
+ * @author Administrator
+ */
+public class accountinformation extends ActionSupport {
+  
+ private spDAO myDao;
+    private String fname;
+    private String lname;
+    private String email;
+    
+    private Date dob;
+   
+    private String addline1;
+    private String ctry;
+    private String storeg;
+    private String city;
+    private String postcode;
+    private List<UserDetails> uselist;
+    
+     @Override
+    public String execute() throws Exception {
+     
+         Map session =ActionContext.getContext().getSession();
+         User  user=(User) session.get("User");
+           
+    UserDetails u =(UserDetails) myDao.getDbsession().get(UserDetails.class, user.getEmailId());
+            
+    
+           if(u.getUser()==null)
+                           
+            {
+                   return "save";
+            
+            }
+            else
+            {
+                
+               uselist=(List<UserDetails>) myDao.getDbsession().createQuery("from UserDetails").list();
+            Criteria ucri=myDao.getDbsession().createCriteria(UserDetails.class);
+            ucri.add(Restrictions.like("user", user));
+            ucri.setMaxResults(1);
+                
+             return "update";
+     
+           }
+     }
+    /**
+     * @return the myDao
+     */
+    public spDAO getMyDao() {
+        return myDao;
+    }
+
+    /**
+     * @param myDao the myDao to set
+     */
+    public void setMyDao(spDAO myDao) {
+        this.myDao = myDao;
+    }
+
+   
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the fname
+     */
+    public String getFname() {
+        return fname;
+    }
+
+    /**
+     * @param fname the fname to set
+     */
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    /**
+     * @return the lname
+     */
+    public String getLname() {
+        return lname;
+    }
+
+    /**
+     * @param lname the lname to set
+     */
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    /**
+     * @return the dob
+     */
+    public Date getDob() {
+        return dob;
+    }
+
+    /**
+     * @param dob the dob to set
+     */
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    /**
+     * @return the addline1
+     */
+    public String getAddline1() {
+        return addline1;
+    }
+
+    /**
+     * @param addline1 the addline1 to set
+     */
+    public void setAddline1(String addline1) {
+        this.addline1 = addline1;
+    }
+
+    /**
+     * @return the ctry
+     */
+    public String getCtry() {
+        return ctry;
+    }
+
+    /**
+     * @param ctry the ctry to set
+     */
+    public void setCtry(String ctry) {
+        this.ctry = ctry;
+    }
+
+    /**
+     * @return the storeg
+     */
+    public String getStoreg() {
+        return storeg;
+    }
+
+    /**
+     * @param storeg the storeg to set
+     */
+    public void setStoreg(String storeg) {
+        this.storeg = storeg;
+    }
+
+    /**
+     * @return the city
+     */
+    public String getCity() {
+        return city;
+    }
+
+    /**
+     * @param city the city to set
+     */
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    /**
+     * @return the postcode
+     */
+    public String getPostcode() {
+        return postcode;
+    }
+
+    /**
+     * @param postcode the postcode to set
+     */
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    /**
+     * @return the uselist
+     */
+    public List<UserDetails> getUselist() {
+        return uselist;
+    }
+
+    /**
+     * @param uselist the uselist to set
+     */
+    public void setUselist(List<UserDetails> uselist) {
+        this.uselist = uselist;
+    }
+    
+    
+}

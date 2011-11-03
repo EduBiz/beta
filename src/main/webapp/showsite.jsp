@@ -6,10 +6,12 @@
      <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>.::AdZappy::.</title>
+<title>.::Sites::.</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="menu.js"></script>
+      <sj:head jqueryui="true" jquerytheme="flick" />
+      
 </head>
 
 <body>
@@ -29,8 +31,7 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
-          
-            
+           
         </td>
       </tr>
     </table></td>
@@ -38,44 +39,41 @@
   <tr>
     <td height="325" valign="top">	
         <br></br>
-        
         <s:include value="menu.jsp" />
         <br></br>
         <br></br>
         <br></br>
-        <div><a href="addcampnav.action"><input type="button" value="+Add Campaign" name="+Add Campaign"/></a></div>   
-        <div>
-            <s:form action="showlist">
+        <div><a href="addsitenav.action"><input type="button" value="+Add Sites" name="+Add Sites"/></a></div>                           
+      <div class="getstartedwrap">
+                     
+           <s:form name="sitelist">
                 <table id="user" cellspacing="15" cellpadding="8" >
-                    <th>Campaign Name</th>
-                    <th>Created</th>
-                    <th>Budget</th>  
-                              
-        <s:iterator end="1" value="camplist" status="rowstatus">
+                    <th>Site Name</th>
+                    <th>Category</th>
+                    <th>Site Url</th>
+       
+        <s:iterator end="1" value="sitelist" status="rowstatus">
            <s:if test="#rowstatus.odd == true">
-               <tr>
-                <td><s:property value="campaignName" /></td>
-                <td><s:property value="startDate" /> </td>
-                <td><s:property value="dialyBudget" /> </td>
-            </tr>
-        </s:if>
+            <tr> 
+                 <td><s:property value="siteName" /></td>   
+                 <td><s:property value="category" /> </td>
+                 <td><s:property value="siteUrl" /> </td>     
+           </tr>
+          </s:if>
         <s:else>
             <tr class="alt">
-                <td><s:property value="campaignName" /></td>
-                <td><s:property value="startDate" /> </td>
-                <td><s:property value="dialyBudget" /> </td>
-            </tr>
-               </s:else>
+                 <td><s:property value="siteName" /></td>   
+                 <td><s:property value="category" /> </td>
+                 <td><s:property value="siteUrl" /> </td>     
+           </tr>
+        </s:else>
         </s:iterator>
         </table>
-                <div id="menu"></div>       
-            </s:form>
-            </div>
-         
-
-		                               
-      
-       
+                <div id="menu"></div> 
+            </s:form>     
+                 
+     </div>
+  
  </td>
  </tr>
 

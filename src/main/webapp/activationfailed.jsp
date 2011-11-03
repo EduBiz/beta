@@ -11,6 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Signup Success</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="menu.js"></script>
     </head>
     <body>
           <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -21,13 +23,18 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
-            <s:include value="navigation.jsp" />
+         
         </td>
       </tr>
     </table></td>
   </tr>
   <tr>    
-      <td>   
+      <td> 
+           <br></br>
+        
+        <s:include value="menu.jsp" />
+           <br></br>
+           <br></br>
           <h3>  Following errors occurred</h3>
           <ul>
                <li>  Hi the link was not working </li> 

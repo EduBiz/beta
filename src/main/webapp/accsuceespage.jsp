@@ -12,6 +12,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registration</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="menu.js"></script>
     </head>
     <body>
         <%
@@ -29,13 +31,21 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
-           <s:include value="navigationdashboard.jsp" />
+          
         </td>
       </tr>
     </table></td>
   </tr>
   <tr><td>
-        Hi     <s:property value="fname" />   your account information successfully created
+          <br></br>
+        
+        <s:include value="menu.jsp" />
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          
+        Hi     <s:property value="fname" />   your account information successfully Updated
       </td>      
   </tr>
          </table>   

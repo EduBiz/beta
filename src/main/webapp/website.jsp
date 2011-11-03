@@ -41,14 +41,23 @@ pageEncoding="UTF-8"%>
       </tr>
       <tr>
         <td height="24" valign="bottom">
-            <s:include value="navigation.jsp" />
+           
             
         </td>
       </tr>
     </table></td>
   </tr>
   <tr>
-      <td> <h1>Websites</h1>
+      <td height="325" valign="top">	
+        <br></br>
+        
+        <s:include value="menu.jsp" />
+        <br></br>
+        <br></br>
+        <br></br>
+          
+          
+          <h1>Websites</h1></td></tr>
     <s:actionerror/>  
     <s:form action="websiteAction" method="post">
       <tr><td>
