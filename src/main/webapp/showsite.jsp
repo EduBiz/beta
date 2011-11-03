@@ -44,7 +44,7 @@
         <br></br>
         <br></br>
         <div><a href="addsitenav.action"><input type="button" value="+Add Sites" name="+Add Sites"/></a></div>                           
-      <div class="getstartedwrap">
+      <div>
                      
            <s:form name="sitelist">
                 <table id="user" cellspacing="15" cellpadding="8" >

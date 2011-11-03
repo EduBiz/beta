@@ -45,8 +45,8 @@ public class Charts extends ActionSupport {
  @Override
   public String execute() throws Exception
   {
-   
- 
+      Map session =ActionContext.getContext().getSession();
+            User user=(User) session.get("User");
     points = new LinkedList<Point>();
 
     points.add(new Point(60, 73));
@@ -215,7 +215,6 @@ climap=new HashMap<Date,Integer>();
     
 
     return "success";
-  
   }
 
   public List<Point> getPoints()

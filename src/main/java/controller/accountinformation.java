@@ -7,7 +7,6 @@ package controller;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 import model.User;
 import model.UserDetails;
@@ -31,7 +30,7 @@ public class accountinformation extends ActionSupport {
     private String storeg;
     private String city;
     private String postcode;
-    private List<UserDetails> uselist;
+    private UserDetails userdetails;
     
      @Override
     public String execute() throws Exception {
@@ -39,27 +38,31 @@ public class accountinformation extends ActionSupport {
          Map session =ActionContext.getContext().getSession();
          User  user=(User) session.get("User");
            
-    UserDetails u =(UserDetails) myDao.getDbsession().get(UserDetails.class, user.getEmailId());
+        setUserdetails((UserDetails) getMyDao().getDbsession().get(UserDetails.class, user.getEmailId()));
             
     
-           if(u.getUser()==null)
+           if(getUserdetails()!=null)
                            
             {
-                   return "save";
-            
+                
+              
+            Criteria ucri=getMyDao().getDbsession().createCriteria(UserDetails.class);
+            ucri.add(Restrictions.like("user", user.getEmailId()));
+            ucri.setMaxResults(1);
+            setUserdetails((UserDetails)(ucri.list().get(0)));
+         
+          return "update";
             }
             else
             {
                 
-               uselist=(List<UserDetails>) myDao.getDbsession().createQuery("from UserDetails").list();
-            Criteria ucri=myDao.getDbsession().createCriteria(UserDetails.class);
-            ucri.add(Restrictions.like("user", user));
-            ucri.setMaxResults(1);
+            
                 
-             return "update";
-     
+             
+       return "save";
            }
      }
+
     /**
      * @return the myDao
      */
@@ -72,21 +75,6 @@ public class accountinformation extends ActionSupport {
      */
     public void setMyDao(spDAO myDao) {
         this.myDao = myDao;
-    }
-
-   
-    /**
-     * @return the email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @param email the email to set
-     */
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     /**
@@ -115,6 +103,20 @@ public class accountinformation extends ActionSupport {
      */
     public void setLname(String lname) {
         this.lname = lname;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
@@ -202,18 +204,16 @@ public class accountinformation extends ActionSupport {
     }
 
     /**
-     * @return the uselist
+     * @return the userdetails
      */
-    public List<UserDetails> getUselist() {
-        return uselist;
+    public UserDetails getUserdetails() {
+        return userdetails;
     }
 
     /**
-     * @param uselist the uselist to set
+     * @param userdetails the userdetails to set
      */
-    public void setUselist(List<UserDetails> uselist) {
-        this.uselist = uselist;
+    public void setUserdetails(UserDetails userdetails) {
+        this.userdetails = userdetails;
     }
-    
-    
 }

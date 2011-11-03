@@ -17,8 +17,6 @@
         <sj:head/>
   <link href="style.css" rel="stylesheet" type="text/css" />
     
-  <script type="text/javascript" src="jquery.js"></script>
-	<script type="text/javascript" src="menu.js"></script>
         <script type="text/javascript">
             	$.subscribe('chartHover', function(event, data) {
     $("#topicsHover").text(event.originalEvent.pos.x.toFixed(2)+','+event.originalEvent.pos.y.toFixed(2));
@@ -57,19 +55,17 @@
     </table></td>
   </tr>
   
-     <tr><td height="325" valign="top">	
+        <tr>
+         <td height="325" valign="top">	
         <br></br>
         
         <s:include value="menu.jsp" />
         <br></br>
-        <br></br>
-        <br></br>
+                      
                 
-                
-                <h3>Sample Campaign Report</h3></td>
-        </tr>
-        <tr>
-            <td>
+          
+        
+          <h3> Sample Campaign Report</h3><br>
      <sjc:chart id="chartPoints" 
         xaxisMode="time"
     	xaxisTimeformat="%0d.%0m.%y"

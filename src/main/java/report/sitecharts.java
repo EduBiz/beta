@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package report;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.awt.Point;
@@ -20,6 +21,7 @@ import model.User;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
+
 
 public class sitecharts extends ActionSupport {
 
@@ -43,9 +45,8 @@ public class sitecharts extends ActionSupport {
  @Override
   public String execute() throws Exception
   {
-      
-    
- 
+      Map session =ActionContext.getContext().getSession();
+            User user=(User) session.get("User");
     points = new LinkedList<Point>();
 
     points.add(new Point(60, 73));
@@ -214,7 +215,6 @@ climap=new HashMap<Date,Integer>();
     
 
     return "success";
-  
   }
 
   public List<Point> getPoints()
@@ -308,3 +308,4 @@ climap=new HashMap<Date,Integer>();
 
     
 }
+

@@ -5,6 +5,7 @@
 --%>
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.*"%>
 <!DOCTYPE html>
 
 <html>
@@ -54,15 +55,15 @@
           
     <s:actionerror/>   
     <s:form action="useRegistration">
-        <s:textfield name="email" label="Email id"  value="%{email}" disabled="true" />
-        <s:textfield name="fname" label="First Name" value="%{fname}" />
-        <s:textfield name="lname" label="Last Name" value="%{lname}"/>
-        <sj:datepicker name="dob" displayFormat="mm/dd/yy" label="Date of Birth" value="%{dob}"/>
-        <s:textfield name="addline1" label="Address Line1" value="%{addline1}" />
-        <s:textfield name="ctry" label="Country" value="%{ctry}"  />
-        <s:textfield name="storeg" label="State/Region" value="%{storeg}" />
-        <s:textfield name="city" label="City"  value="%{city}" />
-        <s:textfield name="postcode" label="Postal/Zip Code" value="%{postcode}" />
+        <s:textfield name="email" label="Email id"  value="%{userdetails.user}" readonly="true" disabled="true" />
+        <s:textfield name="fname" label="First Name" value="%{userdetails.firstName}" />
+        <s:textfield name="lname" label="Last Name" value="%{userdetails.lastName}"/>
+        <sj:datepicker name="dob" displayFormat="mm/dd/yy" label="Date of Birth" value="%{userdetails.dob}"/>
+        <s:textfield name="addline1" label="Address Line1" value="%{userdetails.addressLine1}" />
+        <s:textfield name="ctry" label="Country" value="%{userdetails.country}"  />
+        <s:textfield name="storeg" label="State/Region" value="%{userdetails.stateRegion}" />
+        <s:textfield name="city" label="City"  value="%{userdetails.city}" />
+        <s:textfield name="postcode" label="Postal/Zip Code" value="%{userdetails.postalCode}" />
         <s:submit value="Update Information"/>
     </s:form>
     </td>

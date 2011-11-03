@@ -169,7 +169,8 @@
             <result name="input" >createad.jsp</result>
             <result name="error" >/createad.jsp</result>
         </action>
-        <action name="rcharts" class="report.Charts" >
+       
+       <action name="rcharts" class="report.Charts" >
             <result name="success">report.jsp</result>
         </action> 
         <action name="sitecharts" class="report.sitecharts" >

@@ -43,7 +43,7 @@
         
        
 		                               
-       <div class="getstartedwrap">
+       <div class="menu" >
            
            <s:form name="userdetails">
                <table>
@@ -63,7 +63,7 @@
                      <s:param name="postcode" value="%{postalCode}" />
                      
                      </s:url>
-                   <td><s:a href="%{edituserdetails}" cssClass="getstarted" >click to continue</s:a></td> 
+                   <td class="getstartedwrap"><s:a href="%{edituserdetails}" cssClass="getstarted" >Click to continue</s:a></td> 
                 
         
         </s:iterator>

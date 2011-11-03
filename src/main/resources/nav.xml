@@ -21,7 +21,7 @@
          
          <action name="accountinformation" class="controller.accountinformation">
              <result name="save" >userinformation.jsp</result>
-             <result name="update" type="chain">editdetail</result>
+             <result name="update">registration.jsp</result>
              <result name="error" type="chain">loadlist</result>
          </action>
          
@@ -43,6 +43,10 @@
          </action>
          <action name="editsitenav" class="navigation.editsitenav">
              <result name="success" >updatesite.jsp</result>
+             <result name="error" type="chain">loadlist</result>
+         </action>
+         <action name="showsitenav" class="navigation.showsitenav">
+             <result name="success" >showsite.jsp</result>
              <result name="error" type="chain">loadlist</result>
          </action>
          
