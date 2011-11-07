@@ -23,18 +23,19 @@ public class loadlist {
     private List<Publish> sitelist;
     private List<Campaign> camplist;
      private List<UserDetails> uselist;
+      private User  user; 
      public String execute() throws Exception {
-        
+      
          
            try{
                Map session =ActionContext.getContext().getSession();
-               User  user=(User) session.get("User");
+             setUser((User) session.get("User"));
             
          
           
                 setSitelist((List<Publish>) getMyDao().getDbsession().createQuery("from Publish").list());
                 Criteria crit1 = getMyDao().getDbsession().createCriteria(Publish.class);
-                crit1.add(Restrictions.like("user",user));
+                crit1.add(Restrictions.like("user", getUser()));
                 crit1.setMaxResults(20);
            
                 setSitelist((List<Publish>) crit1.list());
@@ -42,13 +43,13 @@ public class loadlist {
                  
                   setCamplist((List<Campaign>) getMyDao().getDbsession().createQuery("from Campaign").list());
                 Criteria crit = getMyDao().getDbsession().createCriteria(Campaign.class);
-                crit.add(Restrictions.like("user",user));
+                crit.add(Restrictions.like("user", getUser()));
                 crit.setMaxResults(20);
                  setCamplist((List<Campaign>) crit.list());
                 
                   setUselist((List<UserDetails>) myDao.getDbsession().createQuery("from UserDetails").list());
             Criteria ucri=myDao.getDbsession().createCriteria(UserDetails.class);
-            ucri.add(Restrictions.like("user", user));
+            ucri.add(Restrictions.like("user", getUser()));
             ucri.setMaxResults(1);
             return "success";
                  
@@ -129,6 +130,20 @@ public class loadlist {
      */
     public void setUselist(List<UserDetails> uselist) {
         this.uselist = uselist;
+    }
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
     }
     
 }

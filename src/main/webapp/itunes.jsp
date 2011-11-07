@@ -13,13 +13,14 @@ pageEncoding="UTF-8"%>
      <%@taglib uri="/struts-tags" prefix="s"%>
      <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
     <head>
-        <s:head/>
-        <sj:head/>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registration</title>
+        <title>Campaign Creation</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="menu.js"></script>
+         <s:head theme="jquery"/>  
+         <sj:head jqueryui="true" jquerytheme="flick"/>
     </head>
     <body>
         
@@ -43,7 +44,7 @@ pageEncoding="UTF-8"%>
       </tr>
       <tr>
         <td height="24" valign="bottom">
-           
+            Welcome&nbsp; <s:property value="%{user.emailId}"/>
             
         </td>
       </tr>

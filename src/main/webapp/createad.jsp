@@ -10,21 +10,18 @@ pageEncoding="UTF-8"%>
 <%@page import="model.User"%>
 <!DOCTYPE html>
 <html>
-     <%@taglib uri="/struts-tags" prefix="s"%>
      <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
      
     <head>
-        <s:head/>
-        <sj:head/>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registration</title>
+        <title>Campaign Creation</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
+        <s:head theme="jquery"/>
+        <sj:head jqueryui="true" jquerytheme="flick"/>
         
     </head>
     <body>
-       
-
-
 
 <%
     Object obj = session.getAttribute("User");
@@ -46,7 +43,7 @@ pageEncoding="UTF-8"%>
       </tr>
       <tr>
         <td height="24" valign="bottom">
-           
+           Welcome&nbsp; <s:property value="%{user.emailId}"/>
         </td>
       </tr>
     </table></td>
@@ -63,7 +60,7 @@ pageEncoding="UTF-8"%>
           
       </td></tr>
     <s:actionerror/>  
-    <s:form action="createAction">
+    <s:form action="createAction" enctype="multipart/form-data">
       <tr><td>
          <h3>Choose Ad Type:</h3>
       </td></tr><tr><td>
@@ -78,8 +75,8 @@ pageEncoding="UTF-8"%>
         <h3>Creative:</h3>
       </td></tr><tr><td>
            <s:textfield name="adtext" label="Ad Text" />
-           <s:textfield name="addimage" label="Ad Image" />
-           <s:textfield name="tileimage" label="Tile Image" />
+           <s:file label="Add Image" name="addimage"></s:file>
+           <s:file label="Tile Image" name="tileimage"></s:file>
           </td></tr><tr><td>
               <s:submit value="Create And Finish" align="center" />
           

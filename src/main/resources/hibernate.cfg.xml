@@ -23,7 +23,6 @@
     <mapping resource="model/CampaignDemography.hbm.xml"/>
     <mapping resource="model/CampaignDevice.hbm.xml"/>
     <mapping resource="model/ReportrDaily.hbm.xml"/>
-    <mapping resource="model/Dateex.hbm.xml"/>
     <mapping resource="model/CampaignOs.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

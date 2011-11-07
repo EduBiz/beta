@@ -60,16 +60,16 @@ public class signup extends ActionSupport {
 //            Map session =ActionContext.getContext().getSession();
 //            session.put("User",email);
              subject=" Welcome to Adzappy"  ;
-           setContent("Hi"       +uname+      "Welcome to Adzappy :"
+           setContent("Hi\t"       +uname+      "\nWelcome to Adzappy :\n"
                            +"                                               "
-                         +"Your Registered login  mail id is:" + email + "    "
+                         +"Your Registered login  mail id is:" + email + "\n   "
                            +"                         "
-                           + "   Please click th following link to activate your account  "
+                           + "   Please click th following link to activate your account\n  "
                            +"                                       "
                            + "http://beta.mathi.cloudbees.net/activationAccount.action?email="+email+"&confcode="+getConfcode()
                            +"                                                    "
-                           +" Thanks & Regards     "
-                           +" Adzappy Team");
+                           +" \nThanks & Regards  \n   "
+                           +" Adzappy Team\n");
        
            sendMail.test(email, subject, content);
         return "success";

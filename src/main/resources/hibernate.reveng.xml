@@ -11,7 +11,6 @@
   <table-filter match-name="publish"/>
   <table-filter match-name="temp_user"/>
   <table-filter match-name="campaign_demography"/>
-  <table-filter match-name="dateex"/>
   <table-filter match-name="reportc_daily"/>
   <table-filter match-name="payment_details"/>
   <table-filter match-name="user_transaction"/>

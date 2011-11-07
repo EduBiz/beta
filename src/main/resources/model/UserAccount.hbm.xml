@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 1, 2011 7:38:43 PM by Hibernate Tools 3.2.1.GA -->
+<!-- Generated Nov 4, 2011 1:37:24 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="model.UserAccount" table="user_account" catalog="adzappy">
         <id name="user" type="string">

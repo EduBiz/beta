@@ -6,6 +6,7 @@ package controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Date;
+import model.User;
 /**
  *
  * @author Administrator
@@ -29,7 +30,6 @@ public class edituseregister extends ActionSupport {
     private spDAO myDao;
     private String[] temp;
   
-
 
      @Override
     public String execute() throws Exception {

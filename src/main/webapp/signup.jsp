@@ -21,6 +21,7 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
+            Welcome
             <s:include value="navigation.jsp" />
         </td>
       </tr>

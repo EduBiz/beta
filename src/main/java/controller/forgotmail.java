@@ -50,7 +50,8 @@ public class forgotmail extends ActionSupport {
             {
       
              subject="Your Adzappy Password";
-             content="Your Email Account is :  " + user.getEmailId() + "password is" + user.getPassword();
+             content="Your Email Account is \t:  " + user.getEmailId() + "\npassword is\t" + user.getPassword()+"\n  " +"\nThanks & Regards \n    "
+                 +" Adzappy Team\n";
         
             getSendMail().test(forgetemail, getSubject(), getContent());
            

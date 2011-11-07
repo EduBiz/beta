@@ -32,7 +32,7 @@ public class updatesite extends ActionSupport{
     private String publishid;
     private Long pid;
     private List<Publish> sitelist;
-
+    private User user;
      @Override
     public void validate()
     {
@@ -49,14 +49,14 @@ public class updatesite extends ActionSupport{
        {
          try{ 
        Map session =ActionContext.getContext().getSession();
-            User user=(User) session.get("User");
+            setUser((User) session.get("User"));
             
          pid=(Long) Long.parseLong(publishid);
      Publish sitepublish;
        
    
          
-             sitepublish=new Publish(user,siteurl,catgry);
+             sitepublish=new Publish(getUser(),siteurl,catgry);
              sitepublish.setPublishId(pid);
              sitepublish.setBgColor(bgcolor);
              sitepublish.setTextColor(txtcolor);
@@ -67,7 +67,7 @@ public class updatesite extends ActionSupport{
                  
                  sitelist=(List<Publish>) myDao.getDbsession().createQuery("from Publish").list();
                 Criteria crit1 = myDao.getDbsession().createCriteria(Publish.class);
-                crit1.add(Restrictions.like("user",user));
+                crit1.add(Restrictions.like("user", getUser()));
                 crit1.setMaxResults(20);
            
                 sitelist=(List<Publish>) crit1.list();
@@ -224,6 +224,20 @@ public class updatesite extends ActionSupport{
      */
     public void setSitelist(List<Publish> sitelist) {
         this.sitelist = sitelist;
+    }
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
     }
     
     

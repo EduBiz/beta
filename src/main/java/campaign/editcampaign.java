@@ -31,37 +31,38 @@ public class editcampaign extends ActionSupport{
        private Long lc;
         private List<Campaign> camplist;
       private spDAO myDao;
+      private User user;
        
        @Override 
         public String execute() throws Exception {
    
              /* delimiter */
-         String delimiter = "-";   /* given string will be split by the argument delimiter provided. */
-          temp = sdate.split(delimiter);
-         for(int i =0; i < 1; i++)        /* print substrings */
-            sdate=temp[i+1]+'/'+temp[i+2]+'/'+temp[i] ; 
-        
-         temp=edate.split(delimiter);
-         for(int i =0; i < 1; i++)        /* print substrings */
-           edate=temp[i+1]+'/'+temp[i+2]+'/'+temp[i] ; 
-         
-         
-        return "success";
+         String delimiter ="-";   /* given string will be split by the argument delimiter provided. */
+          setTemp(getSdate().split(delimiter));
+         for(int i =0; i < 1; i++){        /* print substrings */
+            setSdate(getTemp()[i+1] + '/' + getTemp()[i+2] + '/' + getTemp()[i]) ; 
+         }
+         setTemp(getEdate().split(delimiter));
+         for(int i =0; i < 1; i++)  {      /* print substrings */
+            setEdate(getTemp()[i+1] + '/' + getTemp()[i+2] + '/' + getTemp()[i]) ; 
+         }
+           
+        return"success";
         }
 
         public String deletecamp() throws Exception {
            
            try{
                Map session =ActionContext.getContext().getSession();
-            User user=(User) session.get("User");
-            lc= Long.parseLong(campaid);
-            Campaign cdel=(Campaign) myDao.getDbsession().get(Campaign.class, lc);
+            user=(User) session.get("User");
+            lc=(Long) Long.parseLong(getCampaid());
+            Campaign cdel=(Campaign) getMyDao().getDbsession().get(Campaign.class, getLc());
                 
               
                  getMyDao().getDbsession().delete(cdel);
                  
-                  camplist=(List<Campaign>) myDao.getDbsession().createQuery("from Campaign").list();
-                Criteria crit = myDao.getDbsession().createCriteria(Campaign.class);
+                  setCamplist((List<Campaign>) getMyDao().getDbsession().createQuery("from Campaign").list());
+                Criteria crit = getMyDao().getDbsession().createCriteria(Campaign.class);
                 crit.add(Restrictions.like("user",user));
                 crit.setMaxResults(20);
                     setCamplist((List<Campaign>) crit.list());
@@ -72,6 +73,21 @@ public class editcampaign extends ActionSupport{
            }
         return"success";   
        }
+
+    /**
+     * @return the campaid
+     */
+    public String getCampaid() {
+        return campaid;
+    }
+
+    /**
+     * @param campaid the campaid to set
+     */
+    public void setCampaid(String campaid) {
+        this.campaid = campaid;
+    }
+
     /**
      * @return the campaignname
      */
@@ -86,7 +102,7 @@ public class editcampaign extends ActionSupport{
         this.campaignname = campaignname;
     }
 
-     /**
+    /**
      * @return the dailybdgt
      */
     public BigDecimal getDailybdgt() {
@@ -143,59 +159,45 @@ public class editcampaign extends ActionSupport{
     }
 
     /**
-     * @return the campaignid
-     */
-    public String getCampaid() {
-        return campaid;
-    }
-
-    /**
-     * @param campaignid the campaignid to set
-     */
-    public void setCampaid(String campaignid) {
-        this.campaid = campaignid;
-    }
-
-    /**
      * @return the sdate
      */
-    public String getSdate() {     
+    public String getSdate() {
         return sdate;
     }
 
     /**
-     * @param startdate the sdate to set
+     * @param sdate the sdate to set
      */
-    public void setSdate(String startdate) {
-        this.sdate = startdate;
+    public void setSdate(String sdate) {
+        this.sdate = sdate;
     }
 
     /**
-     * @return the enddate
+     * @return the edate
      */
     public String getEdate() {
         return edate;
     }
 
     /**
-     * @param enddate the enddate to set
+     * @param edate the edate to set
      */
-    public void setEdate(String enddate) {
-        this.edate = enddate;
+    public void setEdate(String edate) {
+        this.edate = edate;
     }
 
     /**
-     * @return the myDao
+     * @return the temp
      */
-    public spDAO getMyDao() {
-        return myDao;
+    public String[] getTemp() {
+        return temp;
     }
 
     /**
-     * @param myDao the myDao to set
+     * @param temp the temp to set
      */
-    public void setMyDao(spDAO myDao) {
-        this.myDao = myDao;
+    public void setTemp(String[] temp) {
+        this.temp = temp;
     }
 
     /**
@@ -225,5 +227,34 @@ public class editcampaign extends ActionSupport{
     public void setCamplist(List<Campaign> camplist) {
         this.camplist = camplist;
     }
+
+    /**
+     * @return the myDao
+     */
+    public spDAO getMyDao() {
+        return myDao;
+    }
+
+    /**
+     * @param myDao the myDao to set
+     */
+    public void setMyDao(spDAO myDao) {
+        this.myDao = myDao;
+    }
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
+   
   
 }

@@ -33,7 +33,7 @@
       <tr>
         <td height="24" valign="bottom">
            
-           
+           Welcome&nbsp; <s:property value="%{user.emailId}"/> 
         </td>
       </tr>
     </table></td>

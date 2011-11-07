@@ -29,7 +29,7 @@ public class addsite extends ActionSupport{
     private spDAO myDao;
    
     private List<Publish> sitelist;
-    
+     private User  user;
     @Override
     public void validate()
     {
@@ -47,11 +47,11 @@ public class addsite extends ActionSupport{
        {
               try{ 
        Map session =ActionContext.getContext().getSession();
-            User user=(User) session.get("User");
+            setUser((User) session.get("User"));
         
              
              
-            Publish  sitepublish=new Publish(user,siteurl,catgry);
+            Publish  sitepublish=new Publish(getUser(),siteurl,catgry);
              
              sitepublish.setBgColor(bgcolor);
              sitepublish.setTextColor(txtcolor);
@@ -62,7 +62,7 @@ public class addsite extends ActionSupport{
                
                  sitelist=(List<Publish>) myDao.getDbsession().createQuery("from Publish").list();
                 Criteria crit1 = myDao.getDbsession().createCriteria(Publish.class);
-                crit1.add(Restrictions.like("user",user));
+                crit1.add(Restrictions.like("user", getUser()));
                 crit1.setMaxResults(20);
            
                 sitelist=(List<Publish>) crit1.list();
@@ -183,6 +183,20 @@ public class addsite extends ActionSupport{
      */
     public void setSitelist(List<Publish> sitelist) {
         this.sitelist = sitelist;
+    }
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
     }
 
     

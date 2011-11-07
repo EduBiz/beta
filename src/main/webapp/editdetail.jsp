@@ -4,11 +4,15 @@
      <%@page import="model.*"%>
      <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <head>
+   
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>.::AdZappy::.</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="menu.js"></script>
+         <s:head theme="jquery"/>  
+        <sj:head jqueryui="true" jquerytheme="flick"/> 
+        
 </head>
 
 <body>
@@ -28,7 +32,7 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
-            
+             Welcome&nbsp; <s:property value="%{user.emailId}"/>
         </td>
       </tr>
     </table></td>

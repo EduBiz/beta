@@ -31,14 +31,15 @@ public class accountinformation extends ActionSupport {
     private String city;
     private String postcode;
     private UserDetails userdetails;
-    
+    private User  user;
      @Override
     public String execute() throws Exception {
      
          Map session =ActionContext.getContext().getSession();
-         User  user=(User) session.get("User");
+         setUser((User) session.get("User"));
            
-        setUserdetails((UserDetails) getMyDao().getDbsession().get(UserDetails.class, user.getEmailId()));
+         
+        setUserdetails((UserDetails) getMyDao().getDbsession().get(UserDetails.class, getUser().getEmailId()));
             
     
            if(getUserdetails()!=null)
@@ -47,7 +48,7 @@ public class accountinformation extends ActionSupport {
                 
               
             Criteria ucri=getMyDao().getDbsession().createCriteria(UserDetails.class);
-            ucri.add(Restrictions.like("user", user.getEmailId()));
+            ucri.add(Restrictions.like("user", getUser().getEmailId()));
             ucri.setMaxResults(1);
             setUserdetails((UserDetails)(ucri.list().get(0)));
          
@@ -215,5 +216,19 @@ public class accountinformation extends ActionSupport {
      */
     public void setUserdetails(UserDetails userdetails) {
         this.userdetails = userdetails;
+    }
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -16,7 +16,6 @@ import java.util.Map;
 
 import controller.spDAO;
 import model.Campaign;
-import model.Dateex;
 import model.User;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -25,7 +24,7 @@ import org.hibernate.criterion.Restrictions;
 
 public class Charts extends ActionSupport {
 
- private static final long     serialVersionUID = 4851863957798371834L;
+private static final long     serialVersionUID = 4851863957798371834L;
 
   private List<Point>           points;
   private List<Point>           pointsWithNull;
@@ -45,7 +44,7 @@ public class Charts extends ActionSupport {
  @Override
   public String execute() throws Exception
   {
-      Map session =ActionContext.getContext().getSession();
+   /*    Map session =ActionContext.getContext().getSession();
             User user=(User) session.get("User");
     points = new LinkedList<Point>();
 
@@ -213,7 +212,7 @@ climap=new HashMap<Date,Integer>();
   
   }
     
-
+*/
     return "success";
   }
 

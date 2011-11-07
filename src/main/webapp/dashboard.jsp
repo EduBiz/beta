@@ -29,7 +29,7 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
-          
+           Welcome&nbsp; <s:property value="email"/>
             
         </td>
       </tr>
@@ -70,11 +70,7 @@
         </table>
                 <div id="menu"></div>       
             </s:form>
-            </div>
-         
-
-		                               
-      
+            </div>   
        
  </td>
  </tr>

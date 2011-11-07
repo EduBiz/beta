@@ -7,6 +7,9 @@ package campaign;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import controller.spDAO;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Map;
 import model.*;
@@ -26,11 +29,10 @@ public class createad extends ActionSupport{
      private String url;
      private String displayurl;
      private String adtext;
-     private String addimage;
-     private String tileimage;
      private List<Campaign> camplist;
      
-      
+     private File addimage;
+     private File tileimage;
       @Override
     public void validate() {
       
@@ -58,9 +60,20 @@ public class createad extends ActionSupport{
                campcre.setAddUrl(url);
                campcre.setDisplayUrl(displayurl);
                campcre.setAddText(adtext);
-               campcre.setAddImage(addimage);
-               campcre.setTileImage(tileimage);
-                getMyDao().getDbsession().save(campcre);
+               
+            byte[] aFile = new byte[(int) addimage.length()];
+            byte[] tFile = new byte[(int) tileimage.length()];
+            FileInputStream fileInputStream = new FileInputStream(addimage);
+            //convert file into array of bytes
+	     fileInputStream.read(aFile);
+             campcre.setAddImage(aFile);
+         
+             fileInputStream=new FileInputStream(tileimage);
+             fileInputStream.read(tFile);
+             fileInputStream.close();
+             campcre.setTileImage(tFile);
+              
+             getMyDao().getDbsession().save(campcre);
           
                  User user=(User) session.get("User");
                  
@@ -69,8 +82,20 @@ public class createad extends ActionSupport{
                 crit.add(Restrictions.like("user",user));
                 crit.setMaxResults(20);
                     setCamplist((List<Campaign>) crit.list());
+                 
+                    // Avatar avatar2 = (Avatar)session.get(Avatar.class, avatar.getAvatarId());
+                 //  byte[] bAvatar = avatar2.getImage();
+             byte[] retadd=campcre.getAddImage();
+                    
+                FileOutputStream fos = new FileOutputStream("D:\\test.gif"); 
+                fos.write(retadd);
+           byte[] rettile=campcre.getTileImage();
+                    
+            fos = new FileOutputStream("D:\\test1.gif"); 
+            fos.write(rettile);
+            fos.close();
+            
           }
-    
            catch(HibernateException e)
           {
           e.printStackTrace();
@@ -164,34 +189,6 @@ public class createad extends ActionSupport{
     }
 
     /**
-     * @return the addimage
-     */
-    public String getAddimage() {
-        return addimage;
-    }
-
-    /**
-     * @param addimage the addimage to set
-     */
-    public void setAddimage(String addimage) {
-        this.addimage = addimage;
-    }
-
-    /**
-     * @return the tileimage
-     */
-    public String getTileimage() {
-        return tileimage;
-    }
-
-    /**
-     * @param tileimage the tileimage to set
-     */
-    public void setTileimage(String tileimage) {
-        this.tileimage = tileimage;
-    }
-
-    /**
      * @return the camplist
      */
     public List<Campaign> getCamplist() {
@@ -203,5 +200,33 @@ public class createad extends ActionSupport{
      */
     public void setCamplist(List<Campaign> camplist) {
         this.camplist = camplist;
+    }
+
+    /**
+     * @return the addimage
+     */
+    public File getAddimage() {
+        return addimage;
+    }
+
+    /**
+     * @param addimage the addimage to set
+     */
+    public void setAddimage(File addimage) {
+        this.addimage = addimage;
+    }
+
+    /**
+     * @return the tileimage
+     */
+    public File getTileimage() {
+        return tileimage;
+    }
+
+    /**
+     * @param tileimage the tileimage to set
+     */
+    public void setTileimage(File tileimage) {
+        this.tileimage = tileimage;
     }
 }

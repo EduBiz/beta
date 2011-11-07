@@ -32,6 +32,22 @@
       </td>
   </tr>  
   </table>
-        <s:include value="/footer.jsp"/>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+            <s:include value="/footer.jsp"/>
     </body>
 </html>

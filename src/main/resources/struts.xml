@@ -48,12 +48,8 @@
         </action>
         
          
-        
-       
-         
-         
        <action name="addsite" class="controller.addsite" >
-         <result name="success" >sitemanage.jsp</result>
+         <result name="success" type="chain">showsitenav</result>
          <result name="input" >addsites.jsp</result>
          <result name="error" >addsites.jsp</result> 
        </action>
@@ -62,8 +58,7 @@
          <result name="input" >editsite.jsp</result>
          <result name="error" >editsite.jsp</result> 
        </action>
-       
-       
+   
        <action name="editsite" class="controller.editsite" >
             <result name="success" >editsite.jsp</result>
             <result name="input" >dashboard.jsp</result>
@@ -78,8 +73,7 @@
         
         
          <action name="editcampaign" class="campaign.editcampaign" >
-            <result name="success" >campaignedit.jsp</result>
-            <result name="input" >dashboard.jsp</result>
+            <result name="input">campaignedit.jsp</result>
             <result name="error" >/dashboard.jsp</result>
         </action>
         
@@ -89,7 +83,7 @@
             <result name="error" >/campaignedit.jsp</result>
         </action>
         
-         <action name="deletecampaign" method="deletecamp" class="campaign.editcampaign" >
+         <action name="deletecampaign" class="campaign.deletecampaign" >
             <result name="success" >dashboard.jsp</result>
             <result name="input" >dashboard.jsp</result>
             <result name="error" >/dashboard.jsp</result>

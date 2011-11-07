@@ -49,19 +49,7 @@ public class activationAccount extends ActionSupport {
             session.put("User",user);
             
             subject="Activation Success";
-                  setContent("Hi "     + ":"+uname+ 
-                             
-                             
-                             "Welcome to Adzappy :"
-                 +"     "
-                             + "                                          "
-               +" Now Your Adzappy Account is Activated   & Verified "
-                           
-                             
-                             
-                             
-                 +" Thanks & Regards     "
-                 +" Adzappy Team");
+                  content="Hi " + "\t\t"+uname+"\n" +"... Welcome to Adzappy :\n" +" \nNow Your Adzappy Account is Activated   & Verified \n"+" Thanks & Regards \n    " +" Adzappy Team\n";
        
         
              sendMail.test(email, subject, content);

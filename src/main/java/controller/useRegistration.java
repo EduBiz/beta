@@ -33,7 +33,7 @@ public class useRegistration extends ActionSupport {
 
     private spDAO myDao;
     private List<UserDetails> uselist;
-  
+  private  User  user; 
 
 
      @Override
@@ -44,9 +44,9 @@ public class useRegistration extends ActionSupport {
            
           
             Map session =ActionContext.getContext().getSession();
-            User user=(User) session.get("User");
-             email=user.getEmailId();  
-            UserDetails used = new UserDetails(email,user,fname);
+             setUser((User) session.get("User"));
+             email=getUser().getEmailId();  
+            UserDetails used = new UserDetails(email, getUser(),fname);
               
               used.setLastName(lname);
               used.setDob(getDob());
@@ -62,7 +62,7 @@ public class useRegistration extends ActionSupport {
        
             setUselist((List<UserDetails>) myDao.getDbsession().createQuery("from UserDetails").list());
             Criteria ucri=myDao.getDbsession().createCriteria(UserDetails.class);
-            ucri.add(Restrictions.like("user", user));
+            ucri.add(Restrictions.like("user", getUser()));
             ucri.setMaxResults(1);
            
            return "success";
@@ -234,6 +234,20 @@ public class useRegistration extends ActionSupport {
      */
     public void setUselist(List<UserDetails> uselist) {
         this.uselist = uselist;
+    }
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
     }
 
   

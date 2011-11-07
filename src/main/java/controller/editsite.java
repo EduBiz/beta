@@ -28,7 +28,7 @@ public class editsite extends ActionSupport {
    private spDAO myDao;
     private List<Publish> sitelist;
     private Long publishid;
-    
+     private User  user;
      @Override
     public void validate()
     {
@@ -52,7 +52,7 @@ public String execute() throws Exception
            
            try{
                Map session =ActionContext.getContext().getSession();
-            User user=(User) session.get("User");
+            setUser((User) session.get("User"));
           
             Publish cdel=(Publish) myDao.getDbsession().get(Publish.class, publishid);
                 
@@ -61,7 +61,7 @@ public String execute() throws Exception
                  
                   sitelist=(List<Publish>) myDao.getDbsession().createQuery("from Publish").list();
                 Criteria crit = myDao.getDbsession().createCriteria(Publish.class);
-                crit.add(Restrictions.like("user",user));
+                crit.add(Restrictions.like("user", getUser()));
                 crit.setMaxResults(20);
            
                 sitelist=(List<Publish>) crit.list();
@@ -216,6 +216,20 @@ public String execute() throws Exception
      */
     public void setSitelist(List<Publish> sitelist) {
         this.sitelist = sitelist;
+    }
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
     }
 
 

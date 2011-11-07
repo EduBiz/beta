@@ -25,16 +25,16 @@ public class campaignMain extends ActionSupport{
    private BigDecimal dailybdgt;
    private String deliverytype;
    private String note;
-  
+   private User  user;
     private spDAO myDao;
 	@Override
     public String execute() throws Exception {
     
         try{
                 Map session =ActionContext.getContext().getSession();
-            User user=(User) session.get("User");
+             setUser((User) session.get("User"));
        
-            Campaign camp = new Campaign(user,campaignname);
+            Campaign camp = new Campaign(getUser(),campaignname);
             getMyDao().getDbsession().save(camp);
             camp.setStartDate(getStartdate());
             camp.setEndDate(getEnddate());
@@ -148,6 +148,20 @@ public class campaignMain extends ActionSupport{
      */
     public void setDeliverytype(String deliverytype) {
         this.deliverytype = deliverytype;
+    }
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
     }
 
    
