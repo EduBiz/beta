@@ -13,8 +13,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Reports</title>
-        <s:head/>
-        <sj:head/>
   <link href="style.css" rel="stylesheet" type="text/css" />
     
         <script type="text/javascript">
@@ -30,6 +28,8 @@
 	});
 	  
         </script>
+         <s:head theme="jquery"/>  
+        <sj:head jqueryui="true" jquerytheme="flick"/> 
     </head>
     
      <body>
@@ -49,7 +49,7 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
-           
+            Welcome&nbsp; <s:property value="%{user.emailId}"/>
         </td>
       </tr>
     </table></td>

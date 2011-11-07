@@ -15,10 +15,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registration</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
-        <s:head/>
-        <sj:head/>
         <script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="menu.js"></script>
+        <s:head theme="jquery"/>  
+        <sj:head jqueryui="true" jquerytheme="flick"/> 
     </head>
     <body>
         <%
@@ -36,7 +36,7 @@
       </tr>
       <tr>
         <td height="24" valign="bottom">
-        
+         Welcome&nbsp; <s:property value="%{user.emailId}"/>
         </td>
       </tr>
     </table></td>
