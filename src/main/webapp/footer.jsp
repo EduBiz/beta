@@ -6,28 +6,31 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.footer
+{
+	background-image:url(images/adv_bg.jpg);
+	background-repeat:repeat;
+	width:100%;
+	height:80px;
+}
+</style>
+</head>
+<body>
 
-<div id="footer">
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="7" align="right" valign="bottom">&nbsp;</td>
-        <td width="976" align="center" valign="top" style="background-repeat:repeat-x; background-position:left bottom;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td height="20" align="center" valign="bottom"><a href="#" class="bottom_link">Home</a> |  <a href="#" class="bottom_link">About Us</a>  |  <a href="#" class="bottom_link">Marketplace</a>  |  <a href="#" class="bottom_link">Analytics</a>  | <a href="#" class="bottom_link">Matrics</a>  | <a href="#" class="bottom_link">Contact us</a></td>
-          </tr>
-          <tr>
-            <td height="15"></td>
-          </tr>
-          <tr>
-            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td height="19" align="center">Copyrights © 2010 AdZappy.com. All rights reserved.. </td>
-                  </tr>
-                
-            </table></td>
-          </tr>
-        </table></td>
-        <td width="7" align="left" valign="bottom">&nbsp;</td>
-      </tr>
-    </table>
+<div class="footer">
+<div style="height:20px;">
 </div>
+<div align="center" style="height:30px; color:#000; vertical-align:middle;">
+<a href="#" class="bottom_link">Home</a> |  <a href="#" class="bottom_link">About Us</a>  |  <a href="#" class="bottom_link">Marketplace</a>  |  <a href="#" class="bottom_link">Analytics</a>  | <a href="#" class="bottom_link">Matrics</a>  | <a href="#" class="bottom_link">Contact us</a></td>
+</div>
+<div align="center" style="vertical-align:bottom;">
+Copyrights @ 2010 AdZappy.com. All rights reserved.. 
+</div>
+
+
+</div>
+</body>
+</html>

@@ -39,11 +39,11 @@ public class login  extends ActionSupport{
                 }
                 else
                 {
-                addFieldError("password","Please enter Correct password");
+                addFieldError("password","Invalid password");
                 }
             }  
             else{
-            addFieldError("email","sorry Email id Not Available");
+            addFieldError("email","Invalid Email Address");
             }
     }
     

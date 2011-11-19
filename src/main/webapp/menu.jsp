@@ -8,40 +8,39 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <!DOCTYPE html>
-<div id="menu">
+<div >
 		<ul class="menu">
-                    <li><a href="loadlist.action" class="parent"><span>Home</span></a>
-				
-			</li>
-			<li><a href="editcamplist.action" class="parent"><span>Campaign</span></a>
-				<div><ul>
-					<li><a href="addcampnav.action" class="parent"><span>Add Campaign</span></a></li>
-					<li><a href="editcamplist.action"><span>Edit Campaign</span></a></li>
-				</ul></div>
-			</li>
-			<li><a href="showsitenav.action"><span>Sites</span></a>
-				<div><ul>
-					<li><a href="addsitenav.action" class="parent"><span>Add Site</span></a></li>
-					<li><a href="editsitenav.action" class="parent"><span>Edit site</span></a></li>
-				</ul></div>
-			</li>
-                        <li><a href="rcharts.action"><span>Reports</span></a>
-				<div><ul>
-					<li><a href="rcharts.action" class="parent"><span>Campaign Reports</span></a></li>
-					<li><a href="sitecharts.action" class="parent"><span>Site Reports</span></a></li>
-				</ul></div>
-			</li>
-                         <li><a href="accountinformation.action"><span>Accounts</span></a>
-				<div><ul>
-					<li><a href="accountinformation.action" class="parent"><span>Account Information</span></a></li>
-					<li><a href="#" class="parent"><span>Transaction Details</span></a></li>
-                                        <li><a href="#" class="parent"><span>Payment Details</span></a></li>
-				</ul></div>
-			</li>
-		
-                <li><a href="logoutaction.action" class="parent"><span>Logout</span></a>
-				
-			</li>
-                
-                </ul>
+
+	<li class="top"><a  href="loadlist.action" class="top_link"><span>HOME</span></a></li>
+	<li class="top"><a href="editcamplist.action" class="top_link"><span>CAMPAIGN</span></a>
+		<ul class="sub">
+			<li><a href="addcampnav.action">ADD CAMPAGIN</a></li>			
+			<li><a href="editcamplist.action">EDIT CAMPAGIN</a></li>
+            
+		</ul>
+	</li>
+	<li class="top"><a href="showsitenav.action" class="top_link"><span>SITE</span></a>
+		<ul class="sub">
+			<li><a href="addsitenav.action">ADD SITE</a></li>			
+            <li><a href="editsitenav.action">EDIT SITE</a></li>
+           
+		</ul>
+	</li>
+	<li class="top"><a href="rcharts.action" class="top_link"><span>REPORT</span></a>
+    <ul class="sub">
+			<li><a href="rcharts.action">CAMPAGIN REPORT</a></li>			
+            <li><a href="sitecharts.action">SITE REPORT</a></li>
+           
+		</ul>
+    
+    </li>
+	<li class="top"><a href="accountinformation.action" class="top_link"><span>ACCOUNTS</span></a>
+     <ul class="sub">
+			<li><a href="accountinformation.action">ACCOUNTS INFORMATION</a></li>			
+            <li><a href="#">TRANSACTION DETAILS</a></li>
+            <li><a href="#">PAYMENT DETAILS</a></li>		
+           
+		</ul></li>
+        <li class="top"><a href="logoutaction.action" class="top_link"><span>LOGOUT</span></a></li>
+</ul>
 	</div>

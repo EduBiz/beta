@@ -67,7 +67,7 @@ public class signup extends ActionSupport {
                            + "   Please click th following link to activate your account\n  "
                            +"                                       "
                            + "http://beta.mathi.cloudbees.net/activationAccount.action?email="+email+"&confcode="+getConfcode()
-                           +"                                                    "
+                           +"\n           "
                            +" \nThanks & Regards  \n   "
                            +" Adzappy Team\n");
        

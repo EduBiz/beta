@@ -18,9 +18,95 @@ pageEncoding="UTF-8"%>
           
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Campaign Edit</title>
-        <link href="style.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="jquery.js"></script>
-	<script type="text/javascript" src="menu.js"></script>
+         <style type="text/css">
+.header
+{
+	background-image:url(images/adv1_bg.jpg);
+	background-color:#91cf52;
+	background-repeat:repeat;
+	
+	width:100%;
+	height: 80px;
+	margin: 0 auto;
+	padding: 0px 50px;
+	margin: 0;
+	padding: 0;
+	
+}
+
+#menu {
+    margin:30px auto;
+    width:80%;
+}
+body
+{
+	margin: 0;
+	padding: 0;
+	
+	
+}
+.boder
+{
+	width:100%;
+	height:10px;
+	background-color:#000;
+}
+.button
+{
+	vertical-align:top;
+	height:250px;
+	padding-left:300px;
+
+}
+#user
+{
+font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+width:100%;
+border-collapse:collapse;
+}
+#user td, #user th 
+{
+font-size:1.2em;
+padding:15px;
+}
+#user th 
+{
+font-size:1.4em;
+text-align:left;
+padding-top:8px;
+padding-bottom:8px;
+background-color:#A7C942;
+color:#fff;
+}
+#user tr.alt td 
+{
+color:#000;
+background-color:#EAF2D3;
+}
+.footer
+{
+	height:60px;
+	width:100%;
+	background-color:#91cf52;
+}
+.banner
+{
+	height:100px;
+	width:100%;
+}
+.box
+{
+width:600px;
+height:1000px;
+background-color:#FFF;
+box-shadow: 0px 0px 0px;
+padding-left:350px;
+}
+
+
+</style>
+ <link rel="stylesheet" href="menu_style.css" type="text/css" />
+ <link rel="stylesheet" href="style.css" type="text/css" />
          <s:head theme="jquery"/> 
           <sj:head jqueryui="true" jquerytheme="flick"/>
     </head>
@@ -36,27 +122,18 @@ pageEncoding="UTF-8"%>
         response.sendRedirect(request.getContextPath()+"/sessionError.action");
     }
     %>
-       <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td height="99" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td height="66" align="left" valign="bottom"><img src="images/logo.jpg" width="241" height="49" /></td>
-      </tr>
-      <tr>
-        <td height="24" valign="bottom">
-            Welcome&nbsp; <s:property value="%{user.emailId}"/>
-        </td>
-      </tr>
-    </table></td>
-  </tr>
-  <tr>
-      <td height="325" valign="top">	
-        <br></br>
-        
-        <s:include value="menu.jsp" />
-        <br></br>
-        <br></br>
-        <br></br>
+       <div>
+<div class="header" >
+<img src="images/logo.jpg" width="200" height="50" />
+<br />
+ Welcome&nbsp; <s:property value="%{user.emailId}"/>
+         </div>
+
+<div>
+<s:include value="menu.jsp"/>
+</div>
+        <div style="height:500px; font-size:18px; font-family:'MS Serif', 'New York', serif; color:#000; vertical-align:middle;" align="center" >  
+   <br>
       <s:actionerror/>  
     <s:form action="updatecampaign">
         <s:hidden name="campaid" value="%{campaid}" />
@@ -74,11 +151,11 @@ pageEncoding="UTF-8"%>
     <s:submit value="Save Changes" validate="true" />
    
     </s:form>
-      </td>
-        </tr>
-         </table>   
+     </div>
+     <div>  
     <s:include value="/footer.jsp" />
-         
+         </div>
+         </div>
         
     </body>
 </html>
