@@ -14,8 +14,8 @@
 	<li class="top"><a  href="loadlist.action" class="top_link"><span>HOME</span></a></li>
 	<li class="top"><a href="editcamplist.action" class="top_link"><span>CAMPAIGN</span></a>
 		<ul class="sub">
-			<li><a href="addcampnav.action">ADD CAMPAGIN</a></li>			
-			<li><a href="editcamplist.action">EDIT CAMPAGIN</a></li>
+			<li><a href="addcampnav.action">ADD CAMPAIGN</a></li>			
+			<li><a href="editcamplist.action">EDIT CAMPAIGN</a></li>
             
 		</ul>
 	</li>
@@ -28,7 +28,7 @@
 	</li>
 	<li class="top"><a href="rcharts.action" class="top_link"><span>REPORT</span></a>
     <ul class="sub">
-			<li><a href="rcharts.action">CAMPAGIN REPORT</a></li>			
+			<li><a href="rcharts.action">CAMPAIGN REPORT</a></li>			
             <li><a href="sitecharts.action">SITE REPORT</a></li>
            
 		</ul>

@@ -117,17 +117,17 @@ padding-left:350px;
 	  
         </script>
         <s:head theme="jquery"/>  
-        <sj:head jqueryui="true" jquerytheme="flick"/>
+        <sj:head />
     </head>
 
     <body>
-        <%/*
+        <%
    Object obj = session.getAttribute("User");
    if(obj==null)
        {
        response.sendRedirect(request.getContextPath()+"/sessionError.action");
    }
-        */%> 
+        %> 
 
        <div class="header" >
 <img src="images/logo.jpg" width="200" height="50" />
@@ -145,33 +145,98 @@ padding-left:350px;
 <tr>
 <td>
 
+                  
+    <h3><s:actionmessage/>&nbsp;&nbsp;Campaign Impressions Report</h3><br>
+     <sjc:chart id="impression" 
+        xaxisMode="time"
+    	xaxisTimeformat="%0d.%0m.%y"
+        xaxisMin="%{minTime}"
+    	xaxisMax="%{maxTime}"
+    	xaxisTickSize="%{xaxis}"
+    	
+    	xaxisColor="#666"
+    
+    	xaxisTickColor="#aaa"
+    	
+    	yaxisTickSize="%{iaxis}"
+    	cssStyle="width: 600px; height: 400px;" >
+    	    	
+    	<sjc:chartData
+    		label="Impressions"
+    		list="impmap"
+    	        bars="{ show: true }"
+                color="#990066"
+                points="{ show: true }"
+                
+                />
+    	
+        
+    </sjc:chart>
+                </td>
+                <td>
 
-                    <h3> Sample Campaign Report</h3><br>
-                    <sjc:chart id="chartPoints" cssStyle="width: 600px; height: 400px;">
-                        <sjc:chartData
-                            label="Impressions"
-                            list="points"
-                            points="{ show: true }"
-                            lines="{ show: true }"
-                            />
 
-                        <sjc:chartData
-                            label="Clicks"
-                            list="pointsFromMap"
-                            />
-                    </sjc:chart>
+                       
+          <h3><s:actionmessage/>&nbsp;&nbsp;Campaign Clicks Report</h3><br>
+     <sjc:chart id="clicks" 
+        xaxisMode="time"
+    	xaxisTimeformat="%0d.%0m.%y"
+    	xaxisTickSize="%{xaxis}"
+    	xaxisMin="%{minTime}"
+    	xaxisMax="%{maxTime}"
+    	xaxisColor="#666"
+    
+    	xaxisTickColor="#aaa"
+    	
+    	yaxisTickSize="%{iaxis}"
+    	cssStyle="width: 600px; height: 400px;" >
+    	    	
+    	
+    	<sjc:chartData
+    		label="Clicks"
+    		list="climap"
+    	        bars="{ show: true }"
+                points="{ show: true }"
+                />
+        
+        
+    </sjc:chart>
+                </td>
+                <td>
 
+
+                       
+          <h3><s:actionmessage/>&nbsp;&nbsp;Campaign Costs Report</h3><br>
+     <sjc:chart id="costs" 
+        xaxisMode="time"
+    	xaxisTimeformat="%0d.%0m.%y"
+        xaxisMin="%{minTime}"
+    	xaxisMax="%{maxTime}"
+    	xaxisTickSize="%{xaxis}"
+    	xaxisColor="#666"
+        xaxisTickColor="#aaa"
+    	yaxisTickSize="%{yaxis}"
+    	cssStyle="width: 600px; height: 400px;" >
+    	
+         <sjc:chartData
+    		label="Costs"
+    		list="costmap"
+    	        bars="{ show: true }"
+                points="{ show: true }"
+                color="#990088"
+                />
+        
+    </sjc:chart>
                 </td>
             </tr>
 
-
+                  
 
             <tr>
                 <td>
                     <form method="post" action="rcharts.action">
-                        <select name="search">
-                            <option value="1">Today</option>
-                            <option value="2">Yesterday</option>
+                        <select name="search"  >
+
                             <option value="3">Last 7 Days</option>
                             <option value="4">Last 30 Days</option>
                             <option value="5">All</option>
@@ -188,4 +253,5 @@ padding-left:350px;
            </div>
 
            <div><s:include value="/footer.jsp" /></div>
+    </body>
 </html>

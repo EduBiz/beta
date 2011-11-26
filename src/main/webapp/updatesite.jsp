@@ -124,7 +124,7 @@ padding-left:350px;
          <br></br>
          <br></br>
          <br></br>
-         <div><a href="addsitenav.action"><input type="image" value="+Add Campaign" name="+Add Campaign" src="images/free-psd-gradient-buttons-post.jpg"/></a></div> 
+          <div><a href="addsitenav.action"><input type="button" value="+Add Sites" name="+Add Sites"/></a></div>                           
       <div>
                      
            <s:form name="sitelist">

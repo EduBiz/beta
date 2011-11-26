@@ -125,48 +125,15 @@ padding-left:450px;
 </div>
 
 <div>
-<ul class="menu">
-
-	<li class="top"><a  href="loadlist.action" class="top_link"><span>HOME</span></a></li>
-	<li class="top"><a href="editcamplist.action" class="top_link"><span>CAMPAIGN</span></a>
-		<ul class="sub">
-			<li><a href="addcampnav.action">ADD CAMPAGIN</a></li>			
-			<li><a href="editcamplist.action">EDIT CAMPAGIN</a></li>
-            
-		</ul>
-	</li>
-	<li class="top"><a href="showsitenav.action" class="top_link"><span>SITE</span></a>
-		<ul class="sub">
-			<li><a href="addsitenav.action">ADD SITE</a></li>			
-            <li><a href="editsitenav.action">EDIT SITE</a></li>
-           
-		</ul>
-	</li>
-	<li class="top"><a href="rcharts.action" class="top_link"><span>REPORT</span></a>
-    <ul class="sub">
-			<li><a href="rcharts.action">CAMPAGIN REPORT</a></li>			
-            <li><a href="sitecharts.action">SITE REPORT</a></li>
-           
-		</ul>
-    
-    </li>
-	<li class="top"><a href="accountinformation.action" class="top_link"><span>ACCOUNTS</span></a>
-     <ul class="sub">
-			<li><a href="accountinformation.action">ACCOUNTS INFORMATION</a></li>			
-            <li><a href="#">TRANSACTION DETAILS</a></li>
-            <li><a href="#">PAYMENT DETAILS</a></li>		
-           
-		</ul></li>
-        <li class="top"><a href="logoutaction.action" class="top_link"><span>LOGOUT</span></a></li>
-</ul>
+    <s:include value="/menu.jsp"/>
 </div>
 <div class="box">
 <div>
-<p style="font-size:25px; color:#030;">CAMPAGIN</p>
+<p style="font-size:25px; color:#030;">ADD SITES</p>
 </div>
           
           
-      <div style="width:100%;">    
+     <div style="width:100%;">    
     <s:actionerror/>   
     <s:form action="addsite">
         

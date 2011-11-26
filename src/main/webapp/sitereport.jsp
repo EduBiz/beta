@@ -141,42 +141,116 @@ padding-left:350px;
         <br></br>
        
              <div>   
-                
-        <h3>Site Sample Report</h3><br>
-     <sjc:chart id="chartPoints" cssStyle="width: 600px; height: 400px;">
+         <table>
+<tr>
+<td>       
+         <h3><s:actionmessage/>&nbsp;&nbsp;Site Impressions Report</h3><br>
+     <sjc:chart id="impression" 
+        xaxisMode="time"
+    	xaxisTimeformat="%0d.%0m.%y"
+        xaxisMin="%{minTime}"
+    	xaxisMax="%{maxTime}"
+    	xaxisTickSize="%{xaxis}"
+    	
+    	xaxisColor="#666"
+    
+    	xaxisTickColor="#aaa"
+    	
+    	yaxisTickSize="%{iaxis}"
+    	cssStyle="width: 600px; height: 400px;" >
+    	    	
     	<sjc:chartData
     		label="Impressions"
-    		list="points"
-    		points="{ show: true }"
-    		lines="{ show: true }"
-    	/>
-    
-    	<sjc:chartData
-    		label="Clicks, Integer-"
-    		list="pointsFromMap"
-    	/>
-    </sjc:chart>
-
-           
-      </div>
-       
-       
-    <div>
-       <form method="post" action="sitecharts.action">
-           <select name="search">
-               <option value="1">Today</option>
-               <option value="2">Yesterday</option>
-               <option value="3">Last 7 Days</option>
-               <option value="4">Last 30 Days</option>
-               <option value="5">All</option>
-          </select>
-        <input type="submit" value="View"/>
+    		list="impmap"
+    	        bars="{ show: true }"
+                color="#990066"
+                points="{ show: true }"
+                
+                />
+    	
         
-        </form>
-        </div>
-        </div>
-        <div>
-      
-         <s:include value="/footer.jsp" /></div>
-    </body>
+    </sjc:chart>
+                </td>
+                <td>
+
+
+                       
+          <h3><s:actionmessage/>&nbsp;&nbsp;Site Clicks Report</h3><br>
+     <sjc:chart id="clicks" 
+        xaxisMode="time"
+    	xaxisTimeformat="%0d.%0m.%y"
+    	xaxisTickSize="%{xaxis}"
+    	xaxisMin="%{minTime}"
+    	xaxisMax="%{maxTime}"
+    	xaxisColor="#666"
+    
+    	xaxisTickColor="#aaa"
+    	
+    	yaxisTickSize="%{iaxis}"
+    	cssStyle="width: 600px; height: 400px;" >
+    	    	
+    	
+    	<sjc:chartData
+    		label="Clicks"
+    		list="climap"
+    	        bars="{ show: true }"
+                points="{ show: true }"
+                />
+        
+        
+    </sjc:chart>
+                </td>
+                <td>
+
+
+                       
+          <h3><s:actionmessage/>&nbsp;&nbsp;Site Costs Report</h3><br>
+     <sjc:chart id="costs" 
+        xaxisMode="time"
+    	xaxisTimeformat="%0d.%0m.%y"
+        xaxisMin="%{minTime}"
+    	xaxisMax="%{maxTime}"
+    	xaxisTickSize="%{xaxis}"
+    	xaxisColor="#666"
+        xaxisTickColor="#aaa"
+    	yaxisTickSize="%{yaxis}"
+    	cssStyle="width: 600px; height: 400px;" >
+    	
+         <sjc:chartData
+    		label="Costs"
+    		list="costmap"
+    	        bars="{ show: true }"
+                points="{ show: true }"
+                color="#990088"
+                />
+        
+    </sjc:chart>
+                </td>
+            </tr>
+
+                  
+
+            <tr>
+                <td>
+                    <form method="post" action="rcharts.action">
+                        <select name="search"  >
+
+                            <option value="3">Last 7 Days</option>
+                            <option value="4">Last 30 Days</option>
+                            <option value="5">All</option>
+                        </select>
+                        <input type="submit" value="View"/>
+
+                    </form>
+
+                </td>
+
+            </tr>
+            </table>
+            
+           </div>
+</div>
+           <div><s:include value="/footer.jsp" /></div>
+
+</body>
 </html>

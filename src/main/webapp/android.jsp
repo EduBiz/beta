@@ -136,10 +136,10 @@ padding-left:350px;
 <div style="height:500px; font-size:18px; font-family:'MS Serif', 'New York', serif; color:#000; vertical-align:middle;" align="center" > 
                     <br></br>
 <table>
-<tr<td>
+    <tr><td>
                     <h1 align="center">Android</h1>
                     <s:actionerror/>  
-                    <s:form action="androidAction">
+                    <s:form action="androidAction"></td></tr>
                 <tr><td>
                         <s:radio name="platform" required="true" label="platform Devices" list="{'Target all devices','Target devices by platform','Target devices by manufacturer'}" />
                     </td></tr>
