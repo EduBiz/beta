@@ -6,11 +6,13 @@ package controller;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import model.User;
 import model.UserDetails;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -20,10 +22,9 @@ public class useRegistration extends ActionSupport {
     private String fname;
     private String lname;
     private String email;
-    private String pwd;
-    private String pwd1;
-    private Date dob1;
-    private String dob;
+    
+    private Date dob;
+   
     private String addline1;
     private String ctry;
     private String storeg;
@@ -31,44 +32,50 @@ public class useRegistration extends ActionSupport {
     private String postcode;
 
     private spDAO myDao;
-    
-  
+    private List<UserDetails> uselist;
+  private  User  user; 
 
-    
-    @Override
-    public void validate() {
-      
-       
-        UserDetails user=(UserDetails)myDao.getDbsession().get(UserDetails.class,1);
-        if(user != null)
-            addFieldError("email","sorry Email id Already Taken");
-        
-    }
-    
+
      @Override
     public String execute() throws Exception {
     
             try{    
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy"); 
-                dob1 = formatter.parse(dob);
-                          
+                
            
-            //UserDetails user = new UserDetails(fname,lname,email,pwd, dob1,addline1,ctry,storeg,city,postcode);
-         //   myDao.getDbsession().save(user);
+          
             Map session =ActionContext.getContext().getSession();
-            session.put("Dvd",email);
-            
-        return "success";
+             setUser((User) session.get("User"));
+             email=getUser().getEmailId();  
+            UserDetails used = new UserDetails(email, getUser(),fname);
+              
+              used.setLastName(lname);
+              used.setDob(getDob());
+              used.setAddressLine1(addline1);
+              used.setCountry(ctry);
+              used.setStateRegion(storeg);
+              used.setCity(city);
+              used.setPostalCode(postcode);
+              
+              
+              
+           myDao.getDbsession().saveOrUpdate(used);
+       
+            setUselist((List<UserDetails>) myDao.getDbsession().createQuery("from UserDetails").list());
+            Criteria ucri=myDao.getDbsession().createCriteria(UserDetails.class);
+            ucri.add(Restrictions.like("user", getUser()));
+            ucri.setMaxResults(1);
+           
+           return "success";
             
      
             }
      catch(Exception e){
             System.out.println(e.getMessage());
             addActionError("error"+e.getMessage());
-            email = "";
+         e.printStackTrace();
             return "error";
         }
-     
+      
     
      
      }
@@ -118,42 +125,8 @@ public class useRegistration extends ActionSupport {
         this.email = email;
     }
 
-    /**
-     * @return the pwd
-     */
-    public String getPwd() {
-        return pwd;
-    }
-
-    /**
-     * @param pwd the pwd to set
-     */
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-
-    /**
-     * @return the pwd1
-     */
-    public String getPwd1() {
-        return pwd1;
-    }
-
-    /**
-     * @param pwd1 the pwd1 to set
-     */
-    public void setPwd1(String pwd1) {
-        this.pwd1 = pwd1;
-    }
-
-    /**
-     * @return the dob
-     */
    
-
-    /**
-     * @return the addline1
-     */
+    
     public String getAddline1() {
         return addline1;
     }
@@ -238,31 +211,46 @@ public class useRegistration extends ActionSupport {
     /**
      * @return the dob
      */
-    public Date getDob1() {
-        return dob1;
-    }
-
-    /**
-     * @param dob the dob to set
-     */
-    public void setDob1(Date dob1) {
-        this.dob1 = dob1;
-    }
-
-    /**
-     * @return the dob
-     */
-    public String getDob() {
+    public Date getDob() {
         return dob;
     }
 
     /**
      * @param dob the dob to set
      */
-    public void setDob(String dob) {
+    public void setDob(Date dob) {
         this.dob = dob;
     }
-    
+
+    /**
+     * @return the uselist
+     */
+    public List<UserDetails> getUselist() {
+        return uselist;
+    }
+
+    /**
+     * @param uselist the uselist to set
+     */
+    public void setUselist(List<UserDetails> uselist) {
+        this.uselist = uselist;
+    }
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+  
     
     
 }

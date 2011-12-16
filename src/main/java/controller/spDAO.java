@@ -38,7 +38,7 @@ public class spDAO implements InitializingBean,DisposableBean  {
     @Override
     public void destroy() throws Exception {
         System.err.print("transaction commited");
-        this.tx.commit();
+     this.tx.commit();
     }
     
 }

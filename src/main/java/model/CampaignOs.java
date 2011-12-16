@@ -1,5 +1,5 @@
 package model;
-// Generated Oct 17, 2011 12:07:51 PM by Hibernate Tools 3.2.1.GA
+// Generated Nov 4, 2011 1:37:20 PM by Hibernate Tools 3.2.1.GA
 
 
 
@@ -9,32 +9,31 @@ package model;
 public class CampaignOs  implements java.io.Serializable {
 
 
-     private long campaign;
-     private Campaign campaign_1;
+     private Long osId;
+     private Campaign campaign;
      private String osName;
 
     public CampaignOs() {
     }
 
-    public CampaignOs(long campaign, Campaign campaign_1, String osName) {
+    public CampaignOs(Campaign campaign, String osName) {
        this.campaign = campaign;
-       this.campaign_1 = campaign_1;
        this.osName = osName;
     }
    
-    public long getCampaign() {
+    public Long getOsId() {
+        return this.osId;
+    }
+    
+    public void setOsId(Long osId) {
+        this.osId = osId;
+    }
+    public Campaign getCampaign() {
         return this.campaign;
     }
     
-    public void setCampaign(long campaign) {
+    public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
-    }
-    public Campaign getCampaign_1() {
-        return this.campaign_1;
-    }
-    
-    public void setCampaign_1(Campaign campaign_1) {
-        this.campaign_1 = campaign_1;
     }
     public String getOsName() {
         return this.osName;

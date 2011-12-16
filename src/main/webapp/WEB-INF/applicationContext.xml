@@ -4,4 +4,5 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
     
     <bean id="myDao" class="controller.spDAO" scope="request" />
+    <bean id="sendMail" class="controller.Emailfunction" scope="request"/>
 </beans>

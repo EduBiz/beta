@@ -4,13 +4,19 @@
 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 
-<struts>	
+<struts>
+    <include file="nav.xml"/>
+  
     <package name="default" extends="struts-default">
        
         <action name="login" class="controller.login" >
-            <result name="success" >/success.jsp</result>
+            <result name="success" >dashboard.jsp</result>
             <result name="input" >index.jsp</result>
-            <result name="error" >/index.jsp</result>
+            <result name="error" >index.jsp</result>
+        </action>
+        <action name="loadlist"  class="controller.loadlist" >
+            <result name="success" >dashboard.jsp</result>
+            <result name="error" >/dashboard.jsp</result>
         </action>
     
         <action name="signup" class="controller.signup">
@@ -19,7 +25,16 @@
             <result name="error" >signup.jsp</result>
         </action>
         
-        
+        <action name="logoutaction" class="controller.logoutaction">
+            <result name="success" >index.jsp</result>
+            <result name="input" >index.jsp</result>
+            <result name="error" >index.jsp</result>
+        </action>
+        <action name="sessionError" class="controller.sessionError">
+            <result name="success" >index.jsp</result>
+            <result name="input" >index.jsp</result>
+            <result name="error" >index.jsp</result>
+        </action>
         
         <action name="forgotmail" class="controller.forgotmail">
             <result name="success" >forgotmailsuccess.jsp</result>
@@ -28,16 +43,169 @@
         </action> 
         
         <action name="activationAccount" class="controller.activationAccount">
-           <result name="success" >activationsuccess.jsp</result>
-           <result name="error" >activationfailed.jsp</result>
+            <result name="success" >activationsuccess.jsp</result>
+            <result name="error" >activationfailed.jsp</result>
         </action>
         
-        <action name="campaignMain" class="controller.campaignMain">
-            <result name="success" >campaign_success.jsp</result>
+         
+        <action name="addsite" class="controller.addsite" >
+            <result name="success" type="chain">showsitenav</result>
+            <result name="input" >addsites.jsp</result>
+            <result name="error" >addsites.jsp</result> 
+        </action>
+        <action name="updatesite" class="controller.updatesite" >
+            <result name="success" type="chain">loadlist</result>
+            <result name="input" >editsite.jsp</result>
+            <result name="error" >editsite.jsp</result> 
+        </action>
+   
+        <action name="editsite" class="controller.editsite" >
+            <result name="success" >editsite.jsp</result>
+            <result name="input" >dashboard.jsp</result>
+            <result name="error" >dashboard.jsp</result>
+        </action>
+        <action name="seardash" class="campaign.searcamp" ><!-- for dashboard  -->
+            <result name="success" >dashboard.jsp</result>
+            <result name="input" >dashboard.jsp</result>
+            <result name="error" >dashboard.jsp</result>
+        </action>
+        <action name="searedit" class="campaign.searcamp" ><!-- for editcamplist   -->
+            <result name="success" >editcamplist.jsp</result>
+            <result name="input" >editcamplist.jsp</result>
+            <result name="error" >editcamplist.jsp</result>
+        </action>
+        <action name="searupsite" class="controller.searsite" ><!--for showsite.jsp   -->
+            <result name="success" >showsite.jsp</result>
+            <result name="input" >showsite.jsp</result>
+            <result name="error" >showsite.jsp</result>
+        </action>
+        <action name="searshowsite" class="controller.searsite" ><!-- updatesite.jsp  -->
+            <result name="success" >updatesite.jsp</result>
+            <result name="input" >updatesite.jsp</result>
+            <result name="error" >updatesite.jsp</result>
+        </action>
+        <action name="deletesite" method="deletesite" class="controller.editsite" >
+            <result name="success" type="chain">loadlist</result>
+            <result name="input" >dashboard.jsp</result>
+            <result name="error" >dashboard.jsp</result>
+        </action>
+        
+        
+        <action name="editcampaign" class="campaign.editcampaign" >
+            <result name="input">campaignedit.jsp</result>
+            <result name="error" >/dashboard.jsp</result>
+        </action>
+        
+        <action name="updatecampaign" class="campaign.updatecampaign" >
+            <result name="success" >dashboard.jsp</result>
+            <result name="input" >campaignedit.jsp</result>
+            <result name="error" >/campaignedit.jsp</result>
+        </action>
+        
+        <action name="deletecampaign" class="campaign.deletecampaign" >
+            <result name="success" >dashboard.jsp</result>
+            <result name="input" >dashboard.jsp</result>
+            <result name="error" >/dashboard.jsp</result>
+        </action>
+        
+        <action name="sessioncampaignError" class="controller.sessionError" method="campaignerror">
+            <result name="success" >campaignCreation.jsp</result>
             <result name="input" >campaignCreation.jsp</result>
             <result name="error" >campaignCreation.jsp</result>
         </action> 
-        
+  
+        <action name="campaignMain" class="campaign.campaignMain">
+            <result name="website" >website.jsp</result>
+            <result name="BlackBerry" >blackberry.jsp</result>
+            <result name="Andriod" >android.jsp</result>
+            <result name="Iphone" >iphone.jsp</result>
+            <result name="iTunes" >itunes.jsp</result>
+            <result name="Streaming" >streamingvideo.jsp</result>
+            <result name="Books" >bookad.jsp</result>
+            <result name="clickcall" >clicktocall.jsp</result>
+            <result name="clickmap" >clicktomap.jsp</result>
+            <result name="input" >campaignCreation.jsp</result>
+            <result name="error" >campaignCreation.jsp</result>
+        </action> 
+        <action name="websiteAction" class="campaign.website" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >website.jsp</result>
+            <result name="error" >/website.jsp</result>
+        </action>
+        <action name="iphoneAction" class="campaign.iphone" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >iphone.jsp</result>
+            <result name="error" >/iphone.jsp</result>
+        </action>
+        <action name="androidAction" class="campaign.android" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >android.jsp</result>
+            <result name="error" >/android.jsp</result>
+        </action>
+        <action name="blackberryAction" class="campaign.blackberry" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >blackberry.jsp</result>
+            <result name="error" >/blackberry.jsp</result>
+        </action>
+        <action name="itunesAction" class="campaign.itunes" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >itunes.jsp</result>
+            <result name="error" >/itunes.jsp</result>
+        </action>
+        <action name="streamingvideoAction" class="campaign.streamingvideo" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >streamingviddeo.jsp</result>
+            <result name="error" >/streamingviddeo.jsp</result>
+        </action>
+        <action name="bookadAction" class="campaign.bookad" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >bookad.jsp</result>
+            <result name="error" >/bookad.jsp</result>
+        </action>
+        <action name="clicktocallAction" class="campaign.clicktocall" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >clicktocall.jsp</result>
+            <result name="error" >/clicktocall.jsp</result>
+        </action>
+        <action name="clicktomapAction" class="campaign.clicktomap" >
+            <result name="success" >/demograhics.jsp</result>
+            <result name="input" >clicktomap.jsp</result>
+            <result name="error" >/clicktomap.jsp</result>
+        </action>
+        <action name="demographicAction" class="campaign.demograhics" >
+            <result name="success" >/createad.jsp</result>
+            <result name="input" >demograhics.jsp</result>
+            <result name="error" >/demograhics.jsp</result>
+        </action>
+        <action name="createAction" class="campaign.createad" >
+            <result name="success" >/dashboard.jsp</result>
+            <result name="input" >createad.jsp</result>
+            <result name="error" >/createad.jsp</result>
+        </action>
+       
+        <action name="rcharts" class="report.Charts" >
+            <result name="success">report.jsp</result>
+        </action> 
+        <action name="sitecharts" class="report.sitecharts" >
+            <result name="success">sitereport.jsp</result>
+        </action> 
+        <action name="displaycampaign" class="controller.displaycampaign">
+            <result name="mobile" >displaycampimg.jsp</result>
+            <result name="text" >displaycampaign.jsp</result>
+            <result name="tablets" >displaytablet.jsp</result>
+            <result name="error" >index.jsp</result>
+        </action>
+        <action name="displayimg" class="controller.displaycampaign" method="img">
+            <result name="success" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">filename="${Id}+.jpg"</param>
+                <param name="bufferSize">2024</param>
+            </result>
+            
+        </action>
     </package>
+
+       
 </struts>
 

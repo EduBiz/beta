@@ -4,9 +4,16 @@
  */
 package controller;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
+import java.util.Map;
+import model.Campaign;
+import model.Publish;
 import model.User;
+import model.UserDetails;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -18,8 +25,9 @@ public class login  extends ActionSupport{
     private String password;
     private List<User> userlist;
     private spDAO myDao;
-
-    
+    private List<Publish> sitelist;
+    private List<Campaign> camplist;
+    private List<UserDetails> uselist;
      @Override
     public void validate() {
       
@@ -27,9 +35,15 @@ public class login  extends ActionSupport{
         User user=(User) myDao.getDbsession().get(User.class, email); 
             if(user!=null)
             {
-            }
+                if(user.getPassword().equals(password)){
+                }
+                else
+                {
+                addFieldError("password","Invalid password");
+                }
+            }  
             else{
-            addFieldError("email","sorry Email id Not Available");
+            addFieldError("email","Invalid Email Address");
             }
     }
     
@@ -45,14 +59,40 @@ public class login  extends ActionSupport{
       if(user.getPassword().equals(password))
       {
         
-        return "success";
+        Map session =ActionContext.getContext().getSession();
+            session.put("User",user);
+        User user1=(User)myDao.getDbsession().get(User.class,email);
+
+            
+            camplist=(List<Campaign>) myDao.getDbsession().createQuery("from Campaign").list();
+            Criteria crit = myDao.getDbsession().createCriteria(Campaign.class);
+            crit.add(Restrictions.like("user",user1));
+            crit.setMaxResults(20);
+            camplist=(List<Campaign>) crit.list();
+         
+            sitelist=(List<Publish>) myDao.getDbsession().createQuery("from Publish").list();
+                Criteria crit1 = myDao.getDbsession().createCriteria(Publish.class);
+                crit1.add(Restrictions.like("user",user));
+                crit1.setMaxResults(20);
+           
+                sitelist=(List<Publish>) crit1.list();
+            
+            uselist=(List<UserDetails>) myDao.getDbsession().createQuery("from UserDetails").list();
+            Criteria ucri=myDao.getDbsession().createCriteria(UserDetails.class);
+            ucri.add(Restrictions.like("user", user));
+            ucri.setMaxResults(1);
+            return "success";
       
       }
+      
       else
       {
    return "error";
     }
     }
+    
+   
+    
     /**
      * @return the email
      */
@@ -107,6 +147,48 @@ public class login  extends ActionSupport{
      */
     public void setMyDao(spDAO myDao) {
         this.myDao = myDao;
+    }
+
+    /**
+     * @return the sitelist
+     */
+    public List<Publish> getSitelist() {
+        return sitelist;
+    }
+
+    /**
+     * @param sitelist the sitelist to set
+     */
+    public void setSitelist(List<Publish> sitelist) {
+        this.sitelist = sitelist;
+    }
+
+    /**
+     * @return the camplist
+     */
+    public List<Campaign> getCamplist() {
+        return camplist;
+    }
+
+    /**
+     * @param camplist the camplist to set
+     */
+    public void setCamplist(List<Campaign> camplist) {
+        this.camplist = camplist;
+    }
+
+    /**
+     * @return the uselist
+     */
+    public List<UserDetails> getUselist() {
+        return uselist;
+    }
+
+    /**
+     * @param uselist the uselist to set
+     */
+    public void setUselist(List<UserDetails> uselist) {
+        this.uselist = uselist;
     }
     
     

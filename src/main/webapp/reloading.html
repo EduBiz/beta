@@ -1,0 +1,17 @@
+<html>
+<body>
+<script src="http://ajax.googleapis.com/ajax/
+libs/jquery/1.3.0/jquery.min.js"></script>
+<script>
+var auto_refresh = setInterval(
+function()
+{
+$('#loaddiv').fadeOut('slow').load('addview.jsp').fadeIn("slow");
+}, 20000);
+$(document).ready(function(){
+$('#loaddiv').load('addview.jsp')
+})
+</script>
+<div id="loaddiv"></div>
+</body>
+</html>

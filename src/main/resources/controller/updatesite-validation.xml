@@ -1,0 +1,21 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+  
+  <field name="sitename">
+        <field-validator type="requiredstring">
+            <message>Please enter Site Name</message>
+        </field-validator>
+  </field>
+      
+  <field name="siteurl">
+      <field-validator type="requiredstring">
+             <message>Please enter Url</message>
+        </field-validator>
+        
+  </field>
+  
+ 
+            
+</validators>
+

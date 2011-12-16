@@ -1,5 +1,5 @@
 package model;
-// Generated Oct 17, 2011 12:07:51 PM by Hibernate Tools 3.2.1.GA
+// Generated Nov 4, 2011 1:37:20 PM by Hibernate Tools 3.2.1.GA
 
 
 
@@ -16,8 +16,8 @@ public class CampaignCreative  implements java.io.Serializable {
      private String addName;
      private String addUrl;
      private String displayUrl;
-     private String addImage;
-     private String tileImage;
+     private byte[] addImage;
+     private byte[] tileImage;
 
     public CampaignCreative() {
     }
@@ -28,7 +28,7 @@ public class CampaignCreative  implements java.io.Serializable {
         this.campaign_1 = campaign_1;
         this.styleType = styleType;
     }
-    public CampaignCreative(long campaign, Campaign campaign_1, String styleType, String addText, String addName, String addUrl, String displayUrl, String addImage, String tileImage) {
+    public CampaignCreative(long campaign, Campaign campaign_1, String styleType, String addText, String addName, String addUrl, String displayUrl, byte[] addImage, byte[] tileImage) {
        this.campaign = campaign;
        this.campaign_1 = campaign_1;
        this.styleType = styleType;
@@ -89,18 +89,18 @@ public class CampaignCreative  implements java.io.Serializable {
     public void setDisplayUrl(String displayUrl) {
         this.displayUrl = displayUrl;
     }
-    public String getAddImage() {
+    public byte[] getAddImage() {
         return this.addImage;
     }
     
-    public void setAddImage(String addImage) {
+    public void setAddImage(byte[] addImage) {
         this.addImage = addImage;
     }
-    public String getTileImage() {
+    public byte[] getTileImage() {
         return this.tileImage;
     }
     
-    public void setTileImage(String tileImage) {
+    public void setTileImage(byte[] tileImage) {
         this.tileImage = tileImage;
     }
 

@@ -1,9 +1,8 @@
-package model;
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+package model;
 
 import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;
@@ -11,7 +10,7 @@ import org.hibernate.SessionFactory;
 /**
  * Hibernate Utility class with a convenient method to get Session Factory object.
  *
- * @author radan
+ * @author Administrator
  */
 public class HibernateUtil {
 

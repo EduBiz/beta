@@ -8,30 +8,122 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Activation Success</title>
+        <title>Signup Success</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="menu_style.css" type="text/css" />
+ <link href="style.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+.header
+{
+	background-image:url(images/adv_bg.jpg);
+	background-color:#91cf52;
+	background-repeat:repeat;
+	
+	width:100%;
+	height: 80px;
+	margin: 0 auto;
+	padding: 0px 50px;
+	margin: 0;
+	padding: 0;
+	
+}
+
+#menu {
+    margin:30px auto;
+    width:80%;
+}
+body
+{
+	margin: 0;
+	padding: 0;
+	
+	
+}
+.boder
+{
+	width:100%;
+	height:10px;
+	background-color:#000;
+}
+.button
+{
+	vertical-align:top;
+	height:250px;
+	padding-left:300px;
+
+}
+#user
+{
+font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+width:100%;
+border-collapse:collapse;
+}
+#user td, #user th 
+{
+font-size:1.2em;
+padding:15px;
+}
+#user th 
+{
+font-size:1.4em;
+text-align:left;
+padding-top:8px;
+padding-bottom:8px;
+background-color:#A7C942;
+color:#fff;
+}
+#user tr.alt td 
+{
+color:#000;
+background-color:#EAF2D3;
+}
+.footer
+{
+	height:60px;
+	width:100%;
+	background-color:#91cf52;
+}
+.banner
+{
+	height:100px;
+	width:100%;
+}
+.box
+{
+width:600px;
+height:365px;
+background-color:#FFF;
+box-shadow: 0px 0px 0px;
+padding-left:450px;
+padding-top:90px;
+font-family:Verdana, Geneva, sans-serif;
+font-size:18px;
+}
+
+
+</style>
     </head>
     <body>
-          <table width="990" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td height="99" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td height="66" align="left" valign="bottom"><img src="images/logo.jpg" width="241" height="49" /></td>
-      </tr>
-      <tr>
-        <td height="24" valign="bottom">
-            <s:include value="navigation.jsp" />
-        </td>
-      </tr>
-    </table></td>
-  </tr>
-  <tr>    
-      <td>   
-          <p>  Hi    <s:property value="email" /> Now your account Successfully Activated.Please click <a href="index.jsp">home</a> for more options..</p>
-      </td>
-  </tr>  
-  </table>
+    <div>
+<div class="header" >
+<img src="images/logo.jpg" width="200" height="50" />
+<br />
+ Welcome&nbsp; <s:property value="email"/>
+</div>
+
+<div>
+    <s:include value="/menu.jsp"/>
+</div>
+<div class="box">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/success_256.png" height="150"  width="200" />
+        <p>  Hi    <s:property value="email" /> Now your account Successfully Activated.Please click  <a href="index.jsp">home</a> and login into your account</p>
+    </div>
+      </div>
+   <div>
         <s:include value="/footer.jsp"/>
+        </div>
+       
     </body>
 </html>

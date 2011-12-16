@@ -2,9 +2,7 @@
 
 <validators>
   
-  
-      
-  <field name="email">
+   <field name="email">
       <field-validator type="email">
              <message>Email address is not valid</message>
         </field-validator>
@@ -16,10 +14,10 @@
         <field-validator type="requiredstring">
             <message>Password is required.</message>
         </field-validator> 
-        <field-validator type="stringlength">
+    <!--    <field-validator type="stringlength">
              <param name="minLength">6</param>
              <message>Password must contain at least ${minLength} characters</message>
-        </field-validator>
+        </field-validator>-->
   </field>
  
             

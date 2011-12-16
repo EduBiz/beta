@@ -9,6 +9,7 @@
     <property name="hibernate.connection.password">12345</property>
     <mapping resource="model/User.hbm.xml"/>
     <mapping resource="model/ReportcDaily.hbm.xml"/>
+    <mapping resource="model/TempUser.hbm.xml"/>
     <mapping resource="model/CampaignLocation.hbm.xml"/>
     <mapping resource="model/UserDetails.hbm.xml"/>
     <mapping resource="model/ReportPublish.hbm.xml"/>
@@ -18,11 +19,10 @@
     <mapping resource="model/Publish.hbm.xml"/>
     <mapping resource="model/UserTransaction.hbm.xml"/>
     <mapping resource="model/CampaignCreative.hbm.xml"/>
-    <mapping resource="model/CampaignDemography.hbm.xml"/>
     <mapping resource="model/PaymentDetails.hbm.xml"/>
+    <mapping resource="model/CampaignDemography.hbm.xml"/>
     <mapping resource="model/CampaignDevice.hbm.xml"/>
     <mapping resource="model/ReportrDaily.hbm.xml"/>
     <mapping resource="model/CampaignOs.hbm.xml"/>
-    <mapping resource="model/TempUser.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -1,5 +1,5 @@
 package model;
-// Generated Oct 17, 2011 12:07:51 PM by Hibernate Tools 3.2.1.GA
+// Generated Nov 4, 2011 1:37:20 PM by Hibernate Tools 3.2.1.GA
 
 
 import java.math.BigDecimal;
@@ -19,7 +19,7 @@ public class Campaign  implements java.io.Serializable {
      private Date startDate;
      private Date endDate;
      private BigDecimal dialyBudget;
-     private Integer deliveryMethod;
+     private String deliveryMethod;
      private String note;
      private String promoType;
      private Set<CampaignLocation> campaignLocations = new HashSet<CampaignLocation>(0);
@@ -37,7 +37,7 @@ public class Campaign  implements java.io.Serializable {
         this.user = user;
         this.campaignName = campaignName;
     }
-    public Campaign(User user, String campaignName, Date startDate, Date endDate, BigDecimal dialyBudget, Integer deliveryMethod, String note, String promoType, Set<CampaignLocation> campaignLocations, Set<CampaignDemography> campaignDemographies, Set<ReportCampaign> reportCampaigns, Set<CampaignCreative> campaignCreatives, Set<CampaignOs> campaignOses, Set<CampaignDevice> campaignDevices) {
+    public Campaign(User user, String campaignName, Date startDate, Date endDate, BigDecimal dialyBudget, String deliveryMethod, String note, String promoType, Set<CampaignLocation> campaignLocations, Set<CampaignDemography> campaignDemographies, Set<ReportCampaign> reportCampaigns, Set<CampaignCreative> campaignCreatives, Set<CampaignOs> campaignOses, Set<CampaignDevice> campaignDevices) {
        this.user = user;
        this.campaignName = campaignName;
        this.startDate = startDate;
@@ -96,11 +96,11 @@ public class Campaign  implements java.io.Serializable {
     public void setDialyBudget(BigDecimal dialyBudget) {
         this.dialyBudget = dialyBudget;
     }
-    public Integer getDeliveryMethod() {
+    public String getDeliveryMethod() {
         return this.deliveryMethod;
     }
     
-    public void setDeliveryMethod(Integer deliveryMethod) {
+    public void setDeliveryMethod(String deliveryMethod) {
         this.deliveryMethod = deliveryMethod;
     }
     public String getNote() {
