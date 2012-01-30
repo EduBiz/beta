@@ -39,7 +39,7 @@ public class displaycampaign extends ActionSupport {
     @Override
     public String execute() throws Exception {
 
-
+           try{
         Criteria disp = myDao.getDbsession().createCriteria(Campaign.class);
 
         disp.add(Restrictions.sqlRestriction("1=1 order by rand()"));
@@ -140,6 +140,12 @@ public class displaycampaign extends ActionSupport {
         } else {
             return "error";
         }
+           }
+           catch(Exception e)
+           {
+               e.printStackTrace();
+               return "error";
+           }
     }
 
     public String img() throws Exception {
