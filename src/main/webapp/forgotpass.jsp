@@ -9,6 +9,7 @@
 <html>
      <%@taglib uri="/struts-tags" prefix="s"%>
     <head>
+        <s:head theme="jquery"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Forget Password</title>
        <style type="text/css">
@@ -128,7 +129,7 @@ font-size:18px;
  <img src="images/passwords.gif" width="300" height="150"/>
  </div>
  <br>
- 
+ <s:actionerror theme="jquery"/> <s:actionmessage theme="jquery"/>
  <div align="center" >
  <p>ENTER YOUR EMAIL ID:</p>
         <s:actionerror/>

@@ -143,7 +143,7 @@ padding-left:350px;
 
 <div style="height:700px; font-size:18px; font-family:'MS Serif', 'New York', serif; color:#000; vertical-align:middle;" align="center" > 
                     <br></br>
-
+  <s:actionerror theme="jquery"/>
         <div align="center" id="stepWrapper">
             <table  width="920px" cellspacing="0" cellpadding="0">
                 <tr>

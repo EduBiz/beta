@@ -3,12 +3,7 @@
  * and open the template in the editor.
  */
 package controller;
-import com.opensymphony.xwork2.ActionContext;
-import javax.mail.*;
-import javax.mail.internet.*;
-import java.util.Properties;
 import com.opensymphony.xwork2.ActionSupport;
-import java.util.Map;
 import java.util.Random;
 import model.*;
 import model.TempUser;

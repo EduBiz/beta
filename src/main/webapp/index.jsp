@@ -1,8 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><%@taglib uri="/struts-tags" prefix="s"%>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <%@taglib uri="/struts-tags" prefix="s"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>.::AdZappy::.</title>
+<s:head theme="jquery"/>
 <style type="text/css">
 .header
 {
@@ -377,7 +379,7 @@ function newsscoller(prev) {
 </div>
 
 </div>
-
+                                                <s:actionmessage theme="jquery"/><s:actionerror theme="jquery"/>
 <table style=" height:300px;  ">
 <tr>
 <td width="300" style="width:300px; height:300px; background-image:url(images/button1.gif); background-repeat:no-repeat;  float:left;">

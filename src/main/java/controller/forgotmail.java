@@ -44,23 +44,29 @@ public class forgotmail extends ActionSupport {
     
     @Override
     public String execute() throws Exception{
-        
+        try{
        User user=(User) myDao.getDbsession().get(User.class, forgetemail); 
-            if(forgetemail.equals(user.getEmailId()))
-            {
+          //  if(forgetemail.equals(user.getEmailId()))
+          //  {
       
              subject="Your Adzappy Password";
              content="Your Email Account is \t:  " + user.getEmailId() + "\npassword is\t" + user.getPassword()+"\n  " +"\nThanks & Regards \n    "
                  +" Adzappy Team\n";
         
             getSendMail().test(forgetemail, getSubject(), getContent());
+           addActionMessage("Your Password Successfully Sent to your Email Address");
+           forgetemail=null;
+           return "success";
            
-            return "success";
-            }
-        else
-            {
-       return "error";
-            }
+           }
+     //   else
+        //    {
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            addActionError("Error\t "+e.getMessage());
+         return "error";
+        }
     }    
     
     

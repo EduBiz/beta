@@ -37,7 +37,7 @@
         </action>
         
         <action name="forgotmail" class="controller.forgotmail">
-            <result name="success" >forgotmailsuccess.jsp</result>
+            <result name="success" >forgotpass.jsp</result>
             <result name="input" >forgotpass.jsp</result>
             <result name="error" >forgotpass.jsp</result>
         </action> 
@@ -185,9 +185,11 @@
        
         <action name="rcharts" class="report.Charts" >
             <result name="success">report.jsp</result>
+            <result name="error">report.jsp</result>
         </action> 
         <action name="sitecharts" class="report.sitecharts" >
             <result name="success">sitereport.jsp</result>
+            <result name="error">sitereport.jsp</result>
         </action> 
         <action name="displaycampaign" class="controller.displaycampaign">
             <result name="mobile" >displaycampimg.jsp</result>
