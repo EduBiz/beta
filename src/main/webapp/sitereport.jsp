@@ -118,7 +118,7 @@ padding-left:350px;
 	  
         </script>
          <s:head theme="jquery"/>  
-        <sj:head jqueryui="true" jquerytheme="flick"/> 
+        <sj:head /> 
     </head>
     
      <body>

@@ -30,6 +30,12 @@ public class displaycampaign extends ActionSupport {
     private long cid;
     private String cname;
     private String cadurl;
+    private long camprepid;
+    private ReportCampaign rc1;
+    private ReportcDaily rcd;
+    private long reportcKey;
+    private Date date;
+
     @Override
     public String execute() throws Exception {
 
@@ -38,64 +44,93 @@ public class displaycampaign extends ActionSupport {
 
         disp.add(Restrictions.sqlRestriction("1=1 order by rand()"));
         disp.setMaxResults(1);
+        cam = (Campaign) (disp.list().get(0));
+        cid = (long) cam.getCampaignId();
+        cname = cam.getCampaignName();
 
-        
-        cam= (Campaign) (disp.list().get(0));
-        cid=(long) cam.getCampaignId();
-        cname=cam.getCampaignName();
-       
-        Criteria ds12=myDao.getDbsession().createCriteria(CampaignCreative.class);
+        Criteria ds12 = myDao.getDbsession().createCriteria(CampaignCreative.class);
         ds12.add(Restrictions.eq("campaign", cid));
         ds12.setMaxResults(1);
-        
-        CampaignCreative ccr=(CampaignCreative) (ds12.list().get(0));
-        cadurl=ccr.getAddUrl();
-        
-        /*camplist = (List<Campaign>) disp.list();
-        camplist.get(0).getCampaignName();
-        System.out.println("Camp id \t\t\t" + camplist.get(0).getCampaignId());
-        System.out.println("Camp Name\t\t\t" + camplist.get(0).getCampaignName());
+        CampaignCreative ccr = (CampaignCreative) (ds12.list().get(0));
+        cadurl = ccr.getAddUrl();
+        System.out.println("Campaign id " + cid);
+        System.out.println("Campaign name " + cname);
+        System.out.println("Campaign url " + cadurl);
 
-        Criteria d1 = myDao.getDbsession().createCriteria(CampaignCreative.class);
-        d1.add(Restrictions.eq("styleType", type));
-        d1.add(Restrictions.in("campaign_1", camplist));
-        d1.setMaxResults(1);
-        campcrlist = (List<CampaignCreative>) d1.list();*/
-       
-        //code for impression
-        ReportCampaign rc=new ReportCampaign();    //creating obj
-                               
-        rc.setCampaign(getCam());                 //assign list to cam for set campaign
-             int s4=rc.getTotalImpressions();
-             int s=s4+1;
-             System.out.println("S is "+s);
-        rc.setTotalImpressions(s);                  //set impression
-        rc.setTotalClicks(0);
-        rc.setTotalCost(BigDecimal.ZERO);
-                 //getting campaign id
-        
-        
-        Criteria dd2=myDao.getDbsession().createCriteria(ReportCampaign.class);
-        dd2.add(Restrictions.eq("campaign",rc.getCampaign()));
-        List sss=dd2.list();                            //criteria for getting campaign which is already inserted
-        if(sss.isEmpty()){      
-        myDao.getDbsession().save(rc);                      
-        }else{
-            ReportCampaign rc1=new ReportCampaign();
-             rc1.setCampaign(getCam());                 //assign list to cam for set campaign
-             
-             int s3=rc.getTotalImpressions();
-             int s1=s3+1;
-             System.out.println("S is "+s);
-        rc1.setTotalImpressions(s1);                  //set impression
-        rc1.setTotalClicks(0);
-        rc1.setTotalCost(BigDecimal.ZERO);
-            myDao.getDbsession().saveOrUpdate(rc1);
+        Criteria repcampid = myDao.getDbsession().createCriteria(ReportCampaign.class);
+        repcampid.add(Restrictions.eq("campaign", cam));
+        repcampid.setMaxResults(1);
+
+        List sss = repcampid.list();
+        if (!sss.isEmpty()) {
+            rc1 = (ReportCampaign) (repcampid.list().get(0));
+            camprepid = rc1.getReportcId();
+            int s3 = rc1.getTotalImpressions();
+            System.out.println("ReportCampaign id " + camprepid);
+
+            rc1 = (ReportCampaign) myDao.getDbsession().get(ReportCampaign.class, camprepid);
+            //assign list to cam for set campaign
+
+
+            int s1 = s3 + 1;
+            System.out.println("S is " + s1);
+            rc1.setReportcId(camprepid);
+            rc1.setCampaign(getCam());
+            rc1.setTotalImpressions(s3 + 1);                  //set impression
+            rc1.setTotalClicks(0);
+            rc1.setTotalCost(BigDecimal.ZERO);
+            myDao.getDbsession().update(rc1);
+
+
+        } else {
+            rc1 = new ReportCampaign();    //creating obj
+
+            rc1.setCampaign(getCam());                 //assign list to cam for set campaign
+
+
+            rc1.setTotalImpressions(1);                  //set impression
+            rc1.setTotalClicks(0);
+            rc1.setTotalCost(BigDecimal.ZERO);
+            //getting campaign id
+            myDao.getDbsession().save(rc1);
         }
-        
-      
-        
-       
+
+        Criteria dailcam = myDao.getDbsession().createCriteria(ReportcDaily.class);
+        dailcam.add(Restrictions.eq("reportCampaign", rc1));
+        dailcam.setMaxResults(1);
+        rcd = (ReportcDaily) (dailcam.list().get(0));
+        reportcKey = rcd.getReportcKey();
+        date = rcd.getRdate();
+        int dcl = rcd.getImpressions();
+        List dacam = dailcam.list();
+        if (dacam.isEmpty()) {
+            Date date1 = new Date();
+            ReportcDaily daycamp = new ReportcDaily();
+            daycamp.setReportCampaign(rc1);
+            daycamp.setImpressions(1);
+            daycamp.setRdate(date1);
+            myDao.getDbsession().save(daycamp);
+
+        } else {
+            Date sysdte = new Date();
+            if (sysdte == date||rc1==rcd.getReportCampaign()) {
+                rcd = (ReportcDaily) myDao.getDbsession().get(ReportcDaily.class, reportcKey);
+                rcd.setImpressions(dcl + 1);
+                rcd.setRdate(date);
+                rcd.setReportCampaign(rc1);
+                rcd.setReportcKey(reportcKey);
+                myDao.getDbsession().update(rcd);
+            } else {
+
+                ReportcDaily daycamp = new ReportcDaily();
+                daycamp.setReportCampaign(rc1);
+                daycamp.setImpressions(1);
+                daycamp.setRdate(sysdte);
+                myDao.getDbsession().save(daycamp);
+            }
+
+        }
+
         if (type.equals("text")) {
             return "text";
         } else if (type.equals("mobile")) {
@@ -106,20 +141,18 @@ public class displaycampaign extends ActionSupport {
             return "error";
         }
     }
-    public String img() throws Exception{
-        
-         try{
-            
-           CampaignCreative  cam=(CampaignCreative)myDao.getDbsession().get(CampaignCreative.class, getId());
-            byte[] retadd1=cam.getAddImage(); 
-            fileInputStream=new ByteArrayInputStream(retadd1);
-             }
 
-           catch(Exception e)
-          {
-          e.printStackTrace();
-          }
-        return"success";
+    public String img() throws Exception {
+
+        try {
+
+            CampaignCreative cam = (CampaignCreative) myDao.getDbsession().get(CampaignCreative.class, getId());
+            byte[] retadd1 = cam.getAddImage();
+            fileInputStream = new ByteArrayInputStream(retadd1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "success";
     }
 
     /**
@@ -246,5 +279,75 @@ public class displaycampaign extends ActionSupport {
      */
     public void setCadurl(String cadurl) {
         this.cadurl = cadurl;
+    }
+
+    /**
+     * @return the camprepid
+     */
+    public long getCamprepid() {
+        return camprepid;
+    }
+
+    /**
+     * @param camprepid the camprepid to set
+     */
+    public void setCamprepid(long camprepid) {
+        this.camprepid = camprepid;
+    }
+
+    /**
+     * @return the rc1
+     */
+    public ReportCampaign getRc1() {
+        return rc1;
+    }
+
+    /**
+     * @param rc1 the rc1 to set
+     */
+    public void setRc1(ReportCampaign rc1) {
+        this.rc1 = rc1;
+    }
+
+    /**
+     * @return the rcd
+     */
+    public ReportcDaily getRcd() {
+        return rcd;
+    }
+
+    /**
+     * @param rcd the rcd to set
+     */
+    public void setRcd(ReportcDaily rcd) {
+        this.rcd = rcd;
+    }
+
+    /**
+     * @return the reportcKey
+     */
+    public long getReportcKey() {
+        return reportcKey;
+    }
+
+    /**
+     * @param reportcKey the reportcKey to set
+     */
+    public void setReportcKey(long reportcKey) {
+        this.reportcKey = reportcKey;
+    }
+
+    /**
+     * @return the date
+     */
+    public Date getDate() {
+        return date;
+    }
+
+    /**
+     * @param date the date to set
+     */
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
