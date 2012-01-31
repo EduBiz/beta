@@ -258,7 +258,7 @@ padding-left:350px;
      <table>
             <tr>
                 <td>
-                    <form method="post" action="rcharts.action">
+                    <form method="post" action="sitecharts.action">
                         <select name="search"  >
 
                             <option value="3">Last 7 Days</option>

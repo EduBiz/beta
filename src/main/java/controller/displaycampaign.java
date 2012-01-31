@@ -39,113 +39,114 @@ public class displaycampaign extends ActionSupport {
     @Override
     public String execute() throws Exception {
 
-           try{
-        Criteria disp = myDao.getDbsession().createCriteria(Campaign.class);
+        try {
+            Criteria disp = myDao.getDbsession().createCriteria(Campaign.class);
 
-        disp.add(Restrictions.sqlRestriction("1=1 order by rand()"));
-        disp.setMaxResults(1);
-        cam = (Campaign) (disp.list().get(0));
-        cid = (long) cam.getCampaignId();
-        cname = cam.getCampaignName();
+            disp.add(Restrictions.sqlRestriction("1=1 order by rand()"));
+            disp.setMaxResults(1);
+            cam = (Campaign) (disp.list().get(0));
+            cid = (long) cam.getCampaignId();
+            cname = cam.getCampaignName();
 
-        Criteria ds12 = myDao.getDbsession().createCriteria(CampaignCreative.class);
-        ds12.add(Restrictions.eq("campaign", cid));
-        ds12.setMaxResults(1);
-        CampaignCreative ccr = (CampaignCreative) (ds12.list().get(0));
-        cadurl = ccr.getAddUrl();
-        System.out.println("Campaign id " + cid);
-        System.out.println("Campaign name " + cname);
-        System.out.println("Campaign url " + cadurl);
+            Criteria ds12 = myDao.getDbsession().createCriteria(CampaignCreative.class);
+            ds12.add(Restrictions.eq("campaign", cid));
+            ds12.setMaxResults(1);
+            CampaignCreative ccr = (CampaignCreative) (ds12.list().get(0));
+            cadurl = ccr.getAddUrl();
+            System.out.println("Campaign id " + cid);
+            System.out.println("Campaign name " + cname);
+            System.out.println("Campaign url " + cadurl);
 
-        Criteria repcampid = myDao.getDbsession().createCriteria(ReportCampaign.class);
-        repcampid.add(Restrictions.eq("campaign", cam));
-        repcampid.setMaxResults(1);
+            Criteria repcampid = myDao.getDbsession().createCriteria(ReportCampaign.class);
+            repcampid.add(Restrictions.eq("campaign", cam));
+            repcampid.setMaxResults(1);
 
-        List sss = repcampid.list();
-        if (!sss.isEmpty()) {
-            rc1 = (ReportCampaign) (repcampid.list().get(0));
-            camprepid = rc1.getReportcId();
-            int s3 = rc1.getTotalImpressions();
-            System.out.println("ReportCampaign id " + camprepid);
+            List sss = repcampid.list();
+            if (!sss.isEmpty()) {
+                rc1 = (ReportCampaign) (repcampid.list().get(0));
+                camprepid = rc1.getReportcId();
+                int s3 = rc1.getTotalImpressions();
+                System.out.println("ReportCampaign id " + camprepid);
 
-            rc1 = (ReportCampaign) myDao.getDbsession().get(ReportCampaign.class, camprepid);
-            //assign list to cam for set campaign
-
-
-            int s1 = s3 + 1;
-            System.out.println("S is " + s1);
-            rc1.setReportcId(camprepid);
-            rc1.setCampaign(getCam());
-            rc1.setTotalImpressions(s3 + 1);                  //set impression
-            rc1.setTotalClicks(0);
-            rc1.setTotalCost(BigDecimal.ZERO);
-            myDao.getDbsession().update(rc1);
+                rc1 = (ReportCampaign) myDao.getDbsession().get(ReportCampaign.class, camprepid);
+                //assign list to cam for set campaign
 
 
-        } else {
-            rc1 = new ReportCampaign();    //creating obj
+                int s1 = s3 + 1;
+                System.out.println("S is " + s1);
+                rc1.setReportcId(camprepid);
+                rc1.setCampaign(getCam());
+                rc1.setTotalImpressions(s3 + 1);                  //set impression
+                rc1.setTotalClicks(0);
+                rc1.setTotalCost(BigDecimal.ZERO);
+                myDao.getDbsession().update(rc1);
 
-            rc1.setCampaign(getCam());                 //assign list to cam for set campaign
 
-
-            rc1.setTotalImpressions(1);                  //set impression
-            rc1.setTotalClicks(0);
-            rc1.setTotalCost(BigDecimal.ZERO);
-            //getting campaign id
-            myDao.getDbsession().save(rc1);
-        }
-
-        Criteria dailcam = myDao.getDbsession().createCriteria(ReportcDaily.class);
-        dailcam.add(Restrictions.eq("reportCampaign", rc1));
-        dailcam.setMaxResults(1);
-        rcd = (ReportcDaily) (dailcam.list().get(0));
-        reportcKey = rcd.getReportcKey();
-        date = rcd.getRdate();
-        int dcl = rcd.getImpressions();
-        List dacam = dailcam.list();
-        if (dacam.isEmpty()) {
-            Date date1 = new Date();
-            ReportcDaily daycamp = new ReportcDaily();
-            daycamp.setReportCampaign(rc1);
-            daycamp.setImpressions(1);
-            daycamp.setRdate(date1);
-            myDao.getDbsession().save(daycamp);
-
-        } else {
-            Date sysdte = new Date();
-            if (sysdte == date||rc1==rcd.getReportCampaign()) {
-                rcd = (ReportcDaily) myDao.getDbsession().get(ReportcDaily.class, reportcKey);
-                rcd.setImpressions(dcl + 1);
-                rcd.setRdate(date);
-                rcd.setReportCampaign(rc1);
-                rcd.setReportcKey(reportcKey);
-                myDao.getDbsession().update(rcd);
             } else {
+                rc1 = new ReportCampaign();    //creating obj
 
+                rc1.setCampaign(getCam());                 //assign list to cam for set campaign
+
+
+                rc1.setTotalImpressions(1);                  //set impression
+                rc1.setTotalClicks(0);
+                rc1.setTotalCost(BigDecimal.ZERO);
+                //getting campaign id
+                myDao.getDbsession().save(rc1);
+            }
+            Calendar currentDate = Calendar.getInstance();
+            currentDate.add(Calendar.DATE, 0);
+            Criteria dailcam = myDao.getDbsession().createCriteria(ReportcDaily.class);
+            dailcam.add(Restrictions.eq("rdate", currentDate.getTime()));
+            dailcam.add(Restrictions.eq("reportCampaign", rc1));
+            dailcam.setMaxResults(1);
+           
+            List dacam = dailcam.list();
+            if (dacam.isEmpty()) {
+                Date date1 = new Date();
                 ReportcDaily daycamp = new ReportcDaily();
                 daycamp.setReportCampaign(rc1);
                 daycamp.setImpressions(1);
-                daycamp.setRdate(sysdte);
+                daycamp.setRdate(date1);
                 myDao.getDbsession().save(daycamp);
+
+            } else {
+                Date sysdte = new Date();
+                 rcd = (ReportcDaily) (dailcam.list().get(0));
+            reportcKey = rcd.getReportcKey();
+            date = rcd.getRdate();
+            int dcl = rcd.getImpressions();
+                if (sysdte == date || rc1 == rcd.getReportCampaign()) {
+                    ReportcDaily rcd1 = (ReportcDaily) myDao.getDbsession().get(ReportcDaily.class, reportcKey);
+                    rcd1.setImpressions(dcl + 1);
+                    rcd1.setRdate(sysdte);
+                    rcd1.setReportCampaign(rc1);
+                    rcd1.setReportcKey(reportcKey);
+                    myDao.getDbsession().update(rcd1);
+                } else {
+
+                    ReportcDaily daycamp = new ReportcDaily();
+                    daycamp.setReportCampaign(rc1);
+                    daycamp.setImpressions(1);
+                    daycamp.setRdate(sysdte);
+                    myDao.getDbsession().save(daycamp);
+                }
+
             }
 
-        }
-
-        if (type.equals("text")) {
-            return "text";
-        } else if (type.equals("mobile")) {
-            return "mobile";
-        } else if (type.equals("tablets")) {
-            return "tablets";
-        } else {
+            if (type.equals("text")) {
+                return "text";
+            } else if (type.equals("mobile")) {
+                return "mobile";
+            } else if (type.equals("tablets")) {
+                return "tablets";
+            } else {
+                return "error";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
             return "error";
         }
-           }
-           catch(Exception e)
-           {
-               e.printStackTrace();
-               return "error";
-           }
     }
 
     public String img() throws Exception {
