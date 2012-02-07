@@ -96,13 +96,13 @@ padding-left:350px;
 </head>
 
 <body>
-    <%
+    <%/*
     Object obj = session.getAttribute("User");
     if(obj==null)
         {
         response.sendRedirect(request.getContextPath()+"/sessionError.action");
     }
-    %>
+    */%>
 <div style="height:750px">
 <div class="header" >
 <img src="images/logo.jpg" width="200" height="50" />
@@ -260,7 +260,7 @@ Mobile advertising provides you with targeted access to mobile users, and is eas
   </tr>  
 </table>
 </div.
-<div>
+><div>
     <s:include value="/footer.jsp" />
     </div>
 </body>

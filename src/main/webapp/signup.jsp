@@ -104,7 +104,7 @@ font-size:18px;
 </style>
     </head>
     <body>
-    <div>
+    <div style="height:600px;">
 <div class="header" >
 <img src="images/logo.jpg" width="200" height="50" />
 <br />
@@ -117,7 +117,7 @@ font-size:18px;
 </div>
 
   
- <div  style="padding-left:450px;  height:443px;" class="box" align="justify">
+ <div  style="padding-left:300px;  height:443px;" class="box" align="justify">
  <br>
  <br>
  <br>
@@ -139,7 +139,7 @@ font-size:18px;
         </div>
   </div>
 
-
+</div>
   <div>
   <s:include value="/footer.jsp"/>
   </div>

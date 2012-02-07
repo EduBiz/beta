@@ -294,7 +294,7 @@ function newsscoller(prev) {
 
 <body>
 <div align="center">
-<div style="width:1350px; height:700px;" >
+<div style="width:1350px;" >
 <div style="width:1350px; height:100px; ">
 <div class="header" align="left" >
 <img src="images/logo.jpg" width="20%" height="50px" />
@@ -303,7 +303,7 @@ function newsscoller(prev) {
  <s:include value="menu1.jsp"/>
 </div>
 </div>
-<div style=" height:300px;  ">
+<div style=" height:300px; padding-top:10px;">
 <div style="width:1000px; height:300px; float:left;">
 
 					<div id="debug"></div>
@@ -315,14 +315,7 @@ function newsscoller(prev) {
 		                  <li><img src="images/testimonials_banner.gif" width="1000" height="300" alt=""/></li>
 	                    </ul>
           </div>
-		              <div id="mask-excerpt">
-		                <ul id="excerpt">
-		                  <li>Cras dictum. Maecenas ut turpis. In vitae erat ac orci dignissim eleifend.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                          </li>
-		                  <li>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</li>
-		                  <li>Nunc quis justo. Sed vel ipsum in purus tincidunt pharetra.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</li>
-	                    </ul>
-          </div>
+		              
         </div>
         <div class="clear"></div>
 
@@ -405,7 +398,7 @@ function newsscoller(prev) {
                             <td width="250" align="right" valign="top">&nbsp;</td>
                           </tr>
                            <tr>
-                            <td height="24" colspan="2" align="right" valign="bottom"><a href="#"><img src="images/btn_more.jpg" width="60" height="24" border="0" /></a></td>
+                            <td height="24" colspan="2" style="padding-left:200px;" valign="bottom" ><a href="#"><img src="images/btn_more.jpg" width="60" height="24" border="0" /></a></td>
                             </tr>
                       </table></td>
                     </tr>
@@ -418,12 +411,12 @@ function newsscoller(prev) {
         </table>
 </td>
 <td width="310" style="width:300px; height:300px; background-image:url(images/button1.gif); background-repeat:no-repeat;  float:left;">
-<table width="300px" border="0" align="left" cellpadding="0" cellspacing="0" style="float:left;margin-left:10px">
+<table width="300px" height="307" border="0" align="left" cellpadding="0" cellspacing="0" style="float:left">
               <tr>
-                <td align="left" valign="top">&nbsp;</td>
+                <td height="15" align="left" valign="top"></td>
               </tr>
               <tr>
-                <td width="300px" height="240" align="center" valign="top"><table width="90%" border="0" cellspacing="0" cellpadding="0">
+              <td width="300px" height="253" align="center" valign="top" ><table width="90%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td height="39" align="left" class="h11">App Developers</td>
                     </tr>
@@ -431,15 +424,15 @@ function newsscoller(prev) {
                       <td height="30" align="left" class="h2">Reach Your Target Audience</td>
                     </tr>
                     <tr>
-                      <td><table width="249" height="185" border="0" cellpadding="0" cellspacing="0">
+                      <td><table width="275" height="184" border="0" cellpadding="0" cellspacing="0">
                           <tr>
-                            <td width="250px" height="120" align="left" valign="top">
-							
-							</td>
-                            <td width="27%" align="right" valign="top"></td>
+                            <td width="275" height="136" align="left" valign="top"><ul>
+                                <li><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry.                              </li>                            
+                              </ul></td>
+                            <td width="250" align="right" valign="top">&nbsp;</td>
                           </tr>
                            <tr>
-                            <td height="24" colspan="2" align="right" valign="bottom"><a href="#"><img src="images/btn_more.jpg" width="63" height="24" border="0" /></a></td>
+                            <td height="24" colspan="2" style="padding-left:200px;" valign="bottom" ><a href="#"><img src="images/btn_more.jpg" width="60" height="24" border="0" /></a></td>
                             </tr>
                       </table></td>
                     </tr>
@@ -447,17 +440,17 @@ function newsscoller(prev) {
                 </table></td>
               </tr>
               <tr>
-                <td height="34" align="left" valign="top">&nbsp;</td>
-              </tr>
-            </table>
+                <td height="39" align="left" valign="top">&nbsp;</td>
+          </tr>
+        </table>
 </td>
 <td width="310" style="width:300px; height:300px; background-image:url(images/button1.gif); background-repeat:no-repeat; float:left;">
- <table width="300px" border="0" align="left" cellpadding="0" cellspacing="0" style="float:left;margin-left:10px">
+ <table width="300px" height="307" border="0" align="left" cellpadding="0" cellspacing="0" style="float:left">
               <tr>
-                <td align="left" valign="top">&nbsp;</td>
+                <td height="15" align="left" valign="top"></td>
               </tr>
               <tr>
-                <td width="300px" height="300" align="center" valign="top"><table width="90%" border="0" cellspacing="0" cellpadding="0">
+              <td width="300px" height="253" align="center" valign="top" ><table width="90%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td height="39" align="left" class="h11">Publishers</td>
                     </tr>
@@ -465,24 +458,24 @@ function newsscoller(prev) {
                       <td height="30" align="left" class="h2">Reach Your Target Audience</td>
                     </tr>
                     <tr>
-                      <td><table width="244" height="188" border="0" cellpadding="0" cellspacing="0">
+                      <td><table width="275" height="184" border="0" cellpadding="0" cellspacing="0">
                           <tr>
-                            <td width="300" height="120" align="left" valign="top">
-							
-							</td>
-                            <td width="300" align="right" valign="top"></td>
+                            <td width="275" height="136" align="left" valign="top"><ul>
+                                <li><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry.                              </li>                            
+                              </ul></td>
+                            <td width="250" align="right" valign="top">&nbsp;</td>
                           </tr>
                            <tr>
-                            <td height="24" colspan="2" align="right" valign="bottom"><a href="#"><img src="images/btn_more.jpg" width="60" height="23" border="0" /></a></td>
-                        </tr>
+                            <td height="24" colspan="2" style="padding-left:200px;" valign="bottom" ><a href="#"><img src="images/btn_more.jpg" width="60" height="24" border="0" /></a></td>
+                            </tr>
                       </table></td>
                     </tr>
                     <tr></tr>
                 </table></td>
               </tr>
               <tr>
-                <td height="14" align="left" valign="top">&nbsp;</td>
-              </tr>
+                <td height="39" align="left" valign="top">&nbsp;</td>
+          </tr>
         </table>
 </td>
 <td width="393"  style=" height:300px;  float:right;">

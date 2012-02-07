@@ -131,14 +131,14 @@
     </head>
 
     <body>
-        <%
+        <%/*
         Object obj = session.getAttribute("User");
         if(obj==null)
             {
             response.sendRedirect(request.getContextPath()+"/sessionError.action");
         }
-        %>
-        <div>
+        */%>
+        <div style="height:600px;">
             <div class="header" >
                 <img src="images/logo.jpg" width="200" height="50" />
                 <br />
@@ -220,6 +220,7 @@
                 pager.init();
                 pager.showPage(1);
             </script>
+            </div>
             <div>
                 <s:include value="/footer.jsp" />
             </div>

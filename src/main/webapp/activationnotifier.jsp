@@ -92,7 +92,7 @@ background-color:#EAF2D3;
 .box
 {
 width:600px;
-height:365px;
+
 background-color:#FFF;
 box-shadow: 0px 0px 0px;
 padding-left:450px;
@@ -105,7 +105,7 @@ font-size:18px;
 </style>
     </head>
     <body>
-    <div>
+    <div style="height:600px;">
 <div class="header" >
 <img src="images/logo.jpg" width="200" height="50" />
 <br />

@@ -92,7 +92,7 @@ background-color:#EAF2D3;
 .box
 {
 width:600px;
-height:365px;
+
 background-color:#FFF;
 box-shadow: 0px 0px 0px;
 padding-left:540px;
@@ -104,7 +104,7 @@ font-size:18px;
 </style>
     </head>
     <body>
-    <div>
+    <div style="height:600px;">
 <div class="header" >
 <img src="images/logo.jpg" width="200" height="50" />
 <br />
@@ -115,7 +115,7 @@ font-size:18px;
     <s:include value="/menu.jsp"/>
 </div>
           
-          <div class="box" >
+          <div class="box">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/wrong_cross_clip_art_17112.jpg" width="150" height="150"/>
           <h3>  Following errors occurred</h3>
           <ul>
@@ -124,11 +124,11 @@ font-size:18px;
          </ul>
     </div>
      </div>
-   <div>
+ 
+<div>
         <s:include value="/footer.jsp"/>
-        </div>
-
-</div
+        </div>  
+</div>
        
-    ></body>
+    </body>
 </html>

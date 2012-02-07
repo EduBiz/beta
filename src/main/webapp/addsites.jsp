@@ -42,6 +42,7 @@ body
 {
 	margin: 0;
 	padding: 0;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 	
 	
 }
@@ -100,7 +101,8 @@ width:600px;
 height:400px;
 background-color:#FFF;
 box-shadow: 0px 0px 0px;
-padding-left:450px;
+padding-left:500px;
+padding-top:70px;
 }
 
 
@@ -118,7 +120,7 @@ padding-left:450px;
         response.sendRedirect(request.getContextPath()+"/sessionError.action");
     }*/
     %>
-      <div>
+      <div style="height:600px;">
 <div class="header" >
 <img src="images/logo.jpg" width="200" height="50" />
 <br />
@@ -163,27 +165,71 @@ padding-left:450px;
 </div>
 <div class="box">
 <div>
-<p style="font-size:25px; color:#030;">ADD SITE</p>
+<p style="font-size:30px; color:#030; padding-left:70px;">ADD SITE</p>
 </div>
           
           
       <div style="width:100%;">    
     <s:actionerror/>   
-    <s:form action="addsite">
-        
+    <s:form action="addsite" theme="simple">
+        <table style="font-size:15px;">
+        <tr>
+        <td>
+        Site Name
+        </td>
+        <td>
         <s:textfield name="sitename" label="Site Name" />
+        </td>
+        </tr>
+        <tr>
+         <td>
+         Site Url
+        </td>
+        <td>
         <s:textfield name="siteurl" label="Site Url "  value="http://"/>
+        </td></tr>
+        <tr>
+         <td>
+         Description
+        </td>
+        <td>
         <s:textarea label="Description" name="desc" rows="3" cols="16.7"/>
+        </td>
+        </tr>
+        <tr>
+         <td>
+         Background Color
+        </td>
+        <td>
         <s:textfield name="txtcolor" label="Background Color" cssClass="color" />
+        </td>
+        </tr>
+        <tr>
+         <td>
+         Background Text
+        </td>
+        <td>
         <s:textfield name="bgcolor" label="Background Text" cssClass="color"  />
+        </td></tr>
+        <tr>
+         <td>
+         Category
+        </td>
+        <td>
         <s:select label="Category" name="catgry" headerKey="Please select" headerValue="Please select" list="{'Business','Education','Entertainment','Comics','Finance','Games','Healthcare and Fitness','Lifestyle','Music','Navigation ','News','Photography','Productivity','Reference','Search Tools ','Social Networking','Sports','Travel','Utilities','Weather'}" />
+        </td></tr>
+        <tr>
+         <td>
+        </td>
+        <td>
         <s:submit value="Add Sites"/>
-         
+         </td></tr>
+         </table>
     </s:form>    
       
       </div>
       </div>
-      
+      </div>
        
     <div>
         <s:include value="/footer.jsp"/>

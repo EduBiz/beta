@@ -94,7 +94,7 @@ background-color:#EAF2D3;
 .box
 {
 width:600px;
-height:1000px;
+height:900px;
 background-color:#FFF;
 box-shadow: 0px 0px 0px;
 padding-left:350px;
@@ -108,7 +108,7 @@ padding-left:350px;
         <s:head theme="jquery"/>
     </head>
     <body>
- <%
+ <%/*
     Object obj = session.getAttribute("User");
     Object obj1 = session.getAttribute("campa");
     if(obj==null)
@@ -119,7 +119,7 @@ padding-left:350px;
         {
         response.sendRedirect(request.getContextPath()+"/sessioncampaignError.action");
     }
-    %>
+    */%>
           <div class="header" >
 <img src="images/logo.jpg" width="200" height="50" />
 <br />

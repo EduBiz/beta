@@ -110,7 +110,7 @@ padding-left:350px;
          
     </head>
     <body>
-  <%
+  <%/*
     Object obj = session.getAttribute("User");
     Object obj1 = session.getAttribute("campa");
     if(obj==null)
@@ -121,7 +121,7 @@ padding-left:350px;
         {
         response.sendRedirect(request.getContextPath()+"/sessioncampaignError.action");
     }
-    %>
+    */%>
             <div class="header" >
 <img src="images/logo.jpg" width="200" height="50" />
 <br />

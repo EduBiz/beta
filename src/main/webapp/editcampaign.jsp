@@ -114,13 +114,13 @@ padding-left:350px;
 
 
 
-<%
+<%/*
     Object obj = session.getAttribute("User");
     if(obj==null)
         {
         response.sendRedirect(request.getContextPath()+"/sessionError.action");
     }
-    %>
+    */%>
 <div class="header" >
 <img src="images/logo.jpg" width="200" height="50" />
 <br />
@@ -129,7 +129,7 @@ padding-left:350px;
 
 <div>
 <s:include value="menu.jsp"/>
-</div><div style="height:500px; font-size:18px; font-family:'MS Serif', 'New York', serif; color:#000; vertical-align:middle;" align="center" >  
+</div><div style="height:500px; font-size:18px; font-family:'MS Serif', 'New York', serif; color:#000; vertical-align:middle; padding-top:30px;" align="center" >  
   
     <s:actionerror/>  
     <s:form action="editcamp">

@@ -93,7 +93,7 @@ background-color:#EAF2D3;
 .box
 {
 width:600px;
-height:1000px;
+height:500px;
 background-color:#FFF;
 box-shadow: 0px 0px 0px;
 padding-left:350px;
@@ -109,13 +109,13 @@ font-size:18px;
         <sj:head jqueryui="true" jquerytheme="flick"/> 
     </head>
     <body>
-        <%
+        <%/*
     Object obj = session.getAttribute("User");
     if(obj==null)
         {
         response.sendRedirect(request.getContextPath()+"/sessionError.action");
     }
-    %> 
+    */%> 
        <div class="header" >
 <img src="images/logo.jpg" width="200" height="50" />
 <br />

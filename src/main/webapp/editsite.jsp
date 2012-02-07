@@ -107,13 +107,13 @@ padding-left:350px;
          <sj:head jqueryui="true" jquerytheme="flick"/>
     </head>
     <body>
-        <%
+        <%/*
     Object obj = session.getAttribute("User");
     if(obj==null)
         {
         response.sendRedirect(request.getContextPath()+"/sessionError.action");
     }
-   %> 
+   */%> 
       <div class="header" >
 <img src="images/logo.jpg" width="200" height="50" />
 <br />
@@ -123,22 +123,62 @@ padding-left:350px;
 <div>
 <s:include value="menu.jsp"/>
 </div>
-<div style="height:500px; background-color:#e8fab4; vertical-align:middle;" align="center" > 
+<div style="height:500px; vertical-align:middle;" align="center" > 
         <br></br>
         <br></br>
         <br></br>
           
     <s:actionerror/>   
     <s:form action="updatesite">
+     <table style="font-size:15px;">
+        <tr>
+        <td>
+        </td>
+        <td>
         <s:hidden name="publishid" value="%{publishid}" />
         <s:textfield name="sitename" label="Site Name" value="%{sitename}" />
+        </td>
+        </tr>
+         <tr>
+         <td>
+        </td>
+        <td>
         <s:textfield name="siteurl" label="Site Url "  value="%{siteurl}"/>
+        </td>
+        </tr>
+         <tr>
+         <td>
+        </td>
+        <td>
         <s:textarea label="Description" name="desc" rows="3" cols="16.7" value="%{desc}" />
+        </td>
+        </tr>
+         <tr>
+         <td>
+        </td>
+        <td>
         <s:textfield name="txtcolor" label="Background Color#" value="%{txtcolor}" cssClass="color"/>
+        </td>
+        </tr>
+         <tr>
+         <td>
+        </td>
+        <td>
         <s:textfield name="bgcolor" label="Background Text#"  value="%{bgcolor}" cssClass="color"/>
-        <s:select label="Category" name="catgry" headerKey="Please select" headerValue="Please select" list="{'Business','Education','Entertainment','Comics','Finance','Games','Healthcare and Fitness','Lifestyle','Music','Navigation ','News','Photography','Productivity','Reference','Search Tools ','Social Networking','Sports','Travel','Utilities','Weather'}" value="%{catgry}" />     
+        </td></tr>
+         <tr>
+         <td>
+        </td>
+        <td>
+        <s:select label="Category" name="catgry" headerKey="Please select" headerValue="Please select" list="{'Business','Education','Entertainment','Comics','Finance','Games','Healthcare and Fitness','Lifestyle','Music','Navigation ','News','Photography','Productivity','Reference','Search Tools ','Social Networking','Sports','Travel','Utilities','Weather'}" value="%{catgry}" /> 
+        </td></tr>
+         <tr>
+         <td>
+        </td>
+        <td>    
         <s:submit value="Update Sites"/>
-         
+         </td></tr>
+         </table>
     </s:form>    
       
       </div>

@@ -95,7 +95,7 @@
             .box
             {
                 width:600px;
-                height:1000px;
+                
                 background-color:#FFF;
                 box-shadow: 0px 0px 0px;
                 padding-left:350px;
@@ -110,7 +110,7 @@
         
     </head>
     <body>
-        <%
+        <%/*
             Object obj = session.getAttribute("User");
             Object obj1 = session.getAttribute("campa");
             if(obj==null)
@@ -121,7 +121,8 @@
                 {
                 response.sendRedirect(request.getContextPath()+"/sessioncampaignError.action");
             }
-        %>
+       */ %>
+       <div style="height:600px;">
         <div class="header" >
             <img src="images/logo.jpg" width="200" height="50" />
             <br />
@@ -174,10 +175,11 @@
     </div>
           </div>
          </div>
-        
+        </div>
         <div> 
             <s:include value="/footer.jsp" />
 
+        </div>
         </div>
     </body>
 </html>
