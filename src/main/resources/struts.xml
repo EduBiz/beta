@@ -10,9 +10,10 @@
     <package name="default" extends="struts-default">
        
         <action name="login" class="controller.login" >
-            <result name="success" >dashboard.jsp</result>
-            <result name="input" >index.jsp</result>
-            <result name="error" >index.jsp</result>
+            <result name="users" >/dashboard.jsp</result>
+            <result name="admin" >/admin.jsp</result>
+            <result name="input" >/index.jsp</result>
+            <result name="error" >/index.jsp</result>
         </action>
         <action name="loadlist"  class="controller.loadlist" >
             <result name="success" >dashboard.jsp</result>
@@ -204,7 +205,11 @@
                 <param name="contentDisposition">filename="${Id}+.jpg"</param>
                 <param name="bufferSize">2024</param>
             </result>
-            
+        </action>
+         <action name="ratechg" class="controller.adminratechange" >
+            <result name="success" type="chain">adratechange</result>
+            <result name="input" >/admin.jsp</result>
+            <result name="error"type="chain">adratechange</result>
         </action>
     </package>
 

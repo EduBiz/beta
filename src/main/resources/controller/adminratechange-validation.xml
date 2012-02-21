@@ -1,0 +1,31 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+  
+  <field name="newrt">
+        <field-validator type="required">
+            <message>New Rate Required.</message>
+        </field-validator>
+        <field-validator type="double">
+            <message>Incorrect Rate Value</message>
+        </field-validator>
+  </field>
+  <field name="cfrt">
+        <field-validator type="required">
+            <message>Confirm Rate Required.</message>
+        </field-validator>
+        <field-validator type="double">
+            <message>Incorrect Confirm Rate Value</message>
+        </field-validator>
+  </field>
+      
+  
+  
+  
+  <validator type="expression">
+       <param name="expression">newrt == cfrt</param>
+       <message>New rate and Confirm new rate do not match!</message>
+  </validator>
+            
+</validators>
+

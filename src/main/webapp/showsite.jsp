@@ -123,13 +123,13 @@ input.bar{
 </head>
 
 <body>
-    <%/*
+    <%
     Object obj = session.getAttribute("User");
     if(obj==null)
         {
         response.sendRedirect(request.getContextPath()+"/sessionError.action");
     }
-    */%>
+    %>
    
     <div style="height:600px;">
         <div class="header" >

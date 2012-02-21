@@ -128,7 +128,7 @@ font-size:18px;
 <div>
         <s:include value="/footer.jsp"/>
         </div>  
-</div>
+
        
     </body>
 </html>

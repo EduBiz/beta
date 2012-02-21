@@ -105,13 +105,13 @@ font-size:18px;
 </head>
 
 <body>
-    <%/*
+    <%
     Object obj = session.getAttribute("User");
     if(obj==null)
         {
         response.sendRedirect(request.getContextPath()+"/sessionError.action");
     }
-    */%>
+    %>
    
    <div class="header" >
 <img src="images/logo.jpg" width="200" height="50" />

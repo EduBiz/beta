@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 21, 2012 5:38:04 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Adrate" table="adrate" catalog="adzappy">
+        <id name="rateId" type="int">
+            <column name="rate_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="currentRate" type="big_decimal">
+            <column name="current_rate" precision="10" not-null="true" />
+        </property>
+        <property name="oldRate" type="big_decimal">
+            <column name="old_rate" precision="10" not-null="true" />
+        </property>
+        <property name="dateChange" type="timestamp">
+            <column name="date_change" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

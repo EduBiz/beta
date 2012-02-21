@@ -49,6 +49,10 @@
              <result name="success" >showsite.jsp</result>
              <result name="error" type="chain">loadlist</result>
          </action>
+         <action name="adratechange" class="navigation.ratechangenav">
+             <result name="success" >admin.jsp</result>
+             <result name="error" >admin.jsp</result>
+         </action>
          
     
           

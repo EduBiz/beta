@@ -113,12 +113,12 @@ padding-top:70px;
 </head>
 
     <body>
-       <%/*
+       <%
     Object obj = session.getAttribute("User");
     if(obj==null)
         {
         response.sendRedirect(request.getContextPath()+"/sessionError.action");
-    }*/
+    }
     %>
       <div style="height:600px;">
 <div class="header" >
@@ -235,7 +235,7 @@ padding-top:70px;
         <s:include value="/footer.jsp"/>
         </div>
 
-</div>
+
     </body>
 </html>
  

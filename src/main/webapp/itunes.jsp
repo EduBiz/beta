@@ -109,7 +109,7 @@
     </head>
     <body>
 
-        <%/*
+        <%
             Object obj = session.getAttribute("User");
             Object obj1 = session.getAttribute("campa");
             if(obj==null)
@@ -120,7 +120,7 @@
                 {
                 response.sendRedirect(request.getContextPath()+"/sessioncampaignError.action");
             }
-        */%>
+        %>
         <div style="height:600px;">
         <div class="header" >
             <img src="images/logo.jpg" width="200" height="50" />

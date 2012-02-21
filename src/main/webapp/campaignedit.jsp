@@ -115,13 +115,13 @@ padding-left:350px;
 
 
 
-<%/*
+<%
     Object obj = session.getAttribute("User");
     if(obj==null)
         {
         response.sendRedirect(request.getContextPath()+"/sessionError.action");
     }
-    */%>
+    %>
        <div>
 <div class="header" >
 <img src="images/logo.jpg" width="200" height="50" />
