@@ -134,35 +134,8 @@
                 <ul class="menu">
 
                     <li class="top"><a  href="adratechange.action" class="top_link"><span>HOME</span></a></li>
-                    <li class="top"><a href="editcamplist.action" class="top_link"><span>CAMPAIGN</span></a>
-                        <ul class="sub">
-                            <li><a href="addcampnav.action">ADD CAMPAIGN</a></li>			
-                            <li><a href="editcamplist.action">EDIT CAMPAIGN</a></li>
-
-                        </ul>
-                    </li>
-                    <li class="top"><a href="showsitenav.action" class="top_link"><span>SITE</span></a>
-                        <ul class="sub">
-                            <li><a href="addsitenav.action">ADD SITE</a></li>			
-                            <li><a href="editsitenav.action">EDIT SITE</a></li>
-
-                        </ul>
-                    </li>
-                    <li class="top"><a href="rcharts.action" class="top_link"><span>REPORT</span></a>
-                        <ul class="sub">
-                            <li><a href="rcharts.action">CAMPAIGN REPORT</a></li>			
-                            <li><a href="sitecharts.action">SITE REPORT</a></li>
-
-                        </ul>
-
-                    </li>
-                    <li class="top"><a href="accountinformation.action" class="top_link"><span>ACCOUNTS</span></a>
-                        <ul class="sub">
-                            <li><a href="accountinformation.action">ACCOUNTS INFORMATION</a></li>			
-                            <li><a href="#">TRANSACTION DETAILS</a></li>
-                            <li><a href="#">PAYMENT DETAILS</a></li>		
-
-                        </ul></li>
+                  
+                   
                     <li class="top"><a href="logoutaction.action" class="top_link"><span>LOGOUT</span></a></li>
                 </ul>
             </div>
