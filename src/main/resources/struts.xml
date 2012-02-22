@@ -209,7 +209,7 @@
          <action name="ratechg" class="controller.adminratechange" >
             <result name="success" type="chain">adratechange</result>
             <result name="input" >/admin.jsp</result>
-            <result name="error"type="chain">adratechange</result>
+            <result name="error" >/admin.jsp</result>
         </action>
     </package>
 

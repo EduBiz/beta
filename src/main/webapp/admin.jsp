@@ -212,6 +212,7 @@
                     </s:form>    
 
                 </div>
+                    <p style="font-size:15px;color:red">* If Any Error occurs Please Click <a  href="adratechange.action">Home</a> to Continue or click Back Button </p>
             </div>
         </div>
 
