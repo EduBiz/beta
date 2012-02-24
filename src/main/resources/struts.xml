@@ -211,6 +211,10 @@
             <result name="input" >/admin.jsp</result>
             <result name="error" >/admin.jsp</result>
         </action>
+         <action name="adminviewuser" class="controller.adminviewuser" >
+            <result name="success" >/adminviewuser.jsp</result>
+            <result name="error" >/adminviewuser.jsp</result>
+        </action>
     </package>
 
        

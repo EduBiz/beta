@@ -8,6 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>.::AdZappy::.</title>
+  <s:head theme="jquery"/>
+        <sj:head jqueryui="true" jquerytheme="flick"/>
 <style type="text/css">
 .header
 {
@@ -156,9 +158,9 @@ input.bar{
 <div>
 <p style="font-size:25px; color:#030;" align="center">CAMPAIGN</p>
 </div>
-    
+    <s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/>
     <div style="float:left"><a href="addcampnav.action"><input type="image" value="+Add Campaign" name="+Add Campaign" src="images/free-psd.jpg"/></a></div>   
-    <form action="searedit"> <div style="float:right;"><input type="text" value="Search" name="s" size="20" onblur="if(this.value == '') { this.value = 'Search'; }" onfocus="if(this.value == 'Search') { this.value = ''; }" /><input type="submit" value="Go"/>
+   <form action="seardash.action"> <div style="float:right;"><input type="text" value="Search" name="s" size="20" onblur="if(this.value == '') { this.value = 'Search'; }" onfocus="if(this.value == 'Search') { this.value = ''; }" /><input type="submit" value="Go"/>
         </div></form>
         <div>
     

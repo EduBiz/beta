@@ -5,6 +5,7 @@
 package campaign;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 import controller.spDAO;
 import java.util.List;
 import java.util.Map;
@@ -15,12 +16,13 @@ import org.hibernate.criterion.Restrictions;
 
 
 
-public class searcamp {
+public class searcamp extends ActionSupport {
     
   private String s; 
   private List<Campaign> camplist;
     private spDAO myDao;
   
+    @Override
     public String execute() throws Exception {
         
         try{
@@ -33,7 +35,7 @@ public class searcamp {
                  crit.add(Restrictions.like("user", user1));
                 crit.setMaxResults(20);
                     setCamplist((List<Campaign>) crit.list());
-            
+             addActionMessage(camplist.size()+"\t\tResults Found");
         }
         catch(Exception e)
         {

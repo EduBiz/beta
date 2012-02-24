@@ -5,6 +5,7 @@
 package controller;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import java.util.Map;
 import model.Publish;
@@ -16,12 +17,13 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author radan
  */
-public class searsite {
+public class searsite extends ActionSupport {
 
     private String s;
     private List<Publish> sitelist;
     private spDAO myDao;
    
+    @Override
     public String execute() throws Exception {
 
         try {
@@ -35,6 +37,8 @@ public class searsite {
             crit1.setMaxResults(20);
 
             setSitelist((List<Publish>) crit1.list());
+                    addActionMessage(sitelist.size()+"\t\tResults Found");
+
         } catch (Exception e) {
             e.printStackTrace();
         }

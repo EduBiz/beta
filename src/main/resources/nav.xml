@@ -53,10 +53,11 @@
              <result name="success" >admin.jsp</result>
              <result name="error" >admin.jsp</result>
          </action>
-         
-    
-          
-    
+         <action name="searchall" class="navigation.searchall">
+             <result name="success" >adminviewuser.jsp</result>
+             <result name="error" >adminviewuser.jsp</result>
+         </action>
+            
     </package>
 </struts>
 

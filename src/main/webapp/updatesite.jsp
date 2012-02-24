@@ -9,6 +9,8 @@
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>.::Manage Sites::.</title>
+        <s:head theme="jquery"/>
+        <sj:head jqueryui="true" jquerytheme="flick"/>
         <style type="text/css">
             .header
             {
@@ -127,7 +129,7 @@
             });
 	
         </script>
-       
+
     </head>
 
     <body>
@@ -148,11 +150,15 @@
             <div>
                 <s:include value="menu.jsp"/>
             </div>
-            <div class="box">              
+            <div class="box"> 
+                <div>
+                    <p style="font-size:25px; color:#030;" align="center">SITE</p>
+                </div>
                 <br></br>
                 <br></br>
+                <s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/>
                 <div style="float:left"><a href="addsitenav.action"><input type="image" value="+Add Site" name="+Add site" src="images/addsite.jpg"/></a></div>   
-                <form action="searshowsite"> <div style="float:right;"><input type="text" value="Search" name="s" size="20" onblur="if(this.value == '') { this.value = 'Search'; }" onfocus="if(this.value == 'Search') { this.value = ''; }" /><input type="submit" value="Go"/>
+                <form action="searupsite.action"> <div style="float:right;"><input type="text" value="Search" name="s" size="20" onblur="if(this.value == '') { this.value = 'Search'; }" onfocus="if(this.value == 'Search') { this.value = ''; }" /><input type="submit" value="Go"/>
                     </div></form>
                 <div>
 
@@ -183,7 +189,7 @@
                                             <s:param name="publishid" value="%{publishId}" />
                                         </s:url>
                                         <td> <s:a href="%{deletesite}" cssClass="ask"><img src="images/trash.png"/></s:a> </td>
-                                        </tr>
+                                    </tr>
                                 </s:if>
                                 <s:else>
                                     <tr class="alt">
@@ -205,13 +211,13 @@
                                             <s:param name="publishid" value="%{publishId}" />
                                         </s:url>
                                         <td> <s:a href="%{deletesite}" cssClass="ask"><img src="images/trash.png"/></s:a> </td>
-                                        </tr>
+                                    </tr>
                                 </s:else>
                             </s:iterator>
                         </table>
                         <div align="right" id="pageNavPosition"></div>   
                     </s:form>     
-                       
+
                 </div>
 
             </div>
@@ -220,10 +226,10 @@
                 pager.init();
                 pager.showPage(1);
             </script>
-            </div>
-            <div>
-                <s:include value="/footer.jsp" />
-            </div>
+        </div>
+        <div>
+            <s:include value="/footer.jsp" />
+        </div>
         </div>
     </body>
 </html>

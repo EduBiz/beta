@@ -14,11 +14,9 @@
     <head>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Admin</title>
-
-        <s:head theme="jquery"/>
+        <title>View User</title>
+    <s:head theme="jquery"/>
         <sj:head jqueryui="true" jquerytheme="flick"/>
-
         <style type="text/css">
             .header
             {
@@ -43,7 +41,6 @@
             {
                 margin: 0;
                 padding: 0;
-                font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 
 
             }
@@ -60,18 +57,18 @@
                 padding-left:300px;
 
             }
-            #user
+            .user
             {
                 font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
                 width:100%;
                 border-collapse:collapse;
             }
-            #user td, #user th 
+            .user td, .user th 
             {
                 font-size:1.2em;
                 padding:15px;
             }
-            #user th 
+            .user th 
             {
                 font-size:1.4em;
                 text-align:left;
@@ -80,7 +77,7 @@
                 background-color:#A7C942;
                 color:#fff;
             }
-            #user tr.alt td 
+            .user tr.alt td 
             {
                 color:#000;
                 background-color:#EAF2D3;
@@ -99,18 +96,36 @@
             .box
             {
                 width:600px;
-                height:400px;
+                height:470px;
                 background-color:#FFF;
                 box-shadow: 0px 0px 0px;
-                padding-left:500px;
-                padding-top:70px;
+                padding-left:350px;
             }
-
-
+            .pg-normal {
+                color: black;
+                font-weight: normal;
+                text-decoration: none;   
+                cursor: pointer;   
+            }
+            .pg-selected {
+                color: black;
+                font-weight: bold;       
+                text-decoration: underline;
+                cursor: pointer;
+            }
+            input.bar{
+                float:left;
+                height:18px;
+                width:159px;
+                padding:3px 5px 0px 5px;
+                border:none;
+                background-color:transparent;
+                color:#666;
+            }
         </style>
         <link rel="stylesheet" href="menu_style.css" type="text/css" />
         <link rel="stylesheet" href="style.css" type="text/css" />
-        <script type="text/javascript" src="jscolor.js"></script>
+        <script type="text/javascript" src="pagination.js"></script>
     </head>
 
     <body>
@@ -142,58 +157,55 @@
             </div>
             <div class="box">
                 <div>
-                    <p style="font-size:30px; color:#030; padding-left:70px;">Change AD Rate</p>
+                    <p style="font-size:30px; color:#030; padding-left:70px;">View All Users</p>
                 </div>
 
 
-                <div style="width:100%;">    
-                    <s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/>
-                    <s:form action="ratechg" theme="simple">
-                        <table style="font-size:15px;">
+                  <s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/>
+                <form action="searchall.action"> <div style="float:right;"><input type="text" value="Search" name="s" size="20" onblur="if(this.value == '') { this.value = 'Search'; }" onfocus="if(this.value == 'Search') { this.value = ''; }" /><input type="submit" value="Go"/>
+                    </div></form>
+                <div>
 
-                            <tr>
-                                <td>
-                                    Existing Rate
-                                </td>
-                                <td>
-                                    <s:textfield name="existrate" label="Existing Rate" readonly="true" value="%{ad.currentRate}"  />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    New Rate
-                                </td>
-                                <td>
-                                    <s:textfield name="newrt" label="New Rate "  />
-                                </td></tr>
+                    <table class="user" id="results" cellspacing="15" cellpadding="8" >
+                        <tr>  
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+
+                        </tr>  
+                        <s:iterator end="1" value="alluserlist" status="rowstatus">
+                            <s:if test="#rowstatus.odd == true">
+                                <tr>
+                                    <td><s:property value="firstName" /></td>
+                                    <td><s:property value="lastName" /> </td>
+                                    <td><s:property value="user" /> </td>
+                                </tr>
+                            </s:if>
+                            <s:else>
+                                <tr class="alt">
+                                    <td><s:property value="firstName" /></td>
+                                    <td><s:property value="lastName" /> </td>
+                                    <td><s:property value="user" /> </td>
+                                </tr>
+                            </s:else>
+                        </s:iterator>
+
+                    </table>
+                    <div align="right" id="pageNavPosition"></div>     
+
+                </div>   
 
 
-                            <tr>
-                                <td>
-                                    Confirm New Rate
-                                </td>
-                                <td>
-                                    <s:textfield name="cfrt" label="Confirm Rate"  />
-                                </td></tr>
-
-                            <tr>
-                                <td>
-                                </td>
-                                <td>
-                                    <s:submit value="Change Rate"/>
-                                </td></tr>
-                        </table>
-                    </s:form>    
-
-                </div>
-                <p style="font-size:15px;color:red">* If Any Error occurs Please Click <a  href="adratechange.action">Home</a> to Continue or click Back Button </p>
             </div>
+            <script type="text/javascript">
+                var pager = new Pager('results', 20, 'pager', 'pageNavPosition');
+                pager.init();
+                pager.showPage(1);
+            </script>
+            <div>
+                <s:include value="/footer.jsp"/>
+            </div>
+
         </div>
-
-        <div>
-            <s:include value="/footer.jsp"/>
-        </div>
-
-
     </body>
 </html>
