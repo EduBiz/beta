@@ -22,6 +22,7 @@ public class adminviewuser extends ActionSupport {
     private spDAO myDao;
     private User user;
     private List<UserDetails> alluserlist;
+     private List<User> allusers;
 
     @Override
     public String execute() throws Exception {
@@ -29,9 +30,14 @@ public class adminviewuser extends ActionSupport {
             Map session = ActionContext.getContext().getSession();
             setUser((User) session.get("User"));
             Criteria ucri = myDao.getDbsession().createCriteria(UserDetails.class);
+             ucri.add(Restrictions.not(Restrictions.eq("user", "admin@adzappy.com")));
             ucri.setMaxResults(100);
             alluserlist=(List<UserDetails>)ucri.list();
-
+//            Criteria allcri = myDao.getDbsession().createCriteria(User.class);
+//             allcri.add(Restrictions.not(Restrictions.eq("user", user)));
+//            allcri.setMaxResults(100);
+//            allusers=(List<User>)allcri.list();
+                   
             return "success";
         } catch (HibernateException he) {
             he.printStackTrace();
@@ -83,5 +89,19 @@ public class adminviewuser extends ActionSupport {
      */
     public void setAlluserlist(List<UserDetails> alluserlist) {
         this.alluserlist = alluserlist;
+    }
+
+    /**
+     * @return the allusers
+     */
+    public List<User> getAllusers() {
+        return allusers;
+    }
+
+    /**
+     * @param allusers the allusers to set
+     */
+    public void setAllusers(List<User> allusers) {
+        this.allusers = allusers;
     }
 }

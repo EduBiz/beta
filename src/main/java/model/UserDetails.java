@@ -1,5 +1,5 @@
 package model;
-// Generated Feb 21, 2012 5:38:03 PM by Hibernate Tools 3.2.1.GA
+// Generated Feb 27, 2012 11:42:50 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -20,6 +20,7 @@ public class UserDetails  implements java.io.Serializable {
      private String stateRegion;
      private String city;
      private String postalCode;
+     private Date lastUpdate;
 
     public UserDetails() {
     }
@@ -30,7 +31,7 @@ public class UserDetails  implements java.io.Serializable {
         this.user_1 = user_1;
         this.firstName = firstName;
     }
-    public UserDetails(String user, User user_1, String firstName, String lastName, Date dob, String addressLine1, String country, String stateRegion, String city, String postalCode) {
+    public UserDetails(String user, User user_1, String firstName, String lastName, Date dob, String addressLine1, String country, String stateRegion, String city, String postalCode, Date lastUpdate) {
        this.user = user;
        this.user_1 = user_1;
        this.firstName = firstName;
@@ -41,6 +42,7 @@ public class UserDetails  implements java.io.Serializable {
        this.stateRegion = stateRegion;
        this.city = city;
        this.postalCode = postalCode;
+       this.lastUpdate = lastUpdate;
     }
    
     public String getUser() {
@@ -112,6 +114,13 @@ public class UserDetails  implements java.io.Serializable {
     
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
+    }
+    public Date getLastUpdate() {
+        return this.lastUpdate;
+    }
+    
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
 

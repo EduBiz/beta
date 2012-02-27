@@ -12,7 +12,7 @@ public enum userEnum {
     
     
     
-    NewUser("New_User"),Reg_User("Registered_user"),NotRegistered("Not_Activated"),Act_User("Activated");
+    NewUser("New_User"),Reg_User("Registered_user"),NotRegistered("Not_Activated"),Act_User("Activated"),Suspend("Suspended"),Active("Active");
     
     private String userType;
     

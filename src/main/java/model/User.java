@@ -1,7 +1,8 @@
 package model;
-// Generated Feb 21, 2012 5:38:03 PM by Hibernate Tools 3.2.1.GA
+// Generated Feb 27, 2012 11:42:50 AM by Hibernate Tools 3.2.1.GA
 
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,6 +16,8 @@ public class User  implements java.io.Serializable {
      private String password;
      private String userType;
      private String userName;
+     private Date regDate;
+     private String userStatus;
      private Set<UserTransaction> userTransactions = new HashSet<UserTransaction>(0);
      private Set<Publish> publishs = new HashSet<Publish>(0);
      private Set<UserAccount> userAccounts = new HashSet<UserAccount>(0);
@@ -31,11 +34,13 @@ public class User  implements java.io.Serializable {
         this.password = password;
         this.userType = userType;
     }
-    public User(String emailId, String password, String userType, String userName, Set<UserTransaction> userTransactions, Set<Publish> publishs, Set<UserAccount> userAccounts, Set<PaymentDetails> paymentDetailses, Set<Campaign> campaigns, Set<UserDetails> userDetailses) {
+    public User(String emailId, String password, String userType, String userName, Date regDate, String userStatus, Set<UserTransaction> userTransactions, Set<Publish> publishs, Set<UserAccount> userAccounts, Set<PaymentDetails> paymentDetailses, Set<Campaign> campaigns, Set<UserDetails> userDetailses) {
        this.emailId = emailId;
        this.password = password;
        this.userType = userType;
        this.userName = userName;
+       this.regDate = regDate;
+       this.userStatus = userStatus;
        this.userTransactions = userTransactions;
        this.publishs = publishs;
        this.userAccounts = userAccounts;
@@ -71,6 +76,20 @@ public class User  implements java.io.Serializable {
     
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+    public Date getRegDate() {
+        return this.regDate;
+    }
+    
+    public void setRegDate(Date regDate) {
+        this.regDate = regDate;
+    }
+    public String getUserStatus() {
+        return this.userStatus;
+    }
+    
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
     }
     public Set<UserTransaction> getUserTransactions() {
         return this.userTransactions;

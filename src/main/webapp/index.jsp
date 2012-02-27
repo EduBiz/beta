@@ -338,7 +338,7 @@ function newsscoller(prev) {
 							<a href="signup.jsp" class="getstarted">Get Started</a>
                       </div>
                                                 <%-- <form action="#" method="post" id="loginform">   --%>
-                                                <s:actionerror/>  <s:form action="login" >
+                                                 <s:form action="login" >
                         	<h3>LOG IN TO YOUR ACCOUNT</h3>
                                     <div class="formdiv">
                                 

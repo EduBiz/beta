@@ -24,6 +24,7 @@ public class searchall extends ActionSupport {
     private spDAO myDao;
     private User user;
     private List<UserDetails> alluserlist;
+    private List<User> allusers;
     private String s;
 
     @Override
@@ -103,5 +104,19 @@ public class searchall extends ActionSupport {
      */
     public void setS(String s) {
         this.s = s;
+    }
+
+    /**
+     * @return the allusers
+     */
+    public List<User> getAllusers() {
+        return allusers;
+    }
+
+    /**
+     * @param allusers the allusers to set
+     */
+    public void setAllusers(List<User> allusers) {
+        this.allusers = allusers;
     }
 }

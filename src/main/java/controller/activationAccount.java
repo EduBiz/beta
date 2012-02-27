@@ -6,6 +6,7 @@ package controller;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.Date;
 import java.util.Map;
 import model.*;
 
@@ -32,7 +33,7 @@ public class activationAccount extends ActionSupport {
     
      @Override
     public String execute() throws Exception {
-    
+          Date date=new Date();
          TempUser tuser=(TempUser)myDao.getDbsession().get(TempUser.class,confcode);
                  
         email=tuser.getEmailId();  
@@ -40,8 +41,10 @@ public class activationAccount extends ActionSupport {
         uname=tuser.getUserName();
         
         
-           user=new User(email,pwd,userEnum.NewUser.getUserType()) ;
+           user=new User(email,pwd,userEnum.Reg_User.getUserType()) ;
            user.setUserName(uname);
+           user.setRegDate(date);
+           user.setUserStatus(userEnum.Active.getUserType());
            myDao.getDbsession().save(user);
             tuser.setUserType(userEnum.Act_User.getUserType());
            myDao.getDbsession().update(tuser);

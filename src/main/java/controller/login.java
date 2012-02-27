@@ -31,7 +31,7 @@ public class login extends ActionSupport {
     private List<Publish> sitelist;
     private List<Campaign> camplist;
     private List<UserDetails> uselist;
-    private  Adrate ad;
+    private Adrate ad;
 
     @Override
     public void validate() {
@@ -39,7 +39,12 @@ public class login extends ActionSupport {
 
         User user = (User) myDao.getDbsession().get(User.class, email);
         if (user != null) {
+
             if (user.getPassword().equals(password)) {
+                if (user.getUserStatus().equals(userEnum.Suspend.getUserType())) {
+                    addActionError("Your Account Has Been Suspended Temporarily Please Contact Our Customer Services for More Details");
+                }
+                else{}
             } else {
                 addFieldError("password", "Invalid password");
             }
@@ -56,10 +61,10 @@ public class login extends ActionSupport {
 
             if (user.getPassword().equals(password)) {
                 Map session = ActionContext.getContext().getSession();
-               
+
 
                 if (!user.getUserType().equals("Admin")) {
-                     session.put("User", user);
+                    session.put("User", user);
 
                     User user1 = (User) myDao.getDbsession().get(User.class, email);
 
@@ -70,25 +75,25 @@ public class login extends ActionSupport {
                     crit.setMaxResults(20);
                     camplist = (List<Campaign>) crit.list();
 
-                   // sitelist = (List<Publish>) myDao.getDbsession().createQuery("from Publish").list();
+                    // sitelist = (List<Publish>) myDao.getDbsession().createQuery("from Publish").list();
                     Criteria crit1 = myDao.getDbsession().createCriteria(Publish.class);
                     crit1.add(Restrictions.like("user", user));
                     crit1.setMaxResults(20);
 
                     sitelist = (List<Publish>) crit1.list();
 
-                   uselist = (List<UserDetails>) myDao.getDbsession().createQuery("from UserDetails").list();
+                    uselist = (List<UserDetails>) myDao.getDbsession().createQuery("from UserDetails").list();
                     Criteria ucri = myDao.getDbsession().createCriteria(UserDetails.class);
                     ucri.add(Restrictions.like("user", user));
                     ucri.setMaxResults(1);
-                   // uselist=(List<UserDetails>) (ucri.list().get(0));
+                    // uselist=(List<UserDetails>) (ucri.list().get(0));
                     return "users";
                 } else {
                     Criteria ai = myDao.getDbsession().createCriteria(Adrate.class);
-                     ai.setMaxResults(1);
-                     ad=(Adrate)(ai.list().get(0));
-                     session.put("User", user);
-                   // session.put("Adrate", ad);
+                    ai.setMaxResults(1);
+                    ad = (Adrate) (ai.list().get(0));
+                    session.put("User", user);
+                    // session.put("Adrate", ad);
                     return "admin";
                 }
 

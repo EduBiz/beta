@@ -171,6 +171,8 @@
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Email</th>
+                            <th>Member Since</th>
+                            <th>Status</th>
 
                         </tr>  
                         <s:iterator end="1" value="alluserlist" status="rowstatus">
@@ -179,6 +181,8 @@
                                     <td><s:property value="firstName" /></td>
                                     <td><s:property value="lastName" /> </td>
                                     <td><s:property value="user" /> </td>
+                                   <td><s:property value="user_1.regDate" /> </td>
+                                   <td><s:property value="user_1.userStatus" /> </td>
                                 </tr>
                             </s:if>
                             <s:else>
@@ -186,6 +190,8 @@
                                     <td><s:property value="firstName" /></td>
                                     <td><s:property value="lastName" /> </td>
                                     <td><s:property value="user" /> </td>
+                                     <td><s:property value="user_1.regDate" /> </td>
+                                     <td><s:property value="user_1.userStatus" /> </td>
                                 </tr>
                             </s:else>
                         </s:iterator>
