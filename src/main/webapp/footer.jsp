@@ -24,7 +24,7 @@
 <div style="height:20px;">
 </div>
 <div align="center" style="height:30px; color:#000; vertical-align:middle;">
-<a href="#" class="bottom_link">Home</a> |  <a href="#" class="bottom_link">About Us</a>  |  <a href="#" class="bottom_link">Marketplace</a>  |  <a href="#" class="bottom_link">Analytics</a>  | <a href="#" class="bottom_link">Matrics</a>  | <a href="#" class="bottom_link">Contact us</a></td>
+<a href="#" class="bottom_link">Home</a> |  <a href="#" class="bottom_link">About Us</a>  |  <a href="#" class="bottom_link">Marketplace</a>  |  <a href="#" class="bottom_link">Analytics</a>  | <a href="#" class="bottom_link">Metrics</a>  | <a href="#" class="bottom_link">Contact us</a>
 </div>
 <div align="center" style="vertical-align:bottom;">
 Copyrights @ 2010 AdZappy.com. All rights reserved.. 
