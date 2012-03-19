@@ -11,6 +11,7 @@ import java.util.Map;
 import model.Publish;
 import model.User;
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -22,28 +23,38 @@ public class searsite extends ActionSupport {
     private String s;
     private List<Publish> sitelist;
     private spDAO myDao;
-   
+
     @Override
     public String execute() throws Exception {
 
         try {
-             Map session =ActionContext.getContext().getSession();
-            User user1=(User) session.get("User");
+            Map session = ActionContext.getContext().getSession();
+            User user1 = (User) session.get("User");
 
             setSitelist((List<Publish>) getMyDao().getDbsession().createQuery("from Publish").list());
             Criteria crit1 = getMyDao().getDbsession().createCriteria(Publish.class);
-            crit1.add(Restrictions.like("siteName", getS()+"%"));
-             crit1.add(Restrictions.eq("user", user1));
+            crit1.add(Restrictions.like("siteName", getS() + "%"));
+            crit1.add(Restrictions.eq("user", user1));
             crit1.setMaxResults(20);
 
             setSitelist((List<Publish>) crit1.list());
-                    addActionMessage(sitelist.size()+"\t\tResults Found");
-
-        } catch (Exception e) {
+            addActionMessage(sitelist.size() + "\t\tResults Found");
+            return "success";
+        } catch (HibernateException e) {
+            addActionError("Server  Error Please Try Again ");
             e.printStackTrace();
-        }
+            return "error";
+        } catch (NullPointerException ne) {
 
-        return "success";
+            addActionError("Server  Error Please Try Again ");
+            ne.printStackTrace();
+            return "error";
+        } catch (Exception e) {
+
+            addActionError("Server  Error Please Try Again ");
+            e.printStackTrace();
+            return "error";
+        }
 
     }
 

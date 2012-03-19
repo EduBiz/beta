@@ -34,5 +34,4 @@
 .menu :hover ul :hover ul,
 .menu :hover ul :hover ul :hover ul,
 .menu :hover ul :hover ul :hover ul :hover ul,
-.menu :hover ul :hover ul :hover ul :hover ul :hover ul
-{left:90px; top:-4px; background: #fff; padding:3px 0; border:1px solid 95d2ee; white-space:nowrap; width:93px; z-index:200; height:auto;}
+.menu :hover ul :hover ul :hover ul :hover ul :hover ul{left:90px; top:-4px; background: #fff; padding:3px 0; border:1px solid #95d2ee; white-space:nowrap; width:93px; z-index:200; height:auto;}

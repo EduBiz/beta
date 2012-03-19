@@ -12,21 +12,21 @@
         <action name="login" class="controller.login" >
             <result name="users" >/dashboard.jsp</result>
             <result name="admin" >/admin.jsp</result>
-            <result name="input" >/index.jsp</result>
-            <result name="error" >/index.jsp</result>
+            <result name="input" >/login.jsp</result>
+            <result name="error" >/login.jsp</result>
         </action>
-        <action name="loadlist"  class="controller.loadlist" >
+        <action name="home"  class="controller.loadlist" >
             <result name="success" >dashboard.jsp</result>
             <result name="error" >/dashboard.jsp</result>
         </action>
     
         <action name="signup" class="controller.signup">
-            <result name="success" >activationnotifier.jsp</result>
+            <result name="success" >index.jsp</result>
             <result name="input" >signup.jsp</result>
             <result name="error" >signup.jsp</result>
         </action>
         
-        <action name="logoutaction" class="controller.logoutaction">
+        <action name="logout" class="controller.logoutaction">
             <result name="success" >index.jsp</result>
             <result name="input" >index.jsp</result>
             <result name="error" >index.jsp</result>
@@ -38,14 +38,14 @@
         </action>
         
         <action name="forgotmail" class="controller.forgotmail">
-            <result name="success" >forgotpass.jsp</result>
+            <result name="success" >index.jsp</result>
             <result name="input" >forgotpass.jsp</result>
             <result name="error" >forgotpass.jsp</result>
         </action> 
         
         <action name="activationAccount" class="controller.activationAccount">
-            <result name="success" >activationsuccess.jsp</result>
-            <result name="error" >activationfailed.jsp</result>
+            <result name="success" >index.jsp</result>
+            <result name="error" >index.jsp</result>
         </action>
         
          
@@ -55,7 +55,7 @@
             <result name="error" >addsites.jsp</result> 
         </action>
         <action name="updatesite" class="controller.updatesite" >
-            <result name="success" type="chain">loadlist</result>
+            <result name="success" type="chain">showsitenav</result>
             <result name="input" >editsite.jsp</result>
             <result name="error" >editsite.jsp</result> 
         </action>
@@ -86,7 +86,7 @@
             <result name="error" >updatesite.jsp</result>
         </action>
         <action name="deletesite" method="deletesite" class="controller.editsite" >
-            <result name="success" type="chain">loadlist</result>
+            <result name="success" type="chain">home</result>
             <result name="input" >dashboard.jsp</result>
             <result name="error" >dashboard.jsp</result>
         </action>
@@ -193,9 +193,9 @@
             <result name="error">sitereport.jsp</result>
         </action> 
         <action name="displaycampaign" class="controller.displaycampaign">
-            <result name="mobile" >displaycampimg.jsp</result>
+            <result name="mobile" >displaycampaign.jsp</result>
             <result name="text" >displaycampaign.jsp</result>
-            <result name="tablets" >displaytablet.jsp</result>
+            <result name="tablets" >displaycampaign.jsp</result>
             <result name="error" >index.jsp</result>
         </action>
         <action name="displayimg" class="controller.displaycampaign" method="img">
@@ -214,6 +214,10 @@
          <action name="adminviewuser" class="controller.adminviewuser" >
             <result name="success" >/adminviewuser.jsp</result>
             <result name="error" >/adminviewuser.jsp</result>
+        </action>
+         <action name="adminviewcampaign" class="controller.adminviewcampaign" >
+            <result name="success" >/adminviewcampaign.jsp</result>
+            <result name="error" >/adminviewcampaign.jsp</result>
         </action>
     </package>
 

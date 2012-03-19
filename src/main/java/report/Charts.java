@@ -320,19 +320,21 @@ public class Charts extends ActionSupport {
                     default:
                         System.out.println(rtype);
                 }
+
             } catch (NumberFormatException ne) {
                 System.out.println(ne.getMessage() + " is not a numeric value.");
 
             }
 
-
             return "success";
+
 
         } catch (Exception e) {
             e.printStackTrace();
-            addActionError("You Have No Campaign Please Create or No Data Available");
+            addActionError("You Have No Campaign Please Create One or No Data Available");
             return "error";
         }
+
     }
 
     /**

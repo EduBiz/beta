@@ -21,30 +21,34 @@ public class adminviewuser extends ActionSupport {
 
     private spDAO myDao;
     private User user;
-    private List<UserDetails> alluserlist;
-     private List<User> allusers;
+    private List<User> alluserlist;
+  
 
     @Override
     public String execute() throws Exception {
         try {
             Map session = ActionContext.getContext().getSession();
             setUser((User) session.get("User"));
-            Criteria ucri = myDao.getDbsession().createCriteria(UserDetails.class);
-             ucri.add(Restrictions.not(Restrictions.eq("user", "admin@adzappy.com")));
+            Criteria ucri = myDao.getDbsession().createCriteria(User.class);
+            ucri.add(Restrictions.not(Restrictions.eq("emailId", "admin@adzappy.com")));
             ucri.setMaxResults(100);
-            alluserlist=(List<UserDetails>)ucri.list();
-//            Criteria allcri = myDao.getDbsession().createCriteria(User.class);
-//             allcri.add(Restrictions.not(Restrictions.eq("user", user)));
-//            allcri.setMaxResults(100);
-//            allusers=(List<User>)allcri.list();
-                   
+            setAlluserlist((List<User>) ucri.list());
+
+
             return "success";
-        } catch (HibernateException he) {
-            he.printStackTrace();
+        } catch (HibernateException e) {
+            addActionError("Server  Error Please Try Again ");
+            e.printStackTrace();
+            return "error";
+        } catch (NullPointerException ne) {
+
+            addActionError("Server  Error Please Try Again ");
+            ne.printStackTrace();
             return "error";
         } catch (Exception e) {
-            e.getMessage();
 
+            addActionError("Server  Error Please Try Again ");
+            e.printStackTrace();
             return "error";
         }
     }
@@ -80,28 +84,18 @@ public class adminviewuser extends ActionSupport {
     /**
      * @return the alluserlist
      */
-    public List<UserDetails> getAlluserlist() {
+    public List<User> getAlluserlist() {
         return alluserlist;
     }
 
     /**
      * @param alluserlist the alluserlist to set
      */
-    public void setAlluserlist(List<UserDetails> alluserlist) {
+    public void setAlluserlist(List<User> alluserlist) {
         this.alluserlist = alluserlist;
     }
 
-    /**
-     * @return the allusers
-     */
-    public List<User> getAllusers() {
-        return allusers;
-    }
+  
 
-    /**
-     * @param allusers the allusers to set
-     */
-    public void setAllusers(List<User> allusers) {
-        this.allusers = allusers;
-    }
+  
 }

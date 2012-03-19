@@ -1,256 +1,56 @@
 <%-- 
-    Document   : charts
-    Created on : Oct 22, 2011, 1:37:50 PM
+    Document   : registration
+    Created on : Oct 12, 2011, 6:58:24 PM
     Author     : Administrator
 --%>
-<%@taglib uri="/struts-tags" prefix="s"%>
-<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
-<%@ taglib prefix="sjc" uri="/struts-jquery-chart-tags"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="model.User"%>
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+    <%@taglib uri="/struts-tags" prefix="s"%>
+    <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
+    <%@ taglib prefix="sjc" uri="/struts-jquery-chart-tags"%>
+    <%@page contentType="text/html" pageEncoding="UTF-8"%>
+    <%@page import="model.*"%>
+    <%@ page import="java.util.*" %>
+
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Reports</title> 
-               <style type="text/css">
-.header
-{
-	background-image:url(images/adv1_bg.jpg);
-	background-color:#91cf52;
-	background-repeat:repeat;
-	
-	width:100%;
-	height: 80px;
-	margin: 0 auto;
-	padding: 0px 50px;
-	margin: 0;
-	padding: 0;
-	
-}
-
-#menu {
-    margin:30px auto;
-    width:80%;
-}
-body
-{
-	margin: 0;
-	padding: 0;
-	
-	
-}
-.boder
-{
-	width:100%;
-	height:10px;
-	background-color:#000;
-}
-.button
-{
-	vertical-align:top;
-	height:250px;
-	padding-left:300px;
-
-}
-#user
-{
-font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-width:100%;
-border-collapse:collapse;
-}
-#user td, #user th 
-{
-font-size:1.2em;
-padding:15px;
-}
-#user th 
-{
-font-size:1.4em;
-text-align:left;
-padding-top:8px;
-padding-bottom:8px;
-background-color:#A7C942;
-color:#fff;
-}
-#user tr.alt td 
-{
-color:#000;
-background-color:#EAF2D3;
-}
-.footer
-{
-	height:60px;
-	width:100%;
-	background-color:#91cf52;
-}
-.banner
-{
-	height:100px;
-	width:100%;
-}
-.box
-{
-width:600px;
-height:1000px;
-background-color:#FFF;
-box-shadow: 0px 0px 0px;
-padding-left:350px;
-}
-
-
-</style>
- <link rel="stylesheet" href="menu_style.css" type="text/css" />
- <link rel="stylesheet" href="style.css" type="text/css" />
-  <link rel="stylesheet" type="text/css" href="style2.css" />
-  <script type="text/javascript" src="reportstyle.js"></script>
-
-        <script type="text/javascript">
-            $.subscribe('chartHover', function(event, data) {
-                $("#topicsHover").text(event.originalEvent.pos.x.toFixed(2)+','+event.originalEvent.pos.y.toFixed(2));
-            });
-            $.subscribe('chartClick', function(event, data) {
-                var item = event.originalEvent.item;
-                if (item) {
-                    $("#topicsClick").text("You clicked point " + item.dataIndex + " ("+item.datapoint[0]+","+item.datapoint[1]+") in " + item.series.label + ".");
-                    event.originalEvent.plot.highlight(item.series, item.datapoint);
-                }
-            });
-	  
-        </script>
-        <s:head theme="jquery"/>  
+        <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+        <title>Campaign Reports</title>
+        <link href="style50.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="reportstyle.js"></script>
+        <s:head theme="jquery"/>
         <sj:head />
     </head>
-
     <body>
+
         <%
-   Object obj = session.getAttribute("User");
-   if(obj==null)
-       {
-       response.sendRedirect(request.getContextPath()+"/sessionError.action");
-   }
-        %> 
-
-       <div class="header" >
-<img src="images/logo.jpg" width="200" height="50" />
-<br />
- Welcome&nbsp; <s:property value="%{user.emailId}"/>
-         </div>
-
-<div>
-<s:include value="menu.jsp"/>
-</div>
-
-<div style="height:700px; font-size:18px; font-family:'MS Serif', 'New York', serif; color:#000; vertical-align:middle;" align="center" > 
-                    <br></br>
-  <s:actionerror theme="jquery"/>
-        <div align="center" id="stepWrapper">
-            <table  width="920px" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td class="selected"> <a href="javascript:switchid('Impression');">Impressions Reports</a></td>
-                    <td class="selected"> <a href="javascript:switchid('Click');">Clicks Reports</a></td>
-                    <td class="selected"> <a href="javascript:switchid('Cost');">Cost Reports</a></td>
-                        
-                </tr>
-            </table>
-        </div>               
-       
+        Object obj = session.getAttribute("User");
+         User u1=(User)session.getAttribute("User");
+        if(obj==null)
+            {
+            response.sendRedirect(request.getContextPath()+"/sessionError.action");
+        }
+        %>
 
 
-    <div id='Impression' style="display:block;">
+        <div id="topnav">
 
-                  
-    <h3><s:actionmessage/>&nbsp;&nbsp;Campaign Impressions Report</h3><br>
-     <sjc:chart id="impression" 
-        xaxisMode="time"
-    	xaxisTimeformat="%0d.%0m.%y"
-        xaxisMin="%{minTime}"
-    	xaxisMax="%{maxTime}"
-    	xaxisTickSize="%{xaxis}"
-    	
-    	xaxisColor="#666"
-    
-    	xaxisTickColor="#aaa"
-    	
-    	yaxisTickSize="%{iaxis}"
-    	cssStyle="width: 600px; height: 400px;" >
-    	    	
-    	<sjc:chartData
-    		label="Impressions"
-    		list="impmap"
-    	        bars="{ show: true }"
-                color="#990066"
-                points="{ show: true }"
-                
-                />
-    	
-        
-    </sjc:chart>
-     </div>
+            <div>
+                <s:include value="topmenu.jsp"/>
+            </div>
 
+        </div>
 
-<div id='Click' style="display:block;">
+        <div id="mainbanner">
 
-                       
-          <h3><s:actionmessage/>&nbsp;&nbsp;Campaign Clicks Report</h3><br>
-     <sjc:chart id="clicks" 
-        xaxisMode="time"
-    	xaxisTimeformat="%0d.%0m.%y"
-    	xaxisTickSize="%{xaxis}"
-    	xaxisMin="%{minTime}"
-    	xaxisMax="%{maxTime}"
-    	xaxisColor="#666"
-    
-    	xaxisTickColor="#aaa"
-    	
-    	yaxisTickSize="%{iaxis}"
-    	cssStyle="width: 600px; height: 400px;" >
-    	    	
-    	
-    	<sjc:chartData
-    		label="Clicks"
-    		list="climap"
-    	        bars="{ show: true }"
-                points="{ show: true }"
-                />
-        
-        
-    </sjc:chart>
-</div>
-              
-              
-<div id='Cost' style="display:block;">
+            <s:include value="menu_1.jsp"/>
 
+        </div>
 
-                       
-          <h3><s:actionmessage/>&nbsp;&nbsp;Campaign Costs Report</h3><br>
-     <sjc:chart id="costs" 
-        xaxisMode="time"
-    	xaxisTimeformat="%0d.%0m.%y"
-        xaxisMin="%{minTime}"
-    	xaxisMax="%{maxTime}"
-    	xaxisTickSize="%{xaxis}"
-    	xaxisColor="#666"
-        xaxisTickColor="#aaa"
-    	yaxisTickSize="%{yaxis}"
-    	cssStyle="width: 600px; height: 400px;" >
-    	
-         <sjc:chartData
-    		label="Costs"
-    		list="costmap"
-    	        bars="{ show: true }"
-                points="{ show: true }"
-                color="#990088"
-                />
-        
-    </sjc:chart>
-</div>
-               
-     
-     <div>
-         <table>
-            <tr>
-                <td>
+        <!--Container Start-->
+        <div id="container">
+            <div id="containerbox">
+                <div id="containerheader">Campaign Reports</div>
+                <div style="float:right;" id="searchbox" >
                     <form method="post" action="rcharts.action">
                         <select name="search"  >
 
@@ -261,14 +61,146 @@ padding-left:350px;
                         <input type="submit" value="View"/>
 
                     </form>
+                </div>
+                <div class="clear"></div>
+                <div class="alert"><s:actionerror theme="jquery"/>    </div>
+                <div class="title" align="center"></div>
+                <div class="buttonmenu">
 
-                </td>
+                </div>
 
-            </tr>
-            </table>
-            
-           </div>
-   </div>     
-           <div><s:include value="/footer.jsp" /></div>
+                <div class="clear"></div>
+                <div id="leftpanel">
+                    <ul>
+
+                        <li class="navactive">
+                            <span class="leftnav-header"><a href="javascript:switchid('Impression');">Impressions Reports</a></span>
+
+                        </li>
+                        <li class="navactive">
+                            <span class="leftnav-header"><a href="javascript:switchid('Click');">Click Reports</a></span>
+
+                        </li>
+                        <li class="navactive">
+                            <span class="leftnav-header"><a href="javascript:switchid('Cost');">Costs Reports</a></span>
+
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div id="formcontainer">
+                    <div class="formrow"  >
+                        <div id='Impression' style="display:block;">
+
+
+                            <h3><s:actionmessage/>&nbsp;&nbsp;Campaign Clicks Report</h3><br>
+                            <sjc:chart id="impression" 
+                                       xaxisMode="time"
+                                       xaxisTimeformat="%0d.%0m.%y"
+                                       xaxisMin="%{minTime}"
+                                       xaxisMax="%{maxTime}"
+                                       xaxisTickSize="%{xaxis}"
+
+                                       xaxisColor="#666"
+
+                                       xaxisTickColor="#aaa"
+
+                                       yaxisTickSize="%{iaxis}"
+                                       cssStyle="width: 600px; height: 400px;" >
+
+                                <sjc:chartData
+                                    label="Impressions"
+                                    list="impmap"
+                                    bars="{ show: true }"
+                                    color="#990066"
+                                    points="{ show: true }"
+
+                                    />
+
+
+                            </sjc:chart>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="formrow"  >
+                        <div id='Click' style="display:none;">
+
+
+                            <h3><s:actionmessage/>&nbsp;&nbsp;Campaign Clicks Report</h3><br>
+                            <sjc:chart id="clicks" 
+                                       xaxisMode="time"
+                                       xaxisTimeformat="%0d.%0m.%y"
+                                       xaxisTickSize="%{xaxis}"
+                                       xaxisMin="%{minTime}"
+                                       xaxisMax="%{maxTime}"
+                                       xaxisColor="#666"
+
+                                       xaxisTickColor="#aaa"
+
+                                       yaxisTickSize="%{iaxis}"
+                                       cssStyle="width: 600px; height: 400px;" >
+
+
+                                <sjc:chartData
+                                    label="Clicks"
+                                    list="climap"
+                                    bars="{ show: true }"
+                                    points="{ show: true }"
+                                    />
+
+
+                            </sjc:chart>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+
+                    <div class="formrow"  >
+                        <div id='Cost' style="display:none;">
+
+
+
+                            <h3><s:actionmessage/>&nbsp;&nbsp;Campaign Costs Report</h3><br>
+                            <sjc:chart id="costs" 
+                                       xaxisMode="time"
+                                       xaxisTimeformat="%0d.%0m.%y"
+                                       xaxisMin="%{minTime}"
+                                       xaxisMax="%{maxTime}"
+                                       xaxisTickSize="%{xaxis}"
+                                       xaxisColor="#666"
+                                       xaxisTickColor="#aaa"
+                                       yaxisTickSize="%{yaxis}"
+                                       cssStyle="width: 600px; height: 400px;" >
+
+                                <sjc:chartData
+                                    label="Costs"
+                                    list="costmap"
+                                    bars="{ show: true }"
+                                    points="{ show: true }"
+                                    color="#990088"
+                                    />
+
+                            </sjc:chart>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="clear"></div>
+
+
+
+                <div>
+                    <s:include value="footer_1.jsp"/>
+                </div>
+
+            </div>     
+
+
+
+        </div>
+        <!--Container End-->
+        <div></div>
+
     </body>
 </html>

@@ -21,90 +21,109 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author radan
  */
-public class createad extends ActionSupport{
-    
-     private spDAO myDao;
-     private String adtype;
-     private String adname;
-     private String url;
-     private String displayurl;
-     private String adtext;
-     private List<Campaign> camplist;
-     
-     private File addimage;
-     private File tileimage;
-    
-      @Override
+public class createad extends ActionSupport {
+
+    private spDAO myDao;
+    private String adtype;
+    private String adname;
+    private String url;
+    private String displayurl;
+    private String adtext;
+    private List<Campaign> camplist;
+    private File addimage;
+    private File tileimage;
+
+    @Override
     public void validate() {
-      
-        if(adtype==null)
-        {
-         addFieldError("adtype","Please Select Type");
+
+        if (adtype == null) {
+
+            addActionError("Please Select Type");
         }
-       
-    } 
-     @Override 
-     public String execute() throws Exception {
-   
-          try{
-              
-               Map session =ActionContext.getContext().getSession();
-               Campaign camp=(Campaign) session.get("campa");
-               Long campid=camp.getCampaignId();
-               // System.out.println("Camp is" + camp.toString());
-             //  Long campl=Long.parseLong(camp.toString());
-              
-               CampaignCreative campcre=new CampaignCreative();
-               campcre.setCampaign(campid);
-               campcre.setStyleType(adtype);
-               campcre.setAddName(adname);
-               campcre.setAddUrl(url);
-               campcre.setDisplayUrl(displayurl);
-               campcre.setAddText(adtext);
-               
+        if (addimage == null) {
+
+            addActionError("Please Select Ad Image");
+        }
+        if (tileimage == null) {
+
+            addActionError("Please Select Tile Image");
+        }
+
+    }
+
+    @Override
+    public String execute() throws Exception {
+
+        try {
+
+            Map session = ActionContext.getContext().getSession();
+            Campaign camp = (Campaign) session.get("campa");
+            Long campid = camp.getCampaignId();
+            // System.out.println("Camp is" + camp.toString());
+            //  Long campl=Long.parseLong(camp.toString());
+
+            CampaignCreative campcre = new CampaignCreative();
+            campcre.setCampaign(campid);
+            campcre.setStyleType(adtype);
+            campcre.setAddName(adname);
+            campcre.setAddUrl(url);
+            campcre.setDisplayUrl(displayurl);
+            campcre.setAddText(adtext);
+
             byte[] aFile = new byte[(int) addimage.length()];
             byte[] tFile = new byte[(int) tileimage.length()];
             FileInputStream fileInputStream = new FileInputStream(addimage);
             //convert file into array of bytes
-	     fileInputStream.read(aFile);
-             campcre.setAddImage(aFile);
-         
-             fileInputStream=new FileInputStream(tileimage);
-             fileInputStream.read(tFile);
-             fileInputStream.close();
-             campcre.setTileImage(tFile);
-              
-             getMyDao().getDbsession().save(campcre);
-          
-                 User user=(User) session.get("User");
-                 
-                setCamplist((List<Campaign>) myDao.getDbsession().createQuery("from Campaign").list());
-                Criteria crit = myDao.getDbsession().createCriteria(Campaign.class);
-                crit.add(Restrictions.like("user",user));
-                crit.setMaxResults(20);
-                    setCamplist((List<Campaign>) crit.list());
-                 
-                    // Avatar avatar2 = (Avatar)session.get(Avatar.class, avatar.getAvatarId());
-                 //  byte[] bAvatar = avatar2.getImage();
-             byte[] retadd=campcre.getAddImage();
-                    
-                FileOutputStream fos = new FileOutputStream("D:\\test.gif"); 
-                fos.write(retadd);
-           byte[] rettile=campcre.getTileImage();
-                    
-            fos = new FileOutputStream("D:\\test1.gif"); 
+            fileInputStream.read(aFile);
+            campcre.setAddImage(aFile);
+
+            fileInputStream = new FileInputStream(tileimage);
+            fileInputStream.read(tFile);
+            fileInputStream.close();
+            campcre.setTileImage(tFile);
+
+            getMyDao().getDbsession().save(campcre);
+
+            User user = (User) session.get("User");
+
+            setCamplist((List<Campaign>) myDao.getDbsession().createQuery("from Campaign").list());
+            Criteria crit = myDao.getDbsession().createCriteria(Campaign.class);
+            crit.add(Restrictions.like("user", user));
+            crit.setMaxResults(20);
+            setCamplist((List<Campaign>) crit.list());
+
+            // Avatar avatar2 = (Avatar)session.get(Avatar.class, avatar.getAvatarId());
+            //  byte[] bAvatar = avatar2.getImage();
+            byte[] retadd = campcre.getAddImage();
+
+            FileOutputStream fos = new FileOutputStream("D:\\test.gif");
+            fos.write(retadd);
+            byte[] rettile = campcre.getTileImage();
+
+            fos = new FileOutputStream("D:\\test1.gif");
             fos.write(rettile);
             fos.close();
-            
-          }
-           catch(HibernateException e)
-          {
-          e.printStackTrace();
-          }
-         
-          return"success"; 
-     }
-    
+            addActionMessage("Campaign " + camp.getCampaignName() + " Successfully Created");
+            return "success";
+        } catch (HibernateException e) {
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        } catch (NullPointerException ne) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            ne.printStackTrace();
+            return "error";
+        } catch (Exception e) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        }
+
+
+    }
+
     /**
      * @return the myDao
      */
@@ -230,5 +249,4 @@ public class createad extends ActionSupport{
     public void setTileimage(File tileimage) {
         this.tileimage = tileimage;
     }
-
 }

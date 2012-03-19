@@ -12,6 +12,7 @@ import java.util.Map;
 import model.User;
 import model.UserDetails;
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -19,70 +20,72 @@ import org.hibernate.criterion.Restrictions;
  * @author Administrator
  */
 public class useRegistration extends ActionSupport {
+
     private String fname;
     private String lname;
     private String email;
-    
     private Date dob;
-   
     private String addline1;
     private String ctry;
     private String storeg;
     private String city;
     private String postcode;
-
     private spDAO myDao;
     private List<UserDetails> uselist;
-  private  User  user; 
+    private User user;
 
-
-     @Override
+    @Override
     public String execute() throws Exception {
-    
-            try{    
-                
-           
-          
-            Map session =ActionContext.getContext().getSession();
-             setUser((User) session.get("User"));
-             email=getUser().getEmailId();  
-            UserDetails used = new UserDetails(email, getUser(),fname);
-              
-              used.setLastName(lname);
-              used.setDob(getDob());
-              used.setAddressLine1(addline1);
-              used.setCountry(ctry);
-              used.setStateRegion(storeg);
-              used.setCity(city);
-              used.setPostalCode(postcode);
-              
-              
-              
-           myDao.getDbsession().saveOrUpdate(used);
-       
+
+        try {
+
+
+
+            Map session = ActionContext.getContext().getSession();
+            setUser((User) session.get("User"));
+            email = getUser().getEmailId();
+            UserDetails used = new UserDetails(email, getUser(), fname);
+
+            used.setLastName(lname);
+            used.setDob(getDob());
+            used.setAddressLine1(addline1);
+            used.setCountry(ctry);
+            used.setStateRegion(storeg);
+            used.setCity(city);
+            used.setPostalCode(postcode);
+
+
+
+            myDao.getDbsession().saveOrUpdate(used);
+
             setUselist((List<UserDetails>) myDao.getDbsession().createQuery("from UserDetails").list());
-            Criteria ucri=myDao.getDbsession().createCriteria(UserDetails.class);
+            Criteria ucri = myDao.getDbsession().createCriteria(UserDetails.class);
             ucri.add(Restrictions.like("user", getUser()));
             ucri.setMaxResults(1);
-           
-           return "success";
-            
-     
-            }
-     catch(Exception e){
-            System.out.println(e.getMessage());
-            addActionError("error"+e.getMessage());
-         e.printStackTrace();
+            addActionMessage("User  " + user.getEmailId() + " Information Successfully Saved");
+            return "success";
+
+
+        } catch (HibernateException e) {
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        } catch (NullPointerException ne) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            ne.printStackTrace();
+            return "error";
+        } catch (Exception e) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
             return "error";
         }
-      
-    
-     
-     }
-    
-    
-    
-    
+
+
+
+    }
+
     /**
      * @return the fname
      */
@@ -125,8 +128,6 @@ public class useRegistration extends ActionSupport {
         this.email = email;
     }
 
-   
-    
     public String getAddline1() {
         return addline1;
     }
@@ -249,8 +250,4 @@ public class useRegistration extends ActionSupport {
     public void setUser(User user) {
         this.user = user;
     }
-
-  
-    
-    
 }

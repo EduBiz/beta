@@ -18,8 +18,8 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author Administrator
  */
-public class addsite extends ActionSupport{
- 
+public class addsite extends ActionSupport {
+    
     private String sitename;
     private String siteurl;
     private String desc;
@@ -27,58 +27,84 @@ public class addsite extends ActionSupport{
     private String bgcolor;
     private String catgry;
     private spDAO myDao;
-   
     private List<Publish> sitelist;
-     private User  user;
-    @Override
-    public void validate()
-    {
-    if(catgry.equals("Please select"))
-    {
-    addFieldError("catgry","Please Select a Category");
+    private User user;
     
-    }
-            
-    }
-
-
     @Override
-    public String execute() throws Exception
-       {
-              try{ 
-       Map session =ActionContext.getContext().getSession();
-            setUser((User) session.get("User"));
+    public void validate() {
         
-             
-             
-            Publish  sitepublish=new Publish(getUser(),siteurl,catgry);
-             
-             sitepublish.setBgColor(bgcolor);
-             sitepublish.setTextColor(txtcolor);
-             sitepublish.setDescription(desc);
-             sitepublish.setSiteName(sitename);
-             myDao.getDbsession().saveOrUpdate(sitepublish);
-           
-               
-                 sitelist=(List<Publish>) myDao.getDbsession().createQuery("from Publish").list();
-                Criteria crit1 = myDao.getDbsession().createCriteria(Publish.class);
-                crit1.add(Restrictions.like("user", getUser()));
-                crit1.setMaxResults(20);
-           
-                sitelist=(List<Publish>) crit1.list();
-       
-           }
-          catch(HibernateException e)
-          {
-           e.printStackTrace();
-            addActionError("error"+e.getMessage());
-            return "error" ; 
-          }
-       
-       return "success";
-       }
+        if (sitename == null) {
+            
+            addActionError("Please Enter Site Name");
+        }
+        if (siteurl == null && siteurl.equals("http://")) {
+            
+            addActionError("Please Enter Web Site Url");
+        }
+        if (txtcolor == null) {
+            
+            addActionError("Please Enter Text Color");
+        }
+        if (bgcolor==null) {
+            
+            addActionError("Please Enter Background Color");
+        }
+        
+        
+        
+        
+        if (catgry.equals("Please select")) {
+            
+            addActionError("Please Select a Category");
+            
+        }
+        
+    }
     
-   
+    @Override
+    public String execute() throws Exception {
+        try {
+            Map session = ActionContext.getContext().getSession();
+            setUser((User) session.get("User"));
+            
+            
+            
+            Publish sitepublish = new Publish(getUser(), siteurl, catgry);
+            
+            sitepublish.setBgColor(bgcolor);
+            sitepublish.setTextColor(txtcolor);
+            sitepublish.setDescription(desc);
+            sitepublish.setSiteName(sitename);
+            myDao.getDbsession().saveOrUpdate(sitepublish);
+            
+            
+            sitelist = (List<Publish>) myDao.getDbsession().createQuery("from Publish").list();
+            Criteria crit1 = myDao.getDbsession().createCriteria(Publish.class);
+            crit1.add(Restrictions.like("user", getUser()));
+            crit1.setMaxResults(20);
+            
+            sitelist = (List<Publish>) crit1.list();
+            addActionMessage("Site" + sitename + " Successfully Created");
+            return "success";
+        } catch (HibernateException e) {
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        } catch (NullPointerException ne) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            ne.printStackTrace();
+            return "error";
+        } catch (Exception e) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        }
+        
+        
+    }
+    
     public String getSitename() {
         return sitename;
     }
@@ -173,7 +199,7 @@ public class addsite extends ActionSupport{
     public void setMyDao(spDAO myDao) {
         this.myDao = myDao;
     }
-
+    
     public List<Publish> getSitelist() {
         return sitelist;
     }
@@ -198,7 +224,4 @@ public class addsite extends ActionSupport{
     public void setUser(User user) {
         this.user = user;
     }
-
-    
-    
 }

@@ -16,88 +16,110 @@ import model.User;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
+
 /**
  *
  * @author radan
  */
-public class updatecampaign extends ActionSupport{
-    
-       
-       private String campaid;
-       private String campaignname;
-       private Date startdate;
-       private Date enddate;
-       private BigDecimal dailybdgt;
-       private String deliverytype;
-       private String promotype;
-       private String note;
-       private List<Campaign> camplist;
-       private Long lc;
-   private spDAO myDao;
-  @Override
+public class updatecampaign extends ActionSupport {
+
+    private String campaid;
+    private String campaignname;
+    private Date startdate;
+    private Date enddate;
+    private BigDecimal dailybdgt;
+    private String deliverytype;
+    private String promotype;
+    private String note;
+    private List<Campaign> camplist;
+    private Long lc;
+    private spDAO myDao;
+
+    @Override
     public void validate() {
-      
-      
-        if(deliverytype==null)
-        {
-         addFieldError("deliverytype","Please Select Delivery Type");
+
+
+        if (campaignname == null) {
+
+            addActionError("Please Enter Campaign Name");
         }
-        if(promotype.equals("Please select"))
-        {
-         addFieldError("promotype","Please Select Promotype");
+        if (dailybdgt == null) {
+
+            addActionError("Please Enter Daily Budget");
         }
-       if(startdate==null)
-        {
-             addFieldError("startdate","Enter Date");
+        if (deliverytype == null) {
+
+            addActionError("Please Select Delivery Type");
         }
-       else if(startdate.after(enddate))
-        {
-            addFieldError("enddate","Enter Correct Date");
+        if (promotype.equals("Please select")) {
+
+            addActionError("Please Select Promotype");
         }
-        
-    } 
-       @Override 
-        public String execute() throws Exception {
-   
-             try{
-            
-                Map session =ActionContext.getContext().getSession();
-            User user=(User) session.get("User");
-             
+        if (enddate == null) {
+
+            addActionError("Please Select Start Date");
+        }
+        if (startdate == null) {
+
+            addActionError("Please Select Start Date");
+        } else if (startdate.after(enddate)) {
+
+            addActionError("Please Choose End date After Start Date ");
+        }
+
+    }
+
+    @Override
+    public String execute() throws Exception {
+
+        try {
+
+            Map session = ActionContext.getContext().getSession();
+            User user = (User) session.get("User");
+
             Campaign camp;
-                   
-                  //  camp=(Campaign) session.get("campa");
-                  //   Long camp1id=camp.getCampaignId();
-                       lc=(Long) Long.parseLong(campaid);
-                       System.out.println("campaignlong id is" +getLc());
-                       camp=new Campaign(user,campaignname);
 
-                        camp.setCampaignId(Long.parseLong(campaid));
-                        camp.setStartDate(startdate);
-                        camp.setEndDate(enddate);
-                        camp.setDialyBudget(dailybdgt);
-                        camp.setDeliveryMethod(deliverytype);
-                        camp.setPromoType(promotype);
-                        camp.setNote(note);  
-                        getMyDao().getDbsession().update(camp);
+            //  camp=(Campaign) session.get("campa");
+            //   Long camp1id=camp.getCampaignId();
+            lc = (Long) Long.parseLong(campaid);
+            System.out.println("campaignlong id is" + getLc());
+            camp = new Campaign(user, campaignname);
 
-                setCamplist((List<Campaign>) myDao.getDbsession().createQuery("from Campaign").list());
-                Criteria crit = myDao.getDbsession().createCriteria(Campaign.class);
-                crit.add(Restrictions.like("user",user));
-                crit.setMaxResults(20);
-                    setCamplist((List<Campaign>) crit.list());
+            camp.setCampaignId(Long.parseLong(campaid));
+            camp.setStartDate(startdate);
+            camp.setEndDate(enddate);
+            camp.setDialyBudget(dailybdgt);
+            camp.setDeliveryMethod(deliverytype);
+            camp.setPromoType(promotype);
+            camp.setNote(note);
+            getMyDao().getDbsession().update(camp);
 
-                    return"success";
-                 
-         }
-             
-          catch(HibernateException e)
-             {
-             e.printStackTrace();
-             }
-      
-        return"success";
+            setCamplist((List<Campaign>) myDao.getDbsession().createQuery("from Campaign").list());
+            Criteria crit = myDao.getDbsession().createCriteria(Campaign.class);
+            crit.add(Restrictions.like("user", user));
+            crit.setMaxResults(20);
+            setCamplist((List<Campaign>) crit.list());
+            addActionMessage("Campaign " + camp.getCampaignName() + " Successfully Updated");
+            return "success";
+
+        } catch (HibernateException e) {
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        } catch (NullPointerException ne) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            ne.printStackTrace();
+            return "error";
+        } catch (Exception e) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
         }
+
+
+    }
 
     /**
      * @return the campaignname
@@ -252,6 +274,4 @@ public class updatecampaign extends ActionSupport{
     public void setLc(Long lc) {
         this.lc = lc;
     }
-
-  
 }

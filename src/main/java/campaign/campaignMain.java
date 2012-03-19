@@ -15,87 +15,125 @@ import model.Campaign;
 import model.User;
 import org.hibernate.HibernateException;
 
-
 /**
  *
  * @author Administrator
- */	
-public class campaignMain extends ActionSupport{
-       
-       private String campaid;
-       private String campaignname;
-       private Date startdate;
-       private Date enddate;
-       private BigDecimal dailybdgt;
-       private String deliverytype;
-       private String promotype;
-       private String note;
-       private List<Campaign> camplist;
-       private Long lc;
-   private spDAO myDao;
+ */
+public class campaignMain extends ActionSupport {
+
+    private String campaid;
+    private String campaignname;
+    private Date startdate;
+    private Date enddate;
+    private BigDecimal dailybdgt;
+    private String deliverytype;
+    private String promotype;
+    private String note;
+    private List<Campaign> camplist;
+    private Long lc;
+    private spDAO myDao;
+
     @Override
     public void validate() {
-      
-      
-        if(deliverytype==null)
-        {
-         addFieldError("deliverytype","Please Select Delivery Type");
-        }
-        if(promotype.equals("Please select"))
-        {
-         addFieldError("promotype","Please Select Promotype");
-        }
-       if(startdate==null)
-        {
-             addFieldError("startdate","Enter Date");
-        }
-       else if(startdate.after(enddate))
-        {
-            addFieldError("enddate","Enter Correct Date");
-        }
-        
-    } 
-    
-       @Override 
-        public String execute() throws Exception {
-   
-             try{
-            
-                Map session =ActionContext.getContext().getSession();
-            User user=(User) session.get("User");
-             
-            Campaign camp;
-          //  System.out.println("campaign id is" +campaid);
-           
-                  camp=new Campaign(user,campaignname);
-                  camp=(Campaign) session.put("campa", camp);
 
-                        camp.setStartDate(startdate);
-                        camp.setEndDate(enddate);
-                        camp.setDialyBudget(dailybdgt);
-                        camp.setDeliveryMethod(deliverytype);
-                        camp.setPromoType(promotype);
-                        camp.setNote(note);  
-                         getMyDao().getDbsession().saveOrUpdate(camp);
-                  if(promotype.equals("Website"))  return "website";  
-                  if(promotype.equals("BlackBerry Application Ad"))  return"BlackBerry";  
-                  if(promotype.equals("Android Application Ad"))     return"Andriod";    
-                  if(promotype.equals("Iphone Application Ad"))      return"Iphone";    
-                  if(promotype.equals("iTunes Media Ad"))            return"iTunes"; 
-                  if(promotype.equals("Streaming Video Ad"))      return"Streaming";   
-                  if(promotype.equals("Books Ad"))               return"Books";  
-                  if(promotype.equals("Click to Call Ad"))      return"clickcall";  
-                  if(promotype.equals("Click to Map Ad"))       return"clickmap"; 
-                
-         }
-             
-          catch(HibernateException e)
-             {
-             e.printStackTrace();
-             }
-      
-        return"success";
+
+        if (campaignname == null) {
+
+            addActionError("Please Enter Campaign Name");
         }
+        if (dailybdgt == null) {
+
+            addActionError("Please Enter Daily Budget");
+        }
+        if (deliverytype == null) {
+
+            addActionError("Please Select Delivery Type");
+        }
+        if (promotype.equals("Please select")) {
+
+            addActionError("Please Select Promotype");
+        }
+        if (enddate == null) {
+
+            addActionError("Please Select Start Date");
+        }
+        if (startdate == null) {
+
+            addActionError("Please Select Start Date");
+        } else if (startdate.after(enddate)) {
+
+            addActionError("Please Choose End date After Start Date ");
+        }
+
+    }
+
+    @Override
+    public String execute() throws Exception {
+
+        try {
+
+            Map session = ActionContext.getContext().getSession();
+            User user = (User) session.get("User");
+
+            Campaign camp;
+            //  System.out.println("campaign id is" +campaid);
+
+            camp = new Campaign(user, campaignname);
+            camp = (Campaign) session.put("campa", camp);
+
+            camp.setStartDate(startdate);
+            camp.setEndDate(enddate);
+            camp.setDialyBudget(dailybdgt);
+            camp.setDeliveryMethod(deliverytype);
+            camp.setPromoType(promotype);
+            camp.setNote(note);
+            getMyDao().getDbsession().saveOrUpdate(camp);
+            if (promotype.equals("Website")) {
+                return "website";
+            }
+            if (promotype.equals("BlackBerry Application Ad")) {
+                return "BlackBerry";
+            }
+            if (promotype.equals("Android Application Ad")) {
+                return "Andriod";
+            }
+            if (promotype.equals("Iphone Application Ad")) {
+                return "Iphone";
+            }
+            if (promotype.equals("iTunes Media Ad")) {
+                return "iTunes";
+            }
+            if (promotype.equals("Streaming Video Ad")) {
+                return "Streaming";
+            }
+            if (promotype.equals("Books Ad")) {
+                return "Books";
+            }
+            if (promotype.equals("Click to Call Ad")) {
+                return "clickcall";
+            }
+            if (promotype.equals("Click to Map Ad")) {
+                return "clickmap";
+            }
+
+        } catch (HibernateException e) {
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        } catch (NullPointerException ne) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            ne.printStackTrace();
+            return "error";
+        } catch (Exception e) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        }
+
+        return "success";
+    }
 
     /**
      * @return the campaignname
@@ -250,6 +288,4 @@ public class campaignMain extends ActionSupport{
     public void setLc(Long lc) {
         this.lc = lc;
     }
-
-  
 }

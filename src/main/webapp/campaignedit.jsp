@@ -1,161 +1,177 @@
-
 <%-- 
     Document   : registration
     Created on : Oct 12, 2011, 6:58:24 PM
     Author     : Administrator
 --%>
-<%@page import="java.text.DateFormat"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-
-pageEncoding="UTF-8"%>
-<%@page import="model.User"%>
-<%@taglib uri="/struts-tags" prefix="s"%>
-     <%@ taglib prefix="sj" uri="/struts-jquery-tags"%> 
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-      
+    <%@taglib uri="/struts-tags" prefix="s"%>
+    <%@page import="model.*"%>
+    <%@ page import="java.util.*" %>
+    <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
     <head>
-          
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Campaign Edit</title>
-         <style type="text/css">
-.header
-{
-	background-image:url(images/adv1_bg.jpg);
-	background-color:#91cf52;
-	background-repeat:repeat;
-	
-	width:100%;
-	height: 80px;
-	margin: 0 auto;
-	padding: 0px 50px;
-	margin: 0;
-	padding: 0;
-	
-}
+        <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+        <title>Edit Campaign</title>
 
-#menu {
-    margin:30px auto;
-    width:80%;
-}
-body
-{
-	margin: 0;
-	padding: 0;
-	
-	
-}
-.boder
-{
-	width:100%;
-	height:10px;
-	background-color:#000;
-}
-.button
-{
-	vertical-align:top;
-	height:250px;
-	padding-left:300px;
+        <s:head theme="jquery"/>
+        <sj:head jqueryui="true" jquerytheme="flick"/>
+        <link href="style50.css" rel="stylesheet" type="text/css" />
 
-}
-#user
-{
-font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-width:100%;
-border-collapse:collapse;
-}
-#user td, #user th 
-{
-font-size:1.2em;
-padding:15px;
-}
-#user th 
-{
-font-size:1.4em;
-text-align:left;
-padding-top:8px;
-padding-bottom:8px;
-background-color:#A7C942;
-color:#fff;
-}
-#user tr.alt td 
-{
-color:#000;
-background-color:#EAF2D3;
-}
-.footer
-{
-	height:60px;
-	width:100%;
-	background-color:#91cf52;
-}
-.banner
-{
-	height:100px;
-	width:100%;
-}
-.box
-{
-width:600px;
-height:1000px;
-background-color:#FFF;
-box-shadow: 0px 0px 0px;
-padding-left:350px;
-}
-
-
-</style>
- <link rel="stylesheet" href="menu_style.css" type="text/css" />
- <link rel="stylesheet" href="style.css" type="text/css" />
-         <s:head theme="jquery"/> 
-          <sj:head jqueryui="true" jquerytheme="flick"/>
     </head>
+
     <body>
-       
+        <%
+          Object obj = session.getAttribute("User");
+         
+           User u1=(User)session.getAttribute("User");
+          if(obj==null)
+              {
+              response.sendRedirect(request.getContextPath()+"/sessionError.action");
+          }
+         
+          
+        %>
+        <div id="topnav">
+
+            <div>
+                <s:include value="topmenu.jsp"/>
+            </div>
+
+        </div>
+
+        <div id="mainbanner">
+
+            <s:include value="menu_1.jsp"/>
+
+        </div>
+        <div id="container">
+            <div id="containerbox">
+                <div id="containerheader">Edit Campaign</div>
+
+                <div class="clear"></div>
+                <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
+                <div class="title" align="center">Edit Campaign</div>
+                <div class="buttonmenu">
+
+                </div>
+
+                <div class="clear"></div>
+
+                <div id="leftpanel">
+                    <ul>
+                        <li class="navactive">
+                            <span class="leftnav-header">Step1</span>
+                            <span>Campaign Info</span>
+                        </li>
+                        <li>
+                            <span class="leftnav-header">Step2</span>
+                            <span>Ad Type</span>
+                        </li>
+                        <li>
+                            <span class="leftnav-header">Step3</span>
+                            <span>Demographics</span>
+                        </li>
+                        <li>
+                            <span class="leftnav-header">Step4</span>
+                            <span>Creation</span>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div id="formcontainer">
+                    <s:form action="updatecampaign" theme="simple">
+                        <div class="formrow"> 
+
+                            <div class="form-label">Campaign Name</div>
+                            <div class="form-widget">   <s:hidden name="campaid" value="%{campaid}" />
+                                <div class="input-div"> <s:textfield name="campaignname" label="Campaign Name" required="true" value="%{campaignname}" cssClass="input-div" /></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="formrow">
+                            <div class="form-label">Start Date</div>
+                            <div class="form-widget">
+                                <div class="input-div"> <sj:datepicker name="startdate" displayFormat="mm/dd/yy" label="Start Date"  cssClass="input-div" /></div>
+
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="formrow">
+                            <div class="form-label">End Date</div>
+                            <div class="form-widget">
+                                <div class="input-div"> <sj:datepicker name="enddate" displayFormat="mm/dd/yy" label="End Date"  cssClass="input-div" /></div>
+
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="formrow">
+                            <div class="form-label">Daily Budget</div>
+                            <div class="form-widget">
+                                <div class="input-div"> <s:textfield name="dailybdgt" label="Daily Budget $" required="true" value="%{dailybdgt}"  cssClass="input-div" /></div>
+                                <div>
+                                    <span class="currency">$</span>
+                                </div>				
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="formrow">
+                            <div class="form-label">Delivery Type</div>
+                            <div class="form-widget">
+                                <div class="input-div">    <s:radio label="Delivery Type" name="deliverytype" list="{'Standard','Accelerated'}" required="true" value="%{deliverytype}" cssClass="input-div" /></div>
+
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="formrow">
+                            <div class="form-label">Promotion Type</div>
+                            <div class="form-widget">
+                                <div class="input-div">    <s:select name="promotype"  label="Promotype" headerKey="Please select" headerValue="Please select" required="true"
+                                          list="{'Website','BlackBerry Application Ad','Android Application Ad','Iphone Application Ad','iTunes Media Ad','Streaming Video Ad','Books Ad','Click to Call Ad','Click to Map Ad'}" value="%{promotype}"/></div>
+
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="formrow">
+                            <div class="form-label">Notes</div>
+                            <div class="form-widget"><s:textarea label="Note" name="note" value="%{note}"/></div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="formrow">
+                            <div class="form-button" style="float: right" > <s:submit value="Save Changes" cssClass="button" /></div>
+                        </div>
+                        <div class="clear"></div>
+                    </s:form>
+                </div>
+                <div class="clear"></div>
 
 
 
-<%
-    Object obj = session.getAttribute("User");
-    if(obj==null)
-        {
-        response.sendRedirect(request.getContextPath()+"/sessionError.action");
-    }
-    %>
-       <div>
-<div class="header" >
-<img src="images/logo.jpg" width="200" height="50" />
-<br />
- Welcome&nbsp; <s:property value="%{user.emailId}"/>
-         </div>
+            </div>
 
-<div>
-<s:include value="menu.jsp"/>
-</div>
-        <div style="height:500px; font-size:18px; font-family:'MS Serif', 'New York', serif; color:#000; vertical-align:middle;" align="center" >  
-   <br>
-      <s:actionerror/>  
-    <s:form action="updatecampaign">
-        <s:hidden name="campaid" value="%{campaid}" />
-        <s:textfield name="campaignname" label="Campaign Name" required="true" />
-          <sj:datepicker name="startdate" value="%{sdate}" displayFormat="mm/dd/yy" label="Start Date" />
-          <sj:datepicker name="enddate" value="%{edate}" displayFormat="mm/dd/yy" label="End Date" />
-        <s:textfield name="dailybdgt" label="Daily Budget $" required="true" />
-        <s:radio label="Delivery Type" name="deliverytype" list="{'Standard','Accelerated'}" required="true" />
-        <s:select name="promotype"  label="Promotype" headerKey="Please select" headerValue="Please select" required="true"
-                  list="{'Website','BlackBerry Application Ad','Andriod Application Ad','Iphone Application Ad','iTunes Media Ad','Streaming Video Ad','Books Ad','Click to Call Ad','Click to Map Ad'}" />
-    
-        <s:textarea label="Note:(optional)" name="note" rows="15"/>
 
-      
-    <s:submit value="Save Changes" validate="true" />
-   
-    </s:form>
-     </div>
-     <div>  
-    <s:include value="/footer.jsp" />
-         </div>
-         </div>
-        
-    </body>
+
+
+            <div class="clear"></div>
+
+
+
+            <div>
+                <s:include value="footer_1.jsp"/>
+            </div>
+
+        </div>     
+
+
+
+    </div>
+    <!--Container End-->
+    <div></div>
+
+
+
+
+
+
+</body>
 </html>

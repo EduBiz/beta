@@ -333,7 +333,7 @@ public class sitecharts extends ActionSupport {
             return "success";
         } catch (Exception e) {
             e.printStackTrace();
-            addActionError("You Have No Sites Please Create or No Data Available");
+            addActionError("You Have No Sites Please Create One or No Data Available");
             return "error";
 
         }

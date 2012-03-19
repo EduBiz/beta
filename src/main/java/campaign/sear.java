@@ -5,6 +5,7 @@
 package campaign;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 import controller.spDAO;
 import java.util.List;
 import java.util.Map;
@@ -13,32 +14,33 @@ import model.User;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
+public class sear extends ActionSupport {
 
-
-public class sear {
-    
-  private String s; 
-  private List<Campaign> camplist;
+    private String s;
+    private List<Campaign> camplist;
     private spDAO myDao;
-  
+
+    @Override
     public String execute() throws Exception {
-         
-        try{Map session =ActionContext.getContext().getSession();
-            User user1=(User) session.get("User");
-             setCamplist((List<Campaign>) getMyDao().getDbsession().createQuery("from Campaign").list());
-                Criteria crit = getMyDao().getDbsession().createCriteria(Campaign.class);
-                crit.add(Restrictions.eq("user", user1));
-                crit.add(Restrictions.like("campaignName", getS()+"%"));
-                crit.setMaxResults(20);
-                    setCamplist((List<Campaign>) crit.list());
-            
-        }
-        catch(Exception e)
-        {
+
+        try {
+            Map session = ActionContext.getContext().getSession();
+            User user1 = (User) session.get("User");
+            setCamplist((List<Campaign>) getMyDao().getDbsession().createQuery("from Campaign").list());
+            Criteria crit = getMyDao().getDbsession().createCriteria(Campaign.class);
+            crit.add(Restrictions.eq("user", user1));
+            crit.add(Restrictions.like("campaignName", getS() + "%"));
+            crit.setMaxResults(20);
+            setCamplist((List<Campaign>) crit.list());
+            return "success";
+
+        } catch (Exception e) {
+            addActionError("Server  Error Please Try Again Later ");
             e.printStackTrace();
+            return "error";
         }
-        
-        return"success";
+
+
     }
 
     /**

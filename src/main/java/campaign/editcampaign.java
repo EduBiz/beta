@@ -13,66 +13,68 @@ import java.util.Map;
 import model.*;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+
 /**
  *
  * @author radan
  */
-public class editcampaign extends ActionSupport{
-    
-       private String campaid;
-       private String campaignname;
-       private BigDecimal dailybdgt;
-       private String deliverytype;
-       private String promotype;
-       private String note;
-       private String sdate ;
-       private String edate;
-       private String[] temp;
-       private Long lc;
-        private List<Campaign> camplist;
-      private spDAO myDao;
-      private User user;
-       
-       @Override 
-        public String execute() throws Exception {
-   
-             /* delimiter */
-         String delimiter ="-";   /* given string will be split by the argument delimiter provided. */
-          setTemp(getSdate().split(delimiter));
-         for(int i =0; i < 1; i++){        /* print substrings */
-            setSdate(getTemp()[i+1] + '/' + getTemp()[i+2] + '/' + getTemp()[i]) ; 
-         }
-         setTemp(getEdate().split(delimiter));
-         for(int i =0; i < 1; i++)  {      /* print substrings */
-            setEdate(getTemp()[i+1] + '/' + getTemp()[i+2] + '/' + getTemp()[i]) ; 
-         }
-           
-        return"success";
+public class editcampaign extends ActionSupport {
+
+    private String campaid;
+    private String campaignname;
+    private BigDecimal dailybdgt;
+    private String deliverytype;
+    private String promotype;
+    private String note;
+    private String sdate;
+    private String edate;
+    private String[] temp;
+    private Long lc;
+    private List<Campaign> camplist;
+    private spDAO myDao;
+    private User user;
+
+    @Override
+    public String execute() throws Exception {
+
+        /* delimiter */
+        String delimiter = "-";   /* given string will be split by the argument delimiter provided. */
+        setTemp(getSdate().split(delimiter));
+        for (int i = 0; i < 1; i++) {        /* print substrings */
+            setSdate(getTemp()[i + 1] + '/' + getTemp()[i + 2] + '/' + getTemp()[i]);
+        }
+        setTemp(getEdate().split(delimiter));
+        for (int i = 0; i < 1; i++) {      /* print substrings */
+            setEdate(getTemp()[i + 1] + '/' + getTemp()[i + 2] + '/' + getTemp()[i]);
         }
 
-        public String deletecamp() throws Exception {
-           
-           try{
-               Map session =ActionContext.getContext().getSession();
-            user=(User) session.get("User");
-            lc=(Long) Long.parseLong(getCampaid());
-            Campaign cdel=(Campaign) getMyDao().getDbsession().get(Campaign.class, getLc());
-                
-              
-                 getMyDao().getDbsession().delete(cdel);
-                 
-                  setCamplist((List<Campaign>) getMyDao().getDbsession().createQuery("from Campaign").list());
-                Criteria crit = getMyDao().getDbsession().createCriteria(Campaign.class);
-                crit.add(Restrictions.like("user",user));
-                crit.setMaxResults(20);
-                    setCamplist((List<Campaign>) crit.list());
-           }
-           catch(Exception e)
-           {
-               e.printStackTrace();
-           }
-        return"success";   
-       }
+        return "success";
+    }
+
+    public String deletecamp() throws Exception {
+
+        try {
+            Map session = ActionContext.getContext().getSession();
+            user = (User) session.get("User");
+            lc = (Long) Long.parseLong(getCampaid());
+            Campaign cdel = (Campaign) getMyDao().getDbsession().get(Campaign.class, getLc());
+
+
+            getMyDao().getDbsession().delete(cdel);
+
+            setCamplist((List<Campaign>) getMyDao().getDbsession().createQuery("from Campaign").list());
+            Criteria crit = getMyDao().getDbsession().createCriteria(Campaign.class);
+            crit.add(Restrictions.like("user", user));
+            crit.setMaxResults(20);
+            setCamplist((List<Campaign>) crit.list());
+            return "success";
+        } catch (Exception e) {
+            addActionError("Server  Error Please Try Again Later ");
+            e.printStackTrace();
+            return "error";
+        }
+
+    }
 
     /**
      * @return the campaid
@@ -255,6 +257,4 @@ public class editcampaign extends ActionSupport{
     public void setUser(User user) {
         this.user = user;
     }
-   
-  
 }

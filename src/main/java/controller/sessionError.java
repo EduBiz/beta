@@ -18,16 +18,14 @@ public class sessionError extends ActionSupport {
     @Override
     public String execute() throws Exception {
         
-       addActionMessage("Please Login to access the content requested");
+       addActionMessage("Your Session Expired Please Login to access the content requested");
         return "success";
     }
 
   public String campaignerror() throws Exception {
         
-       addActionMessage("Enter from Values from the Main Page");
+       addActionMessage("Your Session Expired Please Enter Values from the Main Page");
         return "success";
     }
-
-
 
 }

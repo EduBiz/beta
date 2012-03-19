@@ -14,35 +14,35 @@ import model.User;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
-
-
 public class searcamp extends ActionSupport {
-    
-  private String s; 
-  private List<Campaign> camplist;
+
+    private String s;
+    private List<Campaign> camplist;
     private spDAO myDao;
-  
+
     @Override
     public String execute() throws Exception {
-        
-        try{
-             Map session =ActionContext.getContext().getSession();
-            User user1=(User) session.get("User");
-            
-             setCamplist((List<Campaign>) getMyDao().getDbsession().createQuery("from Campaign").list());
-                Criteria crit = getMyDao().getDbsession().createCriteria(Campaign.class);
-                crit.add(Restrictions.like("campaignName", getS()+"%"));
-                 crit.add(Restrictions.like("user", user1));
-                crit.setMaxResults(20);
-                    setCamplist((List<Campaign>) crit.list());
-             addActionMessage(camplist.size()+"\t\tResults Found");
-        }
-        catch(Exception e)
-        {
+
+        try {
+            Map session = ActionContext.getContext().getSession();
+            User user1 = (User) session.get("User");
+
+            setCamplist((List<Campaign>) getMyDao().getDbsession().createQuery("from Campaign").list());
+            Criteria crit = getMyDao().getDbsession().createCriteria(Campaign.class);
+            crit.add(Restrictions.like("campaignName", getS() + "%"));
+            crit.add(Restrictions.like("user", user1));
+            crit.setMaxResults(20);
+            setCamplist((List<Campaign>) crit.list());
+            addActionMessage(camplist.size() + "\t\tResults Found");
+            return "success";
+        } catch (Exception e) {
+            addActionError("Server  Error Please Try Again ");
             e.printStackTrace();
+            return "error";
         }
-        
-        return"success";
+
+
+
     }
 
     /**

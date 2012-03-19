@@ -11,6 +11,7 @@ import java.util.Map;
 import model.Publish;
 import model.User;
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -18,6 +19,7 @@ import org.hibernate.criterion.Restrictions;
  * @author Administrator
  */
 public class editsite extends ActionSupport {
+
     private String email;
     private String sitename;
     private String siteurl;
@@ -25,50 +27,54 @@ public class editsite extends ActionSupport {
     private String txtcolor;
     private String bgcolor;
     private String catgry;
-   private spDAO myDao;
+    private spDAO myDao;
     private List<Publish> sitelist;
     private Long publishid;
-     private User  user;
-     
-    
-    
-    @Override
-public String execute() throws Exception
-       {
-     
-           return "success";
-       }
+    private User user;
 
-     public String deletesite() throws Exception {
-           
-           try{
-               Map session =ActionContext.getContext().getSession();
+    @Override
+    public String execute() throws Exception {
+
+        return "success";
+    }
+
+    public String deletesite() throws Exception {
+
+        try {
+            Map session = ActionContext.getContext().getSession();
             setUser((User) session.get("User"));
-          
-            Publish cdel=(Publish) myDao.getDbsession().get(Publish.class, publishid);
-                
-              
-                 getMyDao().getDbsession().delete(cdel);
-                 
-                  sitelist=(List<Publish>) myDao.getDbsession().createQuery("from Publish").list();
-                Criteria crit = myDao.getDbsession().createCriteria(Publish.class);
-                crit.add(Restrictions.like("user", getUser()));
-                crit.setMaxResults(20);
-           
-                sitelist=(List<Publish>) crit.list();
-             
-                return"success"; 
-           }
-           
-           catch(Exception e)
-           {
-           System.out.println(e.getMessage());
-            addActionError("error"+e.getMessage());
-            return "error" ; 
-           }
-        
-       }
-    
+
+            Publish cdel = (Publish) myDao.getDbsession().get(Publish.class, publishid);
+
+
+            getMyDao().getDbsession().delete(cdel);
+
+            sitelist = (List<Publish>) myDao.getDbsession().createQuery("from Publish").list();
+            Criteria crit = myDao.getDbsession().createCriteria(Publish.class);
+            crit.add(Restrictions.like("user", getUser()));
+            crit.setMaxResults(20);
+
+            sitelist = (List<Publish>) crit.list();
+            addActionMessage("Site" + cdel.getSiteName() + " Successfully Removed");
+            return "success";
+        } catch (HibernateException e) {
+            addActionError("Server  Error Please Try Again ");
+            e.printStackTrace();
+            return "error";
+        } catch (NullPointerException ne) {
+
+            addActionError("Server  Error Please Try Again ");
+            ne.printStackTrace();
+            return "error";
+        } catch (Exception e) {
+
+            addActionError("Server  Error Please Try Again ");
+            e.printStackTrace();
+            return "error";
+        }
+
+    }
+
     /**
      * @return the email
      */
@@ -222,6 +228,4 @@ public String execute() throws Exception
     public void setUser(User user) {
         this.user = user;
     }
-
-
 }

@@ -16,52 +16,54 @@ import model.*;
  */
 public class activationAccount extends ActionSupport {
 
-    
-    
-     private String uname;
-     private String email;
-     private String pwd;
-     private spDAO myDao;
-     private int confcode;
-     private static userEnum ut; 
-     User user;
+    private String uname;
+    private String email;
+    private String pwd;
+    private spDAO myDao;
+    private int confcode;
+    private static userEnum ut;
+    User user;
     private Emailfunction sendMail;
-     private String subject;
-     private String content;
-     
-     
-    
-     @Override
+    private String subject;
+    private String content;
+
+    @Override
     public String execute() throws Exception {
-          Date date=new Date();
-         TempUser tuser=(TempUser)myDao.getDbsession().get(TempUser.class,confcode);
-                 
-        email=tuser.getEmailId();  
-        pwd=tuser.getPassword();
-        uname=tuser.getUserName();
-        
-        
-           user=new User(email,pwd,userEnum.Reg_User.getUserType()) ;
-           user.setUserName(uname);
-           user.setRegDate(date);
-           user.setUserStatus(userEnum.Active.getUserType());
-           myDao.getDbsession().save(user);
+        try {
+            Date date = new Date();
+            TempUser tuser = (TempUser) myDao.getDbsession().get(TempUser.class, confcode);
+
+            email = tuser.getEmailId();
+            pwd = tuser.getPassword();
+            uname = tuser.getUserName();
+
+
+            user = new User(email, pwd, userEnum.Reg_User.getUserType());
+            user.setUserName(uname);
+            user.setRegDate(date);
+            user.setUserStatus(userEnum.Active.getUserType());
+            myDao.getDbsession().save(user);
             tuser.setUserType(userEnum.Act_User.getUserType());
-           myDao.getDbsession().update(tuser);
-           Map session =ActionContext.getContext().getSession();
-            session.put("User",user);
-            
-            subject="Activation Success";
-                  content="Hi " + "\t\t"+uname+"\n" +"... Welcome to Adzappy :\n" +" \nNow Your Adzappy Account is Activated   & Verified \n"+" Thanks & Regards \n    " +" Adzappy Team\n";
-       
-        
-             sendMail.test(email, subject, content);
-            
-            
+            myDao.getDbsession().update(tuser);
+            Map session = ActionContext.getContext().getSession();
+            session.put("User", user);
+
+            subject = "Activation Success";
+            content = "Hi " + "\t\t" + uname + "\n" + "... Welcome to Adzappy :\n" + " \nNow Your Adzappy Account is Activated   & Verified \n" + " Thanks & Regards \n    " + " Adzappy Team\n";
+
+
+            sendMail.test(email, subject, content);
+
+            addActionMessage("Now your account Successfully Activated Please Login to Continue");
             return "success";
-      
-     
-     }
+        } catch (Exception e) {
+            e.printStackTrace();
+            addActionError("Server Error  Please Try Again Later ");
+            return "error";
+        }
+
+    }
+
     /**
      * @return the uname
      */
@@ -103,8 +105,6 @@ public class activationAccount extends ActionSupport {
     public void setPwd(String pwd) {
         this.pwd = pwd;
     }
-
-   
 
     /**
      * @return the myDao
@@ -175,8 +175,4 @@ public class activationAccount extends ActionSupport {
     public void setContent(String content) {
         this.content = content;
     }
-
-   
-    
-    
 }

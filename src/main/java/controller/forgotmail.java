@@ -8,68 +8,74 @@ package controller;
  *
  * @author radan
  */
-  
 import com.opensymphony.xwork2.ActionSupport;
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.util.Properties;
 import model.User;
+import org.hibernate.HibernateException;
 
-    
 public class forgotmail extends ActionSupport {
 
-    
     private String forgetemail;
     private String password;
     private spDAO myDao;
     private Emailfunction sendMail;
-     private String subject;
-     private String content;
-    
-     @Override
-    public void validate() {
-      
-       
-        User user=(User) myDao.getDbsession().get(User.class, forgetemail); 
-            if(user!=null)
-            {
-            }
-            else{
-            addFieldError("forgetemail","sorry Email id Not Available");
-            }
-    }
-    
-    
-    
-    
+    private String subject;
+    private String content;
+
     @Override
-    public String execute() throws Exception{
-        try{
-       User user=(User) myDao.getDbsession().get(User.class, forgetemail); 
-          //  if(forgetemail.equals(user.getEmailId()))
-          //  {
-      
-             subject="Your Adzappy Password";
-             content="Your Email Account is \t:  " + user.getEmailId() + "\npassword is\t" + user.getPassword()+"\n  " +"\nThanks & Regards \n    "
-                 +" Adzappy Team\n";
-        
-            getSendMail().test(forgetemail, getSubject(), getContent());
-           addActionMessage("Your Password Successfully Sent to your Email Address");
-           forgetemail=null;
-           return "success";
-           
-           }
-     //   else
-        //    {
-        catch(Exception e)
-        {
-            e.printStackTrace();
-            addActionError("Error\t "+e.getMessage());
-         return "error";
+    public void validate() {
+
+
+        if (forgetemail == null) {
+
+            addActionError("Please Enter Email Address");
         }
-    }    
-    
-    
+        User user = (User) myDao.getDbsession().get(User.class, forgetemail);
+        if (user != null) {
+        } else {
+            //  addFieldError("forgetemail","sorry Email id Not Available");
+            addActionError("Email Address Not Recogised,Please Try again ");
+        }
+    }
+
+    @Override
+    public String execute() throws Exception {
+        try {
+            User user = (User) myDao.getDbsession().get(User.class, forgetemail);
+            //  if(forgetemail.equals(user.getEmailId()))
+            //  {
+
+            subject = "Your Adzappy Password";
+            content = "Your Email Account is \t:  " + user.getEmailId() + "\npassword is\t" + user.getPassword() + "\n  " + "\nThanks & Regards \n    "
+                    + " Adzappy Team\n";
+
+            getSendMail().test(forgetemail, getSubject(), getContent());
+            addActionMessage("Your Password Successfully Sent to your Email Address");
+            forgetemail = null;
+            return "success";
+
+        } //   else
+        //    {
+        catch (HibernateException e) {
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        } catch (NullPointerException ne) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            ne.printStackTrace();
+            return "error";
+        } catch (Exception e) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        }
+
+    }
+
     public String getPassword() {
         return password;
     }
@@ -98,8 +104,6 @@ public class forgotmail extends ActionSupport {
     /**
      * @return the email
      */
-   
-   
     /**
      * @return the forgetemail
      */
@@ -156,4 +160,3 @@ public class forgotmail extends ActionSupport {
         this.content = content;
     }
 }
-

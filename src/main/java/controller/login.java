@@ -6,7 +6,6 @@ package controller;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import model.Adrate;
@@ -37,19 +36,29 @@ public class login extends ActionSupport {
     public void validate() {
 
 
+        if (email == null) {
+
+            addActionError("Please Enter Email Address");
+        }
+        if (password == null) {
+
+            addActionError("Please Enter Password");
+        }
         User user = (User) myDao.getDbsession().get(User.class, email);
         if (user != null) {
 
             if (user.getPassword().equals(password)) {
                 if (user.getUserStatus().equals(userEnum.Suspend.getUserType())) {
                     addActionError("Your Account Has Been Suspended Temporarily Please Contact Our Customer Services for More Details");
+                } else {
                 }
-                else{}
             } else {
-                addFieldError("password", "Invalid password");
+                // addFieldError("password", "Invalid password");
+                addActionError("Invalid password");
             }
         } else {
-            addFieldError("email", "Invalid Email Address");
+            //   addFieldError("email", "Invalid Email Address");
+            addActionError("Invalid Email Address");
         }
     }
 
@@ -87,6 +96,8 @@ public class login extends ActionSupport {
                     ucri.add(Restrictions.like("user", user));
                     ucri.setMaxResults(1);
                     // uselist=(List<UserDetails>) (ucri.list().get(0));
+
+                    addActionMessage("Hi, " + email + " Welcome to Your Dashboard");
                     return "users";
                 } else {
                     Criteria ai = myDao.getDbsession().createCriteria(Adrate.class);
@@ -94,6 +105,7 @@ public class login extends ActionSupport {
                     ad = (Adrate) (ai.list().get(0));
                     session.put("User", user);
                     // session.put("Adrate", ad);
+                    addActionMessage("Hi, admin Welcome to Your Dashboard");
                     return "admin";
                 }
 
@@ -103,11 +115,12 @@ public class login extends ActionSupport {
 
         } catch (HibernateException he) {
             he.printStackTrace();
-            addActionError("Unable to Logining you...  Error occurs he " + he.getMessage() + "..Try After Some times");
+            addActionError("Unable to Logining you...  Error occurs  ..Try After Some times");
             return "error";
-        } catch (Exception e) {
-            e.getMessage();
-            addActionError("Unable to Logining you...  Error occurs " + e.getMessage() + "..Try After Some times");
+        } catch (Exception se) {
+
+            se.getMessage();
+            addActionError("Unable to Logining you...  Error occurs ..Try After Some times");
             return "error";
         }
 

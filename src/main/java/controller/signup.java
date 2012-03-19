@@ -3,12 +3,12 @@
  * and open the template in the editor.
  */
 package controller;
+
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Random;
 import model.*;
 import model.TempUser;
 import org.hibernate.HibernateException;
-
 
 /**
  *
@@ -16,71 +16,104 @@ import org.hibernate.HibernateException;
  */
 public class signup extends ActionSupport {
 
-   
-     private String uname;
-     private String email;
-     private String pwd;
-     private String confirmpwd;
-     private spDAO myDao;
-     private int confcode;
-     private static userEnum ut; 
-     private Emailfunction sendMail;
-     private String subject;
-     private String content;
-     
-     @Override
-  public void validate() {
-      
-       
-   User user=(User)myDao.getDbsession().get(User.class,email);
-        if(user != null)
-            addFieldError("email","sorry Email id Already Taken");
-        
+    private String uname;
+    private String email;
+    private String pwd;
+    private String confirmpwd;
+    private spDAO myDao;
+    private int confcode;
+    private static userEnum ut;
+    private Emailfunction sendMail;
+    private String subject;
+    private String content;
+
+    @Override
+    public void validate() {
+
+        if (uname == null) {
+
+            addActionError("Please Enter User Name");
+        }
+        if (email == null) {
+
+            addActionError("Please Enter Email Address");
+        }
+        if (pwd == null) {
+
+            addActionError("Please Enter Password");
+        }
+        if (confirmpwd == null) {
+
+            addActionError("Please Enter Confirm Password");
+        }
+        if (!confirmpwd.equals(pwd)) {
+
+            addActionError("Confirm Password and Password Not Match Please Enter Again");
+        }
+        User user = (User) myDao.getDbsession().get(User.class, email);
+        if (user != null) //      addFieldError("email","sorry Email id Already Taken");
+        {
+            addActionError("Sorry Email id Already Taken");
+        }
+
     }
-    
-     @Override
+
+    @Override
     public String execute() throws Exception {
-    
-        try{
-               
-         Random rand = new Random();
-       
+
+        try {
+
+            Random rand = new Random();
+
             setConfcode(rand.nextInt());
-        
-         
-           if(pwd.equals(getConfirmpwd()))
-           {
-       TempUser tuser = new TempUser(getConfcode(),email,pwd,userEnum.NotRegistered.getUserType(),uname);
-           myDao.getDbsession().save(tuser);
+
+
+            if (pwd.equals(getConfirmpwd())) {
+                TempUser tuser = new TempUser(getConfcode(), email, pwd, userEnum.NotRegistered.getUserType(), uname);
+                myDao.getDbsession().save(tuser);
 //            Map session =ActionContext.getContext().getSession();
 //            session.put("User",email);
-             subject=" Welcome to Adzappy"  ;
-           setContent("Hi\t"       +uname+      "\nWelcome to Adzappy :\n"
-                           +"                                               "
-                         +"Your Registered login  mail id is:" + email + "\n   "
-                           +"                         "
-                           + "   Please click th following link to activate your account\n  "
-                           +"                                       "
-                           + "http://beta.mathi.cloudbees.net/activationAccount.action?email="+email+"&confcode="+getConfcode()
-                           +"\n           "
-                           +" \nThanks & Regards  \n   "
-                           +" Adzappy Team\n");
-       
-           sendMail.test(email, subject, content);
-        return "success";
-         }
-           else
-           {
-           return "error";
-           }
-     }
-     catch(HibernateException e)
-     {
-     e.getMessage();
-     }
-      return "success";
-     
-     }
+                subject = " Welcome to Adzappy";
+                setContent("Hi\t" + uname + "\nWelcome to Adzappy :\n"
+                        + "                                               "
+                        + "Your Registered login  mail id is:" + email + "\n   "
+                        + "                         "
+                        + "   Please click th following link to activate your account\n  "
+                        + "                                       "
+                        + "http://beta.mathi.cloudbees.net/activationAccount.action?email=" + email + "&confcode=" + getConfcode()
+                        + "\n           "
+                        + " \nThanks & Regards  \n   "
+                        + " Adzappy Team\n");
+                if (email == null) {
+                    addActionError("Please Enter Email Address");
+                } else {
+
+                    sendMail.test(email, subject, content);
+                }
+                addActionMessage("Hi thanks for registering with us . Please check your email for completing the activation process.");
+                return "success";
+            } else {
+                return "error";
+            }
+        } catch (HibernateException e) {
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        } catch (NullPointerException ne) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            ne.printStackTrace();
+            return "error";
+        } catch (Exception e) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        }
+
+
+    }
+
     /**
      * @return the uname
      */
@@ -123,9 +156,6 @@ public class signup extends ActionSupport {
         this.pwd = pwd;
     }
 
-   
-   
-
     /**
      * @return the myDao
      */
@@ -140,7 +170,6 @@ public class signup extends ActionSupport {
         this.myDao = myDao;
     }
 
-    
     /**
      * @return the confirmpwd
      */
@@ -210,6 +239,4 @@ public class signup extends ActionSupport {
     public void setSendMail(Emailfunction sendMail) {
         this.sendMail = sendMail;
     }
-
-      
 }

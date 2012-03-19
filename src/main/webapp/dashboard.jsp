@@ -1,194 +1,97 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
     <%@taglib uri="/struts-tags" prefix="s"%>
     <%@page import="model.*"%>
     <%@ page import="java.util.*" %>
     <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+
         <title>.::AdZappy::.</title>
-         <s:head theme="jquery"/>
+
+        <s:head theme="jquery"/>
         <sj:head jqueryui="true" jquerytheme="flick"/>
-        <style type="text/css">
-            .header
-            {
-                background-image:url(images/adv1_bg.jpg);
-                background-color:#91cf52;
-                background-repeat:repeat;
-
-                width:100%;
-                height: 80px;
-                margin: 0 auto;
-                padding: 0px 50px;
-                margin: 0;
-                padding: 0;
-
-            }
-
-            #menu {
-                margin:30px auto;
-                width:80%;
-            }
-            body
-            {
-                margin: 0;
-                padding: 0;
-
-
-            }
-            .boder
-            {
-                width:100%;
-                height:10px;
-                background-color:#000;
-            }
-            .button
-            {
-                vertical-align:top;
-                height:250px;
-                padding-left:300px;
-
-            }
-            .user
-            {
-                font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-                width:100%;
-                border-collapse:collapse;
-            }
-            .user td, .user th 
-            {
-                font-size:1.2em;
-                padding:15px;
-            }
-            .user th 
-            {
-                font-size:1.4em;
-                text-align:left;
-                padding-top:8px;
-                padding-bottom:8px;
-                background-color:#A7C942;
-                color:#fff;
-            }
-            .user tr.alt td 
-            {
-                color:#000;
-                background-color:#EAF2D3;
-            }
-            .footer
-            {
-                height:60px;
-                width:100%;
-                background-color:#91cf52;
-            }
-            .banner
-            {
-                height:100px;
-                width:100%;
-            }
-            .box
-            {
-                width:600px;
-                height:470px;
-                background-color:#FFF;
-                box-shadow: 0px 0px 0px;
-                padding-left:350px;
-            }
-            .pg-normal {
-                color: black;
-                font-weight: normal;
-                text-decoration: none;   
-                cursor: pointer;   
-            }
-            .pg-selected {
-                color: black;
-                font-weight: bold;       
-                text-decoration: underline;
-                cursor: pointer;
-            }
-            input.bar{
-                float:left;
-                height:18px;
-                width:159px;
-                padding:3px 5px 0px 5px;
-                border:none;
-                background-color:transparent;
-                color:#666;
-            }
-        </style>
-        <link rel="stylesheet" href="menu_style.css" type="text/css" />
-        <link rel="stylesheet" href="style.css" type="text/css" />
+        <link href="style50.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="pagination.js"></script>
     </head>
-
-
     <body>
-        <s:actionerror/>
+
         <%
         Object obj = session.getAttribute("User");
+         User u1=(User)session.getAttribute("User");
         if(obj==null)
             {
             response.sendRedirect(request.getContextPath()+"/sessionError.action");
         }
         %>
-        <div style="height:600px;">
-            <div class="header" >
-                <img src="images/logo.jpg" width="200" height="50" />
-                <br />
-                Welcome&nbsp; <s:property value="email"/>
-            </div>
+
+        <div id="topnav">
 
             <div>
-                <s:include value="menu.jsp"/>
+                <s:include value="topmenu.jsp"/>
             </div>
-            <div class="box">
-                <div>
-                    <p style="font-size:25px; color:#030;" align="center">CAMPAIGN</p>
-                </div>
-<s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/>
-                <div style="float:left"><a href="addcampnav.action"><input type="image" value="+Add Campaign" name="+Add Campaign" src="images/free-psd.jpg"/></a></div>   
-                <form action="seardash.action"> <div style="float:right;"><input type="text" value="Search" name="s" size="20" onblur="if(this.value == '') { this.value = 'Search'; }" onfocus="if(this.value == 'Search') { this.value = ''; }" /><input type="submit" value="Go"/>
+
+        </div>
+
+        <div id="mainbanner">
+
+            <s:include value="menu_1.jsp"/>
+
+        </div>
+        <!--Container Start-->
+        <div id="container">
+            <div id="containerbox">
+                <div id="containerheader">Campaigns</div>
+                <form action="seardash.action"> <div style="float:right;" id="searchbox" ><input type="text" value="Search" name="s" size="20" onblur="if(this.value == '') { this.value = 'Search'; }" onfocus="if(this.value == 'Search') { this.value = ''; }" /><input type="submit" value="Go"/>
                     </div></form>
-                <div>
-                    <s:form action="showlist">
-                        <table class="user" id="results" cellspacing="15" cellpadding="8" >
-                            <tr>   <th>Campaign Name</th>
-                                <th>Created</th>
-                                <th>Budget</th>  
-                            </tr>  
-                            <s:iterator end="1" value="camplist" status="rowstatus">
-                                <s:if test="#rowstatus.odd == true">
-                                    <tr>
-                                        <td><s:property value="campaignName" /></td>
-                                        <td><s:property value="startDate" /> </td>
-                                        <td><s:property value="dialyBudget" /> </td>
-                                    </tr>
-                                </s:if>
-                                <s:else>
-                                    <tr class="alt">
-                                        <td><s:property value="campaignName" /></td>
-                                        <td><s:property value="startDate" /> </td>
-                                        <td><s:property value="dialyBudget" /> </td>
-                                    </tr>
-                                </s:else>
-                            </s:iterator>
+                <div class="clear"></div>
+                <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
+                <div class="title">Campaigns</div>
+                <div class="buttonmenu">
+                    <div style="float:left"><a href="addcampnav.action"><input type="image" value="+Add Campaign" name="+Add Campaign" src="images/free-psd.jpg"/></a></div> 
 
-                        </table>
-                        <div align="right" id="pageNavPosition"></div>     
-                    </s:form>
-                </div>   
+                </div>
+
+                <div class="clear"></div>
+                <div class="tableheader">
+
+                    <span class="Compaign">Campaign</span>
+                    <span class="Created">Created</span>
+                    <span class="Budget">Budget</span>
+
+                </div>
+                <div class="clear"></div>
+                <s:iterator  value="camplist">
+                    <div class="tabletext" id="results" >
+                        <span class="Name"><s:property value="campaignName" /></span>
+                        <span class="Created"><s:property value="startDate" /></span>
+                        <span class="Budget"><s:property value="dialyBudget" /></span>
+                    </div></s:iterator>
+                    <div class="clear"></div>
 
 
-            </div>
+
+                    <div align="right" id="pageNavPosition"></div>    
+                    <div class="clear"></div>
+
+
+
+                    <div>
+                    <s:include value="footer_1.jsp"/>
+                </div>
+
+            </div>     
+
             <script type="text/javascript">
                 var pager = new Pager('results',20, 'pager', 'pageNavPosition');
                 pager.init();
                 pager.showPage(1);
             </script>
-            <div>
-                <s:include value="/footer.jsp"/>
-            </div>
 
         </div>
+        <!--Container End-->
+        <div></div>
+
     </body>
 </html>

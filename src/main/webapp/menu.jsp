@@ -11,7 +11,7 @@
 <div>
 		<ul class="menu">
 
-	<li class="top"><a  href="loadlist.action" class="top_link"><span>HOME</span></a></li>
+	<li class="top"><a  href="home.action" class="top_link"><span>HOME</span></a></li>
 	<li class="top"><a href="editcamplist.action" class="top_link"><span>CAMPAIGN</span></a>
 		<ul class="sub">
 			<li><a href="addcampnav.action">ADD CAMPAIGN</a></li>			
@@ -41,6 +41,6 @@
             <li><a href="#">PAYMENT DETAILS</a></li>		
            
 		</ul></li>
-        <li class="top"><a href="logoutaction.action" class="top_link"><span>LOGOUT</span></a></li>
+        <li class="top"><a href="logout.action" class="top_link"><span>LOGOUT</span></a></li>
 </ul>
 	</div>

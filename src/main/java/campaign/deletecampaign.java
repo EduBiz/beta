@@ -12,51 +12,56 @@ import java.util.List;
 import java.util.Map;
 import model.*;
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
+
 /**
  *
  * @author radan
  */
-public class deletecampaign extends ActionSupport{
-    
-       private String campaid;
-       private String campaignname;
-       private BigDecimal dailybdgt;
-       private String deliverytype;
-       private String promotype;
-       private String note;
-       private String sdate ;
-       private String edate;
-       private String[] temp;
-       private Long lc;
-        private List<Campaign> camplist;
-      private spDAO myDao;
-      private User user;
-       
-       @Override 
-        public String execute() throws Exception {
-           
-           try{
-               Map session =ActionContext.getContext().getSession();
-            user=(User) session.get("User");
-            lc=(Long) Long.parseLong(getCampaid());
-            Campaign cdel=(Campaign) getMyDao().getDbsession().get(Campaign.class, getLc());
-                
-              
-                 getMyDao().getDbsession().delete(cdel);
-                 
-                  setCamplist((List<Campaign>) getMyDao().getDbsession().createQuery("from Campaign").list());
-                Criteria crit = getMyDao().getDbsession().createCriteria(Campaign.class);
-                crit.add(Restrictions.like("user",user));
-                crit.setMaxResults(20);
-                    setCamplist((List<Campaign>) crit.list());
-           }
-           catch(Exception e)
-           {
-               e.printStackTrace();
-           }
-        return"success";   
-       }
+public class deletecampaign extends ActionSupport {
+
+    private String campaid;
+    private String campaignname;
+    private BigDecimal dailybdgt;
+    private String deliverytype;
+    private String promotype;
+    private String note;
+    private String sdate;
+    private String edate;
+    private String[] temp;
+    private Long lc;
+    private List<Campaign> camplist;
+    private spDAO myDao;
+    private User user;
+
+    @Override
+    public String execute() throws Exception {
+
+        try {
+            Map session = ActionContext.getContext().getSession();
+            user = (User) session.get("User");
+            lc = (Long) Long.parseLong(getCampaid());
+            Campaign cdel = (Campaign) getMyDao().getDbsession().get(Campaign.class, getLc());
+
+
+            getMyDao().getDbsession().delete(cdel);
+
+            setCamplist((List<Campaign>) getMyDao().getDbsession().createQuery("from Campaign").list());
+            Criteria crit = getMyDao().getDbsession().createCriteria(Campaign.class);
+            crit.add(Restrictions.like("user", user));
+            crit.setMaxResults(20);
+            setCamplist((List<Campaign>) crit.list());
+            addActionMessage("Campaign " + cdel.getCampaignName() + " Successfully Deleted");
+            return "success";
+        } catch (Exception e) {
+            addActionError("Server  Error Please Try Again Later ");
+            e.printStackTrace();
+            return "error";
+        }
+
+
+    }
 
     /**
      * @return the campaid
@@ -239,7 +244,4 @@ public class deletecampaign extends ActionSupport{
     public void setUser(User user) {
         this.user = user;
     }
-   
-  
 }
-

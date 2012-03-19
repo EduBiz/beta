@@ -17,56 +17,66 @@ import org.hibernate.HibernateException;
  * @author radan
  */
 public class demograhics extends ActionSupport {
-    
-     private spDAO myDao;
-     private String gender;
-     private String age;
-     private String campaignname;
-     private Date startdate;
-     private Date enddate;
-     private String dailybdgt;
-     private String platform;
-     private String android;
-     private String location;
-     private String blackberry;              
-     private String iphone;   
-     
-     @Override
+
+    private spDAO myDao;
+    private String gender;
+    private String age;
+    private String campaignname;
+    private Date startdate;
+    private Date enddate;
+    private String dailybdgt;
+    private String platform;
+    private String android;
+    private String location;
+    private String blackberry;
+    private String iphone;
+
+    @Override
     public void validate() {
-      
-      
-        if(gender==null)
-        {
-         addFieldError("gender","Please Select Gender");
+
+
+        if (gender == null) {
+
+            addActionError("Please Select Gender");
         }
-        if(age==null)
-        {
-         addFieldError("age","Please Select Age");
+        if (age == null) {
+
+            addActionError("Please Select Age");
         }
-         
-    } 
-     
-     @Override 
-     public String execute() throws Exception {
-   
-          try{
-              
-               Map session =ActionContext.getContext().getSession();
-               Campaign camp=(Campaign) session.get("campa");
-               
-               CampaignDemography campdemo=new CampaignDemography();
-               campdemo.setCampaign(camp);
-               campdemo.setSex(gender);
-               campdemo.setAge(getAge());
-              getMyDao().getDbsession().save(campdemo);
-          }
-          catch(HibernateException e)
-          {
-          e.printStackTrace();
-          }
-          
-          return"success";
-     }
+
+    }
+
+    @Override
+    public String execute() throws Exception {
+
+        try {
+
+            Map session = ActionContext.getContext().getSession();
+            Campaign camp = (Campaign) session.get("campa");
+
+            CampaignDemography campdemo = new CampaignDemography();
+            campdemo.setCampaign(camp);
+            campdemo.setSex(gender);
+            campdemo.setAge(getAge());
+            getMyDao().getDbsession().save(campdemo);
+            return "success";
+        } catch (HibernateException e) {
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        } catch (NullPointerException ne) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            ne.printStackTrace();
+            return "error";
+        } catch (Exception e) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        }
+
+    }
 
     /**
      * @return the myDao
@@ -235,6 +245,4 @@ public class demograhics extends ActionSupport {
     public void setIphone(String iphone) {
         this.iphone = iphone;
     }
-
-          
 }

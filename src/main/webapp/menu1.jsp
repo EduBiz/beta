@@ -8,7 +8,7 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <!DOCTYPE html>
-<div >
+<div>
 		<ul class="menu">
 
 	<li class="top"><a  href="index.jsp" class="top_link"><span>HOME</span></a></li>

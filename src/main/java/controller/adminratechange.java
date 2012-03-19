@@ -25,28 +25,37 @@ public class adminratechange extends ActionSupport {
     private BigDecimal newrt;
     private BigDecimal cfrt;
     private User user;
- 
 
     @Override
     public void validate() {
 
+        if (newrt == null) {
+
+            addActionError("Please Enter New Rate");
+        }
+
+        if (cfrt == null) {
+
+            addActionError("Please Enter Confirm New Rate");
+        }
 
 
         if (getNewrt().equals(getCfrt())) {
         } else {
-            addFieldError("newrt", "Rate Mismatch Please Enter Again");
+
+            addActionError("New Rate & Confirm New Rate Mismatch Please Enter Again");
         }
     }
 
     @Override
     public String execute() throws Exception {
-        try{
-        Map session = ActionContext.getContext().getSession();
-        setUser((User) session.get("User"));
-        Date date = new Date();
-        System.out.println("--------------------------------------------------" + existrate);
-        System.out.println("------------------------------------------------------" + newrt);
-        System.out.println("-------------------------------------------------------" + cfrt);
+        try {
+            Map session = ActionContext.getContext().getSession();
+            setUser((User) session.get("User"));
+            Date date = new Date();
+            System.out.println("--------------------------------------------------" + existrate);
+            System.out.println("------------------------------------------------------" + newrt);
+            System.out.println("-------------------------------------------------------" + cfrt);
 
 //        Criteria cri=myDao.getDbsession().createCriteria(Adrate.class);
 //        cri.setMaxResults(1);
@@ -54,27 +63,32 @@ public class adminratechange extends ActionSupport {
 //        Adrate ad1 = (Adrate)(cri.list().get(0)) ;
 //        
 //        System.out.println("-------------------------------------------------------" + ad1.getCurrentRate());
-          Adrate  ad = new Adrate();
-       ad.setCurrentRate(newrt);
-        ad.setOldRate(existrate);
-       ad.setDateChange(date);
-        ad.setRateId(1);
-        myDao.getDbsession().update(ad);
-        //myDao.getDbsession().saveOrUpdate(ad);
-        addActionMessage("New Rate Successfully Changed");
-        return "success";
-    }
-    catch (HibernateException he) {
-            he.printStackTrace();
-            addActionError("Unable to Process " + he.getMessage() + "..Try After Some times");
+            Adrate ad = new Adrate();
+            ad.setCurrentRate(newrt);
+            ad.setOldRate(existrate);
+            ad.setDateChange(date);
+            ad.setRateId(1);
+            myDao.getDbsession().update(ad);
+            //myDao.getDbsession().saveOrUpdate(ad);
+            addActionMessage("New Rate Successfully Changed");
+            return "success";
+        } catch (HibernateException e) {
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        } catch (NullPointerException ne) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            ne.printStackTrace();
             return "error";
         } catch (Exception e) {
-            e.getMessage();
-            addActionError("Unable to Process " + e.getMessage() + "..Try After Some times");
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
             return "error";
         }
     }
-    
+
     /**
      * @return the myDao
      */
@@ -144,6 +158,4 @@ public class adminratechange extends ActionSupport {
     public void setCfrt(BigDecimal cfrt) {
         this.cfrt = cfrt;
     }
-
-  
 }

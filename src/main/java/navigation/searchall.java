@@ -9,10 +9,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import controller.spDAO;
 import java.util.List;
 import java.util.Map;
-import model.Campaign;
-import model.User;
-import model.UserDetails;
+import model.*;
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -23,8 +22,8 @@ public class searchall extends ActionSupport {
 
     private spDAO myDao;
     private User user;
-    private List<UserDetails> alluserlist;
-    private List<User> allusers;
+    private List<User> alluserlist;
+   
     private String s;
 
     @Override
@@ -34,18 +33,30 @@ public class searchall extends ActionSupport {
             Map session = ActionContext.getContext().getSession();
             user = (User) session.get("User");
 
-            Criteria ucri = myDao.getDbsession().createCriteria(UserDetails.class);
-            ucri.add(Restrictions.not(Restrictions.eq("user", "admin@adzappy.com")));
-            ucri.add(Restrictions.or(Restrictions.like("user", s + "%"), Restrictions.like("firstName", s + "%")));
+            Criteria ucri = myDao.getDbsession().createCriteria(User.class);
+            ucri.add(Restrictions.not(Restrictions.eq("emailId", "admin@adzappy.com")));
+            ucri.add(Restrictions.or(Restrictions.like("emailId", s + "%"), Restrictions.like("userName", s + "%")));
             ucri.setMaxResults(50);
-            alluserlist = (List<UserDetails>) ucri.list();
-             addActionMessage(alluserlist.size()+"\t\tResults Found");
+            setAlluserlist((List<User>) ucri.list());
+            addActionMessage(getAlluserlist().size() + "\t\tResults Found");
             return "success";
 
+        } catch (HibernateException e) {
+            addActionError("Server  Error Please Try Again ");
+            e.printStackTrace();
+            return "error";
+        } catch (NullPointerException ne) {
+
+            addActionError("Server  Error Please Try Agains ");
+            ne.printStackTrace();
+            return "error";
         } catch (Exception e) {
+
+            addActionError("Server  Error Please Try Again ");
             e.printStackTrace();
             return "error";
         }
+
 
 
     }
@@ -78,19 +89,7 @@ public class searchall extends ActionSupport {
         this.user = user;
     }
 
-    /**
-     * @return the alluserlist
-     */
-    public List<UserDetails> getAlluserlist() {
-        return alluserlist;
-    }
-
-    /**
-     * @param alluserlist the alluserlist to set
-     */
-    public void setAlluserlist(List<UserDetails> alluserlist) {
-        this.alluserlist = alluserlist;
-    }
+  
 
     /**
      * @return the s
@@ -107,16 +106,18 @@ public class searchall extends ActionSupport {
     }
 
     /**
-     * @return the allusers
+     * @return the alluserlist
      */
-    public List<User> getAllusers() {
-        return allusers;
+    public List<User> getAlluserlist() {
+        return alluserlist;
     }
 
     /**
-     * @param allusers the allusers to set
+     * @param alluserlist the alluserlist to set
      */
-    public void setAllusers(List<User> allusers) {
-        this.allusers = allusers;
+    public void setAlluserlist(List<User> alluserlist) {
+        this.alluserlist = alluserlist;
     }
+
+  
 }

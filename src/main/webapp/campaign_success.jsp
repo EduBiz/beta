@@ -138,6 +138,6 @@ padding-left:350px;
       <div >
         <s:include value="/footer.jsp"/>
         </div>
-        </div>
+       
     </body>
 </html>

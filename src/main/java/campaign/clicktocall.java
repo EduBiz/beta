@@ -11,65 +11,75 @@ import java.util.Date;
 import java.util.Map;
 import model.*;
 import org.hibernate.HibernateException;
+
 /**
  *
  * @author radan
  */
-public class clicktocall  extends ActionSupport{
-    
-    
-     private spDAO myDao;
-     private String platform;
-     private String location;
-     private String iphone;
-     private String campaignname;
-     private Date startdate;
-     private Date enddate;
-     private String dailybdgt;
-  
-       @Override
+public class clicktocall extends ActionSupport {
+
+    private spDAO myDao;
+    private String platform;
+    private String location;
+    private String iphone;
+    private String campaignname;
+    private Date startdate;
+    private Date enddate;
+    private String dailybdgt;
+
+    @Override
     public void validate() {
-      
-      
-        if(platform==null)
-        {
-         addFieldError("platform","Please Select Platorm");
+
+
+        if (platform == null) {
+
+            addActionError("Please Select Platorm");
         }
-        if(location==null)
-        {
-         addFieldError("location","Please Select Location");
+        if (location == null) {
+
+            addActionError("Please Select Location");
         }
-         if(iphone.equals("Please select"))
-        {
-         addFieldError("iphone","Please Select Os");
+        if (iphone.equals("Please select")) {
+
+            addActionError("Please Select Os");
         }
-    } 
-     @Override 
-     public String execute() throws Exception {
-   
-          try{
-              
-               Map session =ActionContext.getContext().getSession();
-               Campaign camp=(Campaign) session.get("campa");
-              
-               CampaignDevice campdev=new CampaignDevice(camp, getPlatform());
-              getMyDao().getDbsession().save(campdev);
-             
-              
-               CampaignLocation camploc= new CampaignLocation(camp, getLocation());
-               getMyDao().getDbsession().save(camploc);
-              
-              CampaignOs campos=new CampaignOs(camp, getIphone());
-               getMyDao().getDbsession().save(campos);
-          }
-  
-          catch(HibernateException e)
-          {
-          e.printStackTrace();
-          }
-         
-          return"success";  
-    
+    }
+
+    @Override
+    public String execute() throws Exception {
+
+        try {
+
+            Map session = ActionContext.getContext().getSession();
+            Campaign camp = (Campaign) session.get("campa");
+
+            CampaignDevice campdev = new CampaignDevice(camp, getPlatform());
+            getMyDao().getDbsession().save(campdev);
+
+
+            CampaignLocation camploc = new CampaignLocation(camp, getLocation());
+            getMyDao().getDbsession().save(camploc);
+
+            CampaignOs campos = new CampaignOs(camp, getIphone());
+            getMyDao().getDbsession().save(campos);
+            return "success";
+        } catch (HibernateException e) {
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        } catch (NullPointerException ne) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            ne.printStackTrace();
+            return "error";
+        } catch (Exception e) {
+
+            addActionError("Server  Error Please Recheck All Fields ");
+            e.printStackTrace();
+            return "error";
+        }
+
+
     }
 
     /**
@@ -183,5 +193,4 @@ public class clicktocall  extends ActionSupport{
     public void setDailybdgt(String dailybdgt) {
         this.dailybdgt = dailybdgt;
     }
-    
 }

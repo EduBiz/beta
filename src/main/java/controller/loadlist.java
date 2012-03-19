@@ -5,17 +5,19 @@
 package controller;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import java.util.Map;
 import model.*;
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
 
 /**
  *
  * @author Administrator
  */
-public class loadlist {
+public class loadlist extends ActionSupport {
   
   
     private List<User> userlist;
@@ -24,6 +26,7 @@ public class loadlist {
     private List<Campaign> camplist;
      private List<UserDetails> uselist;
       private User  user; 
+    @Override
      public String execute() throws Exception {
       
          
@@ -54,11 +57,22 @@ public class loadlist {
             return "success";
                  
            }
-           catch(Exception e)
-           {
-               e.getMessage();
-           }
-        return"success";   
+         catch (HibernateException e) {
+            addActionError("Server  Error Please Try Again ");
+            e.printStackTrace();
+            return "error";
+        } catch (NullPointerException ne) {
+
+            addActionError("Server  Error Please Try Again ");
+            ne.printStackTrace();
+            return "error";
+        } catch (Exception e) {
+
+            addActionError("Server  Error Please Try Again ");
+            e.printStackTrace();
+            return "error";
+        }
+      
        }
 
     
