@@ -36,14 +36,15 @@ public class login extends ActionSupport {
     public void validate() {
 
 
-        if (email == null) {
+       if (getEmail().isEmpty()) {
 
             addActionError("Please Enter Email Address");
         }
-        if (password == null) {
+     else   if (getPassword().isEmpty()) {
 
             addActionError("Please Enter Password");
         }
+     else{
         User user = (User) myDao.getDbsession().get(User.class, email);
         if (user != null) {
 
@@ -61,7 +62,7 @@ public class login extends ActionSupport {
             addActionError("Invalid Email Address");
         }
     }
-
+    }
     @Override
     public String execute() throws Exception {
         try {
