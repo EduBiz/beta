@@ -17,6 +17,7 @@
         <sj:head jqueryui="true" jquerytheme="flick"/>
         <link href="style50.css" rel="stylesheet" type="text/css" />
 
+
     </head>
 
     <body>
@@ -90,7 +91,7 @@
                         <div class="formrow">
                             <div class="form-label">Start Date</div>
                             <div class="form-widget">
-                                <div class="input-div"> <sj:datepicker name="startdate" displayFormat="mm/dd/yy" label="Start Date" cssClass="input-div" /></div>
+                                <div class="input-div"> <sj:datepicker id="startdate" name="startdate" displayFormat="mm/dd/yy" label="Start Date" cssClass="input-div" onCompleteTopics="onDpClose"/></div>
 
                             </div>
                         </div>
@@ -98,8 +99,13 @@
                         <div class="formrow">
                             <div class="form-label">End Date</div>
                             <div class="form-widget">
-                                <div class="input-div"> <sj:datepicker name="enddate" displayFormat="mm/dd/yy" label="End Date" cssClass="input-div" /></div>
-
+                                <div class="input-div"> <sj:datepicker id="enddate" name="enddate" displayFormat="mm/dd/yy" label="End Date" cssClass="input-div" minDate="0" maxDate="" /></div>
+                                <!-- Start date end date validation script 1-Jun-2012  -->
+                                <script type="text/javascript">
+                                    $.subscribe('onDpClose', function(event,data) {
+                                        $('#enddate').datepicker( "option" , 'minDate',event.originalEvent.dateText ); 
+                                    });
+                                </script> 
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -117,7 +123,7 @@
                             <div class="form-label">Delivery Type</div>
                             <div class="form-widget">
                                 <div class="input-div">    <s:radio label="Delivery Type" name="deliverytype" list="{'Standard','Accelerated'}" required="true"  cssClass="input-div" /></div>
-                               			
+
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -125,8 +131,8 @@
                             <div class="form-label">Promotion Type</div>
                             <div class="form-widget">
                                 <div class="input-div">    <s:select name="promotype"  label="Promotype" headerKey="Please select" headerValue="Please select" required="true"
-                          list="{'Website','BlackBerry Application Ad','Android Application Ad','Iphone Application Ad','iTunes Media Ad','Streaming Video Ad','Books Ad','Click to Call Ad','Click to Map Ad'}" /></div>
-                              			
+                                          list="{'Website','BlackBerry Application Ad','Android Application Ad','Iphone Application Ad','iTunes Media Ad','Streaming Video Ad','Books Ad','Click to Call Ad','Click to Map Ad'}" /></div>
+
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -138,6 +144,8 @@
                         <div class="formrow">
                             <div class="form-button" style="float: right" > <s:submit value="Save and Continue" cssClass="button" /></div>
                         </div>
+
+
                         <div class="clear"></div>
                     </s:form>
                 </div>
