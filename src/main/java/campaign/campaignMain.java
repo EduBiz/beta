@@ -53,18 +53,22 @@ public class campaignMain extends ActionSupport {
 
             addActionError("Please Select Promotype");
         }
-        if (enddate == null) {
+        
+       if (startdate == null) {
 
             addActionError("Please Select Start Date");
+        } 
+       if (enddate == null) {
+
+            addActionError("Please Select End Date");
         }
-        if (startdate == null) {
-
-            addActionError("Please Select Start Date");
-        } else if (startdate.after(enddate)) {
+       else
+       {
+           if (startdate.after(enddate)) {
 
             addActionError("Please Choose End date After Start Date ");
         }
-
+       }
     }
 
     @Override

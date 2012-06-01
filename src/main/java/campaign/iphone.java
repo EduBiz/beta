@@ -26,6 +26,8 @@ public class iphone extends ActionSupport {
     private Date startdate;
     private Date enddate;
     private String dailybdgt;
+    private String gender;
+    private String age;
 
     @Override
     public void validate() {
@@ -42,6 +44,14 @@ public class iphone extends ActionSupport {
         if (iphone.equals("Please select")) {
 
             addActionError("Please Select Os");
+        }
+         if (gender == null) {
+
+            addActionError("Please Select Gender");
+        }
+        if (age == null) {
+
+            addActionError("Please Select Age");
         }
     }
 
@@ -62,6 +72,13 @@ public class iphone extends ActionSupport {
 
             CampaignOs campos = new CampaignOs(camp, iphone);
             getMyDao().getDbsession().save(campos);
+            
+            CampaignDemography campdemo = new CampaignDemography();
+            campdemo.setCampaign(camp);
+            campdemo.setSex(gender);
+            campdemo.setAge(getAge());
+            getMyDao().getDbsession().save(campdemo);
+            
             return "success";
         } catch (HibernateException e) {
             addActionError("Server  Error Please Recheck All Fields ");
@@ -192,5 +209,33 @@ public class iphone extends ActionSupport {
      */
     public void setDailybdgt(String dailybdgt) {
         this.dailybdgt = dailybdgt;
+    }
+
+    /**
+     * @return the gender
+     */
+    public String getGender() {
+        return gender;
+    }
+
+    /**
+     * @param gender the gender to set
+     */
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    /**
+     * @return the age
+     */
+    public String getAge() {
+        return age;
+    }
+
+    /**
+     * @param age the age to set
+     */
+    public void setAge(String age) {
+        this.age = age;
     }
 }

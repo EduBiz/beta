@@ -52,7 +52,7 @@
 
                 <div class="clear"></div>
                 <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
-                <div class="title" align="center">Iphone</div>
+               
                 <div class="buttonmenu">
 
                 </div>
@@ -65,11 +65,11 @@
                             <span class="leftnav-header">Step1</span>
                             <span>Campaign Info</span>
                         </li>
-                        <li class="navactive">
+                        <li >
                             <span class="leftnav-header">Step2</span>
                             <span>Ad Type</span>
                         </li>
-                        <li>
+                        <li class="navactive">
                             <span class="leftnav-header">Step3</span>
                             <span>Demographics</span>
                         </li>
@@ -83,6 +83,8 @@
 
                 <div id="formcontainer">
                     <s:form action="iphoneAction" theme="simple">
+                         <div class="title" align="center">Iphone</div>
+                          <div class="clear"></div>
                         <div class="formrow">
                             <div class="form-label">Platform Devices</div>
                             <div class="form-widget">   <s:radio name="platform" label="platform Devices" list="{'Target all devices','Target devices by platform','Target devices by manufacturer'}" cssClass="input-div" /></div>
@@ -98,6 +100,19 @@
                             <div class="form-widget">  <s:select name="iphone" headerKey="Please select" headerValue="Please select" label="Select Os"
                                       list="{'Original iPhone(2G)','iPhone 3G','iPhone 3G S','iPhone 4','iPod Touch','iPad'}" /></div>
                         </div>
+                          <div class="clear"></div>
+                         <div class="title" align="center">Demographics</div>
+                        <div class="clear"></div>
+                        <div class="formrow">
+                            <div class="form-label"> Gender</div>
+                            <div class="form-widget">   <s:radio name="gender" label="Select" list="{'All User','Male','Female'}" cssClass="input-div" /></div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="formrow">
+                            <div class="form-label">Age</div>
+                            <div class="form-widget">      <s:radio name="age" label="Select" list="{'All','9-15','16-28','29-35','Above 35'}"  cssClass="input-div" /></div>
+                        </div>
+                       
 
                         <div class="clear"></div>
                         <div class="formrow">

@@ -52,7 +52,7 @@
 
                 <div class="clear"></div>
                 <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
-                <div class="title" align="center">Books Ad</div>
+
                 <div class="buttonmenu">
 
                 </div>
@@ -65,11 +65,11 @@
                             <span class="leftnav-header">Step1</span>
                             <span>Campaign Info</span>
                         </li>
-                        <li class="navactive">
+                        <li >
                             <span class="leftnav-header">Step2</span>
                             <span>Ad Type</span>
                         </li>
-                        <li>
+                        <li class="navactive">
                             <span class="leftnav-header">Step3</span>
                             <span>Demographics</span>
                         </li>
@@ -83,6 +83,8 @@
 
                 <div id="formcontainer">
                     <s:form action="bookadAction" theme="simple">
+                        <div class="title" align="center">Books Ad</div>
+                        <div class="clear"></div>
                         <div class="formrow">
                             <div class="form-label"> Platform Devices</div>
                             <div class="form-widget">   <s:radio name="platform"  required="true" label="Platform Devices" list="{'Target all devices','Target devices by platform','Target devices by manufacturer'}" cssClass="input-div" /></div>
@@ -118,8 +120,21 @@
                                 </select></div>
                             <div class="form-widget">  <img src="images/bbimage/blackberry-8110.jpg" height="93" width="70" alt="fruit" id="fruit"/> </div>
                         </div>
-
                         <div class="clear"></div>
+                        <div class="clear"></div>
+                        <div class="title" align="center">Demographics</div>
+                        <div class="clear"></div>
+                        <div class="formrow">
+                            <div class="form-label"> Gender</div>
+                            <div class="form-widget">   <s:radio name="gender" label="Select" list="{'All User','Male','Female'}" cssClass="input-div" /></div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="formrow">
+                            <div class="form-label">Age</div>
+                            <div class="form-widget">      <s:radio name="age" label="Select" list="{'All','9-15','16-28','29-35','Above 35'}"  cssClass="input-div" /></div>
+                        </div>
+                        <div class="clear"></div>
+
                         <div class="formrow">
                             <s:hidden name="campaignname" value="%{campaignname}" />
                             <s:hidden name="startdate" value="%{startdate}" />
