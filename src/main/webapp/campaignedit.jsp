@@ -92,7 +92,7 @@
                         <div class="formrow">
                             <div class="form-label">Start Date</div>
                             <div class="form-widget">
-                                <div class="input-div"> <sj:datepicker name="startdate" displayFormat="mm/dd/yy" label="Start Date"  cssClass="input-div" /></div>
+                                <div class="input-div"> <sj:datepicker id="startdate" name="startdate" displayFormat="mm/dd/yy" label="Start Date" value="%{sdate}"  cssClass="input-div" onCompleteTopics="onDpClose"/></div>
 
                             </div>
                         </div>
@@ -100,8 +100,13 @@
                         <div class="formrow">
                             <div class="form-label">End Date</div>
                             <div class="form-widget">
-                                <div class="input-div"> <sj:datepicker name="enddate" displayFormat="mm/dd/yy" label="End Date"  cssClass="input-div" /></div>
-
+                                <div class="input-div"> <sj:datepicker id="enddate" name="enddate" displayFormat="mm/dd/yy" label="End Date"  value="%{edate}" cssClass="input-div" minDate="0" maxDate="" /></div>
+                                <!-- Start date end date validation script 1-Jun-2012  -->
+                                <script type="text/javascript">
+                                    $.subscribe('onDpClose', function(event,data) {
+                                        $('#enddate').datepicker( "option" , 'minDate',event.originalEvent.dateText ); 
+                                    });
+                                </script> 
                             </div>
                         </div>
                         <div class="clear"></div>
