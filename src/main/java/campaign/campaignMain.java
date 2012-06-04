@@ -49,10 +49,7 @@ public class campaignMain extends ActionSupport {
 
             addActionError("Please Select Delivery Type");
         }
-        if (promotype.equals("Please select")) {
-
-            addActionError("Please Select Promotype");
-        }
+       
         
        if (startdate == null) {
 
