@@ -54,7 +54,7 @@
             </div>
             <!--search end -->
             <!--menu start -->
-            <div><img src="adtype_images/menu.jpg" width="941" height="45" alt="" title=""></div>
+            <div><img src="navmenu/menu1.jpg" width="941" height="45" alt="" title=""></div>
             <!--menu end -->
             <!--content start -->
             <s:form action="campaignMain" theme="simple">
@@ -67,7 +67,7 @@
                             <dl>
                                 <dt>Campaign Name</dt>
                                 <dd>
-                                    <s:textfield name="campaignname" label="Campaign Name" required="true" cssClass="input-div" />
+                                    <s:textfield name="campaignname" label="Campaign Name"  cssClass="input-div" />
                                 </dd>
                                 <dt>Start Date</dt>
                                 <dd>

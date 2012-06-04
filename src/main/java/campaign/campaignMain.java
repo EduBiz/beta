@@ -37,10 +37,7 @@ public class campaignMain extends ActionSupport {
     public void validate() {
 
 
-        if (campaignname == null) {
-
-            addActionError("Please Enter Campaign Name");
-        }
+       
         if (dailybdgt == null) {
 
             addActionError("Please Enter Daily Budget");
@@ -49,7 +46,10 @@ public class campaignMain extends ActionSupport {
 
             addActionError("Please Select Delivery Type");
         }
-       
+        if (campaignname == null) {
+
+            addActionError("Please Enter Campaign Name");
+        }
         
        if (startdate == null) {
 

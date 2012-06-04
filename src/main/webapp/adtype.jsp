@@ -30,7 +30,7 @@
     </head>
     <body>
         <%
-          /* Object obj = session.getAttribute("User");
+           Object obj = session.getAttribute("User");
             Object obj1 = session.getAttribute("campa");
              User u1=(User)session.getAttribute("User");
             if(obj==null)
@@ -40,7 +40,7 @@
             else if(obj1==null)
                 {
                 response.sendRedirect(request.getContextPath()+"/sessioncampaignError.action");
-            }*/
+            }
         %>
 
         <div id="topnav">

@@ -34,7 +34,7 @@ public class adtype extends ActionSupport {
 
 
 
-        if (getPromotype().equals("Please select")) {
+        if (getPromotype() == null) {
 
             addActionError("Please Select Promotype");
         }
