@@ -116,6 +116,12 @@
         </action> 
   
         <action name="campaignMain" class="campaign.campaignMain">
+            <result name="success" >adtype.jsp</result>
+            <result name="input" >campaignCreation.jsp</result>
+            <result name="error" >campaignCreation.jsp</result>
+        </action>
+            
+        <action name="adtype" class="campaign.adtype">
             <result name="website" >website.jsp</result>
             <result name="BlackBerry" >blackberry.jsp</result>
             <result name="Andriod" >android.jsp</result>
@@ -125,8 +131,8 @@
             <result name="Books" >bookad.jsp</result>
             <result name="clickcall" >clicktocall.jsp</result>
             <result name="clickmap" >clicktomap.jsp</result>
-            <result name="input" >campaignCreation.jsp</result>
-            <result name="error" >campaignCreation.jsp</result>
+            <result name="input" >adtype.jsp</result>
+            <result name="error" >adtype.jsp</result>
         </action> 
         <action name="websiteAction" class="campaign.website" ><!--  Demographics Action Merger Completed 01-Jun-2012 -->
             <result name="success" >/createad.jsp</result>
@@ -207,16 +213,16 @@
                 <param name="bufferSize">2024</param>
             </result>
         </action>
-         <action name="ratechg" class="controller.adminratechange" >
+        <action name="ratechg" class="controller.adminratechange" >
             <result name="success" type="chain">adratechange</result>
             <result name="input" >/admin.jsp</result>
             <result name="error" >/admin.jsp</result>
         </action>
-         <action name="adminviewuser" class="controller.adminviewuser" >
+        <action name="adminviewuser" class="controller.adminviewuser" >
             <result name="success" >/adminviewuser.jsp</result>
             <result name="error" >/adminviewuser.jsp</result>
         </action>
-         <action name="adminviewcampaign" class="controller.adminviewcampaign" >
+        <action name="adminviewcampaign" class="controller.adminviewcampaign" >
             <result name="success" >/adminviewcampaign.jsp</result>
             <result name="error" >/adminviewcampaign.jsp</result>
         </action>

@@ -92,33 +92,7 @@ public class campaignMain extends ActionSupport {
             camp.setPromoType(promotype);
             camp.setNote(note);
             getMyDao().getDbsession().saveOrUpdate(camp);
-            if (promotype.equals("Website")) {
-                return "website";
-            }
-            if (promotype.equals("BlackBerry Application Ad")) {
-                return "BlackBerry";
-            }
-            if (promotype.equals("Android Application Ad")) {
-                return "Andriod";
-            }
-            if (promotype.equals("Iphone Application Ad")) {
-                return "Iphone";
-            }
-            if (promotype.equals("iTunes Media Ad")) {
-                return "iTunes";
-            }
-            if (promotype.equals("Streaming Video Ad")) {
-                return "Streaming";
-            }
-            if (promotype.equals("Books Ad")) {
-                return "Books";
-            }
-            if (promotype.equals("Click to Call Ad")) {
-                return "clickcall";
-            }
-            if (promotype.equals("Click to Map Ad")) {
-                return "clickmap";
-            }
+              return "success";
 
         } catch (HibernateException e) {
             addActionError("Server  Error Please Recheck All Fields ");
@@ -136,7 +110,7 @@ public class campaignMain extends ActionSupport {
             return "error";
         }
 
-        return "success";
+      
     }
 
     /**

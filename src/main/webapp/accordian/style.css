@@ -1,0 +1,33 @@
+ul li {
+	padding:0px;
+	margin:0px;
+}
+
+* {margin:0; padding:0; font:12px Verdana,Arial}
+code {font-family:"Courier New",Courier}
+
+#options {width:571px; margin:20px auto; text-align:right; color:#9ac1c9}
+#options a {text-decoration:none; color:#9ac1c9}
+#options a:hover {color:#033}
+
+#acc {list-style:none; color:#033; }
+#acc h3 {font-weight:bold; margin-top:5px; cursor:pointer; background:url(header.gif);
+font:12px/20px Arial, Helvetica, sans-serif; color:#000; font-weight:normal!important; 
+}
+#acc h3 span {
+	font:bold 16px/20px Arial, Helvetica, sans-serif;
+	color:#467618;
+}
+#acc h3:hover {background:url(header_over.gif)}
+#acc .acc-section {overflow:hidden; background:#fff}
+#acc .acc-content {width:;background:#fff}
+
+#nested {width:571px; list-style:none; color:#033; margin-bottom:15px}
+#nested h3 {width:491px;padding:0;padding-left:80px; font-weight:bold; margin-top:5px; cursor:pointer; background:url(off.jpg) no-repeat; height:60px; padding-top:18px;}
+#nested h3:hover {background:url(on.jpg) no-repeat; height:60px;}
+#nested .acc-section {overflow:hidden; background:#fff}
+#nested .acc-content {width:571px;background:#fff;}
+#nested .acc-selected {background:url(selected.jpg) no-repeat;}
+.border {
+ border-left:solid 1px #d5d5d5; border-right:solid 1px #d5d5d5;
+}

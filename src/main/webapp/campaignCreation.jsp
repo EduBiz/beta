@@ -16,10 +16,7 @@
         <s:head theme="jquery"/>
         <sj:head jqueryui="true" jquerytheme="flick"/>
         <link href="style50.css" rel="stylesheet" type="text/css" />
-
-
     </head>
-
     <body>
         <%
           Object obj = session.getAttribute("User");
@@ -100,7 +97,7 @@
                             <div class="form-label">End Date</div>
                             <div class="form-widget">
                                 <div class="input-div"> <sj:datepicker id="enddate" name="enddate" displayFormat="mm/dd/yy" label="End Date" cssClass="input-div" minDate="0" maxDate="" /></div>
-                                <!-- Start date end date validation script 1-Jun-2012  -->
+                                <!-- Start date end date calender validation script 1-Jun-2012 added -->
                                 <script type="text/javascript">
                                     $.subscribe('onDpClose', function(event,data) {
                                         $('#enddate').datepicker( "option" , 'minDate',event.originalEvent.dateText ); 
@@ -151,33 +148,14 @@
                 </div>
                 <div class="clear"></div>
 
-
-
             </div>
-
-
-
-
             <div class="clear"></div>
-
-
-
             <div>
                 <s:include value="footer_1.jsp"/>
             </div>
 
         </div>     
-
-
-
-    </div>
-    <!--Container End-->
-    <div></div>
-
-
-
-
-
-
-</body>
+        <!--Container End-->
+        <div></div>
+    </body>
 </html>
