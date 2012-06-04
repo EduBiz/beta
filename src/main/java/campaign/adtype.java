@@ -23,59 +23,65 @@ public class adtype extends ActionSupport {
 
     private String promotype;
     private spDAO myDao;
+    private String campaignname;
+    private Date startdate;
+    private Date enddate;
+    private String dailybdgt;
+    private String deliverytype;
 
-     @Override
+    @Override
     public void validate() {
 
 
-      
-        if (promotype.equals("Please select")) {
+
+        if (getPromotype().equals("Please select")) {
 
             addActionError("Please Select Promotype");
         }
-    
-       }
+
+    }
+
     @Override
     public String execute() throws Exception {
 
         try {
 
-           Map session = ActionContext.getContext().getSession();
+            Map session = ActionContext.getContext().getSession();
             Campaign camp = (Campaign) session.get("campa");
 
 
-           
 
-            camp =(Campaign)myDao.getDbsession().get(Campaign.class, camp.getCampaignId());
-          
-            camp.setPromoType(promotype);
-          
+
+            camp = (Campaign) getMyDao().getDbsession().get(Campaign.class, camp.getCampaignId());
+
+            camp.setPromoType(getPromotype());
+
             getMyDao().getDbsession().update(camp);
-            if (promotype.equals("Website")) {
+            if (getPromotype().equals("Website")) {
                 return "website";
             }
-            if (promotype.equals("BlackBerry Application Ad")) {
+            if (getPromotype().equals("BlackBerry Application Ad")) {
                 return "BlackBerry";
             }
-            if (promotype.equals("Android Application Ad")) {
+            if (getPromotype().equals("Android Application Ad")) {
                 return "Andriod";
             }
-            if (promotype.equals("Iphone Application Ad")) {
+            if (getPromotype().equals("Iphone Application Ad")) {
                 return "Iphone";
             }
-            if (promotype.equals("iTunes Media Ad")) {
+            if (getPromotype().equals("iTunes Media Ad")) {
                 return "iTunes";
             }
-            if (promotype.equals("Streaming Video Ad")) {
+            if (getPromotype().equals("Streaming Video Ad")) {
                 return "Streaming";
             }
-            if (promotype.equals("Books Ad")) {
+            if (getPromotype().equals("Books Ad")) {
                 return "Books";
             }
-            if (promotype.equals("Click to Call Ad")) {
+            if (getPromotype().equals("Click to Call Ad")) {
                 return "clickcall";
             }
-            if (promotype.equals("Click to Map Ad")) {
+            if (getPromotype().equals("Click to Map Ad")) {
                 return "clickmap";
             }
 
@@ -97,8 +103,7 @@ public class adtype extends ActionSupport {
 
         return "success";
     }
-    
-    
+
     /**
      * @return the promotype
      */
@@ -125,5 +130,75 @@ public class adtype extends ActionSupport {
      */
     public void setMyDao(spDAO myDao) {
         this.myDao = myDao;
+    }
+
+    /**
+     * @return the campaignname
+     */
+    public String getCampaignname() {
+        return campaignname;
+    }
+
+    /**
+     * @param campaignname the campaignname to set
+     */
+    public void setCampaignname(String campaignname) {
+        this.campaignname = campaignname;
+    }
+
+    /**
+     * @return the startdate
+     */
+    public Date getStartdate() {
+        return startdate;
+    }
+
+    /**
+     * @param startdate the startdate to set
+     */
+    public void setStartdate(Date startdate) {
+        this.startdate = startdate;
+    }
+
+    /**
+     * @return the enddate
+     */
+    public Date getEnddate() {
+        return enddate;
+    }
+
+    /**
+     * @param enddate the enddate to set
+     */
+    public void setEnddate(Date enddate) {
+        this.enddate = enddate;
+    }
+
+    /**
+     * @return the dailybdgt
+     */
+    public String getDailybdgt() {
+        return dailybdgt;
+    }
+
+    /**
+     * @param dailybdgt the dailybdgt to set
+     */
+    public void setDailybdgt(String dailybdgt) {
+        this.dailybdgt = dailybdgt;
+    }
+
+    /**
+     * @return the deliverytype
+     */
+    public String getDeliverytype() {
+        return deliverytype;
+    }
+
+    /**
+     * @param deliverytype the deliverytype to set
+     */
+    public void setDeliverytype(String deliverytype) {
+        this.deliverytype = deliverytype;
     }
 }

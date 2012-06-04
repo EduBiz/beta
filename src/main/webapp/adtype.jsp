@@ -23,13 +23,14 @@
             {
          
                 document.getElementById('promo').value = document.getElementById(i).value;
+                document.getElementById('pro').value = document.getElementById(i).value;
             }
    
         </script>
     </head>
     <body>
         <%
-           Object obj = session.getAttribute("User");
+          /* Object obj = session.getAttribute("User");
             Object obj1 = session.getAttribute("campa");
              User u1=(User)session.getAttribute("User");
             if(obj==null)
@@ -39,7 +40,7 @@
             else if(obj1==null)
                 {
                 response.sendRedirect(request.getContextPath()+"/sessioncampaignError.action");
-            }
+            }*/
         %>
 
         <div id="topnav">
@@ -165,21 +166,34 @@
                         </div>
                         <div><img src="adtype_images/bottom.jpg" width="615" height="9" alt="" title=""></div>
                     </div>
+                    <s:hidden name="campaignname" value="%{campaignname}" />
+                    <s:hidden name="startdate" value="%{startdate}" />
+                    <s:hidden name="enddate" value="%{enddate}" />
+                    <s:hidden name="dailybdgt" value="%{dailybdgt}" />
+                    <s:hidden name="deliverytype" value="%{deliverytype}" />
                 </form>
                 <!--left box end -->
                 <!--right box start -->
                 <div class="right rightbox">
                     <div><img src="adtype_images/s-top.jpg" width="271" height="6" alt="" title=""></div>
                     <div>
-                        <h3>Campaign Name</h3>
+                        <h3>Campaign Summary</h3>
                         <table width="240" border="0" cellspacing="0" cellpadding="0" align="right" class="txt">
                             <tr>
                                 <td width="100" class="bold">Name</td>
-                                <td>&nbsp;</td>
+                                <td><s:property value="%{campaignname}" /></td>
                             </tr>
                             <tr>
                                 <td class="bold">Date</td>
-                                <td>2012/04/23 00:00</td>
+                                <td><s:property value="%{startdate}" /> - <s:property value="%{enddate}" /></td>
+                            </tr>
+                            <tr>
+                                <td class="bold">Budget</td>
+                                <td><s:property value="%{dailybdgt}" /></td>
+                            </tr>
+                            <tr>
+                                <td class="bold">Delivery Method</td>
+                                <td><s:property value="%{deliverytype}" /></td>
                             </tr>
                         </table>
                         <div class="clear"></div>
@@ -191,11 +205,11 @@
                             <table width="240" border="0" cellspacing="0" cellpadding="0" align="right" class="txt">
                                 <tr>
                                     <td width="100" class="bold">Name</td>
-                                    <td>Mobile market</td>
+                                    <td><input type="button" id="pro" style=" border: none " /></td>
                                 </tr>
                                 <tr>
                                     <td class="bold">Date</td>
-                                    <td>2012/04/23 00:00</td>
+                                    <td><s:property value="%{startdate}" /></td>
                                 </tr>
                             </table>
                             <div class="clear"></div>
@@ -211,10 +225,7 @@
                 <div class="clear"></div>
 
             </div>
-            <s:hidden name="campaignname" value="%{campaignname}" />
-            <s:hidden name="startdate" value="%{startdate}" />
-            <s:hidden name="enddate" value="%{enddate}" />
-            <s:hidden name="dailybdgt" value="%{dailybdgt}" />
+           
             <div>
                 <s:include value="footer_1.jsp"/>
             </div>
