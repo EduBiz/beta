@@ -115,7 +115,8 @@
                                         Ad Image
                                         &nbsp; <s:file label="Add Image" name="addimage" cssClass="input-div" ></s:file><br/>
                                             Tile Image
-                                            &nbsp;<s:file label="Tile Image" name="tileimage" cssClass="input-div" ></s:file> </div>
+                                            &nbsp;<s:file label="Tile Image" name="tileimage" cssClass="input-div" ></s:file>
+                                    </div>
 
                                         <div class="clear"></div>
                                     </div>

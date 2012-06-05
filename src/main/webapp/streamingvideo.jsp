@@ -16,11 +16,13 @@
         <s:head theme="jquery"/>
         <sj:head jqueryui="true" jquerytheme="flick"/>
         <link href="style50.css" rel="stylesheet" type="text/css" />
+        <!--for new changes in design Jun-2012  -->
+        <link type="text/css" href="styleacc.css" rel="stylesheet" />
 
     </head>
     <body>
         <%
-           Object obj = session.getAttribute("User");
+          Object obj = session.getAttribute("User");
             Object obj1 = session.getAttribute("campa");
              User u1=(User)session.getAttribute("User");
             if(obj==null)
@@ -47,101 +49,197 @@
 
         </div>
         <div id="container">
-            <div id="containerbox">
-                <div id="containerheader">Streaming Video Group</div>
 
+            <div id="containerheader"  >&nbsp;&nbsp;&nbsp;Streaming Video</div>
+
+            <div class="clear"></div>
+            <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
+
+            <div class="clear"></div>
+            <!--menu start -->
+            <div class="menubg" ><img src="navmenu/menu3.jpg" width="941" height="45" alt="" title="" ></div>
+            <!--menu end -->
+
+            <!--content start -->
+            <div class="content pad10">
+                <h2>Create: Streaming Video ad Group</h2>
+                <s:form action="streamingvideoAction" theme="simple">
+                    <!--left box start -->
+                    <div class="left leftbox">
+                        <div><img src="adtype_images/top.jpg" width="615" height="9" alt="" title=""></div>
+                        <div class="boxbg">
+                            <!--white box start -->
+                            <div class="whitebg">
+                                <div><img src="adtype_images/white-t.jpg" width="571" height="10" alt="" title=""></div>
+                                <div class="white-txt">
+                                    <div class="white-txt-border">
+                                        <p>Platforms / Devies</p>
+                                        <input name="platform" type="radio" value="Target all devices">
+                                        &nbsp;Target all Device<br/>
+                                        <input name="platform" type="radio" value="Target devices by platform">
+                                        &nbsp;Target devices by platform <br/>
+                                        <input name="platform" type="radio" value="Target devices by manufacturer">
+                                        &nbsp;Target devices by manufacturer </div>
+                                </div>
+                                <div><img src="adtype_images/white-b.jpg" width="571" height="10" alt="" title=""></div>
+                            </div>
+                            <!--white box end -->
+                            <div class="height"></div>
+                            <!--white box start -->
+                            <div class="whitebg">
+                                <div><img src="adtype_images/white-t.jpg" width="571" height="10" alt="" title=""></div>
+                                <div class="white-txt">
+                                    <div class="white-txt-border">
+                                        <p>Geography / Operators</p>
+                                        <input name="location" type="radio" value="Target all Geographic location">
+                                        &nbsp;Target all Geographic location<br/>
+                                        <input name="location" type="radio" value="Target specific geographic location">
+                                        &nbsp;Target specific geographic location
+
+                                        <p></p>
+
+                                    </div>
+
+                                    <div class="clear"></div>
+                                </div>
+                                <div><img src="adtype_images/white-b.jpg" width="571" height="10" alt="" title=""></div>
+                            </div>
+                            <!--white box end -->
+                            <div class="height"></div>
+                            <!--gray box start -->
+                            <div>
+                                <div><img src="adtype_images/gray-top.jpg" width="571" height="7" alt="" title=""></div>
+                                <div class="grayboxbg">
+                                    <div class="left font-weight contenttxt" style="margin-left:10px;">Demographics:</div>
+
+                                    <div class="clear"></div>
+                                </div>
+                                <div><img src="adtype_images/gray-bottom.jpg" width="571" height="7" alt="" title=""></div>
+                            </div>
+                            <!--gray box end -->
+                            <div class="height"></div>
+                            <!--white box start -->
+                            <div class="whitebg">
+                                <div><img src="adtype_images/white-t.jpg" width="571" height="10" alt="" title=""></div>
+                                <div class="white-txt">
+                                    <div class="white-txt-border left box-wd">
+                                        <p>Age</p>
+                                        <input name="age" type="radio" value="Above 35">
+                                        &nbsp;Above 35<br/>
+                                        <input name="age" type="radio" value="29-35">
+                                        &nbsp;29-35<br/>
+                                        <input name="age" type="radio" value="16-28">
+                                        &nbsp;16-28 <br/>
+                                        <input name="age" type="radio" value="9-15">
+                                        &nbsp;9-15 <br/>
+                                        <input name="age" type="radio" value="All">
+                                        &nbsp;All <br/>
+                                    </div>
+                                    <div class="white-txt-border right box-wd">
+                                        <p>Gender</p>
+                                        <input name="gender" type="radio" value="Male">
+                                        &nbsp;Male<br/>
+                                        <input name="gender" type="radio" value="Female">
+                                        &nbsp;Female <br/>
+                                        <input name="gender" type="radio" value="All User">
+                                        &nbsp;All User <br/>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div><img src="adtype_images/white-b.jpg" width="571" height="10" alt="" title=""></div>
+                                </div>
+                                <!--white box end -->
+                                <div class="height"></div>
+
+                                <div align="center" class="margina">
+                                    <input type="submit" value="Save and Continue" class="button"/>
+                                    &nbsp;
+
+                                </div>
+                            </div>
+                            <div><img src="adtype_images/bottom.jpg" width="615" height="9" alt="" title=""></div>
+                                <s:hidden name="campaignname" value="%{campaignname}" />
+                                <s:hidden name="startdate" value="%{startdate}" />
+                                <s:hidden name="enddate" value="%{enddate}" />
+                                <s:hidden name="dailybdgt" value="%{dailybdgt}" />
+                                <s:hidden name="deliverytype" value="%{deliverytype}" />
+                                <s:hidden name="promotype" value="%{promotype}" />
+                            </s:form>
+                    </div>
+                </div>
+                <!--left box end -->
+                <!--right box start -->
+                <div class="right rightbox">
+                    <div><img src="adtype_images/s-top.jpg" width="271" height="6" alt="" title=""></div>
+                    <div>
+                        <h3>Campaign Summary</h3>
+                        <table width="240" border="0" cellspacing="0" cellpadding="0" align="right" class="txt">
+                            <tr>
+                                <td width="100" class="bold">Name</td>
+                                <td><s:property value="%{campaignname}" /></td>
+                            </tr>
+                            <tr>
+                                <td class="bold">Date</td>
+                                <td><s:property value="%{startdate}" /> - <s:property value="%{enddate}" /></td>
+                            </tr>
+                            <tr>
+                                <td class="bold">Budget</td>
+                                <td><s:property value="%{dailybdgt}" /></td>
+                            </tr>
+                            <tr>
+                                <td class="bold">Delivery Method</td>
+                                <td><s:property value="%{deliverytype}" /></td>
+                            </tr>
+                        </table>
+                        <div class="clear"></div>
+                        <div><img src="adtype_images/s-bottom.jpg" width="271" height="6" alt="" title=""></div>
+                        <div class="height"></div>
+                        <div><img src="adtype_images/s-top.jpg" width="271" height="6" alt="" title=""></div>
+                        <div>
+                            <h3>Ad Group Summary</h3>
+                            <table width="240" border="0" cellspacing="0" cellpadding="0" align="right" class="txt">
+                                <tr>
+                                    <td width="100" class="bold">Name</td>
+                                    <td><s:property value="%{promotype}" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="bold">Date</td>
+                                    <td><s:property value="%{startdate}" /></td>
+                                </tr>
+                            </table>
+                            <div class="clear"></div>
+                            <div><img src="adtype_images/s-bottom.jpg" width="271" height="6" alt="" title=""></div>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+
+
+
+                </div>
+                <!--right box end -->
                 <div class="clear"></div>
-                <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
-              
-                <div class="buttonmenu">
+            </div>
+            <!--content end -->
 
-                </div>
-
-                <div class="clear"></div>
-
-                <div id="leftpanel">
-                    <ul>
-                        <li>
-                            <span class="leftnav-header">Step1</span>
-                            <span>Campaign Info</span>
-                        </li>
-                        <li >
-                            <span class="leftnav-header">Step2</span>
-                            <span>Ad Type</span>
-                        </li>
-                        <li class="navactive">
-                            <span class="leftnav-header">Step3</span>
-                            <span>Demographics</span>
-                        </li>
-                        <li>
-                            <span class="leftnav-header">Step4</span>
-                            <span>Creation</span>
-                        </li>
-                    </ul>
-                </div>
-
-
-                <div id="formcontainer">
-                    <s:form action="streamingvideoAction" theme="simple">
-                          <div class="title" align="center">Streaming Video Group</div>
-                          <div class="clear"></div>
-                        <div class="formrow">
-                            <div class="form-label">Platform Devices</div>
-                            <div class="form-widget"><s:radio name="platform" label="Platform Devices" list="{'Target all devices','Target devices by platform','Target devices by manufacturer'}" cssClass="input-div" /></div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="formrow">
-                            <div class="form-label">Geography/Operator</div>
-                            <div class="form-widget"> <s:radio name="location" label="Geography/Operator" list="{'Target all Geographic location','Target specific geographic location'}"  cssClass="input-div" /></div>
-                        </div>
-                        <div class="clear"></div>
-
-                        <div class="title" align="center">Demographics</div>
-                        <div class="clear"></div>
-                        <div class="formrow">
-                            <div class="form-label"> Gender</div>
-                            <div class="form-widget">   <s:radio name="gender" label="Select" list="{'All User','Male','Female'}" cssClass="input-div" /></div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="formrow">
-                            <div class="form-label">Age</div>
-                            <div class="form-widget">      <s:radio name="age" label="Select" list="{'All','9-15','16-28','29-35','Above 35'}"  cssClass="input-div" /></div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="formrow">
-                            <s:hidden name="campaignname" value="%{campaignname}" />
-                            <s:hidden name="startdate" value="%{startdate}" />
-                            <s:hidden name="enddate" value="%{enddate}" />
-                            <s:hidden name="dailybdgt" value="%{dailybdgt}" />
-
-                            <div class="form-button" style="float: right" > <s:submit value="Save and Continue" cssClass="button" /></div>
-                        </div>
-                        <div class="clear"></div>
-                    </s:form>
-
-
-                </div>
-                <div id="rightPanel">
-                    <p align="left"><b>Campaign Name:</b> <s:property value="%{campaignname}" /></p><hr/>
-                    <p align="left"><b>Date    :</b> <s:property value="%{startdate}" /> - <s:property value="%{enddate}" /></p><hr/>
-                    <p align="left"><b>Budget  :</b> <s:property value="%{dailybdgt}" /></p> <hr/>
-                </div>
+            <div class="clear"></div>
+            <div>
+                <s:include value="footer_1.jsp"/>
+            </div>
 
 
 
-                <div class="clear"></div>
 
-
-
-                <div>
-                    <s:include value="footer_1.jsp"/>
-                </div>
-
-            </div>     
 
         </div>
         <!--Container End-->
         <div></div>
 
+
+
+
+
+
+
     </body>
 </html>
+

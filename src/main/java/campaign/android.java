@@ -28,8 +28,8 @@ public class android extends ActionSupport {
     private String dailybdgt;
     private String gender;
     private String age;
-     private String deliverytype;
-     private String promotype;
+    private String deliverytype;
+    private String promotype;
 
     @Override
     public void validate() {
@@ -241,7 +241,6 @@ public class android extends ActionSupport {
         this.age = age;
     }
 
-   
     /**
      * @return the promotype
      */
