@@ -11,58 +11,69 @@ import java.util.Map;
 import model.User;
 import model.UserDetails;
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
+
 /**
  *
  * @author Administrator
  */
 public class accountinformation extends ActionSupport {
-  
- private spDAO myDao;
+
+    private spDAO myDao;
     private String fname;
     private String lname;
     private String email;
-    
     private Date dob;
-   
     private String addline1;
     private String ctry;
     private String storeg;
     private String city;
     private String postcode;
     private UserDetails userdetails;
-    private User  user;
-     @Override
+    private User user;
+
+    @Override
     public String execute() throws Exception {
-     
-         Map session =ActionContext.getContext().getSession();
-         setUser((User) session.get("User"));
-           
-         
-        setUserdetails((UserDetails) getMyDao().getDbsession().get(UserDetails.class, getUser().getEmailId()));
-            
-    
-           if(getUserdetails()!=null)
-                           
-            {
-                
-              
-            Criteria ucri=getMyDao().getDbsession().createCriteria(UserDetails.class);
-            ucri.add(Restrictions.like("user", getUser().getEmailId()));
-            ucri.setMaxResults(1);
-            setUserdetails((UserDetails)(ucri.list().get(0)));
-         
-          return "update";
+        try {
+
+            Map session = ActionContext.getContext().getSession();
+            setUser((User) session.get("User"));
+
+
+            setUserdetails((UserDetails) getMyDao().getDbsession().get(UserDetails.class, getUser().getEmailId()));
+
+
+            if (getUserdetails() != null) {
+
+
+                Criteria ucri = getMyDao().getDbsession().createCriteria(UserDetails.class);
+                ucri.add(Restrictions.like("user", getUser().getEmailId()));
+                ucri.setMaxResults(1);
+                setUserdetails((UserDetails) (ucri.list().get(0)));
+
+                return "update";
+            } else {
+
+
+                return "save";
             }
-            else
-            {
-                
-            
-                
-             
-       return "save";
-           }
-     }
+        } catch (HibernateException e) {
+            addActionError("Server  Error Please Try Again Later ");
+            e.printStackTrace();
+            return "error";
+        } catch (NullPointerException ne) {
+
+            addActionError("Server  Error Please Try Again Later ");
+            ne.printStackTrace();
+            return "error";
+        } catch (Exception e) {
+
+            addActionError("Server  Error Please Try Again Later ");
+            e.printStackTrace();
+            return "error";
+        }
+    }
 
     /**
      * @return the myDao

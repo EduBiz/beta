@@ -1,5 +1,5 @@
 <%-- 
-   ad group type 
+   ad group type selection step2 of campaign creation
 --%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
