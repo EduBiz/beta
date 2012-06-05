@@ -42,6 +42,7 @@ public class createad extends ActionSupport {
     private String gender;
     private String age;
     private String deliverytype;
+    private String promotype;
 
     @Override
     public void validate() {
@@ -400,5 +401,19 @@ public class createad extends ActionSupport {
      */
     public void setDeliverytype(String deliverytype) {
         this.deliverytype = deliverytype;
+    }
+
+    /**
+     * @return the promotype
+     */
+    public String getPromotype() {
+        return promotype;
+    }
+
+    /**
+     * @param promotype the promotype to set
+     */
+    public void setPromotype(String promotype) {
+        this.promotype = promotype;
     }
 }

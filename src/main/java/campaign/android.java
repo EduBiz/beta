@@ -29,6 +29,7 @@ public class android extends ActionSupport {
     private String gender;
     private String age;
      private String deliverytype;
+     private String promotype;
 
     @Override
     public void validate() {
@@ -238,6 +239,21 @@ public class android extends ActionSupport {
      */
     public void setAge(String age) {
         this.age = age;
+    }
+
+   
+    /**
+     * @return the promotype
+     */
+    public String getPromotype() {
+        return promotype;
+    }
+
+    /**
+     * @param promotype the promotype to set
+     */
+    public void setPromotype(String promotype) {
+        this.promotype = promotype;
     }
 
     /**

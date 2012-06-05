@@ -56,7 +56,7 @@
             <div class="clear"></div>
 
             <!--menu start -->
-            <div ><img src="navmenu/menu4.jpg" width="941" height="45" alt="" title="" ></div>
+            <div class="menubg"><img src="navmenu/menu4.jpg" width="941" height="45" alt="" title="" ></div>
             <!--menu end -->
             <!--content start -->
             <div class="content pad10">
@@ -163,6 +163,10 @@
                         <div>
                             <h3>Ad Group Summary</h3>
                             <table width="240" border="0" cellspacing="0" cellpadding="0" align="right" class="txt">
+                                <tr>
+                                    <td width="100" class="bold">Name </td>
+                                    <td><s:property value="%{promotype}" /></td>
+                                </tr>
                                 <tr>
                                     <td width="100" class="bold">Platform </td>
                                     <td><s:property value="%{platform}" /></td>

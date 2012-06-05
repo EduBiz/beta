@@ -45,7 +45,7 @@
         </div>
         <!--Container Start-->
         <div id="container">
-            <!--search start -->
+
             <div>
                 <div id="containerheader">&nbsp;&nbsp;Campaigns</div>
                 <div class="clear"></div>
@@ -53,9 +53,9 @@
 
                 <div class="clear"></div>
             </div>
-            <!--search end -->
+
             <!--menu start -->
-            <div><img src="navmenu/menu1.jpg" width="941" height="45" alt="" title=""></div>
+            <div class="menubg"><img src="navmenu/menu1.jpg" width="941" height="45" alt="" title=""></div>
             <!--menu end -->
             <!--content start -->
             <s:form action="campaignMain" theme="simple">
