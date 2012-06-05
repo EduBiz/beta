@@ -151,6 +151,7 @@
                             <s:hidden name="startdate" value="%{startdate}" />
                             <s:hidden name="enddate" value="%{enddate}" />
                             <s:hidden name="dailybdgt" value="%{dailybdgt}" />
+                            <s:hidden name="deliverytype" value="%{deliverytype}" />
                             <div class="form-button" style="float: right" > <s:submit value="Save and Continue" cssClass="button" /></div>
                         </div>
                         <div class="clear"></div>
@@ -162,6 +163,7 @@
                     <p align="left"><b>Campaign Name:</b> <s:property value="%{campaignname}" /></p><hr/>
                     <p align="left"><b>Date      :</b> <s:property value="%{startdate}" /> - <s:property value="%{enddate}" /></p><hr/>
                     <p align="left"><b>Budget    :</b> <s:property value="%{dailybdgt}" /></p> <hr/>
+                    <p align="left"><b>Delivery Type    :</b> <s:property value="%{deliverytype}" /></p> <hr/>
                 </div>
 
 

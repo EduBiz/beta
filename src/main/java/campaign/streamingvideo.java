@@ -27,6 +27,7 @@ public class streamingvideo extends ActionSupport {
     private String dailybdgt;
     private String gender;
     private String age;
+     private String deliverytype;
 
     @Override
     public void validate() {
@@ -216,5 +217,19 @@ public class streamingvideo extends ActionSupport {
      */
     public void setAge(String age) {
         this.age = age;
+    }
+
+    /**
+     * @return the deliverytype
+     */
+    public String getDeliverytype() {
+        return deliverytype;
+    }
+
+    /**
+     * @param deliverytype the deliverytype to set
+     */
+    public void setDeliverytype(String deliverytype) {
+        this.deliverytype = deliverytype;
     }
 }

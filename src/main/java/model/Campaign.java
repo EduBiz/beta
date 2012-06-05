@@ -1,5 +1,5 @@
 package model;
-// Generated Feb 27, 2012 11:42:50 AM by Hibernate Tools 3.2.1.GA
+// Generated Jun 5, 2012 2:41:11 PM by Hibernate Tools 3.2.1.GA
 
 
 import java.math.BigDecimal;
@@ -22,6 +22,7 @@ public class Campaign  implements java.io.Serializable {
      private String deliveryMethod;
      private String note;
      private String promoType;
+     private Date creationTime;
      private Set<CampaignLocation> campaignLocations = new HashSet<CampaignLocation>(0);
      private Set<CampaignDemography> campaignDemographies = new HashSet<CampaignDemography>(0);
      private Set<ReportCampaign> reportCampaigns = new HashSet<ReportCampaign>(0);
@@ -37,7 +38,7 @@ public class Campaign  implements java.io.Serializable {
         this.user = user;
         this.campaignName = campaignName;
     }
-    public Campaign(User user, String campaignName, Date startDate, Date endDate, BigDecimal dialyBudget, String deliveryMethod, String note, String promoType, Set<CampaignLocation> campaignLocations, Set<CampaignDemography> campaignDemographies, Set<ReportCampaign> reportCampaigns, Set<CampaignCreative> campaignCreatives, Set<CampaignOs> campaignOses, Set<CampaignDevice> campaignDevices) {
+    public Campaign(User user, String campaignName, Date startDate, Date endDate, BigDecimal dialyBudget, String deliveryMethod, String note, String promoType, Date creationTime, Set<CampaignLocation> campaignLocations, Set<CampaignDemography> campaignDemographies, Set<ReportCampaign> reportCampaigns, Set<CampaignCreative> campaignCreatives, Set<CampaignOs> campaignOses, Set<CampaignDevice> campaignDevices) {
        this.user = user;
        this.campaignName = campaignName;
        this.startDate = startDate;
@@ -46,6 +47,7 @@ public class Campaign  implements java.io.Serializable {
        this.deliveryMethod = deliveryMethod;
        this.note = note;
        this.promoType = promoType;
+       this.creationTime = creationTime;
        this.campaignLocations = campaignLocations;
        this.campaignDemographies = campaignDemographies;
        this.reportCampaigns = reportCampaigns;
@@ -116,6 +118,13 @@ public class Campaign  implements java.io.Serializable {
     
     public void setPromoType(String promoType) {
         this.promoType = promoType;
+    }
+    public Date getCreationTime() {
+        return this.creationTime;
+    }
+    
+    public void setCreationTime(Date creationTime) {
+        this.creationTime = creationTime;
     }
     public Set<CampaignLocation> getCampaignLocations() {
         return this.campaignLocations;

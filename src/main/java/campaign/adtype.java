@@ -7,12 +7,9 @@ package campaign;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import controller.spDAO;
-import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 import model.Campaign;
-import model.User;
 import org.hibernate.HibernateException;
 
 /**
@@ -36,7 +33,7 @@ public class adtype extends ActionSupport {
 
         if (getPromotype() == null) {
 
-            addActionError("Please Select Promotype");
+            addActionError("Please Select Ad Group Type");
         }
 
     }
@@ -84,6 +81,9 @@ public class adtype extends ActionSupport {
             if (getPromotype().equals("Click to Map Ad")) {
                 return "clickmap";
             }
+            else
+                  addActionError("Please Select Ad Group Type");
+                return "error";
 
         } catch (HibernateException e) {
             addActionError("Server  Error Please Recheck All Fields ");
@@ -101,7 +101,7 @@ public class adtype extends ActionSupport {
             return "error";
         }
 
-        return "success";
+       
     }
 
     /**

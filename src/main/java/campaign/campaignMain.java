@@ -20,7 +20,7 @@ import org.hibernate.HibernateException;
  * @author Administrator
  */
 public class campaignMain extends ActionSupport {
-
+    
     private String campaid;
     private String campaignname;
     private Date startdate;
@@ -32,82 +32,81 @@ public class campaignMain extends ActionSupport {
     private List<Campaign> camplist;
     private Long lc;
     private spDAO myDao;
-
+    
     @Override
     public void validate() {
-
-
-       
+        
+        
+        
         if (dailybdgt == null) {
-
+            
             addActionError("Please Enter Daily Budget");
         }
         if (deliverytype == null) {
-
+            
             addActionError("Please Select Delivery Type");
         }
         if (campaignname == null) {
-
+            
             addActionError("Please Enter Campaign Name");
         }
         
-       if (startdate == null) {
-
+        if (startdate == null) {
+            
             addActionError("Please Select Start Date");
-        } 
-       if (enddate == null) {
-
+        }        
+        if (enddate == null) {
+            
             addActionError("Please Select End Date");
+        } else {
+            if (startdate.after(enddate)) {
+                
+                addActionError("Please Choose End date After Start Date ");
+            }
         }
-       else
-       {
-           if (startdate.after(enddate)) {
-
-            addActionError("Please Choose End date After Start Date ");
-        }
-       }
     }
-
+    
     @Override
     public String execute() throws Exception {
-
+        
         try {
-
+            Date date = new Date();
             Map session = ActionContext.getContext().getSession();
             User user = (User) session.get("User");
-
+            
             Campaign camp;
             //  System.out.println("campaign id is" +campaid);
 
             camp = new Campaign(user, campaignname);
             camp = (Campaign) session.put("campa", camp);
-
+            
             camp.setStartDate(startdate);
             camp.setEndDate(enddate);
             camp.setDialyBudget(dailybdgt);
             camp.setDeliveryMethod(deliverytype);
             camp.setPromoType(promotype);
             camp.setNote(note);
+            camp.setCreationTime(date);
             getMyDao().getDbsession().saveOrUpdate(camp);
-              return "success";
-
+            return "success";
+            
         } catch (HibernateException e) {
             addActionError("Server  Error Please Recheck All Fields ");
             e.printStackTrace();
             return "error";
         } catch (NullPointerException ne) {
-
+            
             addActionError("Server  Error Please Recheck All Fields ");
             ne.printStackTrace();
             return "error";
         } catch (Exception e) {
-
+            
             addActionError("Server  Error Please Recheck All Fields ");
             e.printStackTrace();
             return "error";
         }
-
-      
+        
+        
     }
 
     /**

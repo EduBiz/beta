@@ -14,8 +14,9 @@
         <s:head theme="jquery"/>
         <sj:head jqueryui="true" jquerytheme="flick"/>
         <link href="style50.css" rel="stylesheet" type="text/css" />
+        <!--for new changes in design Jun-2012  -->
         <link type="text/css" href="styleacc.css" rel="stylesheet" />
-        <!--for accordian -->
+        <!--for accordion -->
         <link rel="stylesheet" href="accordian/style.css" type="text/css">
         <script language="javascript">
             var i;
@@ -62,8 +63,8 @@
             <div id="containerheader">&nbsp;&nbsp;&nbsp;Campaigns</div>
 
             <div class="clear"></div>
-
-            <!--search end -->
+            <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
+            <div class="clear"></div>
             <!--menu start -->
             <div ><img src="navmenu/menu2.jpg" width="941" height="45" alt="" title="" ></div>
             <!--menu end -->
@@ -215,17 +216,18 @@
                             <div class="clear"></div>
                             <div><img src="adtype_images/s-bottom.jpg" width="271" height="6" alt="" title=""></div>
                         </div>
-                        <!--right box end -->
+
                         <div class="clear"></div>
                     </div>
                     <!--content end -->
                     <div> </div>
-                    <!--content end -->
+
                 </div>
+                <!--right box end -->
                 <div class="clear"></div>
 
             </div>
-           
+            <!--content end -->
             <div>
                 <s:include value="footer_1.jsp"/>
             </div>

@@ -28,6 +28,7 @@ public class iphone extends ActionSupport {
     private String dailybdgt;
     private String gender;
     private String age;
+    private String deliverytype;
 
     @Override
     public void validate() {
@@ -45,7 +46,7 @@ public class iphone extends ActionSupport {
 
             addActionError("Please Select Os");
         }
-         if (gender == null) {
+        if (gender == null) {
 
             addActionError("Please Select Gender");
         }
@@ -72,13 +73,13 @@ public class iphone extends ActionSupport {
 
             CampaignOs campos = new CampaignOs(camp, iphone);
             getMyDao().getDbsession().save(campos);
-            
+
             CampaignDemography campdemo = new CampaignDemography();
             campdemo.setCampaign(camp);
             campdemo.setSex(gender);
             campdemo.setAge(getAge());
             getMyDao().getDbsession().save(campdemo);
-            
+
             return "success";
         } catch (HibernateException e) {
             addActionError("Server  Error Please Recheck All Fields ");
@@ -237,5 +238,19 @@ public class iphone extends ActionSupport {
      */
     public void setAge(String age) {
         this.age = age;
+    }
+
+    /**
+     * @return the deliverytype
+     */
+    public String getDeliverytype() {
+        return deliverytype;
+    }
+
+    /**
+     * @param deliverytype the deliverytype to set
+     */
+    public void setDeliverytype(String deliverytype) {
+        this.deliverytype = deliverytype;
     }
 }

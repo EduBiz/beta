@@ -16,6 +16,7 @@
         <s:head theme="jquery"/>
         <sj:head jqueryui="true" jquerytheme="flick"/>
         <link href="style50.css" rel="stylesheet" type="text/css" />
+        <!--for new changes in design Jun-2012  -->
         <link type="text/css" href="styleacc.css" rel="stylesheet" />
     </head>
     <body>
@@ -49,7 +50,7 @@
                 <div id="containerheader">&nbsp;&nbsp;Campaigns</div>
                 <div class="clear"></div>
                 <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
-                
+
                 <div class="clear"></div>
             </div>
             <!--search end -->

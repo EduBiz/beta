@@ -16,7 +16,8 @@
         <s:head theme="jquery"/>
         <sj:head jqueryui="true" jquerytheme="flick"/>
         <link href="style50.css" rel="stylesheet" type="text/css" />
-
+        <!--for new changes in design Jun-2012  -->
+        <link type="text/css" href="styleacc.css" rel="stylesheet" />
     </head>
 
     <body>
@@ -47,122 +48,165 @@
 
         </div>
         <div id="container">
-            <div id="containerbox">
-                <div id="containerheader">Ad Information</div>
 
+            <div id="containerheader">&nbsp;&nbsp;&nbsp;&nbsp;Ad Information</div>
+
+            <div class="clear"></div>
+            <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
+            <div class="clear"></div>
+
+            <!--menu start -->
+            <div ><img src="navmenu/menu4.jpg" width="941" height="45" alt="" title="" ></div>
+            <!--menu end -->
+            <!--content start -->
+            <div class="content pad10">
+                <h2>Create Ad</h2>
+
+                <s:form action="createAction" enctype="multipart/form-data" theme="simple">
+                    <!--left box start -->
+                    <div class="left leftbox">
+                        <div><img src="adtype_images/top.jpg" width="615" height="9" alt="" title=""></div>
+                        <div class="boxbg">
+                            <!--white box start -->
+                            <div class="whitebg">
+                                <div><img src="adtype_images/white-t.jpg" width="571" height="10" alt="" title=""></div>
+                                <div class="white-txt">
+                                    <div class="white-txt-border">
+                                        <p>Choose Ad Type</p>
+                                        <input name="adtype" type="radio" value="Text + Tile">
+                                        &nbsp;Text + Tile<br/>
+                                        <input name="adtype" type="radio" value="Mobile Images Ads">
+                                        &nbsp;Mobile Images Ads <br/>
+                                        <input name="adtype" type="radio" value="Tablets">
+                                        &nbsp;Tablets </div>
+                                </div>
+                                <div><img src="adtype_images/white-b.jpg" width="571" height="10" alt="" title=""></div>
+                            </div>
+                            <!--white box end -->
+                            <div class="height"></div>
+                            <!--white box start -->
+                            <div class="whitebg">
+                                <div><img src="adtype_images/white-t.jpg" width="571" height="10" alt="" title=""></div>
+                                <div class="white-txt">
+                                    <div class="white-txt-border">
+                                        <p>Ad Information</p>
+
+                                        Ad Name&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                                        <s:textfield name="adname" label="Ad Name" cssClass="input-div" /><br/>
+                                        Ad Url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <s:textfield name="url" label="URL"   cssClass="input-div" /><br/>
+                                        <p></p>
+                                        Display Url&nbsp;&nbsp;
+                                        <s:textfield name="displayurl" label="Display URL"  cssClass="input-div" /><br/>
+                                        Ad Text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                                        <s:textfield name="adtext" label="Ad Text" cssClass="input-div" /><br/>
+                                    </div>
+                                </div>
+                                <div><img src="adtype_images/white-b.jpg" width="571" height="10" alt="" title=""></div>
+                            </div>
+                            <!--white box end -->
+                            <div class="height"></div>
+                            <!--white box start -->
+                            <div class="whitebg">
+                                <div><img src="adtype_images/white-t.jpg" width="571" height="10" alt="" title=""></div>
+                                <div class="white-txt">
+                                    <div class="white-txt-border left box-wd">
+                                        <p>Creative</p>
+                                        Ad Image
+                                        &nbsp; <s:file label="Add Image" name="addimage" cssClass="input-div" ></s:file><br/>
+                                            Tile Image
+                                            &nbsp;<s:file label="Tile Image" name="tileimage" cssClass="input-div" ></s:file> </div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div><img src="adtype_images/white-b.jpg" width="571" height="10" alt="" title=""></div>
+                                </div>
+                                <!--white box end -->
+                                <div class="height"></div>
+
+                                <div align="center" class="margina">
+                                <s:submit value="Create and Finish" cssClass="button" />
+
+                            </div>
+                        </div>
+                        <div><img src="adtype_images/bottom.jpg" width="615" height="9" alt="" title=""></div>
+                    </div>
+                </s:form>
+                <!--left box end -->
+                <!--right box start -->
+                <div class="right rightbox">
+                    <div><img src="adtype_images/s-top.jpg" width="271" height="6" alt="" title=""></div>
+                    <div>
+                        <h3>Campaign Summary</h3>
+                        <table width="240" border="0" cellspacing="0" cellpadding="0" align="right" class="txt">
+                            <tr>
+                                <td width="100" class="bold">Name</td>
+                                <td><s:property value="%{campaignname}" /></td>
+                            </tr>
+                            <tr>
+                                <td class="bold">Date</td>
+                                <td><s:property value="%{startdate}" /> - <s:property value="%{enddate}" /></td>
+                            </tr>
+                            <tr>
+                                <td class="bold">Budget</td>
+                                <td><s:property value="%{dailybdgt}" /></td>
+                            </tr>
+                            <tr>
+                                <td class="bold">Delivery Method</td>
+                                <td><s:property value="%{deliverytype}" /></td>
+                            </tr>
+                        </table>
+                        <div class="clear"></div>
+                        <div><img src="adtype_images/s-bottom.jpg" width="271" height="6" alt="" title=""></div>
+                        <div class="height"></div>
+                        <div><img src="adtype_images/s-top.jpg" width="271" height="6" alt="" title=""></div>
+                        <div>
+                            <h3>Ad Group Summary</h3>
+                            <table width="240" border="0" cellspacing="0" cellpadding="0" align="right" class="txt">
+                                <tr>
+                                    <td width="100" class="bold">Platform </td>
+                                    <td><s:property value="%{platform}" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="bold">Location</td>
+                                    <td><s:property value="%{location}" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="bold">Age</td>
+                                    <td><s:property value="%{age}" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="bold">Gender</td>
+                                    <td><s:property value="%{gender}" /></td>
+                                </tr>
+                            </table>
+                            <div class="clear"></div>
+                            <div><img src="adtype_images/s-bottom.jpg" width="271" height="6" alt="" title=""></div>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                    <!--content end -->
+                    <div> </div>
+
+                </div>
+                <!--right box end -->
                 <div class="clear"></div>
-                <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
-                <div class="title" align="center">Ad Information</div>
-                <div class="buttonmenu">
-
-                </div>
-
-                <div class="clear"></div>
-
-                <div id="leftpanel">
-                    <ul>
-                        <li>
-                            <span class="leftnav-header">Step1</span>
-                            <span>Campaign Info</span>
-                        </li>
-                        <li>
-                            <span class="leftnav-header">Step2</span>
-                            <span>Ad Type</span>
-                        </li>
-                        <li>
-                            <span class="leftnav-header">Step3</span>
-                            <span>Demographics</span>
-                        </li>
-                        <li class="navactive">
-                            <span class="leftnav-header">Step4</span>
-                            <span>Creation</span>
-                        </li>
-                    </ul>
-                </div>
+            </div>
+            <!--content end -->
+            <div class="clear"> </div>
+            <!--content end -->
 
 
-                <div id="formcontainer">
-                    <s:form action="createAction" enctype="multipart/form-data" theme="simple">
-                        <div class="formrow">
-                            <div class="form-label"> Choose Ad Type</div>
-                            <div class="form-widget">   <s:radio name="adtype"  required="true" label="Choose Ad Type" list="{'Text + Tile','Mobile Images Ads','Tablets'}" cssClass="input-div" /></div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="formrow">
-
-                            <div class="form-label">Ad Name</div>
-                            <div class="form-widget"> <s:textfield name="adname" label="Ad Name" cssClass="input-div" /></div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="formrow">
-
-                            <div class="form-label">Ad Url</div>
-                            <div class="form-widget">    <s:textfield name="url" label="URL"   cssClass="input-div" /></div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="formrow">
-
-                            <div class="form-label">Display Url</div>
-                            <div class="form-widget">   <s:textfield name="displayurl" label="Display URL"  cssClass="input-div" /></div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="formrow">
-
-                            <div class="form-label">Ad Text</div>
-                            <div class="form-widget">  <s:textfield name="adtext" label="Ad Text" cssClass="input-div" /></div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="formrow">
-
-                            <div class="form-label">Ad Image</div>
-                            <div class="form-widget">   <s:file label="Add Image" name="addimage" cssClass="input-div" ></s:file></div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="formrow">
-
-                            <div class="form-label">Tile Image</div>
-                            <div class="form-widget">  <s:file label="Tile Image" name="tileimage" cssClass="input-div" ></s:file></div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="formrow">
-
-                            <div class="form-button" style="float: right" > <s:submit value="Create and Finish" cssClass="button" /></div>
-                        </div>
-                        <div class="clear"></div>
-                    </s:form>
+            <div class="clear"></div>
 
 
-                </div>
-                <div id="rightPanel">
-                    <p align="left"><b>Campaign Name:</b> <s:property value="%{campaignname}" /></p><hr/>
-                    <p align="left"><b>Date      :</b> <s:property value="%{startdate}" /> - <s:property value="%{enddate}" /></p><hr/>
-                    <p align="left"><b>Budget    :</b> <s:property value="%{dailybdgt}" /></p> <hr/>
-                    <p align="left"><b>Platform  :</b> <s:property value="%{platform}" /></p> <hr/>
-                    <p align="left"><b>Location  :</b> <s:property value="%{location}" /></p> <hr/>
-                    <p align="left"><b>Age  :</b> <s:property value="%{age}" /></p> <hr/>
-                    <p align="left"><b>Gender  :</b> <s:property value="%{gender}" /></p> <hr/>
-                </div>
+            <div>
+                <s:include value="footer_1.jsp"/>
+            </div>
 
-                <div class="clear"></div>
-
-
-
-                <div>
-                    <s:include value="footer_1.jsp"/>
-                </div>
-
-            </div>     
-
-
-
-        </div>
+        </div>     
         <!--Container End-->
         <div></div>
-
-
-
-
-
-
     </body>
 </html>

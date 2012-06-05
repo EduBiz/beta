@@ -10,6 +10,7 @@ import controller.spDAO;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import model.*;
@@ -32,10 +33,35 @@ public class createad extends ActionSupport {
     private List<Campaign> camplist;
     private File addimage;
     private File tileimage;
+    private String platform;
+    private String location;
+    private String campaignname;
+    private Date startdate;
+    private Date enddate;
+    private String dailybdgt;
+    private String gender;
+    private String age;
+    private String deliverytype;
 
     @Override
     public void validate() {
 
+        if (adname == null) {
+
+            addActionError("Please Enter Ad Name");
+        }
+        if (url == null) {
+
+            addActionError("Please Enter Ad url");
+        }
+        if (displayurl == null) {
+
+            addActionError("Please Enter Display Url");
+        }
+        if (adtext == null) {
+
+            addActionError("Please Enter Ad Text");
+        }
         if (adtype == null) {
 
             addActionError("Please Select Type");
@@ -248,5 +274,131 @@ public class createad extends ActionSupport {
      */
     public void setTileimage(File tileimage) {
         this.tileimage = tileimage;
+    }
+
+    /**
+     * @return the platform
+     */
+    public String getPlatform() {
+        return platform;
+    }
+
+    /**
+     * @param platform the platform to set
+     */
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
+
+    /**
+     * @return the location
+     */
+    public String getLocation() {
+        return location;
+    }
+
+    /**
+     * @param location the location to set
+     */
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    /**
+     * @return the campaignname
+     */
+    public String getCampaignname() {
+        return campaignname;
+    }
+
+    /**
+     * @param campaignname the campaignname to set
+     */
+    public void setCampaignname(String campaignname) {
+        this.campaignname = campaignname;
+    }
+
+    /**
+     * @return the startdate
+     */
+    public Date getStartdate() {
+        return startdate;
+    }
+
+    /**
+     * @param startdate the startdate to set
+     */
+    public void setStartdate(Date startdate) {
+        this.startdate = startdate;
+    }
+
+    /**
+     * @return the enddate
+     */
+    public Date getEnddate() {
+        return enddate;
+    }
+
+    /**
+     * @param enddate the enddate to set
+     */
+    public void setEnddate(Date enddate) {
+        this.enddate = enddate;
+    }
+
+    /**
+     * @return the dailybdgt
+     */
+    public String getDailybdgt() {
+        return dailybdgt;
+    }
+
+    /**
+     * @param dailybdgt the dailybdgt to set
+     */
+    public void setDailybdgt(String dailybdgt) {
+        this.dailybdgt = dailybdgt;
+    }
+
+    /**
+     * @return the gender
+     */
+    public String getGender() {
+        return gender;
+    }
+
+    /**
+     * @param gender the gender to set
+     */
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    /**
+     * @return the age
+     */
+    public String getAge() {
+        return age;
+    }
+
+    /**
+     * @param age the age to set
+     */
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    /**
+     * @return the deliverytype
+     */
+    public String getDeliverytype() {
+        return deliverytype;
+    }
+
+    /**
+     * @param deliverytype the deliverytype to set
+     */
+    public void setDeliverytype(String deliverytype) {
+        this.deliverytype = deliverytype;
     }
 }

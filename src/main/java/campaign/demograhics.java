@@ -14,7 +14,7 @@ import org.hibernate.HibernateException;
 
 /**
  *
- * @author radan
+ * this action class deprecated from Jun-2012 due to merger with old campaign step 2 amendments.
  */
 public class demograhics extends ActionSupport {
 
