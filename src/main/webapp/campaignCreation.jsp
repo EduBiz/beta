@@ -18,6 +18,7 @@
         <link href="style50.css" rel="stylesheet" type="text/css" />
         <!--for new changes in design Jun-2012  -->
         <link type="text/css" href="styleacc.css" rel="stylesheet" />
+      
     </head>
     <body>
         <%
@@ -68,7 +69,7 @@
                             <dl>
                                 <dt>Campaign Name</dt>
                                 <dd>
-                                    <s:textfield name="campaignname" label="Campaign Name"  cssClass="input-div" />
+                                    <s:textfield name="campaignname" label="Campaign Name"  cssClass="input-div"  />
                                 </dd>
                                 <dt>Start Date</dt>
                                 <dd>
@@ -124,7 +125,7 @@
                             <table width="240" border="0" cellspacing="0" cellpadding="0" align="center" class="txt">
                                 <tr>
                                     <td width="100" class="bold">Name</td>
-                                    <td>&nbsp;</td>
+                                    <td><input type="button" style="display: none" id=""/> </td>
                                 </tr>
                                 <tr>
                                     <td class="bold">Date</td>
@@ -136,6 +137,7 @@
                         <!--right box end -->
                         <div class="clear"></div>
                     </div>
+  
                 </s:form>
                 <!--content end -->
                 <div> </div>
