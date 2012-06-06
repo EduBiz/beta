@@ -18,9 +18,21 @@
         <link href="style50.css" rel="stylesheet" type="text/css" />
         <!--for new changes in design Jun-2012  -->
         <link type="text/css" href="styleacc.css" rel="stylesheet" />
-      
+        <!--for display system date in right panel Jun-2012  -->
+        <script>
+            function addDate(){
+                date = new Date();
+                var month = date.getMonth()+1;
+                var day = date.getDate();
+                var year = date.getFullYear();
+
+                if (document.getElementById('t4').value == ''){
+                    document.getElementById('t4').value = day + '/' + month + '/' + year;
+                }
+            }
+        </script>
     </head>
-    <body>
+    <body onload="addDate();">
         <%
           Object obj = session.getAttribute("User");
        
@@ -131,7 +143,7 @@
                                     <td class="bold">Date</td>
                                     <td><input type="button" style=" border: none" id="t4"/>-<input type="button" style=" border: none" id="t6"/></td>
                                 </tr>
-                                  <tr>
+                                <tr>
                                     <td width="100" class="bold">Budget</td>
                                     <td><input type="button" style=" border: none" id="t8"/> </td>
                                 </tr>
@@ -141,7 +153,7 @@
                         <!--right box end -->
                         <div class="clear"></div>
                     </div>
-  
+
                 </s:form>
                 <!--content end -->
                 <div> </div>
