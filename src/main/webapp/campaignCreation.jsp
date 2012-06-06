@@ -68,7 +68,7 @@
             </div>
 
             <!--menu start -->
-            <div class="menubg"><img src="navmenu/menu1.jpg" width="941" height="45" alt="" title=""></div>
+            <div><img src="navmenu/menu1.jpg" width="941" height="45" alt="" title=""></div>
             <!--menu end -->
             <!--content start -->
             <s:form action="campaignMain" theme="simple">
@@ -116,7 +116,7 @@
                                 </dd>
                                 <dt>Notes</dt>
                                 <dd>
-                                    <s:textarea label="Note:(optional)" name="note" rows="5" />
+                                    <s:textarea label="Note:(optional)" name="note" rows="5"  cols="20" />
                                 </dd>
                                 <dt style="margin-right:10px;">&nbsp;</dt>
                                 <dd>

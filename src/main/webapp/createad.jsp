@@ -56,7 +56,7 @@
             <div class="clear"></div>
 
             <!--menu start -->
-            <div class="menubg"><img src="navmenu/menu4.jpg" width="941" height="45" alt="" title="" ></div>
+            <div class=""><img src="navmenu/menu4.jpg" width="941" height="45" alt="" title="" ></div>
             <!--menu end -->
             <!--content start -->
             <div class="content pad10">
