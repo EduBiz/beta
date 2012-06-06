@@ -69,12 +69,12 @@
                             <dl>
                                 <dt>Campaign Name</dt>
                                 <dd>
-                                    <s:textfield name="campaignname" label="Campaign Name"  cssClass="input-div"  />
+                                    <s:textfield name="campaignname" label="Campaign Name"  cssClass="input-div" id="t1" onkeyup="document.getElementById('t2').value = this.value;" />
                                 </dd>
                                 <dt>Start Date</dt>
                                 <dd>
                                     <div class="left">
-                                        <sj:datepicker id="startdate" name="startdate" displayFormat="mm/dd/yy" label="Start Date" cssClass="input-div" onCompleteTopics="onDpClose"/>
+                                        <sj:datepicker id="startdate" name="startdate" displayFormat="mm/dd/yy" label="Start Date" cssClass="input-div" onCompleteTopics="onDpClose"    onclick="document.getElementById('t4').value = this.value;"/>
                                     </div>
 
                                     <div class="clear"></div>
@@ -82,7 +82,7 @@
                                 <dt>End Date</dt>
                                 <dd>
                                     <div class="left">
-                                        <sj:datepicker id="enddate" name="enddate" displayFormat="mm/dd/yy" label="End Date" cssClass="input-div" minDate="0" maxDate="" />
+                                        <sj:datepicker id="enddate" name="enddate" displayFormat="mm/dd/yy" label="End Date" cssClass="input-div" minDate="0" maxDate="" onclick="document.getElementById('t6').value = this.value;" />
                                         <!-- Start date end date calender validation using jQuery script 1-Jun-2012 added -->
                                         <script type="text/javascript">
                                             $.subscribe('onDpClose', function(event,data) {
@@ -96,7 +96,7 @@
                                 </dd>
                                 <dt>Daily Budget</dt>
                                 <dd>
-                                    <s:textfield name="dailybdgt" label="Daily Budget $" required="true" cssClass="input-div" />
+                                    <s:textfield name="dailybdgt" label="Daily Budget $" required="true" cssClass="input-div" id="t7" onkeyup="document.getElementById('t8').value = this.value;" />
                                     $</dd>
                                 <dt>Delivery Type</dt>
                                 <dd>
@@ -125,11 +125,15 @@
                             <table width="240" border="0" cellspacing="0" cellpadding="0" align="center" class="txt">
                                 <tr>
                                     <td width="100" class="bold">Name</td>
-                                    <td><input type="button" style="display: none" id=""/> </td>
+                                    <td><input type="button" style=" border: none" id="t2"/> </td>
                                 </tr>
                                 <tr>
                                     <td class="bold">Date</td>
-                                    <td>2012/04/23 00:00</td>
+                                    <td><input type="button" style=" border: none" id="t4"/>-<input type="button" style=" border: none" id="t6"/></td>
+                                </tr>
+                                  <tr>
+                                    <td width="100" class="bold">Budget</td>
+                                    <td><input type="button" style=" border: none" id="t8"/> </td>
                                 </tr>
                             </table>
                             <div><img src="adtype_images/s-bottom.jpg" width="271" height="6" alt="" title=""></div>
