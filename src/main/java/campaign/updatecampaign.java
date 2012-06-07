@@ -51,10 +51,7 @@ public class updatecampaign extends ActionSupport {
 
             addActionError("Please Select Delivery Type");
         }
-        if (promotype.equals("Please select")) {
-
-            addActionError("Please Select Promotype");
-        }
+      
         if (enddate == null) {
 
             addActionError("Please Select Start Date");
@@ -83,14 +80,16 @@ public class updatecampaign extends ActionSupport {
             //   Long camp1id=camp.getCampaignId();
             lc = (Long) Long.parseLong(campaid);
             System.out.println("campaignlong id is" + getLc());
-            camp = new Campaign(user, campaignname);
+            
+            camp=(Campaign)myDao.getDbsession().get(Campaign.class, lc);
 
             camp.setCampaignId(Long.parseLong(campaid));
+            camp.setCampaignName(campaignname);
             camp.setStartDate(startdate);
             camp.setEndDate(enddate);
             camp.setDialyBudget(dailybdgt);
             camp.setDeliveryMethod(deliverytype);
-            camp.setPromoType(promotype);
+           // camp.setPromoType(promotype);
             camp.setNote(note);
             getMyDao().getDbsession().update(camp);
 

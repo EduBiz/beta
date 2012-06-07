@@ -57,7 +57,7 @@
 
             <div class="clear"></div>
             <!--menu start -->
-            <div><img src="navmenu/menu3.jpg" width="941" height="45" alt="" title="" ></div>
+            <div>&nbsp;&nbsp;<img src="navmenu/menu3.jpg" width="941" height="45" alt="" title="" ></div>
             <!--menu end -->
 
             <!--content start -->

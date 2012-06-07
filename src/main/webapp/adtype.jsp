@@ -66,7 +66,7 @@
             <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
             <div class="clear"></div>
             <!--menu start -->
-            <div  class="menubg"><img src="navmenu/menu2.jpg" width="941" height="45" alt="" title="" ></div>
+            <div>&nbsp;&nbsp;<img src="navmenu/menu2.jpg" width="941" height="45" alt="" title="" ></div>
             <!--menu end -->
             <!--content start -->
             <div class="content pad10">
