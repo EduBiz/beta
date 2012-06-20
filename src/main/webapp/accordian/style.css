@@ -20,7 +20,7 @@ font:12px/20px Arial, Helvetica, sans-serif; color:#000; font-weight:normal!impo
 }
 #acc h3:hover {background:url(header_over.gif)}
 #acc .acc-section {overflow:hidden; background:#fff}
-#acc .acc-content {width:;background:#fff}
+#acc .acc-content {width: auto;background:#fff}
 
 #nested {width:571px; list-style:none; color:#033; margin-bottom:15px}
 #nested h3 {width:491px;padding:0;padding-left:80px; font-weight:bold; margin-top:5px; cursor:pointer; background:url(off.jpg) no-repeat; height:60px; padding-top:18px;}
