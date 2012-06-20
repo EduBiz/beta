@@ -57,7 +57,18 @@
 
             <div class="clear"></div>
             <!--menu start -->
-            <div>&nbsp;&nbsp;<img src="navmenu/menu3.jpg" width="941" height="45" alt="" title="" ></div>
+          <div class="header">
+                <div id="access3">
+
+
+                    <div class="menu"><ul><li class="current_page_item"><a title="Step 1" href="#">Step 1<span>Campaign Info</span></a></li>
+                            <li class="page_item page-item-18"><a href="#" title="Step 2">Step 2<span>Ad Group Type</span></a></li>
+                            <li class="page_item page-item-16"><a href="#" title="Step 3">Step 3<span>Targeting</span></a></li>
+                            <li class="page_item page-item-390"><a href="#" title="Step 4">Step 4<span>Creative &amp; Bid</span></a></li>
+                        </ul></div>
+
+                </div>
+            </div>
             <!--menu end -->
 
             <!--content start -->
