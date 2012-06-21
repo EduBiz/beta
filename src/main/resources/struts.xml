@@ -187,7 +187,7 @@
             Removed Due to merger with all related actions in 1-Jun-2012                  -->
         <action name="createAction" class="campaign.createad" >
             <result name="success" >/dashboard.jsp</result>
-            <result name="input" >createad.jsp</result>
+            <result name="input" >/createad.jsp</result>
             <result name="error" >/createad.jsp</result>
         </action>
        

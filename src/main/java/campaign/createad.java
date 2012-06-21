@@ -50,32 +50,20 @@ public class createad extends ActionSupport {
         if (adname == null) {
 
             addActionError("Please Enter Ad Name");
+            
         }
         if (url == null) {
 
             addActionError("Please Enter Ad url");
+             
         }
-        if (displayurl == null) {
 
-            addActionError("Please Enter Display Url");
-        }
         if (adtext == null) {
 
             addActionError("Please Enter Ad Text");
+            
         }
-        if (adtype == null) {
-
-            addActionError("Please Select Type");
-        }
-        if (addimage == null) {
-
-            addActionError("Please Select Ad Image");
-        }
-        if (tileimage == null) {
-
-            addActionError("Please Select Tile Image");
-        }
-
+     
     }
 
     @Override
@@ -88,7 +76,81 @@ public class createad extends ActionSupport {
             Long campid = camp.getCampaignId();
             // System.out.println("Camp is" + camp.toString());
             //  Long campl=Long.parseLong(camp.toString());
+            if (addimage == null && tileimage== null) {
+                CampaignCreative campcre = new CampaignCreative();
+                campcre.setCampaign(campid);
+                campcre.setStyleType(adtype);
+                campcre.setAddName(adname);
+                campcre.setAddUrl(url);
+                campcre.setDisplayUrl(displayurl);
+                campcre.setAddText(adtext);
+                getMyDao().getDbsession().save(campcre);
 
+                User user = (User) session.get("User");
+
+                setCamplist((List<Campaign>) myDao.getDbsession().createQuery("from Campaign").list());
+                Criteria crit = myDao.getDbsession().createCriteria(Campaign.class);
+                crit.add(Restrictions.like("user", user));
+                crit.setMaxResults(20);
+                setCamplist((List<Campaign>) crit.list());
+                addActionMessage("Campaign " + camp.getCampaignName() + " Successfully Created");
+                return "success";
+            } else if (addimage== null) {
+                CampaignCreative campcre = new CampaignCreative();
+                campcre.setCampaign(campid);
+                campcre.setStyleType(adtype);
+                campcre.setAddName(adname);
+                campcre.setAddUrl(url);
+                campcre.setDisplayUrl(displayurl);
+                campcre.setAddText(adtext);
+
+                byte[] tFile = new byte[(int) tileimage.length()];
+                FileInputStream fileInputStream;
+
+                fileInputStream = new FileInputStream(tileimage);
+                fileInputStream.read(tFile);
+                fileInputStream.close();
+                campcre.setTileImage(tFile);
+                getMyDao().getDbsession().save(campcre);
+
+                User user = (User) session.get("User");
+
+                setCamplist((List<Campaign>) myDao.getDbsession().createQuery("from Campaign").list());
+                Criteria crit = myDao.getDbsession().createCriteria(Campaign.class);
+                crit.add(Restrictions.like("user", user));
+                crit.setMaxResults(20);
+                setCamplist((List<Campaign>) crit.list());
+                addActionMessage("Campaign " + camp.getCampaignName() + " Successfully Created");
+                return "success";
+            } else if (tileimage==null) {
+                CampaignCreative campcre = new CampaignCreative();
+                campcre.setCampaign(campid);
+                campcre.setStyleType(adtype);
+                campcre.setAddName(adname);
+                campcre.setAddUrl(url);
+                campcre.setDisplayUrl(displayurl);
+                campcre.setAddText(adtext);
+
+                byte[] aFile = new byte[(int) addimage.length()];
+
+                FileInputStream fileInputStream = new FileInputStream(addimage);
+                //convert file into array of bytes
+                fileInputStream.read(aFile);
+                campcre.setAddImage(aFile);
+                getMyDao().getDbsession().save(campcre);
+
+                User user = (User) session.get("User");
+
+                setCamplist((List<Campaign>) myDao.getDbsession().createQuery("from Campaign").list());
+                Criteria crit = myDao.getDbsession().createCriteria(Campaign.class);
+                crit.add(Restrictions.like("user", user));
+                crit.setMaxResults(20);
+                setCamplist((List<Campaign>) crit.list());
+                addActionMessage("Campaign " + camp.getCampaignName() + " Successfully Created");
+                return "success";
+            }
+            else{
+              
             CampaignCreative campcre = new CampaignCreative();
             campcre.setCampaign(campid);
             campcre.setStyleType(adtype);
@@ -119,31 +181,35 @@ public class createad extends ActionSupport {
             crit.setMaxResults(20);
             setCamplist((List<Campaign>) crit.list());
 
-            // Avatar avatar2 = (Avatar)session.get(Avatar.class, avatar.getAvatarId());
-            //  byte[] bAvatar = avatar2.getImage();
+            /*
+             * This code is used to retrieve the blob image from the database 
+             * and store it on local system or any other specified location.
             byte[] retadd = campcre.getAddImage();
-
+            
             FileOutputStream fos = new FileOutputStream("D:\\test.gif");
             fos.write(retadd);
             byte[] rettile = campcre.getTileImage();
-
+            
             fos = new FileOutputStream("D:\\test1.gif");
             fos.write(rettile);
             fos.close();
+            
+             */
             addActionMessage("Campaign " + camp.getCampaignName() + " Successfully Created");
             return "success";
+            }
         } catch (HibernateException e) {
-            addActionError("Server  Error Please Recheck All Fields ");
+            addActionError("Server  Error Please Recheck All Fields "+e.getMessage());
             e.printStackTrace();
             return "error";
         } catch (NullPointerException ne) {
 
-            addActionError("Server  Error Please Recheck All Fields ");
+            addActionError("Server  Error Please Recheck All Fields "+ne.getMessage());
             ne.printStackTrace();
             return "error";
         } catch (Exception e) {
 
-            addActionError("Server  Error Please Recheck All Fields ");
+            addActionError("Server  Error Please Recheck All Fields "+e.getMessage());
             e.printStackTrace();
             return "error";
         }

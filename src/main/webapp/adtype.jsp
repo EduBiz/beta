@@ -224,14 +224,14 @@
                                     <td><s:property value="%{startdate}" /></td>
                                 </tr>
                             </table>
-                            <div class="clear"></div>
+                         <div class="clear"></div>
                             <div><img src="adtype_images/s-bottom.jpg" width="271" height="6" alt="" title=""></div>
                         </div>
 
                         <div class="clear"></div>
                     </div>
-                    <!--content end -->
-                    <div> </div>
+
+
 
                 </div>
                 <!--right box end -->

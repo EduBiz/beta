@@ -18,6 +18,8 @@
         <link href="style50.css" rel="stylesheet" type="text/css" />
         <!--for new changes in design Jun-2012  -->
         <link type="text/css" href="styleacc.css" rel="stylesheet" />
+        <!--for accordion -->
+        <link rel="stylesheet" href="accordian/style.css" type="text/css">
     </head>
 
     <body>
@@ -73,77 +75,272 @@
             <div class="content pad10">
                 <h2>Create Ad</h2>
 
-                <s:form action="createAction" enctype="multipart/form-data" theme="simple">
-                    <!--left box start -->
-                    <div class="left leftbox">
-                        <div><img src="adtype_images/top.jpg" width="615" height="9" alt="" title=""></div>
-                        <div class="boxbg">
-                            <!--white box start -->
-                            <div class="whitebg">
-                                <div><img src="adtype_images/white-t.jpg" width="571" height="10" alt="" title=""></div>
-                                <div class="white-txt">
-                                    <div class="white-txt-border">
-                                        <p>Choose Ad Type</p>
-                                        <input name="adtype" type="radio" value="Text + Tile">
-                                        &nbsp;Text + Tile<br/>
-                                        <input name="adtype" type="radio" value="Mobile Images Ads">
-                                        &nbsp;Mobile Images Ads <br/>
-                                        <input name="adtype" type="radio" value="Tablets">
-                                        &nbsp;Tablets </div>
-                                </div>
-                                <div><img src="adtype_images/white-b.jpg" width="571" height="10" alt="" title=""></div>
-                            </div>
-                            <!--white box end -->
-                            <div class="height"></div>
-                            <!--white box start -->
-                            <div class="whitebg">
-                                <div><img src="adtype_images/white-t.jpg" width="571" height="10" alt="" title=""></div>
-                                <div class="white-txt">
-                                    <div class="white-txt-border">
-                                        <p>Ad Information</p>
 
-                                        Ad Name&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                                        <s:textfield name="adname" label="Ad Name" cssClass="input-div" /><br/>
-                                        Ad Url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <s:textfield name="url" label="URL"   cssClass="input-div" /><br/>
-                                        <p></p>
-                                        Display Url&nbsp;&nbsp;
-                                        <s:textfield name="displayurl" label="Display URL"  cssClass="input-div" /><br/>
-                                        Ad Text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-                                        <s:textfield name="adtext" label="Ad Text" cssClass="input-div" /><br/>
-                                    </div>
-                                </div>
-                                <div><img src="adtype_images/white-b.jpg" width="571" height="10" alt="" title=""></div>
-                            </div>
-                            <!--white box end -->
-                            <div class="height"></div>
-                            <!--white box start -->
-                            <div class="whitebg">
-                                <div><img src="adtype_images/white-t.jpg" width="571" height="10" alt="" title=""></div>
-                                <div class="white-txt">
-                                    <div class="white-txt-border left box-wd">
-                                        <p>Creative</p>
-                                        Ad Image
-                                        &nbsp; <s:file label="Add Image" name="addimage" cssClass="input-div" ></s:file><br/>
-                                            Tile Image
-                                            &nbsp;<s:file label="Tile Image" name="tileimage" cssClass="input-div" ></s:file>
-                                    </div>
+                <!--left box start -->
+                <div class="left leftbox">
+                    <div><img src="images/top.jpg" width="615" height="9" alt="" title=""></div>
+                    <div class="boxbg">
+                        <!--accordian start -->
+                        <ul id="acc">
+                            <li>
+                                <div style="height: auto;">
+                                    <div>
+                                        <ul class="acc" id="nested">
 
+                                            <li>
+                                                <s:form action="createAction" enctype="multipart/form-data" theme="simple">
+                                                    <s:hidden name="displayurl" value="Default" />
+                                                    <s:hidden name="adtype" value="Text + Tile" />
+                                                    <s:hidden name="campaignname" value="%{campaignname}" />
+                                                    <s:hidden name="startdate" value="%{startdate}" />
+                                                    <s:hidden name="enddate" value="%{enddate}" />
+                                                    <s:hidden name="dailybdgt" value="%{dailybdgt}" />
+                                                    <s:hidden name="deliverytype" value="%{deliverytype}" />
+                                                    <s:hidden name="promotype" value="%{promotype}" />
+                                                    <s:hidden name="platform" value="%{platform}" />
+                                                    <s:hidden name="location" value="%{location}" />
+                                                    <s:hidden name="age" value="%{age}" />
+                                                    <s:hidden name="gender" value="%{gender}" />
+                                                    <h3><span>Text + Tile</span><br>
+                                                        Create a standard 50 character text ad.</h3>
+
+                                                    <div class="acc-section">
+
+                                                        <div class="acc-content">
+
+                                                            <div class="border" style="border-top:0px; padding-bottom:15px">
+
+                                                                <div class="accordiantxtnw">
+                                                                    <div style="padding:10px 22px 0 0;">
+                                                                        <p style="padding-bottom:10px;">Ad Information</p>
+                                                                        <p class="bordernw">&nbsp;</p>
+                                                                    </div>
+
+
+                                                                    <p><span style="padding-right:22px;">Ad Name</span><input name="adname" type="text" ></p><br>
+                                                                    <p><span>Ad URL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input name="url" type="text" ></p>
+                                                                    <p><span style="padding:10px 0 0 87px; font-size:11px;">Link to an iTunes page <a href="#" title="Learn More">Learn More</a></span></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="border" style="border-top:0px; padding-bottom:15px">
+
+                                                                <div class="accordiantxtnw">
+                                                                    <div style="padding:10px 22px 0 0;">
+                                                                        <p style="padding-bottom:10px;">Creative</p>
+                                                                        <p class="bordernw">&nbsp;</p>
+                                                                    </div>
+
+
+                                                                    <p><span style="padding-right:22px;">Ad Text</span><input name="adtext" type="text"></p>
+                                                                    <p><span style="padding:0 0 0 80px; font-size:11px;"></span></p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="border" style="border-top:0px; padding-bottom:15px">
+
+                                                                <div class="accordiantxtnw">
+                                                                    <div style="padding:10px 22px 0 0;">
+                                                                        <p style="padding-bottom:10px;">Title Images</p>
+                                                                        <p class="bordernw">&nbsp;</p>
+                                                                    </div>
+                                                                    <div style="padding:10px 22px 0 0;" class="accordiantxt" >
+
+
+                                                                        <span><input name="dispimg"  type="radio" value="default" checked></span> <span>Use a Standard title image</span>
+                                                                        <select>
+                                                                            <option value="">Finance, Business, Productivity</option>
+                                                                        </select>
+
+
+                                                                    </div>
+
+                                                                    <div style="padding:10px 22px 0 0;" class="accordiantxt" >
+
+                                                                        <p class="height6"></p>
+                                                                        <span><input name="dispimg"  type="radio" value="default"></span><span>Custom tile image</span> <p><span><img src="images/asm.jpg" width="288" height="44" alt="AD-IMAGE" title="Tile Image"></span>
+                                                                        </p>
+
+                                                                        <div align="center" class="margina">
+                                                                            <s:file label="Add Image" name="addimage" cssClass="input-div"></s:file>
+                                                                        </div>
+
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="border" style="border-top:0px; padding-bottom:15px">
+
+                                                                <div class="accordiantxtnw">
+                                                                    <p style="padding:15px 0 0 130px; font-weight:normal; font-size:11px;">Tile Tile - 72x72</p>
+                                                                    <img style="margin:15px 0 0 130px;" src="images/amed.jpg" alt="Tile-Image" title="">
+                                                                    <div align="center" class="margina">
+                                                                        <s:file label="Tile Image" name="tileimage" cssClass="input-div" ></s:file>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="border" style="border-top:0px; padding-bottom:15px">
+
+
+                                                                <div class="accordiantxtnw" style="padding-top:15px">
+                                                                    <p>bid<span style="padding-left:450px;">Mid bid</span></p>
+                                                                    <p>$ <input type="text" style="width:35px;" value="0.01" ><span style="padding-left:427px;">$ 0.01</span></p>
+
+
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="border" style="border-top:0px; padding-bottom:15px">
+
+
+                                                                <div class="accordiantxtnw" style="padding-top:15px">
+
+                                                                    <div align="center" class="margina">
+                                                                        <input type="submit" value="Create Ad and Finish" class="shadowbutton">
+                                                                        &nbsp;
+
+                                                                    </div>
+
+
+
+
+                                                                </div>
+                                                            </div>
+
+
+
+
+                                                            <div><img src="accordian/accordian-bottom.jpg" width="571" height="10" alt="" title=""></div>
+                                                        </div>
+                                                    </div>
+
+                                                </s:form>
+                                            </li>
+
+                                            <li>
+                                                <s:form action="createAction" enctype="multipart/form-data" theme="simple">
+                                                    <s:hidden name="displayurl" value="Default" />
+                                                    <s:hidden name="campaignname" value="%{campaignname}" />
+                                                    <s:hidden name="startdate" value="%{startdate}" />
+                                                    <s:hidden name="enddate" value="%{enddate}" />
+                                                    <s:hidden name="dailybdgt" value="%{dailybdgt}" />
+                                                    <s:hidden name="deliverytype" value="%{deliverytype}" />
+                                                    <s:hidden name="promotype" value="%{promotype}" />
+                                                    <s:hidden name="platform" value="%{platform}" />
+                                                    <s:hidden name="location" value="%{location}" />
+                                                    <s:hidden name="age" value="%{age}" />
+                                                    <s:hidden name="gender" value="%{gender}" />
+                                                    <h3><span>Image Ads</span><br>
+                                                        Create a banner ad by uploading supported banner formats.</h3>
+
+                                                    <div class="acc-section">
+
+                                                        <div class="acc-content">
+                                                            <div class="border" style="border-top:0px; padding-bottom:15px">
+
+                                                                <div class="accordiantxtnw">
+                                                                    <div style="padding:10px 22px 0 0;" class="accordiantxt" >
+                                                                        <p style="padding-bottom:10px;">Please select device type</p>
+
+                                                                        <input name="adtype" type="radio" value="Mobile Images Ads" checked>&nbsp;Mobile Phones<br/>
+
+                                                                        <input name="adtype" type="radio" value="Tablets">&nbsp;Tablets<br/>
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                            </div>
+                                                            <div class="border" style="border-top:0px; padding-bottom:15px">
+
+                                                                <div class="accordiantxtnw">
+                                                                    <div style="padding:10px 22px 0 0;">
+                                                                        <p style="padding-bottom:10px;">Ad Information</p>
+                                                                        <p class="bordernw">&nbsp;</p>
+                                                                    </div>
+
+
+                                                                    <p><span style="padding-right:22px;">Ad Name</span><input name="adname" type="text" ></p><br>
+                                                                    <p><span>Ad URL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input name="url" type="text" ></p>
+                                                                    <p><span style="padding:10px 0 0 87px; font-size:11px;">Link to an iTunes page <a href="#" title="Learn More">Learn More</a></span></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="border" style="border-top:0px; padding-bottom:15px">
+
+                                                                <div class="accordiantxtnw">
+                                                                    <div style="padding:10px 22px 0 0;">
+                                                                        <p style="padding-bottom:10px;">Creative<span style="padding-left:248px;">Image Upload (JPG, GIF, PNG)</span></p>
+                                                                        <p class="bordernw">&nbsp;</p>
+                                                                    </div>
+
+
+                                                                    <p>Ad Text</p>
+                                                                    <p><input name="adtext" type="text" style="width:320px; height:40px;" value=""></p>
+
+                                                                    <div align="center" class="margina">
+                                                                        <s:file label="Add Image" name="addimage" cssClass="input-div"></s:file>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="border" style="border-top:0px; padding-bottom:15px">
+
+
+                                                                <div class="accordiantxtnw" style="padding-top:15px">
+                                                                    <p>bid<span style="padding-left:450px;">Mid bid</span></p>
+                                                                    <p>$ <input type="text" style="width:35px;" value="0.01" ><span style="padding-left:427px;">$ 0.01</span></p>
+
+
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="border" style="border-top:0px; padding-bottom:15px">
+
+
+                                                                <div class="accordiantxtnw" style="padding-top:15px">
+
+                                                                    <div align="center" class="margina">
+                                                                        <input type="submit" value="Create Ad and Finish" class="shadowbutton">
+                                                                        &nbsp;
+
+                                                                    </div>
+
+
+
+
+                                                                </div>
+                                                            </div>
+
+
+
+
+                                                            <div><img src="accordian/accordian-bottom.jpg" width="571" height="10" alt="" title=""></div>
+                                                        </div>
+                                                    </div>
+                                                </s:form>
+                                            </li>
+
+
+
+
+                                        </ul>
                                         <div class="clear"></div>
                                     </div>
-                                    <div><img src="adtype_images/white-b.jpg" width="571" height="10" alt="" title=""></div>
                                 </div>
-                                <!--white box end -->
-                                <div class="height"></div>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                        <!--accordian end -->
 
-                                <div align="center" class="margina">
-                                <s:submit value="Create and Finish" cssClass="button" />
 
-                            </div>
-                        </div>
-                        <div><img src="adtype_images/bottom.jpg" width="615" height="9" alt="" title=""></div>
                     </div>
-                </s:form>
+                    <div><img src="images/bottom.jpg" width="615" height="9" alt="" title=""></div>
+                </div>
                 <!--left box end -->
                 <!--right box start -->
                 <div class="right rightbox">
@@ -224,5 +421,16 @@
         </div>     
         <!--Container End-->
         <div></div>
+        <!--for accordian -->
+        <script type="text/javascript" src="accordian/script.js"></script>
+        <script type="text/javascript">
+
+            var parentAccordion=new TINY.accordion.slider("parentAccordion");
+            parentAccordion.init("acc","h3",0,0);
+
+            var nestedAccordion=new TINY.accordion.slider("nestedAccordion");
+            nestedAccordion.init("nested","h3",1,-1,"acc-selected");
+
+        </script>
     </body>
 </html>
