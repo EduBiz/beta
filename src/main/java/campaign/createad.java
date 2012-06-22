@@ -199,17 +199,17 @@ public class createad extends ActionSupport {
             return "success";
             }
         } catch (HibernateException e) {
-            addActionError("Server  Error Please Recheck All Fields "+e.getMessage());
+            addActionError("Server  Error Please Recheck All Fields ");
             e.printStackTrace();
             return "error";
         } catch (NullPointerException ne) {
 
-            addActionError("Server  Error Please Recheck All Fields "+ne.getMessage());
+            addActionError("Server  Error Please Recheck All Fields ");
             ne.printStackTrace();
             return "error";
         } catch (Exception e) {
 
-            addActionError("Server  Error Please Recheck All Fields "+e.getMessage());
+            addActionError("Server  Error Please Recheck All Fields ");
             e.printStackTrace();
             return "error";
         }
