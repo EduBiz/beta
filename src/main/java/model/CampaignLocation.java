@@ -1,5 +1,5 @@
 package model;
-// Generated Jun 5, 2012 2:41:11 PM by Hibernate Tools 3.2.1.GA
+// Generated Jun 27, 2012 10:36:34 AM by Hibernate Tools 3.2.1.GA
 
 
 
@@ -16,6 +16,10 @@ public class CampaignLocation  implements java.io.Serializable {
     public CampaignLocation() {
     }
 
+	
+    public CampaignLocation(Campaign campaign) {
+        this.campaign = campaign;
+    }
     public CampaignLocation(Campaign campaign, String zone) {
        this.campaign = campaign;
        this.zone = zone;

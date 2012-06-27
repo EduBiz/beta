@@ -1,5 +1,5 @@
 package model;
-// Generated Jun 5, 2012 2:41:11 PM by Hibernate Tools 3.2.1.GA
+// Generated Jun 27, 2012 10:36:34 AM by Hibernate Tools 3.2.1.GA
 
 
 
@@ -16,6 +16,10 @@ public class CampaignDevice  implements java.io.Serializable {
     public CampaignDevice() {
     }
 
+	
+    public CampaignDevice(Campaign campaign) {
+        this.campaign = campaign;
+    }
     public CampaignDevice(Campaign campaign, String deviceName) {
        this.campaign = campaign;
        this.deviceName = deviceName;
