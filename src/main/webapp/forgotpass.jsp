@@ -33,7 +33,7 @@
 
             <div class="menubar">
                 <ul>
-                    <li><a href="index.jsp">Home</a></li>
+                    <li><a href="indexn.jsp">Home</a></li>
                     <li><a href="signup.jsp">SignUp</a></li> 
                 </ul>
             </div>
