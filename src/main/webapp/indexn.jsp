@@ -1,183 +1,475 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
     <head>
 
-        <%@page contentType="text/html" pageEncoding="windows-1252"%>
         <%@taglib uri="/struts-tags" prefix="s"%>
         <%@page import="model.*"%>
         <%@ page import="java.util.*" %>
         <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
-        <meta http-equiv="content-type" content="text/html; charset=windows-1250">
-
-        <title>Adzappy</title>
-
-        <link href="nstyle.css" rel="stylesheet" type="text/css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>.::AdZappy::.</title>
+        <link href="indexstyle.css" rel="stylesheet" type="text/css" />
         <s:head theme="jquery"/><sj:head/>
     </head>
 
     <body>
-        <div id="topnav">
-            <div id="toplogomenu">
-                <div id="toplogomenu1">
 
+        <div class="container">
 
-                    <a href="indexn.jsp" id="toplogomenuselect">Adzappy Home</a>
+            <div class="header">
 
-                </div>
-                <div id="toplogomenu2">
-
-
-                    <a href="signup.jsp" >Register</a>
-                    <a href="login.jsp" >Login</a>
-
-                </div>
-            </div>
-
-        </div>
-        <div id="mainbanner">
-            <img src="indeximages/logo.jpg" width="20%" height="50px" />
-        </div>
-
-        <!--Container Start-->
-        <div id="container">
-            <s:actionmessage theme="jquery"/><s:actionerror theme="jquery"/>
-            <div class="wrapper">
-                <div class="col1">
-                    <div class="h11"> Advertisers </div>
-                    <div class="h2"> Reach Your Target Audience </div>	
-                    <div class="rdmore"></div>
-
+                <div class="logo">
+                    <img src="indeximages/logo.jpg" width="241" height="49" />				
                 </div>
 
-                <div class="col2">
-                    <div class="h11"> App Developers </div>
-                    <div class="h2"> Reach Your Target Audience </div>
-                    <div class="rdmore"></div>
-                </div>
+                <div class="navbar">
 
-                <div class="col3">
-                    <div class="h11"> Publishers </div>
-                    <div class="h2"> Reach Your Target Audience </div>
-                    <div class="rdmore"></div>
-                </div>
+                    <div class="menu">
 
-                <div class="col31">
-                    <div class="h13"> Current Stats </div>
-                    <div class="h3"> Global Impressions Served:</div>
-                    <div class="h13"> 1,292,766,206,026 </div>
-                    <div class="getstartedwrap">
-                        <div class="h15">
-                            <a href="signup.jsp">Get Started</a>
-                        </div>
+                        <a href="indexn.jsp"><img src="indeximages/btn_home_hover.jpg" width="53" height="24" hspace="1"/></a>
+                        <a href="marketplace.jsp"><img src="indeximages/btn_marketplace.jpg" width="89" height="24"/></a>
+                        <a href="analytics.jsp"><img src="indeximages/btn_analytics.jpg" width="74" height="24" hspace="1"/></a>
+                        <a href="metrics.jsp"><img src="indeximages/btn_metrics.jpg" width="64" height="24"/></a>
 
                     </div>
-                </div>				
-            </div>
 
-            <div class="gap"></div>
+                </div>
 
-            <div class="contwrap">
-                <div class="content">
-                    <div class="col4">
-                        <div class="h13"> Features </div>
-                        <div>
-                            <h6><img src="indeximages/pic1.jpg" width="88" height="80" style="float:left" />Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                        </div>
-                        <div class="read_more"><a href="#" class="read_more">read more...</a></div><br />
-                        <hr width="90%" />
+            </div>	
+            <div class="content_main">
+                <s:actionmessage theme="jquery"/><s:actionerror theme="jquery"/>
+                <!-- Content 1 Start -->
 
-                        <div>
-                            <h6><img src="indeximages/pic2.jpg" width="88" height="80" style="float:left" />Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                        </div>
-                        <div class="read_more"><a href="#" class="read_more">read more...</a></div><br />
-                        <hr width="90%" />
+                <div class="content1">
 
-                        <div>
-                            <h6><img src="indeximages/pic3.jpg" width="88" height="80" style="float:left" />Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                        </div>
-                        <div class="read_more"><a href="#" class="read_more">read more...</a></div>
-                    </div>
+                    <div class="cont_1">
 
+                        <img src="indeximages/adv_top_corner.jpg" width="240" height="5"/>
 
-                    <div class="col5">
-                        <div class="pic">
-                            <img src="indeximages/mobile.jpg" width="290"/>
-                        </div>
-                        <div class="h5"> Welcome to AdZappy </div>
-                        <div>
-                            <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                        </div>
-                        <!--<div class="rdmore1">
-                                <div class="h16">
-                                        <a href="#">Read More</a>
+                        <div class="box1">
+
+                            <div class="box1_cont">
+
+                                <div class="h11">Advertisers</div>
+
+                                <div class="h2"> Reach Your Target Audience </div>
+
+                                <div class="box1_cont_rdmr">
+
+                                    <img src="indeximages/btn_more.jpg" width="60" height="24"/>
+
                                 </div>
-                        </div> -->
+
+                            </div>
+
+                        </div>
+
+                        <img src="indeximages/adv_bottom_corner.jpg" width="240" height="5"/>
+
 
                     </div>
 
 
-                    <div class="col6">
-                        <div class="h13"> Latest News </div>
-                        <div>
-                            <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                        </div>
-                        <div class="date">03.02.2010</div>
-                        <div class="read_more"><a href="#" class="read_more">read more...</a></div>
-                        <hr width="90%" />
+                    <div class="cont_2">
 
-                        <div>
-                            <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                        </div>
-                        <div class="date">03.02.2010</div>
-                        <div class="read_more"><a href="#" class="read_more">read more...</a></div>
-                        <hr width="90%" />
+                        <img src="indeximages/adv_top_corner.jpg" width="240" height="5"/>
 
-                        <div>
-                            <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                        </div>
-                        <div class="date">03.02.2010</div>
-                        <div class="read_more"><a href="#" class="read_more">read more...</a></div>
-                        <!--<div class="viewmore">
-                                <div class="h16">
-                                        <a href="#">View More</a>
+                        <div class="box1">
+
+                            <div class="box1_cont">
+
+                                <div class="h11">App Developers</div>
+
+                                <div class="h2"> Reach Your Target Audience </div>
+
+                                <div class="box1_cont_rdmr">
+
+                                    <img src="indeximages/btn_more.jpg" width="60" height="24"/>
+
                                 </div>
-                        </div> -->
+
+                            </div>
+
+                        </div>
+
+                        <img src="indeximages/adv_bottom_corner.jpg" width="240" height="5"/>
+
 
                     </div>
+
+
+                    <div class="cont_3">
+
+                        <img src="indeximages/adv_top_corner.jpg" width="240" height="5"/>
+
+                        <div class="box1">
+
+                            <div class="box1_cont">
+
+                                <div class="h11">Publishers</div>
+
+                                <div class="h2"> Reach Your Target Audience </div>
+
+                                <div class="box1_cont_rdmr">
+
+                                    <img src="indeximages/btn_more.jpg" width="60" height="24"/>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <img src="indeximages/adv_bottom_corner.jpg" width="240" height="5"/>
+
+
+                    </div>
+
+
+
+                    <div class="cont_4">
+
+                        <img src="indeximages/top_corner2.jpg" width="240" height="9"/>
+
+                        <div class="box_bg2">
+
+                            <div class="boxwrap">
+
+                                <div class="getstartedwrap">
+
+                                    <div class="getstart">
+
+                                        <a href="signup.jsp">Get Started</a>
+
+                                    </div>
+
+                                </div>
+
+                                <form action="login.action" method="post" id="loginform">
+
+                                    <h3>LOG IN TO YOUR ACCOUNT</h3>
+
+                                    <div class="formdiv">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="emailform" name="email"/>
+                                    </div>
+
+                                    <div class="formdiv">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="passform" name="password"/>
+                                    </div>
+
+                                    <div class="formfooter">
+                                        <a href="forgotpass.jsp" class="forget">Forget Password?</a>
+                                        <input type="submit" class="submitform" value="Login"/>
+                              
+                                        <div>
+                                            Not Registered? &nbsp;&nbsp;<a href="signup.jsp">Sign Up Now</a>
+                                        </div>
+
+                                    </div>
+
+                                </form>	
+
+                                <div style="clear: both;"></div>
+
+                            </div>
+
+                        </div>
+
+                        <img src="indeximages/bottm_corner2.jpg" width="240" height="9"/>
+
+
+                    </div>
+
 
                 </div>
+
+                <!--Content 1 End -->
+
+
+                <!-- Content 2 Start -->
+
+                <div class="content2">
+
+                    <!-- Conten_1 Start -->
+                    <div class="conten_1">
+
+                        <img src="indeximages/top_corner.jpg" width="317" height="7"/>
+
+                        <div class="box_bg">
+
+                            <div class="box_in">
+
+                                <div class="freatr">
+
+                                    <img src="indeximages/features.jpg" width="76" height="15" hspace="5"/>
+
+                                </div>
+
+                                <div class="featr_cont1">
+
+                                    <img src="indeximages/pic1.jpg" width="88" height="89" hspace="5"/>
+
+                                    <div class="featr_txt">
+
+                                        <div class="featr_txtin">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                        </div>
+
+                                        <div class="read_more">
+
+                                            <a href="#" class="read_more">read more...</a>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="line0">
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="featr_cont2">
+
+                                    <img src="indeximages/pic2.jpg" width="88" height="89" hspace="5"/>
+
+                                    <div class="featr_txt1">
+
+                                        <div class="featr_txtin1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                        </div>
+
+                                        <div class="read_more1">
+
+                                            <a href="#" class="read_more">read more...</a>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="line">
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="featr_cont3">
+
+                                    <img src="indeximages/pic3.jpg" width="88" height="89" hspace="5"/>
+
+                                    <div class="featr_txt1">
+
+                                        <div class="featr_txtin1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                        </div>
+
+                                        <div class="read_more1">
+
+                                            <a href="#" class="read_more">read more...</a>
+
+                                        </div>
+
+                                    </div>									
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <img src="indeximages/bottm_corner.jpg" width="317" height="7"/>
+
+                    </div>
+
+                    <!-- Conten_1 End -->	
+
+                    <!-- Conten_2 Start -->
+
+                    <div class="conten_2">
+
+                        <img src="indeximages/top_corner.jpg" width="317" height="7"/>
+
+                        <div class="box_bg1">
+
+                            <div class="box_in1">
+
+                                <div class="welcome_img">
+
+                                    <img src="indeximages/mobile.jpg" width="290"/>
+
+                                </div>
+
+                                <div class="welcome">
+
+                                    <img src="indeximages/welcome_99.jpg" width="215" height="22"/>
+
+                                </div>
+
+                                <div class="welcome_txt">
+
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+
+                                </div>
+
+                                <div class="rdmr">
+
+                                    <a href="#"><img src="indeximages/read_more.jpg" width="65" height="25" border="0"/></a>
+
+                                </div>								
+
+                            </div>							
+
+                        </div>
+
+                        <img src="indeximages/bottm_corner.jpg" width="317" height="7"/>
+
+                    </div>
+
+                    <!-- Conten_2 End -->
+
+                    <!-- Conten_3 Start -->
+
+                    <div class="conten_3">
+
+                        <img src="indeximages/top_corner.jpg" width="317" height="7"/>
+
+                        <div class="box_bg3">
+
+                            <div class="box_in2">
+
+                                <div class="latest_news">
+
+                                    <img src="indeximages/latest_news.jpg" width="108" height="15" hspace="0"/>
+
+                                </div>
+
+                                <div class="latest_news_txt">
+
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type..
+
+                                </div>
+
+                                <div class="news_bottom">
+
+                                    <div class="date">03.2.2010</div>
+
+                                    <div class="read_more2">
+
+                                        <a href="#" class="read_more">read more...</a>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="line1">
+
+                                </div>
+
+
+                                <div class="latest_news_txt1">
+
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+
+                                </div>
+
+                                <div class="news_bottom1">
+
+                                    <div class="date">03.2.2010</div>
+
+                                    <div class="read_more3">
+
+                                        <a href="#" class="read_more">read more...</a>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="line2">
+
+                                </div>
+
+
+
+                                <div class="latest_news_txt1">
+
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+
+                                </div>
+
+                                <div class="news_bottom2">
+
+                                    <div class="date">03.2.2010</div>
+
+                                    <div class="read_more4">
+
+                                        <a href="#" class="read_more">read more...</a>
+
+                                    </div>
+
+                                </div>									
+
+                            </div>
+
+                            <div class="rdmr1">
+
+                                <a href="#"><img src="indeximages/view_more.jpg" width="65" height="25" border="0"/></a>
+
+                            </div>
+
+                        </div>		
+
+
+                        <img src="indeximages/bottm_corner.jpg" width="317" height="7"/>
+
+                    </div>
+
+                    <!-- Conten_3 End -->
+
+                </div>
+
+                <!-- Content2 End -->					
+
             </div>
 
-            <div class="gap1"></div>
+            <!-- Overall Content End -->
+        </div>
 
-        </div>	
-        <hr width="70%" />
 
-        <div id="footer">
+        <!-- Footer Start -->
+
+        <div class="footer">
+
             <div class="bottom_link">
+
                 <ul>
-                    <li><a href="#">&copy; 2005-2012 Adzappy  |</a></li>
+                    <li><a href="#">&copy;2005-2012 Adzappy  |</a></li>
                     <li><a href="#">Privacy Policy |</a></li>
                     <li><a href="#">Terms of Service |</a></li>
                     <li><a href="#">About Adzappy |</a></li>
                     <li><a href="#">Contact |</a></li>
                     <li><a href="#">Blog |</a></li>
                     <li><a href="#">Site Map</a></li>
-                </ul>				
+                </ul>	
+
             </div>
+
             <div class="social_link">
+
                 <ul>
-                    <li><a href="#"><img src="indeximages/fb1.png" width="20px" height="20px" /></a></li>
-                    <li><a href="#"><img src="indeximages/twit1.png" width="20px" height="20px" /></a></li>
-                    <li><a href="#"><img src="indeximages/wordpress1.png" width="20px" height="20px" /></a></li>
-                    <li><a href="#"><img src="indeximages/blogger1.png" width="20px" height="20px" /></a></li>
-                    <li><a href="#"><img src="indeximages/myspace1.png" width="20px" height="20px" /></a></li>
-                    <li><a href="#"><img src="indeximages/LinkedIn1.png" width="20px" height="20px" /></a></li>
-                </ul>		
-            </div>
+                    <li><a href="#"><img src="indeximages/fb.jpg" width="20px" height="20px" /></a></li>
+                    <li><a href="#"><img src="indeximages/twit.jpg" width="20px" height="20px" /></a></li>
+                    <li><a href="#"><img src="indeximages/blogger.jpg" width="20px" height="20px" /></a></li>
+                    <li><a href="#"><img src="indeximages/linkdin.jpg" width="20px" height="20px" /></a></li>
+                </ul>	
+
+            </div>			
+
         </div>
+
+        <!-- Footer End -->	
+
 
     </body>
 </html>

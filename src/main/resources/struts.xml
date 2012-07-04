@@ -32,9 +32,9 @@
             <result name="error" >indexn.jsp</result>
         </action>
         <action name="sessionError" class="controller.sessionError">
-            <result name="success" >index.jsp</result>
-            <result name="input" >index.jsp</result>
-            <result name="error" >index.jsp</result>
+            <result name="success" >indexn.jsp</result>
+            <result name="input" >indexn.jsp</result>
+            <result name="error" >indexn.jsp</result>
         </action>
         
         <action name="forgotmail" class="controller.forgotmail">
