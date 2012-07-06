@@ -14,7 +14,6 @@
         <sj:head jqueryui="true" jquerytheme="flick"/>
         <link href="style50.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="pagination.js"></script>
-        <script type="text/javascript" src="jquery.min.js"></script>
         <script type="text/javascript" src="jconfirmaction.jquery.js"></script>
         <script type="text/javascript">
 	
@@ -67,9 +66,13 @@
 
                     <span class="Compaign">Site Name</span>
                     <span class="Created">Category</span>
-                    <span class="Budget">Site Url</span>
+                    <span class="Status">Site Url</span>
                     <span class="Budget">Edit</span>
-                    <span class="Budget">Delete</span>
+                    <span class="CPC">Delete</span>
+                    <span class="Clicks">Requests</span>
+                    <span class="Clicks">eCPM</span>
+                    <span class="CTR">Fill Rate</span>
+                    <span class="Cost">RPM</span>
 
                 </div>
                 <div class="clear"></div>
@@ -86,12 +89,16 @@
                         </s:url>
                         <span class="Compaign"><s:property value="siteName" /></span>
                         <span class="Created"><s:property value="category" /></span>
-                        <span class="Budget"><s:property value="siteUrl" /></span>
-                        <span class="Budget"><s:a href="%{editsite}" cssClass="ask"><img src="images/pencil.png"/></s:a></span>
+                        <span class="Status"><s:property value="siteUrl" /></span>
+                        <span class="Budget"><s:a href="%{editsite}" ><img src="images/pencil.png"/></s:a></span>
                             <s:url action="deletesite.action" var="deletesite">
                                 <s:param name="publishid" value="%{publishId}" />
                             </s:url>
-                        <span class="Budget"><s:a href="%{deletesite}" cssClass="ask"><img src="images/trash.png"/></s:a></span>
+                        <span class="CPC"><s:a href="%{deletesite}" ><img src="images/trash.png"/></s:a></span>
+                        <span class="Clicks">0</span>
+                        <span class="Clicks">$0.00</span>
+                        <span class="CTR">0.00%</span>
+                        <span class="Cost">$0.00</span>
                     </div></s:iterator>
                     <div class="clear"></div>
 

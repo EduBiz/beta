@@ -3,8 +3,6 @@
     <head>
 
         <%@taglib uri="/struts-tags" prefix="s"%>
-        <%@page import="model.*"%>
-        <%@ page import="java.util.*" %>
         <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>.::AdZappy::.</title>
@@ -162,7 +160,7 @@
                                     <div class="formfooter">
                                         <a href="forgotpass.jsp" class="forget">Forget Password?</a>
                                         <input type="submit" class="submitform" value="Login"/>
-                              
+
                                         <div>
                                             Not Registered? &nbsp;&nbsp;<a href="signup.jsp">Sign Up Now</a>
                                         </div>
@@ -439,33 +437,8 @@
 
         <!-- Footer Start -->
 
-        <div class="footer">
-
-            <div class="bottom_link">
-
-                <ul>
-                    <li><a href="#">&copy;2005-2012 Adzappy  |</a></li>
-                    <li><a href="#">Privacy Policy |</a></li>
-                    <li><a href="#">Terms of Service |</a></li>
-                    <li><a href="#">About Adzappy |</a></li>
-                    <li><a href="#">Contact |</a></li>
-                    <li><a href="#">Blog |</a></li>
-                    <li><a href="#">Site Map</a></li>
-                </ul>	
-
-            </div>
-
-            <div class="social_link">
-
-                <ul>
-                    <li><a href="#"><img src="indeximages/fb.jpg" width="20px" height="20px" /></a></li>
-                    <li><a href="#"><img src="indeximages/twit.jpg" width="20px" height="20px" /></a></li>
-                    <li><a href="#"><img src="indeximages/blogger.jpg" width="20px" height="20px" /></a></li>
-                    <li><a href="#"><img src="indeximages/linkdin.jpg" width="20px" height="20px" /></a></li>
-                </ul>	
-
-            </div>			
-
+        <div>
+            <s:include value="indexfooter.jsp" />   
         </div>
 
         <!-- Footer End -->	

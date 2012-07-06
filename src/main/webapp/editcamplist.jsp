@@ -14,15 +14,7 @@
         <sj:head jqueryui="true" jquerytheme="flick"/>
         <link href="style50.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="pagination.js"></script>
-        <script type="text/javascript" src="jquery.min.js"></script>
-        <script type="text/javascript" src="jconfirmaction.jquery.js"></script>
-        <script type="text/javascript">
-	
-            $(document).ready(function() {
-                $('.ask').jConfirmAction();
-            });
-	
-        </script>
+
     </head>
     <body>
 
@@ -58,42 +50,50 @@
                 <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
                 <div class="title">Campaigns</div>
                 <div class="buttonmenu">
-                    <div style="float:left"><a href="addcampnav.action"><input type="image" value="+Add Campaign" name="+Add Campaign" src="images/free-psd.jpg"/></a></div> 
+                    <div style="float:left"><a href="addcampnav.action"><input type="image" value="+Add Campaign" name="+Add Campaign" src="images/campaign.png" alt="Create New Ad Campaign" /></a></div> 
 
                 </div>
 
                 <div class="clear"></div>
                 <div class="tableheader">
-
+                    <span class="checkbox"></span>
                     <span class="Compaign">Campaign</span>
-                    <span class="Created">Start date</span>
+                    <span class="Created">Created</span>
                     <span class="Budget">Budget</span>
                     <span class="Budget">Edit</span>
-                    <span class="Budget">Delete</span>
-
+                    <span class="CPC">Delete</span>
+                    <span class="Impressions">Impressions</span>
+                    <span class="Clicks">Clicks</span>
+                    <span class="CTR">CTR</span>
+                    <span class="Cost">Cost</span>
                 </div>
                 <div class="clear"></div>
                 <s:iterator  value="camplist">
-                    <div class="tabletext" id="results" >
+                    <div class="tabletext">
+                        <span class="checkbox"></span>
                         <span class="Name"><s:property value="campaignName" /></span>
                         <span class="Created"><s:property value="startDate" /></span>
                         <span class="Budget"><s:property value="dialyBudget" /></span>
-                          <s:url action="editcampaign.action" var="editcampaign">
-                     <s:param name="campaid" value="%{campaignId}" />
-                     <s:param name="campaignname" value="%{campaignName}" />
-                     <s:param name="sdate" value="%{startDate}" />
-                     <s:param name="edate" value="%{endDate}" />
-                     <s:param name="dailybdgt" value="%{dialyBudget}" />
-                     <s:param name="deliverytype" value="%{deliveryMethod}" />
-                     <s:param name="note" value="%{note}" />
-                     <s:param name="promotype" value="%{promoType}" />
-                     </s:url>
-                        <span class="Budget">   <s:a href="%{editcampaign}" cssClass="ask" ><img src="images/pencil.png"/></s:a></span>
-                    <s:url action="deletecampaign.action" var="editcampaign1">
-                     <s:param name="campaid" value="%{campaignId}" />
-                     </s:url>
-                        <span class="Budget"><s:a href="%{editcampaign1}" cssClass="ask"><img src="images/trash.png"/></s:a></span>
-                    
+
+                        <s:url action="editcampaign.action" var="editcampaign">
+                            <s:param name="campaid" value="%{campaignId}" />
+                            <s:param name="campaignname" value="%{campaignName}" />
+                            <s:param name="sdate" value="%{startDate}" />
+                            <s:param name="edate" value="%{endDate}" />
+                            <s:param name="dailybdgt" value="%{dialyBudget}" />
+                            <s:param name="deliverytype" value="%{deliveryMethod}" />
+                            <s:param name="note" value="%{note}" />
+                            <s:param name="promotype" value="%{promoType}" />
+                        </s:url>
+                        <span class="Budget">   <s:a href="%{editcampaign}" ><img src="images/pencil.png"/></s:a></span>
+                            <s:url action="deletecampaign.action" var="editcampaign1">
+                                <s:param name="campaid" value="%{campaignId}" />
+                            </s:url>
+                        <span class="CPC"><s:a href="%{editcampaign1}"><img src="images/trash.png"/></s:a></span>
+                        <span class="Impressions">0</span>
+                        <span class="Clicks">0</span>
+                        <span class="CTR">0%</span>
+                        <span class="Cost">$0</span>
                     </div></s:iterator>
                     <div class="clear"></div>
 
@@ -110,15 +110,23 @@
 
             </div>     
 
-            <script type="text/javascript">
-                var pager = new Pager('results',20, 'pager', 'pageNavPosition');
-                pager.init();
-                pager.showPage(1);
-            </script>
 
         </div>
         <!--Container End-->
         <div></div>
+        <script type="text/javascript" src="jconfirmaction.jquery.js"></script>
+        <script type="text/javascript">
+	
+            $(document).ready(function() {
+                $('.ask').jConfirmAction();
+            });
+	
+        </script>
+        <script type="text/javascript">
+            var pager = new Pager('results',20, 'pager', 'pageNavPosition');
+            pager.init();
+            pager.showPage(1);
+        </script>
 
     </body>
 </html>

@@ -31,7 +31,7 @@
             <div>
                 <s:include value="topmenu.jsp"/>
             </div>
-               
+
         </div>
 
         <div id="mainbanner">
@@ -49,24 +49,37 @@
                 <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
                 <div class="title">Campaigns</div>
                 <div class="buttonmenu">
-                    <div style="float:left"><a href="addcampnav.action"><input type="image" value="+Add Campaign" name="+Add Campaign" src="images/free-psd.jpg"/></a></div> 
+                    <div style="float:left"><a href="addcampnav.action"><input type="image" value="+Add Campaign" name="+Add Campaign" src="images/campaign.png" alt="Create New Ad Campaign"/></a></div> 
 
                 </div>
 
                 <div class="clear"></div>
                 <div class="tableheader">
-
+                    <span class="checkbox"></span>
                     <span class="Compaign">Campaign</span>
-                    <span class="Created">Start Date</span>
+                    <span class="Created">Created</span>
+                    <span class="Status">Status</span>
                     <span class="Budget">Budget</span>
+                    <span class="CPC">Avg. CPC</span>
+                    <span class="Impressions">Impressions</span>
+                    <span class="Clicks">Clicks</span>
+                    <span class="CTR">CTR</span>
+                    <span class="Cost">Cost</span>
 
                 </div>
                 <div class="clear"></div>
                 <s:iterator  value="camplist">
                     <div class="tabletext" id="results" >
+                        <span class="checkbox"></span>
                         <span class="Name"><s:property value="campaignName" /></span>
                         <span class="Created"><s:property value="startDate" /></span>
-                        <span class="Budget"><s:property value="dialyBudget" /></span>
+                        <span class="Status">No Ads</span>
+                        <span class="Budget">$<s:property value="dialyBudget" /></span>
+                        <span class="CPC">$0</span>
+                        <span class="Impressions">0</span>
+                        <span class="Clicks">0</span>
+                        <span class="CTR">0%</span>
+                        <span class="Cost">$0</span>
                     </div></s:iterator>
                     <div class="clear"></div>
 

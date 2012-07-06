@@ -58,7 +58,13 @@
 
                     <span class="Compaign">Site Name</span>
                     <span class="Created">Category</span>
-                    <span class="Budget">Site Url</span>
+                    <span class="Status">Site Url</span>
+                    <span class="Budget">Mediation</span>
+                    <span class="CPC">Revenue</span>
+                    <span class="Clicks">Requests</span>
+                    <span class="Clicks">eCPM</span>
+                    <span class="CTR">Fill Rate</span>
+                    <span class="Cost">RPM</span>
 
                 </div>
                 <div class="clear"></div>
@@ -66,7 +72,13 @@
                     <div class="tabletext" id="results" >
                         <span class="Name"><s:property value="siteName" /></span>
                         <span class="Created"><s:property value="category" /></span>
-                        <span class="Budget"><s:property value="siteUrl" /></span>
+                        <span class="Status"><s:property value="siteUrl" /></span>
+                        <span class="Budget">Available</span>
+                        <span class="CPC">$0.00</span>
+                        <span class="Clicks">0</span>
+                        <span class="Clicks">$0.00</span>
+                        <span class="CTR">0.00%</span>
+                        <span class="Cost">$0.00</span>
                     </div></s:iterator>
                     <div class="clear"></div>
 

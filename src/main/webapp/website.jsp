@@ -50,7 +50,7 @@
         </div>
         <div id="container">
 
-            <div id="containerheader"  >&nbsp;&nbsp;&nbsp;Websites</div>
+            <div id="containerheader"  >&nbsp;&nbsp;&nbsp;Campaigns</div>
 
             <div class="clear"></div>
             <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>

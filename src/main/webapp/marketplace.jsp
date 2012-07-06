@@ -1,6 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
+        <%@taglib uri="/struts-tags" prefix="s"%>
+        <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>.::AdZappy::.</title>
         <link href="indexstyle.css" rel="stylesheet" type="text/css" />
@@ -242,33 +244,8 @@
 
         <!-- Footer Start -->
 
-        <div class="footer">
-
-            <div class="bottom_link">
-
-                <ul>
-                    <li><a href="#">&copy;2005-2012 Adzappy  |</a></li>
-                    <li><a href="#">Privacy Policy |</a></li>
-                    <li><a href="#">Terms of Service |</a></li>
-                    <li><a href="#">About Adzappy |</a></li>
-                    <li><a href="#">Contact |</a></li>
-                    <li><a href="#">Blog |</a></li>
-                    <li><a href="#">Site Map</a></li>
-                </ul>	
-
-            </div>
-
-            <div class="social_link">
-
-                <ul>
-                    <li><a href="#"><img src="indeximages/fb.jpg" width="20px" height="20px" /></a></li>
-                    <li><a href="#"><img src="indeximages/twit.jpg" width="20px" height="20px" /></a></li>
-                    <li><a href="#"><img src="indeximages/blogger.jpg" width="20px" height="20px" /></a></li>
-                    <li><a href="#"><img src="indeximages/linkdin.jpg" width="20px" height="20px" /></a></li>
-                </ul>	
-
-            </div>			
-
+          <div>
+            <s:include value="indexfooter.jsp" />   
         </div>
 
         <!-- Footer End -->	
