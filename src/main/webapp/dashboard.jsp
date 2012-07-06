@@ -13,17 +13,17 @@
         <s:head theme="jquery"/>
         <sj:head jqueryui="true" jquerytheme="flick"/>
         <link href="style50.css" rel="stylesheet" type="text/css" />
+        <!-- for new search form css-->
+        <link rel="stylesheet" type="text/css" href="searstyle.css" />
         <script type="text/javascript" src="pagination.js"></script>
     </head>
     <body>
 
         <%
-        Object obj = session.getAttribute("User");
-         User u1=(User)session.getAttribute("User");
-        if(obj==null)
-            {
-            response.sendRedirect(request.getContextPath()+"/sessionError.action");
-        }
+            Object obj = session.getAttribute("User");
+            if (obj == null) {
+                response.sendRedirect(request.getContextPath() + "/sessionError.action");
+            }
         %>
 
         <div id="topnav">
@@ -43,8 +43,14 @@
         <div id="container">
             <div id="containerbox">
                 <div id="containerheader">Campaigns</div>
-                <form action="seardash.action"> <div style="float:right;" id="searchbox" ><input type="text" value="Search" name="s" size="20" onblur="if(this.value == '') { this.value = 'Search'; }" onfocus="if(this.value == 'Search') { this.value = ''; }" /><input type="submit" value="Go"/>
-                    </div></form>
+                <div  id="searchbox">   
+                    <div class="search-header" >  
+                        <form action="seardash.action" method="post"> 
+                            <input type="text" class="search-input " value="" name="s" placeholder="Search Campaign">
+                            <input type="submit" name="submit" class="search-submit" value="" title="Search">
+                        </form>
+                    </div>
+                </div>
                 <div class="clear"></div>
                 <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
                 <div class="title">Campaigns</div>

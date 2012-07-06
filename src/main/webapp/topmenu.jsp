@@ -29,7 +29,7 @@
             <div id="toplogomenu1">
 
                 <a href="home.action">Adzappy Home</a>
-                <a href="home.action" id="toplogomenuselect">Marketplace</a>
+                <a href="marketplace.jsp" id="toplogomenuselect">Marketplace</a>
 
             </div>
             <div id="toplogomenu2">

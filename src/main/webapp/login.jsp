@@ -21,7 +21,14 @@
         <script type="text/javascript" src="jscolor.js"></script>
     </head>
     <body>
-
+  <%
+        Object obj = session.getAttribute("User");
+        
+        if(obj!=null)
+            {
+            response.sendRedirect(request.getContextPath()+"/home.action");
+        }
+        %>
         <div id="topnav">
 
 

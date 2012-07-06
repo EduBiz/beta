@@ -86,7 +86,7 @@
             <result name="error" >updatesite.jsp</result>
         </action>
         <action name="deletesite" method="deletesite" class="controller.editsite" >
-            <result name="success" type="chain">home</result>
+            <result name="success">showsite.jsp</result>
             <result name="input" >dashboard.jsp</result>
             <result name="error" >dashboard.jsp</result>
         </action>

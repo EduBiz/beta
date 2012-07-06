@@ -1,0 +1,44 @@
+.search-header{
+
+
+border:1px solid #e1e2e2;
+width:150px;
+height:24px;
+background:#fff url(images/magnifier.png) no-repeat 127px 6px;
+outline:none;
+}
+
+.search-header:after{
+
+clear:both;
+content:'.';
+display:block;
+visibility:hidden;
+height:0
+}
+
+.search-input{
+
+color:#707070;
+font-size:12px;
+font-family:'Segoe UI',Tahoma,Arial,Helvetica,sans-serif;
+margin-top:5px;
+border:1px solid #fff;
+display:block;
+float:left;
+width:120px;
+padding:0 5px;
+outline:none;
+}
+
+.search-submit{
+
+width:22px;
+height:22px;
+background:none;
+border:0;
+cursor:pointer;
+
+top:3px;
+right:3px
+}

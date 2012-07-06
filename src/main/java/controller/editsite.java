@@ -49,7 +49,7 @@ public class editsite extends ActionSupport {
 
             getMyDao().getDbsession().delete(cdel);
 
-            sitelist = (List<Publish>) myDao.getDbsession().createQuery("from Publish").list();
+          
             Criteria crit = myDao.getDbsession().createCriteria(Publish.class);
             crit.add(Restrictions.like("user", getUser()));
             crit.setMaxResults(20);
