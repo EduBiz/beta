@@ -237,19 +237,12 @@
 
             </div>
 
-
+  <s:include value="footer_1.jsp" />   
 
         </div>
         <!-- Container Content End -->
 
-        <!-- Footer Start -->
-
-          <div>
-            <s:include value="indexfooter.jsp" />   
-        </div>
-
-        <!-- Footer End -->	
-
+      
 
     </body>
 </html>

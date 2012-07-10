@@ -56,6 +56,10 @@
             <result name="success" >adminviewcampaign.jsp</result>
             <result name="error" >adminviewcampaign.jsp</result>
         </action>
+        <action name="changepassword" class="navigation.passwordchange">
+            <result name="success" >changepassword.jsp</result>
+            <result name="error" type="chain">home</result>
+        </action>
             
     </package>
 </struts>

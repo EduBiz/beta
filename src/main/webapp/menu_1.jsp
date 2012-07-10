@@ -36,6 +36,7 @@
             <a href="accountinformation.action">Accounts</a>
             <ul id="drpdwn1"  class="dropdown">
                 <li><a href="accountinformation.action">Account Info </a></li>
+                <li><a href="changepassword.action">Edit Password</a></li>
                 <li><a href="#">Transactions </a></li>
                 <li><a href="#">Payments</a></li>
             </ul>

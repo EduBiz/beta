@@ -150,14 +150,14 @@ li{
     /*border:1px solid blue;*/
     font-weight:bold;
     float:left;
-    padding:16px 0 16px 0;
+    padding:10px 0 16px 0;
     width:700px;
 }
 #searchbox{
     /*border:1px solid blue;*/
     font-weight:bold;
     float:left;
-    padding:14px 0 0 0;
+    padding:5px 0 0 60px;
 }
 #searchbutton{
     /*border:1px solid blue;*/
@@ -514,6 +514,7 @@ li{
 }
 
 .menubar li a{
+     
     color:#4d4e50;
     text-decoration:none;	
 }
@@ -536,7 +537,7 @@ li{
     border-bottom: 1px solid #ccc; 
     background-color: #ccc;
     border-radius: 0px;
-    padding:5px;
+    padding:4px;
     font-weight: normal;
 }
 .dropdown li:hover{
@@ -553,6 +554,73 @@ li{
 .foot li{ margin-left:2px; float:left; color:#979797; font-size:11px;}
 .foot li a{ color:#979797; font-size:11px;}
 .foot li a:hover{ color:#666;}
+
+.footer001 {
+float:left;
+margin:50px 0 20px 0;
+border-top:1px solid #cbcbcb;
+width:906px;
+height:69px;
+background-color:#ffffff;
+}
+
+.bottom_link01 {
+float:left;
+margin-left:100px;
+}
+
+.bottom_link01 ul {
+display:block;
+margin:0;
+padding:0;
+list-style:none;
+}
+
+.bottom_link01 ul li {
+
+	margin:20px 0 0 5px;
+	display:inline;
+	float:left;
+	list-style:none;
+	font-size:11px;
+}
+
+.bottom_link01 a{
+	
+	float:left;
+	color:#545f1d;
+	text-decoration:none;
+	text-align:left;
+	padding:0;
+	}
+
+.bottom_link01 a:hover{
+	font-size:11px;
+	color:#000000;
+	text-decoration:none;
+	}
+
+.social_link01 {
+float:left;
+margin-left:10px;
+}
+
+.social_link01 ul {
+	display:block;
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+.social_link01 ul li {
+	margin:18px 0 0 10px;
+	display:inline;
+	float:left;
+	list-style:none;
+}
+
+.social_link01 a:hover{
+}
 
 .question {
     position: absolute;

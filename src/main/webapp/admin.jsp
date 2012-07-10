@@ -37,15 +37,15 @@
             <div id="toplogomenu">
             <div id="toplogomenu1">
 
-                <a href="" >Adzappy Home</a>
-                <a href="adratechange.action" id="toplogomenuselect">Marketplace</a>
+                <a href="adratechange.action" id="toplogomenuselect" >Adzappy Home</a>
+                <a href="marketplace.jsp">Marketplace</a>
 
             </div>
             <div id="toplogomenu2">
 
-                <a href="" >Hello,<%out.println(u1.getEmailId()); %></a>
+                <a href="#" >Hello,<%out.println(u1.getEmailId()); %></a>
                 <a href="logout.action" >Log out</a>
-                <a href="" >Help</a>
+                <a href="#" >Help</a>
 
             </div>
         </div>
@@ -73,7 +73,7 @@
                     <s:form action="ratechg" theme="simple">
                         <div class="formrow"> 
                             <div class="form-label">   Existing Rate</div>
-                            <div class="form-widget"> <s:textfield name="existrate" label="Existing Rate" readonly="true" value="%{ad.currentRate}"  cssClass="input-div" /></div>
+                            <div class="form-widget"> <s:textfield name="existrate" label="Existing Rate" readonly="true" value="%{ad.currentRate}"  disabled="true" cssClass="input-div" /></div>
                         </div>
                         <div class="clear"></div>
                         <div class="formrow">

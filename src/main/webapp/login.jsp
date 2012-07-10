@@ -21,13 +21,17 @@
         <script type="text/javascript" src="jscolor.js"></script>
     </head>
     <body>
-  <%
-        Object obj = session.getAttribute("User");
-        
-        if(obj!=null)
-            {
-            response.sendRedirect(request.getContextPath()+"/home.action");
-        }
+        <%
+            Object obj = session.getAttribute("User");
+
+            if (obj != null) {
+                User u1 = (User) session.getAttribute("User");
+                if (u1.getEmailId().equals("admin@adzappy.com")) {
+                    response.sendRedirect(request.getContextPath() + "/adratechange.action");
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/home.action");
+                }
+            }
         %>
         <div id="topnav">
 

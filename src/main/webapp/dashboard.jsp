@@ -90,23 +90,12 @@
                     <div class="clear"></div>
 
 
-
-                    <div align="right" id="pageNavPosition"></div>    
-                    <div class="clear"></div>
-
-
-
                     <div>
                     <s:include value="footer_1.jsp"/>
                 </div>
 
             </div>     
 
-            <script type="text/javascript">
-                var pager = new Pager('results',20, 'pager', 'pageNavPosition');
-                pager.init();
-                pager.showPage(1);
-            </script>
 
         </div>
         <!--Container End-->

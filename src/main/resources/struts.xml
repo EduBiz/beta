@@ -19,6 +19,11 @@
             <result name="success" >dashboard.jsp</result>
             <result name="error" >/dashboard.jsp</result>
         </action>
+        <action name="resetpass"  class="controller.resetpass" >
+            <result name="success" type="chain">home</result>
+            <result name="input" >/changepassword.jsp</result>
+            <result name="error" >/changepassword.jsp</result>
+        </action>
     
         <action name="signup" class="controller.signup">
             <result name="success" >index.jsp</result>

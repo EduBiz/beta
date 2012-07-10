@@ -25,6 +25,7 @@ public class adminratechange extends ActionSupport {
     private BigDecimal newrt;
     private BigDecimal cfrt;
     private User user;
+    private Adrate old;
 
     @Override
     public void validate() {
@@ -37,12 +38,7 @@ public class adminratechange extends ActionSupport {
         if (cfrt == null) {
 
             addActionError("Please Enter Confirm New Rate");
-        }
-
-
-        if (getNewrt().equals(getCfrt())) {
-        } else {
-
+        } else if (!cfrt.equals(newrt)) {
             addActionError("New Rate & Confirm New Rate Mismatch Please Enter Again");
         }
     }
@@ -56,22 +52,26 @@ public class adminratechange extends ActionSupport {
             System.out.println("--------------------------------------------------" + existrate);
             System.out.println("------------------------------------------------------" + newrt);
             System.out.println("-------------------------------------------------------" + cfrt);
-
-//        Criteria cri=myDao.getDbsession().createCriteria(Adrate.class);
-//        cri.setMaxResults(1);
-//        
-//        Adrate ad1 = (Adrate)(cri.list().get(0)) ;
-//        
-//        System.out.println("-------------------------------------------------------" + ad1.getCurrentRate());
-            Adrate ad = new Adrate();
-            ad.setCurrentRate(newrt);
-            ad.setOldRate(existrate);
-            ad.setDateChange(date);
-            ad.setRateId(1);
-            myDao.getDbsession().update(ad);
-            //myDao.getDbsession().saveOrUpdate(ad);
-            addActionMessage("New Rate Successfully Changed");
-            return "success";
+            if (existrate != null) {
+                Adrate ad = (Adrate) myDao.getDbsession().get(Adrate.class, 1);
+                ad.setCurrentRate(newrt);
+                ad.setOldRate(existrate);
+                ad.setDateChange(date);
+                myDao.getDbsession().update(ad);
+                // myDao.getDbsession().saveOrUpdate(ad);
+                addActionMessage("New Rate Successfully Changed");
+                return "success";
+            } else {
+                old = (Adrate) myDao.getDbsession().get(Adrate.class, 1);
+                existrate = old.getCurrentRate();
+                Adrate ad = (Adrate) myDao.getDbsession().get(Adrate.class, 1);
+                ad.setCurrentRate(newrt);
+                ad.setOldRate(existrate);
+                ad.setDateChange(date);
+                myDao.getDbsession().update(ad);
+                addActionMessage("New Rate Successfully Changed");
+                return "success";
+            }
         } catch (HibernateException e) {
             addActionError("Server  Error Please Recheck All Fields ");
             e.printStackTrace();
@@ -157,5 +157,19 @@ public class adminratechange extends ActionSupport {
      */
     public void setCfrt(BigDecimal cfrt) {
         this.cfrt = cfrt;
+    }
+
+    /**
+     * @return the old
+     */
+    public Adrate getOld() {
+        return old;
+    }
+
+    /**
+     * @param old the old to set
+     */
+    public void setOld(Adrate old) {
+        this.old = old;
     }
 }

@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
 
@@ -8,16 +9,21 @@
         <title>.::AdZappy::.</title>
         <link href="indexstyle.css" rel="stylesheet" type="text/css" />
         <s:head theme="jquery"/><sj:head/>
+        <%@page import="model.User"%>
     </head>
 
     <body>
         <%
-        Object obj = session.getAttribute("User");
-        
-        if(obj!=null)
-            {
-            response.sendRedirect(request.getContextPath()+"/home.action");
-        }
+            Object obj = session.getAttribute("User");
+
+            if (obj != null) {
+                User u1 = (User) session.getAttribute("User");
+                if (u1.getEmailId().equals("admin@adzappy.com")) {
+                    response.sendRedirect(request.getContextPath() + "/adratechange.action");
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/home.action");
+                }
+            }
         %>
         <div class="container">
 
@@ -439,16 +445,13 @@
             </div>
 
             <!-- Overall Content End -->
+
+            <s:include value="footer_1.jsp" />   
+
         </div>
 
 
-        <!-- Footer Start -->
 
-        <div>
-            <s:include value="indexfooter.jsp" />   
-        </div>
-
-        <!-- Footer End -->	
 
 
     </body>
