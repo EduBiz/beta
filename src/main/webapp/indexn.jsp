@@ -441,12 +441,12 @@
                 </div>
 
                 <!-- Content2 End -->					
-
+  <s:include value="footer_1.jsp" />   
             </div>
 
             <!-- Overall Content End -->
 
-            <s:include value="footer_1.jsp" />   
+          
 
         </div>
 

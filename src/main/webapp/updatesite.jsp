@@ -9,13 +9,41 @@
         <meta http-equiv="content-type" content="text/html; charset=windows-1250">
 
         <title>.::Sites::.</title>
-
+        <!-- for pagination script start-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="js/easypaginate.js"></script>
+        <script type="text/javascript">
+	
+            jQuery(function($){
+	
+                $('div#tid').easyPaginate({
+                    //step value define for number of results shown on every page here 5 set for 5 items on each page
+                    step:5
+                });
+	
+            });    
+    
+        </script>
+        <!-- for pagination script end-->
         <s:head theme="jquery"/>
         <sj:head jqueryui="true" jquerytheme="flick"/>
         <link href="style50.css" rel="stylesheet" type="text/css" />
         <!-- for new search form css-->
         <link rel="stylesheet" type="text/css" href="searstyle.css" />
-
+        <!-- for pagination styles-->
+        <style type="text/css">
+            ol#pagination{overflow:hidden;}
+            ol#pagination li{
+                float:left;
+                list-style:none;
+                cursor:pointer;
+                margin:0 0 0 .5em;
+                font: 1em Helvetica, Arial, Sans-Serif;
+                line-height: 1.5em;
+                color: #333;
+            }
+            ol#pagination li.current{color:#f00;font-weight:bold;}
+        </style>
     </head>
     <body>
 
@@ -75,6 +103,7 @@
 
                 </div>
                 <div class="clear"></div>
+                 <div id="tid">
                 <s:iterator value="sitelist">
                     <div class="tabletext" id="results" >
                         <s:url action="editsite.action" var="editsite">
@@ -99,16 +128,9 @@
                             <span class="CTR">0.00%</span>
                             <span class="Cost">$0.00</span>
                         </div></s:iterator>
+                 </div>
                     <div class="clear"></div>
-
-
-
-                    <div align="right" id="pageNavPosition"></div>    
-                    <div class="clear"></div>
-
-
-
-                    <div>
+            <div>
                     <s:include value="footer_1.jsp"/>
                 </div>
 
@@ -118,7 +140,7 @@
         </div>
         <!--Container End-->
         <div></div>
-        <script type="text/javascript" src="pagination.js"></script>
+      
         <script type="text/javascript" src="jconfirmaction.jquery.js"></script>
         <script type="text/javascript">
 	
@@ -128,10 +150,6 @@
 	
         </script>
 
-        <script type="text/javascript">
-            var pager = new Pager('results',20, 'pager', 'pageNavPosition');
-            pager.init();
-            pager.showPage(1);
-        </script>
+       
     </body>
 </html>
