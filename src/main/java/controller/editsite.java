@@ -55,7 +55,7 @@ public class editsite extends ActionSupport {
             crit.setMaxResults(20);
 
             sitelist = (List<Publish>) crit.list();
-            addActionMessage("Site" + cdel.getSiteName() + " Successfully Removed");
+            addActionMessage("Site " + cdel.getSiteName() + " Successfully Removed");
             return "success";
         } catch (HibernateException e) {
             addActionError("Server  Error Please Try Again ");

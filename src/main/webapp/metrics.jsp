@@ -21,13 +21,13 @@
 
                 <div class="navbar">
 
-                    <div class="menu">
-
-                        <a href="indexn.jsp"><img src="indeximages/btn_home_11.jpg" width="53" height="24" hspace="1"/></a>
-                        <a href="marketplace.jsp"><img src="indeximages/btn_marketplace.jpg" width="89" height="24"/></a>
-                        <a href="analytics.jsp"><img src="indeximages/btn_analytics.jpg" width="74" height="24" hspace="1"/></a>
-                        <a href="metrics.jsp"><img src="indeximages/btn_metrics_hover.jpg" width="64" height="24"/></a>
-
+                     <div class="menubar">
+                        <ul>
+                            <li > <a href="indexn.jsp">Home</a></li>
+                            <li><a href="marketplace.jsp">Marketplace</a></li>
+                            <li><a href="analytics.jsp">Analytics</a></li>
+                            <li class="active"><a href="metrics.jsp">Metrics</a></li>
+                        </ul>
                     </div>
 
 
