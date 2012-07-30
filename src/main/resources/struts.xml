@@ -91,9 +91,9 @@
             <result name="error" >updatesite.jsp</result>
         </action>
         <action name="deletesite" method="deletesite" class="controller.editsite" >
-            <result name="success">showsite.jsp</result>
-            <result name="input" >dashboard.jsp</result>
-            <result name="error" >dashboard.jsp</result>
+            <result name="success">updatesite.jsp</result>
+            <result name="input" >updatesite.jsp</result>
+            <result name="error" >updatesite.jsp</result>
         </action>
         
         
@@ -109,9 +109,9 @@
         </action>
         
         <action name="deletecampaign" class="campaign.deletecampaign" >
-            <result name="success" >dashboard.jsp</result>
-            <result name="input" >dashboard.jsp</result>
-            <result name="error" >/dashboard.jsp</result>
+            <result name="success" >editcamplist.jsp</result>
+            <result name="input" >editcamplist.jsp</result>
+            <result name="error" >editcamplist.jsp</result>
         </action>
         
         <action name="sessioncampaignError" class="controller.sessionError" method="campaignerror">

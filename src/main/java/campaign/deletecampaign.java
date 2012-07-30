@@ -49,7 +49,7 @@ public class deletecampaign extends ActionSupport {
 
             setCamplist((List<Campaign>) getMyDao().getDbsession().createQuery("from Campaign").list());
             Criteria crit = getMyDao().getDbsession().createCriteria(Campaign.class);
-            crit.add(Restrictions.like("user", user));
+            crit.add(Restrictions.eq("user", user));
             crit.setMaxResults(20);
             setCamplist((List<Campaign>) crit.list());
             addActionMessage("Campaign " + cdel.getCampaignName() + " Successfully Deleted");

@@ -51,7 +51,7 @@ public class editsite extends ActionSupport {
 
           
             Criteria crit = myDao.getDbsession().createCriteria(Publish.class);
-            crit.add(Restrictions.like("user", getUser()));
+            crit.add(Restrictions.eq("user", getUser()));
             crit.setMaxResults(20);
 
             sitelist = (List<Publish>) crit.list();
