@@ -83,7 +83,7 @@
                 <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
                 <div class="title">Campaigns</div>
                 <div class="buttonmenu">
-                    <div style="float:left"><a href="addcampnav.action"><input type="image" value="+Add Campaign" name="+Add Campaign" src="images/campaign.png" alt="Create New Ad Campaign"/></a></div> 
+                    <div style="float:left"><a href="addcampnav.action"><input type="image" value="+Add Campaign" name="+Add Campaign" src="images/campbutton.png" alt="Create New Ad Campaign"/></a></div> 
 
                 </div>
 

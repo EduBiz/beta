@@ -172,7 +172,7 @@
 
                                     <div class="formfooter">
                                         <a href="forgotpass.jsp" class="forget">Forget Password?</a>
-                                        <input type="submit" class="submitform" value="Login"/>
+                                        <input type="submit" class="submitform button" value="Login"/>
 
                                         <div>
                                             Not Registered? &nbsp;&nbsp;<a href="signup.jsp">Sign Up Now</a>
