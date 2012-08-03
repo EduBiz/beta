@@ -59,7 +59,7 @@ public class sitecharts extends ActionSupport {
             Criteria repocam = getMyDao().getDbsession().createCriteria(ReportPublish.class);
             // repocam.add(Restrictions.eq("campaign", camlist.get(0)));
             repocam.add(Restrictions.in("publish", getSitelist()));
-            repocam.setMaxResults(1000);
+            repocam.setMaxResults(100);
             setReportlist((List<ReportPublish>) repocam.list());
 
 
@@ -73,7 +73,7 @@ public class sitecharts extends ActionSupport {
             Criteria rdaily = getMyDao().getDbsession().createCriteria(ReportrDaily.class);
             rdaily.add(Restrictions.in("reportPublish", getReportlist()));
             rdaily.add(Restrictions.ge("rdate", currentDate.getTime()));
-            rdaily.setMaxResults(500);
+            rdaily.setMaxResults(100);
 
             setReport((List<ReportrDaily>) rdaily.list());
 

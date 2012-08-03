@@ -7,8 +7,11 @@ package controller;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import model.*;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -36,26 +39,34 @@ public class activationAccount extends ActionSupport {
             email = tuser.getEmailId();
             pwd = tuser.getPassword();
             uname = tuser.getUserName();
+            Criteria crit = myDao.getDbsession().createCriteria(User.class);
+            crit.add(Restrictions.eq("emailId", email));
+            crit.setMaxResults(1);
+            List emaillist = crit.list();
+            if (emaillist.isEmpty()) {
+                user = new User(email, pwd, userEnum.Reg_User.getUserType());
+                user.setUserName(uname);
+                user.setRegDate(date);
+                user.setUserStatus(userEnum.Active.getUserType());
+                myDao.getDbsession().save(user);
+                tuser.setUserType(userEnum.Act_User.getUserType());
+                myDao.getDbsession().update(tuser);
+
+                subject = "Activation Success";
+                content = "Hi " + "\t\t" + uname + "\n" + "... Welcome to Adzappy :\n" + " \nNow Your Adzappy Account is Activated   & Verified \n" + " Thanks & Regards \n    " + " Adzappy Team\n";
 
 
-            user = new User(email, pwd, userEnum.Reg_User.getUserType());
-            user.setUserName(uname);
-            user.setRegDate(date);
-            user.setUserStatus(userEnum.Active.getUserType());
-            myDao.getDbsession().save(user);
-            tuser.setUserType(userEnum.Act_User.getUserType());
-            myDao.getDbsession().update(tuser);
-            Map session = ActionContext.getContext().getSession();
-            session.put("User", user);
+                sendMail.test(email, subject, content);
 
-            subject = "Activation Success";
-            content = "Hi " + "\t\t" + uname + "\n" + "... Welcome to Adzappy :\n" + " \nNow Your Adzappy Account is Activated   & Verified \n" + " Thanks & Regards \n    " + " Adzappy Team\n";
+                addActionMessage("Now your account Successfully Activated.Please Login to Continue");
 
-
-            sendMail.test(email, subject, content);
-
-            addActionMessage("Now your account Successfully Activated Please Login to Continue");
-            return "success";
+                return "success";
+            } else {
+                User verifieduser = (User) (crit.list().get(0));
+                Map session = ActionContext.getContext().getSession();
+                session.put("User", verifieduser);
+                return "success";
+            }
         } catch (Exception e) {
             e.printStackTrace();
             addActionError("Server Error  Please Try Again Later ");

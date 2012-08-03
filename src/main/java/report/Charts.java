@@ -62,7 +62,7 @@ public class Charts extends ActionSupport {
             Criteria repocam = myDao.getDbsession().createCriteria(ReportCampaign.class);
             // repocam.add(Restrictions.eq("campaign", camlist.get(0)));
             repocam.add(Restrictions.in("campaign", camlist));
-            repocam.setMaxResults(1000);
+            repocam.setMaxResults(100);
             reportlist = repocam.list();
 
             currentDate.add(Calendar.DATE, -10);
@@ -77,7 +77,7 @@ public class Charts extends ActionSupport {
             rdaily.add(Restrictions.in("reportCampaign", reportlist));
             //rdaily.add(Restrictions.like("rdate", currentDate.getTime()));
             rdaily.add(Restrictions.ge("rdate", currentDate.getTime()));
-            rdaily.setMaxResults(500);
+            rdaily.setMaxResults(100);
 
             report = rdaily.list();
 
