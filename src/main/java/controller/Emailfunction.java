@@ -15,10 +15,10 @@ import java.util.Properties;
 
 public class Emailfunction {
     
-    private static final String SMTP_HOST_NAME = "smtp.gmail.com";
+      private static final String SMTP_HOST_NAME = "smtp.gmail.com";
     private static final int SMTP_HOST_PORT = 465;
-    private static final String SMTP_AUTH_USER = "mentor@edubiz.org";
-    private static final String SMTP_AUTH_PWD  = "EduBiz_888";
+    private static final String SMTP_AUTH_USER = "edubiztech@gmail.com";
+    private static final String SMTP_AUTH_PWD  = "newEduBiz";
 
     
 
