@@ -21,6 +21,8 @@
 
         <link href="style50.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="reportstyle.js"></script>
+        <!-- for new search form css-->
+        <link rel="stylesheet" type="text/css" href="searstyle.css" />
         <s:head theme="jquery"/>
         <sj:head />
     </head>
@@ -54,17 +56,18 @@
         <div id="container">
             <div id="containerbox">
                 <div id="containerheader">Site Reports</div>
-                <div style="float:right;" id="searchbox" >
-                    <form method="post" action="sitecharts.action">
-                        <select name="search"  >
+                <div id="searchbox" >
+                    <div class="search-header" >  
+                        <form method="post" action="sitecharts.action">
+                            <select name="search" class="search-input" >
 
                             <option value="3">Last 7 Days</option>
                             <option value="4">Last 30 Days</option>
                             <option value="5">All</option>
                         </select>
-                        <input type="submit" value="View"/>
-
-                    </form>
+                            <input type="submit" name="submit" class="search-submit" value="" title="Search">
+                        </form>
+                    </div>
                 </div>
                 <div class="clear"></div>
                 <div class="alert"><s:actionerror theme="jquery"/>    </div>

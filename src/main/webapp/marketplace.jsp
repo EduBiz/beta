@@ -23,10 +23,10 @@
 
                     <div class="menubar">
                         <ul>
-                            <li> <a href="indexn.jsp">Home</a></li>
-                            <li class="active"><a href="marketplace.jsp">Marketplace</a></li>
-                            <li><a href="analytics.jsp">Analytics</a></li>
-                            <li><a href="metrics.jsp">Metrics</a></li>
+                             <li> <a href="indexn.jsp">Home</a></li>
+                            <li class="active"><a href="marketplace.jsp">Advertisers</a></li>
+                            <li><a href="analytics.jsp">Publishers</a></li>
+                            <li><a href="metrics.jsp">App Developers</a></li>
                         </ul>
                     </div>
 

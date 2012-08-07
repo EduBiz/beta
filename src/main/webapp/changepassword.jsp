@@ -47,13 +47,16 @@
         <!--Container Start-->
         <div id="container">
 
-            <div>
+            <div id="containerbox">
                 <div id="containerheader">&nbsp;&nbsp;Password Change</div>
+                 <div  id="searchbox">   
+                    
+                </div>
                 <div class="clear"></div>
                 <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
 
                 <div class="clear"></div>
-            </div>
+        
 
           
             <!--content start -->
@@ -109,7 +112,7 @@
 
             </div>
           
-      
+        </div>
      
     </body>
 </html>

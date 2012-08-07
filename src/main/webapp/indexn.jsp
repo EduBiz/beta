@@ -38,9 +38,9 @@
                     <div class="menubar">
                         <ul>
                             <li class="active"> <a href="indexn.jsp">Home</a></li>
-                            <li><a href="marketplace.jsp">Marketplace</a></li>
-                            <li><a href="analytics.jsp">Analytics</a></li>
-                            <li><a href="metrics.jsp">Metrics</a></li>
+                            <li><a href="marketplace.jsp">Advertisers</a></li>
+                            <li><a href="analytics.jsp">Publishers</a></li>
+                            <li><a href="metrics.jsp">App Developers</a></li>
                         </ul>
                     </div>
 
@@ -60,10 +60,10 @@
                         <div class="box1">
 
                             <div class="box1_cont">
-
-                                <div class="h11">Advertisers</div>
+                                <div class="h11">Publishers</div>
 
                                 <div class="h2"> Reach Your Target Audience </div>
+
 
                                 <div class="box1_cont_rdmr">
 
@@ -88,10 +88,11 @@
                         <div class="box1">
 
                             <div class="box1_cont">
-
-                                <div class="h11">App Developers</div>
+                                <div class="h11">Advertisers</div>
 
                                 <div class="h2"> Reach Your Target Audience </div>
+
+
 
                                 <div class="box1_cont_rdmr">
 
@@ -116,10 +117,10 @@
                         <div class="box1">
 
                             <div class="box1_cont">
-
-                                <div class="h11">Publishers</div>
+                                <div class="h11">App Developers</div>
 
                                 <div class="h2"> Reach Your Target Audience </div>
+
 
                                 <div class="box1_cont_rdmr">
 
