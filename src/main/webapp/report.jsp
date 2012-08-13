@@ -19,18 +19,36 @@
         <!-- for new search form css-->
         <link rel="stylesheet" type="text/css" href="searstyle.css" />
         <script type="text/javascript" src="reportstyle.js"></script>
+        <!--[if IE]>
+         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <style>
+            article, aside, figure, footer, header, hgroup, 
+            menu, nav, section { display: block; }
+
+            #selectdropdown {
+                -webkit-appearance: none;
+                -moz-appearance: none !important;
+                appearance: none;
+                border: none;
+
+                /*  padding: 2px 30px 2px 2px;
+               background: transparent url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") no-repeat right center;*/
+            }
+        </style>
+
+
         <s:head theme="jquery"/>
         <sj:head />
     </head>
     <body>
 
         <%
-        Object obj = session.getAttribute("User");
-         User u1=(User)session.getAttribute("User");
-        if(obj==null)
-            {
-            response.sendRedirect(request.getContextPath()+"/sessionError.action");
-        }
+            Object obj = session.getAttribute("User");
+            User u1 = (User) session.getAttribute("User");
+            if (obj == null) {
+                response.sendRedirect(request.getContextPath() + "/sessionError.action");
+            }
         %>
 
 
@@ -54,14 +72,14 @@
                 <div id="containerheader">Campaign Reports</div>
                 <div id="searchbox" >
                     <div class="search-header" >  
-                       <form method="post" action="rcharts.action">
-                            
-                            <select name="search"  class="search-input">
+                        <form method="post" action="rcharts.action">
 
-                            <option value="3">Last 7 Days</option>
-                            <option value="4">Last 30 Days</option>
-                            <option value="5">All</option>
-                        </select>
+                            <select name="search" id="selectdropdown"  class="search-input">
+
+                                <option value="3">Last 7 Days</option>
+                                <option value="4">Last 30 Days</option>
+                                <option value="5">All</option>
+                            </select>
                             <input type="submit" name="submit" class="search-submit" value="" title="Search">
                         </form>
                     </div>

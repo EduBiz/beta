@@ -71,7 +71,7 @@
         <!--Container Start-->
         <div id="container">
             <div id="containerbox">
-                <div id="containerheader">SITE</div>
+                <div id="containerheader">Sites</div>
                 <div  id="searchbox">   
                     <div class="search-header" >  
                         <form action="searupsite.action" method="post"> 
@@ -82,7 +82,7 @@
                 </div>
                 <div class="clear"></div>
                 <div class="alert"><s:actionerror theme="jquery"/>   <s:actionmessage theme="jquery"/> </div>
-                <div class="title" align="center">SITE</div>
+                <div class="title">Sites</div>
                 <div class="buttonmenu">
                     <div style="float:left"><a href="addsitenav.action"><input type="image" value="+Add sites" name="+Add sites" src="images/sitebutton.png"/></a></div>
 

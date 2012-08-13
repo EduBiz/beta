@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <div class="menubar">
     <ul>
-        <li><a href="home.action">Home</a></li>
+<!--        <li><a href="home.action">Home</a></li>-->
         <li>
             <a href="editcamplist.action">Campaigns</a>
             <ul id="drpdwn1"  class="dropdown">

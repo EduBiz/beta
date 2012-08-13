@@ -767,12 +767,13 @@ h4 {
     font-size:20px;
     color:#000;
     text-align:left;
-    padding-top:7px;
+    padding-top:14px;
 }
 .h22{
-    font-size:12px;
+    font-size:14px;
     color:#000;
-    font-weight:bold;
+    text-align:justify;
+     padding-top:10px;
 }
 .date{
     color:#407e04;
@@ -1078,7 +1079,7 @@ h4 {
 
 .menubar{
     margin-left:620px;
-    margin-top:4px;
+    margin-top:3px;
     width:450px;
     height:24px;
 }
@@ -1094,9 +1095,9 @@ h4 {
     color:#4d4e50;
     text-align:center;
     margin: 0 1px 0 0;
-    padding:6px;
+    padding:7px;
     border-radius: 4px 4px 0 0;
-    border:1px solid #8e908f;
+    border:1px solid #222222;
     background: #efefef; /* Old browsers */
     background: -moz-linear-gradient(top,  #efefef 0%, #e0e0e0 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#efefef), color-stop(100%,#e0e0e0)); /* Chrome,Safari4+ */

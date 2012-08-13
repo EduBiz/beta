@@ -8,7 +8,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>.::AdZappy::.</title>
         <link href="indexstyle.css" rel="stylesheet" type="text/css" />
-        <s:head theme="jquery"/><sj:head/>
+        <s:head theme="jquery"/>
+        <sj:head jqueryui="true" jquerytheme="flick"/>
         <%@page import="model.User"%>
     </head>
 
@@ -60,14 +61,17 @@
                         <div class="box1">
 
                             <div class="box1_cont">
-                                <div class="h11">Publishers</div>
+                                <div class="h11">Advertisers</div>
 
-                                <div class="h2"> Reach Your Target Audience </div>
+                                <div class="h2"> Looking to Advertise?
+                                </div>
+                                <div class="h22">Connect with targeted audiences, grow your brand, increase sales and have the edge on your competitors. 
+                                    Delivery of ads on mobile websites and apps through the AdZappy Ad network.
+                                </div>
 
+                                <div align="right" style="padding-top:20px; ">
 
-                                <div class="box1_cont_rdmr">
-
-                                    <img src="indeximages/btn_more.jpg" width="60" height="24"/>
+                                    <a href="marketplace.jsp"> <img src="indeximages/btn_more.jpg" width="60" height="24"/></a>
 
                                 </div>
 
@@ -88,18 +92,20 @@
                         <div class="box1">
 
                             <div class="box1_cont">
-                                <div class="h11">Advertisers</div>
+                                <div class="h11">Publishers</div>
 
-                                <div class="h2"> Reach Your Target Audience </div>
+                                <div class="h2"> Have a mobile website? </div>
 
 
-
-                                <div class="box1_cont_rdmr">
-
-                                    <img src="indeximages/btn_more.jpg" width="60" height="24"/>
-
+                                <div class="h22">Generate revenue by delivering advertiser ads through your mobile website.
+                                    Monetize your mobile audience and maintain a good user experience.
                                 </div>
 
+                                <div align="right" style="padding-top:35px; ">
+
+                                   <a href="analytics.jsp"> <img src="indeximages/btn_more.jpg" width="60" height="24"/></a>
+
+                                </div>
                             </div>
 
                         </div>
@@ -119,12 +125,16 @@
                             <div class="box1_cont">
                                 <div class="h11">App Developers</div>
 
-                                <div class="h2"> Reach Your Target Audience </div>
+                                <div class="h2"> Have a mobile application? </div>
 
 
-                                <div class="box1_cont_rdmr">
+                                <div class="h22">Let your application work for you to generate revenue.
+                                    Ads to marvel your audience.
+                                </div>
 
-                                    <img src="indeximages/btn_more.jpg" width="60" height="24"/>
+                                <div align="right" style="padding-top:40px; ">
+
+                                   <a href="metrics.jsp"> <img src="indeximages/btn_more.jpg" width="60" height="24"/></a>
 
                                 </div>
 

@@ -23,6 +23,24 @@
         <script type="text/javascript" src="reportstyle.js"></script>
         <!-- for new search form css-->
         <link rel="stylesheet" type="text/css" href="searstyle.css" />
+        <!--[if IE]>
+         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <style>
+            article, aside, figure, footer, header, hgroup, 
+            menu, nav, section { display: block; }
+
+            #selectdropdown {
+                -webkit-appearance: none;
+               -moz-appearance: none !important;
+                appearance: none;
+                border: none;
+
+                /*  padding: 2px 30px 2px 2px;
+               background: transparent url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") no-repeat right center;*/
+            }
+        </style>
+
         <s:head theme="jquery"/>
         <sj:head />
     </head>
@@ -59,7 +77,7 @@
                 <div id="searchbox" >
                     <div class="search-header" >  
                         <form method="post" action="sitecharts.action">
-                            <select name="search" class="search-input" >
+                            <select name="search" id="selectdropdown" class="search-input" >
 
                             <option value="3">Last 7 Days</option>
                             <option value="4">Last 30 Days</option>

@@ -24,7 +24,7 @@ public class logoutaction extends ActionSupport {
             session.put("User", null);
             session.clear();
             myDao.getDbsession().close();
-            addActionMessage("Successfully Logged Out. Login as Different User");
+            addActionMessage("Successfully Logged Out.");
             return "success";
         } catch (HibernateException e) {
             addActionError("Server  Error Please Try Again ");
