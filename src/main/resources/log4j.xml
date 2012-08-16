@@ -46,6 +46,12 @@
     <logger name="freemarker.beans">
         <level value="OFF" />
     </logger>
+    <!--  <logger name="com.mchange">
+        <level value="INFO"/>
+    </logger>
+    <logger name="net.sf.ehcache">
+        <level value="INFO"/>
+    </logger>-->
    <!-- for all other loggers log only info and above log messages -->
     <root>
         <priority value="DEBUG"/> 
