@@ -18,7 +18,7 @@
 	
                 $('div#tid').easyPaginate({
                     //step value define for number of results shown on every page here 5 set for 5 items on each page
-                    step:5
+                    step:20
                 });
 	
             });    

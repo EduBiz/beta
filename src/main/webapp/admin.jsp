@@ -89,7 +89,7 @@
                         <div class="clear"></div>
 
                         <div class="formrow">
-                            <div class="form-button" > <s:submit value="Change Rate" cssClass="button"  /></div>
+                            <div class="form-button" style="margin-right: 40px;" > <s:submit value="Change Rate" cssClass="button"  /></div>
                         </div>
                         <div class="clear"></div>
                     </s:form>

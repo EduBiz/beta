@@ -105,7 +105,7 @@
                         </div>
                         <div class="clear"></div>
                         <div class="formrow"  >
-                            <div class="form-button" style="float:right" > <s:submit value="Save Information" cssClass="button" /></div>
+                           <div class="form-widget" style="margin-left: 240px;" > <s:submit value="Save Information" cssClass="button" /></div>
                         </div>
                         <div class="clear"></div>
                     </s:form>

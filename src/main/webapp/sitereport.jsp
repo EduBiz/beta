@@ -32,7 +32,7 @@
 
             #selectdropdown {
                 -webkit-appearance: none;
-               -moz-appearance: none !important;
+              -moz-appearance: none;
                 appearance: none;
                 border: none;
 

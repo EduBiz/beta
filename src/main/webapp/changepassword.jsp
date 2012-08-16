@@ -87,7 +87,7 @@
                         <div class="clear"></div>
 
                         <div class="formrow">
-                            <div class="form-button" > <s:submit value="Change Password" cssClass="button"  /></div>
+                            <div class="form-button" style="margin-right: 65px;" > <s:submit value="Change Password" cssClass="button"  /></div>
                         </div>
                         <div class="clear"></div>
                     </s:form>
