@@ -66,7 +66,7 @@
                                 <div class="h2"> Looking to Advertise?
                                 </div>
                                 <div class="h22">Connect with targeted audiences, grow your brand, increase sales and have the edge on your competitors. 
-                                    Delivery of ads on mobile websites and apps through the AdZappy Ad network.
+                                    Delivery of ads on mobile websites and apps through the Ad-X network.
                                 </div>
 
                                 <div align="right" style="padding-top:20px; ">

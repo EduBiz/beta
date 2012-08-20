@@ -31,6 +31,13 @@ padding:0 5px;
 outline:none;
 }
 
+.search-select{
+
+color:#707070;
+font-family:'Segoe UI',Tahoma,Arial,Helvetica,sans-serif;
+width: 125px;
+height: 24px;
+}
 .search-submit{
 
 width:22px;
