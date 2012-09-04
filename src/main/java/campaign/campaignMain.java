@@ -13,14 +13,16 @@ import java.util.List;
 import java.util.Map;
 import model.Campaign;
 import model.User;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
  * @author Administrator
  */
 public class campaignMain extends ActionSupport {
-    
+
     private String campaid;
     private String campaignname;
     private Date startdate;
@@ -32,54 +34,50 @@ public class campaignMain extends ActionSupport {
     private List<Campaign> camplist;
     private Long lc;
     private spDAO myDao;
-    
+
     @Override
     public void validate() {
-        
-        
-        
+
+
+
         if (dailybdgt == null) {
-            
+
             addActionError("Please Enter Daily Budget");
         }
         if (deliverytype == null) {
-            
+
             addActionError("Please Select Delivery Type");
         }
         if (campaignname == null) {
-            
+
             addActionError("Please Enter Campaign Name");
         }
-        
+
         if (startdate == null) {
-            
+
             addActionError("Please Select Start Date");
-        }        
+        }
         if (enddate == null) {
-            
+
             addActionError("Please Select End Date");
         } else {
             if (startdate.after(enddate)) {
-                
+
                 addActionError("Please Choose End date After Start Date ");
             }
         }
     }
-    
+
     @Override
     public String execute() throws Exception {
-        
+
         try {
             Date date = new Date();
             Map session = ActionContext.getContext().getSession();
             User user = (User) session.get("User");
-            
-            Campaign camp;
-            //  System.out.println("campaign id is" +campaid);
 
-            camp = new Campaign(user, campaignname);
-            camp = (Campaign) session.put("campa", camp);
-            
+            Campaign camp = new Campaign(user, campaignname);
+
             camp.setStartDate(startdate);
             camp.setEndDate(enddate);
             camp.setDialyBudget(dailybdgt);
@@ -88,25 +86,34 @@ public class campaignMain extends ActionSupport {
             camp.setNote(note);
             camp.setCreationTime(date);
             getMyDao().getDbsession().saveOrUpdate(camp);
+            Criteria camp_crit = myDao.getDbsession().createCriteria(Campaign.class);
+            camp_crit.add(Restrictions.and(Restrictions.eq("user", user), Restrictions.eq("campaignName", campaignname)));
+            camp_crit.add(Restrictions.and(Restrictions.eq("startDate", startdate), Restrictions.eq("endDate", enddate)));
+            camp_crit.add(Restrictions.eq("dialyBudget", dailybdgt));
+            camp_crit.add(Restrictions.eq("note", note));
+            camp_crit.setMaxResults(1);
+            Campaign n_camp = (Campaign) (camp_crit.list().get(0));
+            System.out.println("-----------Campaign id---- " + n_camp.getCampaignId());
+            session.put("campa", n_camp);
             return "success";
-            
+
         } catch (HibernateException e) {
             addActionError("Server  Error Please Recheck All Fields ");
             e.printStackTrace();
             return "error";
         } catch (NullPointerException ne) {
-            
+
             addActionError("Server  Error Please Recheck All Fields ");
             ne.printStackTrace();
             return "error";
         } catch (Exception e) {
-            
+
             addActionError("Server  Error Please Recheck All Fields ");
             e.printStackTrace();
             return "error";
         }
-        
-        
+
+
     }
 
     /**

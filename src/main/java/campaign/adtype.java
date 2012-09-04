@@ -44,12 +44,10 @@ public class adtype extends ActionSupport {
         try {
 
             Map session = ActionContext.getContext().getSession();
-            Campaign camp = (Campaign) session.get("campa");
+            Campaign s_camp = (Campaign) session.get("campa");
+            System.out.println("-----------Campaign id " + s_camp.getCampaignId());
 
-
-
-
-            camp = (Campaign) getMyDao().getDbsession().get(Campaign.class, camp.getCampaignId());
+            Campaign camp = (Campaign) getMyDao().getDbsession().get(Campaign.class, s_camp.getCampaignId());
 
             camp.setPromoType(getPromotype());
 
@@ -80,10 +78,10 @@ public class adtype extends ActionSupport {
             }
             if (getPromotype().equals("Click to Map Ad")) {
                 return "clickmap";
+            } else {
+                addActionError("Please Select Ad Group Type");
             }
-            else
-                  addActionError("Please Select Ad Group Type");
-                return "error";
+            return "error";
 
         } catch (HibernateException e) {
             addActionError("Server  Error Please Recheck All Fields ");
@@ -101,7 +99,7 @@ public class adtype extends ActionSupport {
             return "error";
         }
 
-       
+
     }
 
     /**
